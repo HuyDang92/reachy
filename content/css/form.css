@@ -1,0 +1,128 @@
+@import url('/content/css/root.css');
+.container__sign-in{
+    margin: 0 10%;
+}
+.title__sign-in{
+    margin: 10rem 0;
+    margin-bottom: 8rem;
+    margin-left: 70%;
+}
+.title__sign-in{
+    font-weight: 800;
+}
+.title_link{
+    font-weight: 500;
+    letter-spacing: px;
+}
+
+.btn_submit {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.main__sign-in{
+    display: flex;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin: 2rem 0;
+}
+.main__sign-in-left>img{
+    width: 90%;
+}
+.main__sign-in-right{
+    padding-top: 7rem;
+    text-align: center;
+    width: 50%;
+    background-color: #ffff;
+}
+
+.main__sign-in-right form input{
+    padding: 1rem;
+    padding-left: 0;
+    border-bottom: 1px solid #cccc;
+    width: 70%;
+    font-size: 22px;
+}
+.sign__up-link{
+    display: flex;
+    justify-content: space-around;
+}
+.sign__up-link>a{
+    font-weight: 500;
+    
+}
+
+
+
+
+
+/*  */
+.btn_submit .btn_submit-border {
+    --blue: #21D1F5;
+    color: var(--blue);
+    font-size: 16px;
+    border: 0.3em solid var(--blue);
+    width: 22rem;
+    height: 3em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 3em;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.5s;
+    margin: 1em;
+    margin-top: 2rem;
+}
+
+.btn_submit .btn_submit-border span {
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    background-image: linear-gradient(90deg, var(--blue), var(--green));
+    transform: translateY(150%);
+    border-radius: 50%;
+    left: calc((var(--n) - 1) * 25%);
+    transition: 0.5s;
+    transition-delay: calc((var(--n) - 1) * 0.1s);
+    z-index: -1;
+}
+
+.btn_submit .btn_submit-border:hover {
+    color: #ffff;
+}
+
+.btn_submit .btn_submit-border:hover span {
+    transform: translateY(0) scale(2);
+}
+
+.btn_submit .btn_submit-border span:nth-child(1) {
+    --n: 1;
+}
+
+.btn_submit .btn_submit-border span:nth-child(2) {
+    --n: 2;
+}
+
+.btn_submit .btn_submit-border span:nth-child(3) {
+    --n: 3;
+}
+
+.btn_submit .btn_submit-border span:nth-child(4) {
+    --n: 4;
+}
+/*  */
+.active__form{
+    margin: 5rem; 
+    margin-left: 35%;
+}
+.active__form input{
+    border: 1px solid #ccc;
+    padding: 1rem; 
+    width: 10rem; 
+}
+
+
+

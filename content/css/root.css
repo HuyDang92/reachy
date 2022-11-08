@@ -1,0 +1,32 @@
+*{
+    list-style: none;
+    font-family: 'Nunito', sans-serif;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+:root{
+    --blue : #21D1F5;
+    --green : #3BD1C8;
+    --white : #fff;
+    --darkgray : #1E1F29;
+    --lightgray : #E4E7ED;
+}
+body{
+    margin: 0 auto;
+}
+a{
+    color: #000;
+}
+h2,h1,h3, ul{
+    margin: 0;
+    padding: 0;
+}
+button{
+ border: none;
+ background:none;   
+}
+
+input{
+    outline: none;
+    border: none;
+}
