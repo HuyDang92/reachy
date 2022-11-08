@@ -14,7 +14,7 @@
         <ul class="footer_colums">
             <li class="footer_colum">
                 <div class="footer_colum-logo">
-                    <img src="<?= $CONTENT_URL ?>/imgs/logo.svg" alt="">
+                    <img src="<?= $CONTENT_URL ?>/imgs/interface/logo.svg" alt="">
                     <h1>REACHY</h1>
                 </div>
                 <p>Chúng tôi chuyên cung cấp các dòng sản phẩm thời trang như Giày, Quần Áo, Túi - Balo và Phụ Kiện </p>

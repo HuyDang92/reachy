@@ -1,6 +1,7 @@
 <?php
 $sql_product_new =  product_select_8DateLasted();
 $sql_product_special = product_select_special();
+$sql_deal = product_select_AllSaleOff();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,6 +65,27 @@ $sql_product_special = product_select_special();
                         <img src="<?= $CONTENT_URL ?>/imgs/interface/banner2.png" alt="">
                     </div>
                 </div>
+                <div class="main__slide-item">
+                    <div class="slide__item-left">
+                        <h1>Bộ Sưu Tập Mới <br> Của Nike!</h1>
+                        <p>Giày chính hãng với lịch sử hình thành và phát triển hơn 100 năm để ngày nay trở thành
+                            “Thương hiệu giày thể thao được giới trẻ yêu thích”
+                        </p>
+                        <div class="btn__add-cart">
+                            <button>
+                                <a href="">
+                                    <span class="material-symbols-outlined">
+                                        add
+                                    </span>
+                                </a>
+                            </button>
+                            <h4>THÊM VÀO GIỎ HÀNG</h4>
+                        </div>
+                    </div>
+                    <div class="slide__item-right">
+                        <img src="<?= $CONTENT_URL ?>/imgs/interface/banner3.webp.png" alt="">
+                    </div>
+                </div>
 
             </div>
         </section>
@@ -109,13 +131,14 @@ $sql_product_special = product_select_special();
                     </div>
                     <ul class="product__selection">
                         <?php foreach ($sql_product_new as $row_product_new) {
-                            $imgs = product_selectImgs($row_product_new['id_product']);
-                            $discount = $row_product_new['price'] + $row_product_new['price'] * ($row_product_new['sale_off'] / 100);
+                            $imgs__product_new = product_selectImgs($row_product_new['id_product']);
+                            $discount_product_new = $row_product_new['price'] + $row_product_new['price'] * ($row_product_new['sale_off'] / 100);
                         ?>
                         <li>
                             <div class="product__selection-top">
                                 <a href="index.php?page=product&product_id=" target="">
-                                    <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $imgs['contain'] ?>" alt="">
+                                    <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $imgs__product_new['contain'] ?>"
+                                        alt="">
                                 </a>
                                 <div class="stick_top">
                                     <span class="sale">-<?= $row_product_new['sale_off'] ?>%</span>
@@ -129,7 +152,7 @@ $sql_product_special = product_select_special();
                             <div class="product__selection-info">
                                 <h4 class="product__name"><?= $row_product_new['name'] ?></h4>
                                 <div class="product__price"><?= number_format($row_product_new['price']) ?>₫
-                                    <span><?= number_format(round($discount, -4)) ?>₫</span>
+                                    <span><?= number_format(round($discount_product_new, -4)) ?>₫</span>
                                 </div>
                             </div>
                             <div class="product__selection-tools">
@@ -240,7 +263,7 @@ $sql_product_special = product_select_special();
                     ?>
 
                     <div class="exclusive__product">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/<?= $imgs_special['contain'] ?>" alt="">
+                        <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $imgs_special['contain'] ?>" alt="">
                         <div class="exclusive__product-info">
                             <div class="exclusive__product-price">
                                 <?= number_format($row_product_special['price']) ?>đ
@@ -255,6 +278,81 @@ $sql_product_special = product_select_special();
                     <?php } ?>
                 </div>
             </div>
+        </section>
+        <section class="deal__week-area">
+            <div class="deal__week-title">
+                <h1>Ưu Đãi Trong Tuần</h1>
+            </div>
+            <div class="deal__week-container">
+                <ul class="deal__week-content">
+                    <?php foreach ($sql_deal as $row_deal) {
+                        $imgs_deal = product_selectImgs($row_deal['id_product']);
+                        $discount_deal = $row_deal['price'] + $row_deal['price'] * ($row_deal['sale_off'] / 100);
+                    ?>
+                    <li>
+                        <a href="">
+                            <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $imgs_deal['contain'] ?>" alt="">
+                        </a>
+                        <div class="deal__info">
+                            <h3><?= $row_deal['name'] ?></h3>
+                            <div class="deal__price">
+                                <?= number_format($row_deal['price']) ?>đ
+                                <small><?= number_format(round($discount_deal, -4)) ?>đ</small>
+                            </div>
+                        </div>
+                    </li>
+                    <?php } ?>
+                </ul>
+                <div class="deal__banner"><img src="<?= $CONTENT_URL ?>/imgs/interface/deal_week.png" alt=""></div>
+            </div>
+        </section>
+        <section class="policy-area">
+            <ul class="policy-container">
+                <li>
+                    <a href="">
+                        <span class="material-symbols-outlined">
+                            local_shipping
+                        </span>
+                        <h3>Giao hàng miễn phí</h3>
+                        <p>Cho đơn hàng trên 800K
+                            (áp dụng với sản phẩm KHÔNG giảm giá)
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="material-symbols-outlined">
+                            autorenew
+                        </span>
+                        <h3>Chính sách hoàn trả</h3>
+                        <p>
+                            Đổi hàng khi đủ điều kiện
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="material-symbols-outlined">
+                            support_agent
+                        </span>
+                        <h3>Hỗ trợ 24/7</h3>
+                        <p>
+                            Holine: 0999999999
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="material-symbols-outlined">
+                            credit_card
+                        </span>
+                        <h3>Thanh toán an toàn</h3>
+                        <p>
+                            Nhiều phương toán thanh toán an toàn
+                        </p>
+                    </a>
+                </li>
+            </ul>
         </section>
     </div>
     <script src="<?= $CONTENT_URL ?>/js/slide.js"></script>

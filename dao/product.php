@@ -1,14 +1,6 @@
 <?php
 
 /**
- * Xuất ảnh products
- */
-function product_selectImgs($id_product)
-{
-    $sql = "SELECT * FROM product_img where id_product=?";
-    return pdo_query_one($sql, $id_product);
-}
-/**
  * Xuất toàn bộ sản phẩm
  */
 function product_selectAll()
@@ -149,10 +141,10 @@ function product_select_specification($id_product)
  * @param int $id_product Mã sản phẩm
  * @return array Mảng ảnh
  */
-function product_select_imgs($id_product)
+function product_selectImgs($id_product)
 {
     $sql = "SELECT * FROM product_img WHERE id_product=?";
-    return pdo_query($sql, $id_product);
+    return pdo_query_one($sql, $id_product);
 }
 /**
  * Xuất 9 sản phẩm giảm giá cao nhất
@@ -188,7 +180,7 @@ function product_select_8WishList()
  */
 function product_select_8DateLasted()
 {
-    $sql = "SELECT * FROM product ORDER BY date desc LIMIT 8";
+    $sql = "SELECT * FROM product where special=0 ORDER BY date desc LIMIT 8";
     return pdo_query($sql);
 }
 /**
@@ -197,6 +189,6 @@ function product_select_8DateLasted()
  */
 function product_select_AllSaleOff()
 {
-    $sql = "SELECT * FROM product WHERE sale_off <> 0";
+    $sql = "SELECT * FROM product WHERE sale_off = 20 ";
     return pdo_query($sql);
 }
