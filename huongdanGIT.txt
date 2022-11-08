@@ -26,3 +26,4 @@ Remote
 - git remote add origin (đường dẫn Repo) : tạo  alious 
 - git push -u origin (tên branch) : Đẩy branch lên github
 - git clone (đường dẫn Repo) : Tải file từ github về
+- git pull origin master : để truy cập kho lưu trữ từ xa đến cục bộ. 
