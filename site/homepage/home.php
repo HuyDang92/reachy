@@ -245,6 +245,18 @@ $sql_product_new =  product_select_8DateLasted();
                             <a href="" class="primary-btn">MUA NGAY</a>
                         </div>
                     </div>
+                    <div class="exclusive__product">
+                        <img src="<?= $CONTENT_URL ?>/imgs/interface/exclusive_product1.webp" alt="">
+                        <div class="exclusive__product-info">
+                            <div class="exclusive__product-price">
+                                1,500,000đ <small>2,000,000đ</small>
+                            </div>
+                            <div class="exclusive__product-name">
+                                ADDIDAS NEW HAMMER SOLE FOR SPORTS PERSON
+                            </div>
+                            <a href="" class="primary-btn">MUA NGAY</a>
+                        </div>
+                    </div>
 
                 </div>
             </div>
