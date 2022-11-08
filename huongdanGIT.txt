@@ -24,4 +24,5 @@ Remote
 - git branch -d (tên branch) : xóa branch
 - git git push origin (tên branch): Đẩy code lên github
 - git remote add origin (đường dẫn Repo) : tạo  alious 
+- git push -u origin (tên branch) : Đẩy branch lên github
 - git clone (đường dẫn Repo) : Tải file từ github về

@@ -1,5 +1,6 @@
 <?php
 $sql_product_new =  product_select_8DateLasted();
+$sql_product_special = product_select_special();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -232,32 +233,26 @@ $sql_product_new =  product_select_8DateLasted();
                 </div>
             </div>
             <div class="exclusive__deal-right">
-                <div class="owl-carouse owl-theme">
-                    <div class="exclusive__product">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/exclusive_product1.webp" alt="">
-                        <div class="exclusive__product-info">
-                            <div class="exclusive__product-price">
-                                1,500,000đ <small>2,000,000đ</small>
-                            </div>
-                            <div class="exclusive__product-name">
-                                ADDIDAS NEW HAMMER SOLE FOR SPORTS PERSON
-                            </div>
-                            <a href="" class="primary-btn">MUA NGAY</a>
-                        </div>
-                    </div>
-                    <div class="exclusive__product">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/exclusive_product1.webp" alt="">
-                        <div class="exclusive__product-info">
-                            <div class="exclusive__product-price">
-                                1,500,000đ <small>2,000,000đ</small>
-                            </div>
-                            <div class="exclusive__product-name">
-                                ADDIDAS NEW HAMMER SOLE FOR SPORTS PERSON
-                            </div>
-                            <a href="" class="primary-btn">MUA NGAY</a>
-                        </div>
-                    </div>
+                <div class="owl-carousel owl-theme">
+                    <?php foreach ($sql_product_special as $row_product_special) {
+                        $imgs_special = product_selectImgs($row_product_special['id_product']);
+                        $discount_special = $row_product_special['price'] + $row_product_special['price'] * ($row_product_special['sale_off'] / 100);
+                    ?>
 
+                    <div class="exclusive__product">
+                        <img src="<?= $CONTENT_URL ?>/imgs/interface/<?= $imgs_special['contain'] ?>" alt="">
+                        <div class="exclusive__product-info">
+                            <div class="exclusive__product-price">
+                                <?= number_format($row_product_special['price']) ?>đ
+                                <small><?= number_format(round($discount_special, -4)) ?>đ</small>
+                            </div>
+                            <div class="exclusive__product-name">
+                                <?= $row_product_special['name'] ?>
+                            </div>
+                            <a href="" class="primary-btn">MUA NGAY</a>
+                        </div>
+                    </div>
+                    <?php } ?>
                 </div>
             </div>
         </section>
