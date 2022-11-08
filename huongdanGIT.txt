@@ -4,6 +4,8 @@ Các câu lệnh git
  Repository (Repo)
  Branch (Nhánh file)
  Cònlict (Xung đột trong 1 file)
+Local 
+Remote
 
 # commands 
 
@@ -20,4 +22,6 @@ Các câu lệnh git
 - git branch (tên branch) : qua lại giữa các brand
 - git merge (tên branch) : gộp các brand lại với nhau
 - git branch -d (tên branch) : xóa branch
-- git 
+- git git push origin (tên branch): Đẩy code lên github
+- git remote add origin (đường dẫn Repo) : tạo  alious 
+- git clone (đường dẫn Repo) : Tải file từ github về
