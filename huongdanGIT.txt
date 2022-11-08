@@ -3,7 +3,7 @@ Các câu lệnh git
 
  Repository (Repo)
  Branch (Nhánh file)
- Cònlict (Xung đột trong 1 file)
+ Conflict (Xung đột trong 1 file)
 Local 
 Remote
 
