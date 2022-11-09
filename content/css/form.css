@@ -113,8 +113,16 @@
 .btn_submit .btn_submit-border span:nth-child(4) {
     --n: 4;
 }
-
-
+/*  */
+.active__form{
+    margin: 5rem; 
+    margin-left: 35%;
+}
+.active__form input{
+    border: 1px solid #ccc;
+    padding: 1rem; 
+    width: 10rem; 
+}
 
 
 
