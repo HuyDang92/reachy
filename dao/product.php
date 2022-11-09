@@ -1,6 +1,14 @@
 <?php
 
 /**
+ * đếm số lượng Sản phẩm
+ */
+function product_countAll()
+{
+    $sql = "SELECT COUNT(id_product) as pd_num FROM product;";
+    return pdo_query($sql);
+}
+/**
  * Xuất toàn bộ sản phẩm
  */
 function product_selectAll()

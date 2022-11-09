@@ -10,6 +10,7 @@
     --white : #fff;
     --darkgray : #1E1F29;
     --lightgray : #E4E7ED;
+    --grey : #E8F0F2;
 }
 body{
     margin: 0 auto;
