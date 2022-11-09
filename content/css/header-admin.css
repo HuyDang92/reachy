@@ -28,7 +28,7 @@
 }
 
 .header__right{
-    width: 30%;
+    width: 15%;
     margin-left: 1rem;
 }
 .header_right-logo{
@@ -42,15 +42,16 @@
     letter-spacing: 0.3rem;
 }
 .header__left{
-    width: 62%;
+    width: 90%;
     display: flex;
 }
 .header__left-menu{
     margin: 0;
     margin-left: 4rem;
-    width: 70%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .header__left-menu a{
     color: #000;
@@ -59,7 +60,7 @@
     padding: 1.5rem 0.5rem;
     cursor: pointer;
     font-size: smaller;
-    font-weight: 600;
+    font-weight: bold;
 }
 .header__left-menu>li>a{
 
@@ -196,4 +197,17 @@
 .control__user img{
     width: 1.4rem;
     border-radius: 50%;
+}
+.admin__container{
+    margin-top: 8rem;
+    text-align: center;
+}
+.admin__container>h1{
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.admin__container>img{
+    width: 20%;
+    margin: 15px auto;
 }
