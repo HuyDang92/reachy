@@ -40,7 +40,7 @@ function user_selectByEmail($email)
  */
 function user_insert($user_name, $password, $email, $phone_number)
 {
-    $sql = "INSERT INTO user(id_user,name,email,password,img,phone_number) VALUES (null,?,?,?,'default-avater.jpg',?)";
+    $sql = "INSERT INTO user(id_user,name,email,password,img,phone_number) VALUES (null,?,?,?,'default-avatar.jpg',?)";
     pdo_execute($sql, $user_name, $email, $password, $phone_number);
 }
 /**
