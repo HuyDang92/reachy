@@ -1,5 +1,5 @@
 <?php
 require_once "../../global.php";
 unset($_SESSION['login']);
-header("location:../../site/homepage/");
 ?>
+<script>window.location.href="../../index.php"</script>

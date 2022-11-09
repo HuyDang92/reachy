@@ -11,7 +11,6 @@ $IMAGE_DIR = $_SERVER["DOCUMENT_ROOT"] . "/content/images";
 // 2 biến toàn cục để chia sẻ giữa controller và view
 $VIEW_NAME = "index.php";
 $MESSAGE = "";
-
 //Kiểm tra sự tồn tại của 1 tham số trong request, trả về true nếu tồn tại
 function exist_param($fieldname)
 {
