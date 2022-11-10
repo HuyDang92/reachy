@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/form.css">
+    <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/form.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/root.css">
 
 </head>

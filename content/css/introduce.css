@@ -14,3 +14,7 @@
     margin-left: 10rem;
     margin-right: 10rem;
 }
+.list_style{
+    list-style: disc ;
+    margin-left: 2rem;
+}
