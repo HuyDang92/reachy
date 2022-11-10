@@ -13,6 +13,7 @@ if (exist_param("btn-sendmail")) {
     $VIEW_NAME = "user/activate.php";
 } else {
     if ($code_ipt == $_SESSION['code']) {
+        user_insert($user_name, $password, $email, $phone_number);
         user_activate($_SESSION['login']);
         user_signIn($email, $password);
         header("location:../../index.php");

@@ -145,3 +145,12 @@ function user_selectImgs($id_user)
     $sql = "SELECT img FROM user WHERE id_user=?";
     return pdo_query_one($sql, $id_user);
 }
+/**
+* Cập nhật ảnh đại diện
+* @param int $id_user Mã khách hàng
+* @param string $img Ảnh đại diện mới
+*/
+function user_updateAvatar($id_user,$img){
+    $sql = "UPDATE user SET img=? WHERE id_user = ?";
+    pdo_execute($sql,$img,$id_user);
+}
