@@ -1,15 +1,23 @@
 .container_contact{
-    width: 80%;
-    margin: 5rem auto;
-    margin-top: 15rem;
-    display: flex;
-    padding: 3rem 3rem 3rem 0;
-    justify-content: space-between;
-    box-shadow: 1rem 1rem 2rem gray;
+    margin: 0 10%;
+    position: relative;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
 }
 .box_content{
+    position: absolute;
+    top: 3rem;
     width: 30%;
     background-image: linear-gradient( 180deg,#21D1F5 ,#3BD1C8 );
+    padding: 1rem 0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.box_bottom{
+    margin-left: 10rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 5rem 0;
+    padding-left: 20rem;
+    margin-bottom: 4rem;
 }
 .home_contact{
     display: flex;
@@ -42,20 +50,20 @@
     padding-left: 0.75rem;
 }
 .form_idea{
-    width: 65%;
+    width: 85%;
 }
 .form_idea>form>input:nth-child(2n+1){
     margin-right: 10%;
 }
 .submit{
     border-radius: 5px;
-    margin-left: 33rem;
     width: 30%;
     height: 3rem;
     margin-top: 3%;
     background-image: linear-gradient( 180deg,#21D1F5 ,#3BD1C8 );
     color: #fff;
     font-size: larger;
+    text-align: start;
 }
 .map>iframe{
     width: 90%;
