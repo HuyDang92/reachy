@@ -13,17 +13,6 @@ $sql_deal = product_select_AllSaleOff();
     <title>Document</title>
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/home.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/root.css">
-    <script src="<?= $CONTENT_URL ?>/js/slide.js"></script>
-    <script src="<?= $CONTENT_URL ?>/js/countdown_timer.js"></script>
-    <!-- <script>
-        const likeButton = document.querySelector(".btn-like");
-        likeButton.addEventListener(
-            "click",
-            function (event){
-                event.currentTarget.classList.toggle("likePink");
-            }
-        )
-    </script> -->
 </head>
 
 <body>
@@ -367,7 +356,7 @@ $sql_deal = product_select_AllSaleOff();
     </div>
 </body>
 <script src="<?= $CONTENT_URL ?>/js/slide.js"></script>
-    <script src="<?= $CONTENT_URL ?>/js/countdown_timer.js"></script>
+<script src="<?= $CONTENT_URL ?>/js/countdown_timer.js"></script>
     <!-- <script>
         const likeButton = document.querySelector(".btn-like");
         likeButton.addEventListener(

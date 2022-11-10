@@ -6,7 +6,7 @@ $DAO_URL = "$ROOT_URL/dao"; //đường dẫn chứa tài nguyên tĩnh (img, cs
 $ADMIN_URL = "$ROOT_URL/admin"; //đường dẫn vào phần quản trị
 $SITE_URL = "$ROOT_URL/site"; //đường dẫn vào ohần site
 // đường dẫn chứa hình khi upload
-$IMAGE_DIR = $_SERVER["DOCUMENT_ROOT"] . "/content/images";
+$IMAGE_DIR = $_SERVER["DOCUMENT_ROOT"] . "/reachy/content/imgs";
 
 // 2 biến toàn cục để chia sẻ giữa controller và view
 $VIEW_NAME = "index.php";

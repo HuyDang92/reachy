@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/form.css">
+<link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/form.css">
 <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/user.css">
 <?php  
     $user = user_selectById($_SESSION['login']);
@@ -25,7 +25,7 @@
                         <form action="handle_user.php" method="POST" enctype="multipart/form-data">
                             <img id="defaultUploadImg" src="<?=$CONTENT_URL?>/imgs/interface/admin-main.png" alt="Ảnh đại diện">
                             <label for="browseImg">Tải ảnh lên</label>
-                            <input style="display: none" name="new_avatar" accept="image/*" type="file" id="browseImg" value="<?=$CONTENT_URL?>/imgs/user/default-avatar.jpg">
+                            <input style="display: none" name="new_avatar" accept="image/*" type="file" id="browseImg" >
                             <button name="updateAvatar" id="btn-save" style="display: none" type="submit">Lưu</button>
                         </form>
                     </div>
@@ -47,21 +47,34 @@
         <div class="main__sign-in-right">
             <div class="user__info">
                 <h2>Thông tin tài khoản</h2>
+                <?php
+                    if(isset($_SESSION['message'])){
+                        $MESSAGE = $_SESSION['message'];
+                        echo "<h5 class='alert alert-warning'>$MESSAGE</h5>";
+                        unset($_SESSION['message']);
+                    }
+                ?>
                 <form action="handle_user.php" method="POST">
                     <input type="text" value="<?=$user['email']?>" disabled>
                     <input type="text" name="name" value="<?=$user['name']?>">
-                    <input type="text" name="phone_number" value="<?=$user['phone_number']?>">
-                    <input type="hidden" name="id_user" value="<?=$user['id_user']?>">
+                    <input type="number" name="phone_number" value="<?=$user['phone_number']?>">
                     <button name="updateInfo" type="submit">Lưu</button>
                 </form>
             </div>
             <div class="user__changePassword">
                 <h2>Đổi mật khẩu</h2>
+                <?php
+                    if(isset($_SESSION['message'])){
+                        $MESSAGE = $_SESSION['message'];
+                        echo "<h5 class='alert alert-warning'>$MESSAGE</h5>";
+                        unset($_SESSION['message']);
+                    }
+                ?>
                 <form action="handle_user.php" method="POST">
                     <input type="password" name="old_password" required>
                     <input type="password" name="new_password" required>
                     <input type="password" name="refill_new_password" required>
-                    <button name="updateInfo" type="submit">Lưu</button>
+                    <button name="changePW" type="submit">Lưu</button>
                 </form>
             </div>
         </div>

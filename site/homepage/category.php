@@ -18,7 +18,7 @@ $sql_product = getRowInPage("product", $page_num, $page_size);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/category.css">
-    <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/form.css">
+    <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/site_css/form.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/home.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/root.css">
 </head>
