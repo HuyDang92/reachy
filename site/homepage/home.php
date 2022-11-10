@@ -11,7 +11,7 @@ $sql_deal = product_select_AllSaleOff();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/home.css">
+    <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/home.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/root.css">
     <script src="<?= $CONTENT_URL ?>/js/slide.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/countdown_timer.js"></script>
