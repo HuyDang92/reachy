@@ -83,12 +83,18 @@ $sql_category = category_selectAll();
                         <?php if (isset($_SESSION['login'])) {
                             $id_user = $_SESSION['login'];
                             $img_user = user_selectImgs($id_user);
+                            $user = user_selectById($id_user);
                         ?>
                         <img src="<?= $CONTENT_URL ?>/imgs/user/<?= $img_user['img'] ?>" alt="Ảnh đại diện">
                         <div class="sub__menu">
                             <a href="<?= $SITE_URL ?>/user?info">
                                 <div class="sub__menu-user">THÔNG TIN CÁC NHÂN</div>
                             </a>
+                            <?php if($user['role']==1 || $user['role']==2){ ?>
+                                <a href="<?= $ADMIN_URL ?>/">
+                                    <div class="sub__menu-user">QUẢN LÍ CỬA HÀNG</div>
+                                </a>
+                            <?php } ?>
                             <a href="<?= $SITE_URL ?>/user?sign_out">
                                 <div class="sub__menu-user">ĐĂNG XUẤT</div>
                             </a>
