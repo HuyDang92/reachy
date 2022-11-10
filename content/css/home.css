@@ -269,6 +269,9 @@ ul.product__selection li:hover .btn_add-buy>button.buy{
     margin: 15px;
     margin-left: 20%;
 }
+.tools .likePink{
+    color: #ff0059;
+}
 .hover_tools{
     margin-right: 2rem;
     padding: 12px;
@@ -283,7 +286,6 @@ ul.product__selection li:hover .btn_add-buy>button.buy{
 }
 .hover_tools:hover ion-icon{
     color: var(--white);
-
 }
 /* tool tips */
 /* tooltips */

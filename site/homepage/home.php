@@ -13,7 +13,17 @@ $sql_deal = product_select_AllSaleOff();
     <title>Document</title>
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/home.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/root.css">
-
+    <script src="<?= $CONTENT_URL ?>/js/slide.js"></script>
+    <script src="<?= $CONTENT_URL ?>/js/countdown_timer.js"></script>
+    <!-- <script>
+        const likeButton = document.querySelector(".btn-like");
+        likeButton.addEventListener(
+            "click",
+            function (event){
+                event.currentTarget.classList.toggle("likePink");
+            }
+        )
+    </script> -->
 </head>
 
 <body>
@@ -163,10 +173,10 @@ $sql_deal = product_select_AllSaleOff();
                                         </a>
                                         <span class="tooltiptext">Xem chi tiết</span>
                                     </i>
-                                    <i class="hover_tools tooltip">
+                                    <button class="hover_tools tooltip btn-like">
                                         <ion-icon name="heart-outline"></ion-icon>
                                         <span class="tooltiptext">Yêu thích</span>
-                                    </i>
+                                    </button>
                                 </div>
                             </div>
                         </li>
@@ -215,7 +225,7 @@ $sql_deal = product_select_AllSaleOff();
                                         </a>
                                         <span class="tooltiptext">Xem chi tiết</span>
                                     </i>
-                                    <i class="hover_tools tooltip">
+                                    <i class="hover_tools tooltip btn-like">
                                         <ion-icon name="heart-outline"></ion-icon>
                                         <span class="tooltiptext">Yêu thích</span>
                                     </i>
@@ -355,8 +365,16 @@ $sql_deal = product_select_AllSaleOff();
             </ul>
         </section>
     </div>
-    <script src="<?= $CONTENT_URL ?>/js/slide.js"></script>
-    <script src="<?= $CONTENT_URL ?>/js/countdown_timer.js"></script>
 </body>
-
+<script src="<?= $CONTENT_URL ?>/js/slide.js"></script>
+    <script src="<?= $CONTENT_URL ?>/js/countdown_timer.js"></script>
+    <!-- <script>
+        const likeButton = document.querySelector(".btn-like");
+        likeButton.addEventListener(
+            "click",
+            function (event){
+                event.currentTarget.classList.toggle("likePink");
+            }
+        )
+    </script> -->
 </html>
