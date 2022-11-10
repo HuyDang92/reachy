@@ -1,0 +1,16 @@
+.title_h1{
+    text-align: center;
+    margin-top: 12rem;
+    font-size: 2.5rem;
+}
+.img_introduce>img{
+    width: 100%;
+}
+.img_introduce{
+    width: 60%;
+    margin: 2rem auto;
+}
+.container_introduce{
+    margin-left: 10rem;
+    margin-right: 10rem;
+}
