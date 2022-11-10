@@ -5,6 +5,7 @@ require_once "../../dao/user.php";
 require_once "../../dao/category.php";
 session_start();
 extract($_REQUEST);
+// Lấy danh sách biến từ form về bằng các tách chuỗi $_REQUEST
 if (exist_param("btn-sendmail")) {
     $CONTENT_URL = "../../content";
     $code = sendEmail($email);

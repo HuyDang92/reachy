@@ -28,18 +28,20 @@
                         placeholder="Điền mã xác minh">
                     <input type="hidden" name="email" value="<?= $email ?>">
                     <input type="hidden" name="password" value="<?= $password ?>">
-                    <button name="btn-sendmail" type="submit">
-                        <div class="btn_submit">
-                            <div style="width: 6rem;" class="btn_submit-border">
-                                Gửi lại
-                                <span></span><span></span><span></span><span></span>
-                            </div>
-                        </div>
-                    </button>
+                    <input type="hidden" name="user_name" value="<?= $name ?>">
+                    <input type="hidden" name="phone_number" value="<?= $phone_number?>">
                     <button name="btn-comfirm" type="submit">
                         <div class="btn_submit">
                             <div style="width: 10rem;" class="btn_submit-border">
                                 Xác nhận
+                                <span></span><span></span><span></span><span></span>
+                            </div>
+                        </div>
+                    </button>
+                    <button name="btn-sendmail" type="submit">
+                        <div class="btn_submit">
+                            <div style="width: 6rem;" class="btn_submit-border">
+                                Gửi lại
                                 <span></span><span></span><span></span><span></span>
                             </div>
                         </div>
