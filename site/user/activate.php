@@ -1,9 +1,3 @@
-<?php
-if (strlen($MESSAGE)) {
-    echo "<h5 class='alert alert-warning'>$MESSAGE</h5>";
-}
-?>
-
 <head>
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/form.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/root.css">
