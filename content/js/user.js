@@ -6,7 +6,9 @@ browseImgButton.addEventListener(
     "change",
     function() {
         let saveButton = document.querySelector("#btn-save");
-        let 
+        let userImg = document.querySelector("#defaultUploadImg");
+        let imgSrc = browseImgButton.files[0];
+        userImg.src = URL.createObjectURL(imgSrc);
         saveButton.style.display = "block";
         browseImgButton.style.display = "none";
     }

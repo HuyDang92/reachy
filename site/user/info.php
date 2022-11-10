@@ -25,9 +25,9 @@
                 <div class="">
                     <form action="handle_changeAvatar.php" method="POST" enctype="multipart/form-data">
                         <div>
-                            <img src="<?=$CONTENT_URL?>/imgs/interface/admin-main.png" alt="">
+                            <img id="defaultUploadImg" src="<?=$CONTENT_URL?>/imgs/interface/admin-main.png" alt="Ảnh đại diện">
                             <label for="browseImg">Tài ảnh lên</label>
-                            <input style="display: none" type="file" id="browseImg" required>
+                            <input style="display: none" accept="image/*" type="file" id="browseImg" required>
                             <input type="hidden" value="<?=$_SESSION['login']?>">
                             <button id="btn-save" style="display: none" type="submit">Lưu</button>
                         </div>
