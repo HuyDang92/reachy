@@ -20,8 +20,8 @@ Remote
 - git branch : xem các branch [1 branch cho mỗi 1 chức năng]
 - git checkout -b (tên branch) : tạo branch mới
 - git branch (tên branch) : qua lại giữa các brand
-- git merge (tên branch) : gộp các brand lại với nhau
-- git branch -d (tên branch) : xóa branch
+- git merge (tên branch) : gộp các brand lại với nhau 
+- git branch -d (tên branch) : xóa branch 
 - git git push origin (tên branch): Đẩy code lên github
 - git remote add origin (đường dẫn Repo) : tạo  alious 
 - git push -u origin (tên branch) : Đẩy branch lên github

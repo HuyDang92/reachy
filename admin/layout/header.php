@@ -1,51 +1,6 @@
-<?php
-$sql_category = category_selectAll();
-
-?>
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/header.css">
-    <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/root.css">
-    <?php if (exist_param("contact")) { ?>
-    <style>
-    li.contact>a {
-        color: var(--blue);
-    }
-    </style>
-    <?php } else if (exist_param("category")) { ?>
-    <style>
-    li.cate>a {
-        color: var(--blue);
-    }
-    </style>
-    <?php } else if (exist_param("blogs")) { ?>
-    <style>
-    li.blogs>a {
-        color: var(--blue);
-    }
-    </style>
-    <?php } else if (exist_param("introduce")) { ?>
-    <style>
-    li.introduce>a {
-        color: var(--blue);
-    }
-    </style>
-    <?php } else { ?>
-    <style>
-    li.home>a {
-        color: var(--blue);
-    }
-    </style>
-    <?php } ?>
-</head>
-
-<body>
 
     <div class="container_header" id="main-menu__fixed">
-        <div class="header">
+        <header class="header">
             <div class="header__right">
                 <a href="<?= $SITE_URL ?>/homepage">
                     <div class="header_right-logo">
@@ -56,36 +11,30 @@ $sql_category = category_selectAll();
             </div>
             <div class="header__left">
                 <ul class="header__left-menu">
-                    <li class="home">
-                        <a href="<?= $SITE_URL ?>/homepage">TRANG CHỦ</a>
+                    <li>
+                        <a style="color: #21D1F5" href="<?= $SITE_URL ?>/homepage">TRANG CHỦ</a>
                     </li>
-                    <li class="cate">
-                        <a href="?category">DANH MỤC</a>
-                        <div class="category__title">
-                            <?php foreach ($sql_category as $row_category) { ?>
-                            <a
-                                href="<?= $SITE_URL ?>/homepage?category&id_categogy=<?= $row_category[0] ?>"><?= $row_category['name'] ?></a>
-                            <?php } ?>
-                        </div>
+                    <li>
+                        <a href="<?=$ADMIN_URL?>?category&act=add">LOẠI HÀNG</a>
                     </li>
-                    <li class="blogs">
-                        <a href="<?= $SITE_URL ?>/homepage?blogs">BLOGS</a>
+                    <li>
+                        <a href="<?=$ADMIN_URL?>?product&act=add">SẢN PHẨM</a>
                     </li>
-                    <li class="introduce">
-                        <a href="<?= $SITE_URL ?>/homepage?introduce">GIỚI THIỆU</a>
+                    <li>
+                        <a href="<?=$ADMIN_URL?>?comment&act=list">BÌNH LUẬN</a>
                     </li>
-                    <li class="contact">
-                        <a href="<?= $SITE_URL ?>/homepage?contact">LIÊN HỆ</a>
+                    <li>
+                        <a href="<?=$ADMIN_URL?>?user&act=add">TÀI KHOẢN</a>
+                    </li>
+                    <li>
+                        <a href="<?=$ADMIN_URL?>?stastitic">THỐNG KÊ</a>
                     </li>
                 </ul>
                 <ul class="header__left-control">
                     <li class="control__user">
-                        <?php if (isset($_SESSION['login'])) {
-                            $id_user = $_SESSION['login'];
-                            $img_user = user_selectImgs($id_user);
-                        ?>
-                        <img src="<?= $CONTENT_URL ?>/imgs/user/<?= $img_user['img'] ?>" alt="Ảnh đại diện">
-                        <div class="sub__menu">
+                        <span class="material-symbols-outlined">account_circle</span>
+                        <?php if(isset($_SESSION['login'])){ ?>
+                            <div class="sub__menu">
                             <a href="<?= $SITE_URL ?>/user?info">
                                 <div class="sub__menu-user">THÔNG TIN CÁC NHÂN</div>
                             </a>
@@ -93,8 +42,7 @@ $sql_category = category_selectAll();
                                 <div class="sub__menu-user">ĐĂNG XUẤT</div>
                             </a>
                         </div>
-                        <?php } else { ?>
-                        <span class="material-symbols-outlined">account_circle</span>
+                        <?php }else{ ?>
                         <div class="sub__menu">
                             <a href="<?= $SITE_URL ?>/user?sign_in">
                                 <div class="sub__menu-user">ĐĂNG NHẬP</div>
@@ -113,16 +61,14 @@ $sql_category = category_selectAll();
                         <label for="search_btn"><span class="material-symbols-outlined">search</span></label>
                         <form class="header__form-search" action="" method="GET">
                             <input type="text" name="search" placeholder="Nhập từ khóa ">
-                            <label for="search_btn">
-                                <span class="material-symbols-outlined">
+                            <label for="search_btn"><span class="material-symbols-outlined">
                                     close
-                                </span>
-                            </label>
+                                </span></label>
                         </form>
                     </li>
                 </ul>
             </div>
-        </div>
+        </header>
     </div>
     <script>
     // When the user scrolls the page, execute myFunction
@@ -145,4 +91,3 @@ $sql_category = category_selectAll();
         }
     }
     </script>
-</body>

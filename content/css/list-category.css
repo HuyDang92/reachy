@@ -1,0 +1,41 @@
+@import url('/content/css/root.css');
+.list__container{
+    width: 60%;
+    margin: 150px auto;
+        background-color: #F8F9FF;
+    padding: 30px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.list__heading{
+    font-weight: bold;
+    font-size: 20px;
+    /* margin-top: 30px; */
+    /* text-align: center; */
+}
+table{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+thead{
+    background-color: #e7e7e7;
+    font-weight: bold;
+}
+tr{
+    text-align: center;
+}
+th, td{
+    padding: 8px 15px;
+}
+.hinh>img{
+    width: 100%;
+}
+td:first-child{
+    width: 5%;
+}
+td:last-child{
+    width: 15%;
+}
+.hinh{
+    width: 15%;
+}
