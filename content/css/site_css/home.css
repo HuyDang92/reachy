@@ -546,7 +546,7 @@ ul.deal__week-content>li{
 ul.deal__week-content>li>a::after{
     transition: all 0.3s;
     top: -2rem;
-    left: 10%;
+    left: 7%;
     content: "XEM";
     position: absolute;
     font-weight: 700; 

@@ -6,9 +6,12 @@
     margin: 10rem 0;
     margin-bottom: 8rem;
     margin-left: 70%;
-}
-.title__sign-in{
     font-weight: 800;
+    color: #ffff;
+}
+.title__sign-in a{
+    color: #ffff;
+
 }
 .title_link{
     font-weight: 500;
@@ -124,5 +127,167 @@
     width: 10rem; 
 }
 
+/* info */
+.user__info-container{
+    margin: 0 10%;
+    padding: 3rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-bottom: 2rem;
+    display: flex;
+}
+.user__option{
+    line-height: 55px;
+    text-align: center;
+}
+
+/* tab */
+.tabs {
+    padding-right: 2rem;
+    width: 20%;
+}
+.btn__mew-product {
+    /* display: flex; */
+} 
+
+.tablinks {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0.8rem 1rem;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: 0.2s ease;
+    border: 0.5px solid #ccc;
+    width: 100%;
+}
+.tablinks:hover {
+    background-image: linear-gradient(90deg, var(--blue), var(--green));
+    color: #fff;
+}
+.tablinks.active {
+    background-image: linear-gradient(90deg, var(--blue), var(--green));
+    color: #fff;
+}
+.tabcontent {
+    display: none;
+}
+.tabcontent p {
+    color: #333;
+    font-size: 16px;
+}
+.tabcontent.active {
+    display: block;
+}
+.tabcontent h2{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.wrapper_tabcontent{
+    width: 80%;
+}
+.user_info-flex{
+    display: flex;
+}
+
+.user__avatar img{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    border: 1px solid #333;
+}
 
 
+
+.user_info-flex form{
+    padding-left: 4rem;
+}
+.user_info-flex form input{
+    padding: 0.5rem;
+    border: 1px solid var(--blue);
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    width: 45%;
+}
+.user_info-flex form button .btn_submit-border{
+    width: 8rem;
+    margin-left: 0rem;
+    margin-top: 0rem;
+}
+.user__uploadImg--contentbox{
+    position: relative;
+}
+.user__uploadImg--contentbox form{
+    position: absolute;
+    padding: 0;
+    padding: 2rem;
+    background-color: #fff;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    top: -13rem;
+    right: -13rem;
+    z-index: 100;
+}
+.user__uploadImg--contentbox form::after{
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: -5%;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-right: 20px solid #fff;
+    border-bottom: 15px solid transparent;
+}
+.user__uploadImg--contentbox img{
+    width: 6rem;
+    height: 6rem;
+    margin-bottom: 0.4rem;
+    margin-left: 0.3rem;
+}
+.user__uploadImg--contentbox label{
+    padding: 0.4rem;
+    margin: 0.5rem;
+}
+.user__uploadImg--contentbox button .btn_submit-border{
+    width: 6rem !important;
+    margin-top: 0.4rem;
+}
+.position{
+    position: relative;
+    overflow: hidden;
+    /* z-index: -1; */
+}
+.position>span{
+    position: absolute;
+    top: -5rem;
+    left: 3.5rem;
+    padding: 1rem;
+    background-color: #21D1F5;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 50%;
+    display: none;
+}
+.position:hover>span{
+    display: block;
+}
+
+/*  */
+#changepw{
+}
+#changepw form{
+    padding: 0 2rem;
+    
+}
+#changepw form input{
+    padding: 0.5rem;
+    border: 1px solid var(--blue);
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    width: 45%;
+}
+form.form_change-pw .btn_submit-border{
+    width: 8rem;
+    margin-left: -0.2rem;
+    margin-top: 0rem;
+}

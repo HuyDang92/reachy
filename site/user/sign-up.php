@@ -27,7 +27,7 @@
                 }
                 ?>
                 <form action="handle_signUp.php" method="POST">
-                    <input type="text" name="user_name" placeholder="Họ Tên"
+                    <input type="text" name="name" placeholder="Họ Tên"
                         value="<?php if (isset($user_name)) echo $user_name ?>"> <br>
                     <input type="email" name="email" placeholder="Email"
                         value="<?php if (isset($email)) echo $email ?>"> <br>
