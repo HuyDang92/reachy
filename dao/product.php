@@ -200,3 +200,11 @@ function product_select_AllSaleOff()
     $sql = "SELECT * FROM product WHERE sale_off = 20 ";
     return pdo_query($sql);
 }
+/**
+* Xuất danh sách slide trang chủ
+* @return array Danh sách slide
+*/
+function product_selectAllSlide(){
+    $sql = "SELECT * FROM slider";
+    return pdo_query($sql);
+}

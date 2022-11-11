@@ -2,6 +2,7 @@
 $sql_product_new =  product_select_8DateLasted();
 $sql_product_special = product_select_special();
 $sql_deal = product_select_AllSaleOff();
+$sql_slide = product_selectAllSlide();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,70 +23,27 @@ $sql_deal = product_select_AllSaleOff();
     <div class="container_main">
         <section class="banner__area">
             <div class="owl-carousel owl-theme">
-                <div class="main__slide-item">
-                    <div class="slide__item-left">
-                        <h1>Bộ Sưu Tập Mới <br> Của Nike!</h1>
-                        <p>Giày chính hãng với lịch sử hình thành và phát triển hơn 100 năm để ngày nay trở thành
-                            “Thương hiệu giày thể thao được giới trẻ yêu thích”
-                        </p>
-                        <div class="btn__add-cart">
-                            <button>
-                                <a href="">
-                                    <span class="material-symbols-outlined">
-                                        add
-                                    </span>
-                                </a>
-                            </button>
-                            <h4>THÊM VÀO GIỎ HÀNG</h4>
+                <?php foreach($sql_slide as $slide){ ?>
+                    <div class="main__slide-item">
+                        <div class="slide__item-left">
+                            <h1><?=$slide['title']?></h1>
+                            <p><?=$slide['content']?></p>
+                            <div class="btn__add-cart">
+                                <button>
+                                    <a href="">
+                                        <span class="material-symbols-outlined">
+                                            add
+                                        </span>
+                                    </a>
+                                </button>
+                                <h4>THÊM VÀO GIỎ HÀNG</h4>
+                            </div>
+                        </div>
+                        <div class="slide__item-right">
+                            <img src="<?= $CONTENT_URL ?>/imgs/interface/<?=$slide['img']?>" alt="">
                         </div>
                     </div>
-                    <div class="slide__item-right">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/banner4.webp" alt="">
-                    </div>
-                </div>
-                <div class="main__slide-item">
-                    <div class="slide__item-left">
-                        <h1>Bộ Sưu Tập Mới <br> Của Nike!</h1>
-                        <p>Giày chính hãng với lịch sử hình thành và phát triển hơn 100 năm để ngày nay trở thành
-                            “Thương hiệu giày thể thao được giới trẻ yêu thích”
-                        </p>
-                        <div class="btn__add-cart">
-                            <button>
-                                <a href="">
-                                    <span class="material-symbols-outlined">
-                                        add
-                                    </span>
-                                </a>
-                            </button>
-                            <h4>THÊM VÀO GIỎ HÀNG</h4>
-                        </div>
-                    </div>
-                    <div class="slide__item-right">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/banner2.png" alt="">
-                    </div>
-                </div>
-                <div class="main__slide-item">
-                    <div class="slide__item-left">
-                        <h1>Bộ Sưu Tập Mới <br> Của Nike!</h1>
-                        <p>Giày chính hãng với lịch sử hình thành và phát triển hơn 100 năm để ngày nay trở thành
-                            “Thương hiệu giày thể thao được giới trẻ yêu thích”
-                        </p>
-                        <div class="btn__add-cart">
-                            <button>
-                                <a href="">
-                                    <span class="material-symbols-outlined">
-                                        add
-                                    </span>
-                                </a>
-                            </button>
-                            <h4>THÊM VÀO GIỎ HÀNG</h4>
-                        </div>
-                    </div>
-                    <div class="slide__item-right">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/banner3.webp.png" alt="">
-                    </div>
-                </div>
-
+                <?php } ?>
             </div>
         </section>
         <section class="category__sale-area">
