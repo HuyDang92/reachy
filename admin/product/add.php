@@ -3,7 +3,7 @@
     <h1>Thêm mới sản phẩm</h1>
     <form action="../main/index.php?san_pham&act=add" method='post' enctype="multipart/form-data" class="addloai__form">
         <p>Mã sản phẩm</p>
-        <input type="text" disabled class="add_input">
+        <input type="text" disabled class="add_input" placeholder="Auto Number">
         <p>Tên sản phẩm</p>
         <input type="text" class="add_input">
         <p>Mã loại</p>
