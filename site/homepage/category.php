@@ -1,6 +1,7 @@
 <?php
 $sql_category = category_selectAll();
 $sql_brand = brand_selectAll();
+$sql_deal = product_select_AllSaleOff();
 ?>
 <?php
 $page_num = 1;
@@ -18,7 +19,7 @@ $sql_product = getRowInPage("product", $page_num, $page_size);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/category.css">
-    <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/site_css/form.css">
+    <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/form.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/home.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/root.css">
 </head>
@@ -144,8 +145,51 @@ $sql_product = getRowInPage("product", $page_num, $page_size);
                         </li>
                         <?php } ?>
                     </ul>
+                    <div class="btn_page">
+                        <select class="product__sort" name="" id="">
+                            <option value="">Sắp xếp mặc định</option>
+                            <option value="">Sản phẩm bán chạy</option>
+                            <option value="">Theo bảng chữ cái từ A - Z</option>
+                            <option value="">Theo bảng chữ cái từ Z - A</option>
+                            <option value="">Giá từ cao đến thấp</option>
+                            <option value="">Giá từ thấp đến cao</option>
+                            <option value="">Sản phẩm mới nhất</option>
+                            <option value="">Sản phẩm cũ nhất</option>
+                        </select>
+                        <?php
+                        echo createMultiPage($base_url, $total_products, $page_num, $page_size);
+                        ?>
+
+                    </div>
                 </div>
 
+            </div>
+        </div>
+        <div class="deal__week-area">
+            <div class="deal__week-title">
+                <h1>Ưu Đãi Trong Tuần</h1>
+            </div>
+            <div class="deal__week-container">
+                <ul class="deal__week-content">
+                    <?php foreach ($sql_deal as $row_deal) {
+                        $imgs_deal = product_selectImgs($row_deal['id_product']);
+                        $discount_deal = $row_deal['price'] + $row_deal['price'] * ($row_deal['sale_off'] / 100);
+                    ?>
+                    <li>
+                        <a href="">
+                            <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $imgs_deal['contain'] ?>" alt="">
+                        </a>
+                        <div class="deal__info">
+                            <h3><?= $row_deal['name'] ?></h3>
+                            <div class="deal__price">
+                                <?= number_format($row_deal['price']) ?>đ
+                                <small><?= number_format(round($discount_deal, -4)) ?>đ</small>
+                            </div>
+                        </div>
+                    </li>
+                    <?php } ?>
+                </ul>
+                <div class="deal__banner"><img src="<?= $CONTENT_URL ?>/imgs/interface/deal_week.png" alt=""></div>
             </div>
         </div>
     </div>

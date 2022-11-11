@@ -16,20 +16,21 @@
                 <img src="<?= $CONTENT_URL ?>/imgs/interface/fashion.jpg" alt="">
             </div>
             <div class="main__sign-in-right">
-                <h2 style="margin-bottom: 1.5rem;">Kích hoạt tài khoảng</h2>
+                <h2 style="margin-bottom: 1.5rem;">Kích hoạt tài khoản</h2>
                 <?php
-                    if(strlen($MESSAGE)){
-                        echo "<h5 class='alert alert-warning'>$MESSAGE</h5>";
-                    }
+                if (strlen($MESSAGE)) {
+                    echo "<h5 class='alert alert-warning'>$MESSAGE</h5>";
+                }
                 ?>
-                <form style="margin-left: 37%; margin-bottom: 3rem;" class="active__form" action="handle_activate.php" method="POST">
+                <form style="margin-left: 16%; margin-bottom: 3rem;" class="active__form" action="handle_activate.php"
+                    method="POST">
                     <?php extract($_REQUEST); ?>
                     <input style="padding: 0.5rem; border: 1px solid #ccc; font-size: 20px;" type="text" name="code_ipt"
                         placeholder="Điền mã xác minh">
                     <input type="hidden" name="email" value="<?= $email ?>">
                     <input type="hidden" name="password" value="<?= $password ?>">
                     <input type="hidden" name="user_name" value="<?= $name ?>">
-                    <input type="hidden" name="phone_number" value="<?= $phone_number?>">
+                    <input type="hidden" name="phone_number" value="<?= $phone_number ?>">
                     <button name="btn-comfirm" type="submit">
                         <div class="btn_submit">
                             <div style="width: 10rem;" class="btn_submit-border">

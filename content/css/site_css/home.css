@@ -531,32 +531,34 @@ ul.product__selection li:hover .btn_add-buy>button.buy{
 }
 .deal__week-container{
     display: flex;
+    margin-bottom: 2rem;
 }
 ul.deal__week-content{
     display: flex;
     flex-wrap: wrap;
     width: 80%;
-    padding-top: 2rem;
 }
 ul.deal__week-content>li{
-    margin-right: 4rem;
-    width: 20%;
+    margin-right: 1.5rem;
+    width: 30%;
     margin-bottom: 2rem;
     display: flex;
     position: relative; 
     overflow: hidden;
+    align-items: center;
 }
 ul.deal__week-content>li>a::after{
     transition: all 0.3s;
     top: -2rem;
-    left: 10%;
+    left: 7%;
     content: "XEM";
     position: absolute;
     font-weight: 700; 
     /* color: #fff; */
 }
 ul.deal__week-content>li img{
-    width: 140%;
+    width: 4rem;
+    height: 4.5rem;
 }
 ul.deal__week-content>li:hover img{
     filter: blur(5px);
@@ -568,10 +570,12 @@ ul.deal__week-content>li:hover>a::after{
 
 .deal__banner{
     width: 20%;
-    margin-right: 2rem;
+}
+.deal__banner>img{
+    width: 100%;
 }
 .deal__info{
-    margin-left: 2rem;
+    margin-left: 0.5rem;
 }
 .deal__info>h3{
     font-size: 20px;

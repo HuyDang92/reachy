@@ -15,6 +15,7 @@
 }
 .category_content{
     display: flex;
+    margin-top: 10rem;
 }
 .category__content-left{
     width: 28%;
