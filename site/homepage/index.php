@@ -9,8 +9,10 @@ require_once "../../dao/product.php";
 require_once "../../dao/comment.php";
 if (exist_param("contact")) {
     $VIEW_NAME = "homepage/contact.php";
-} else if (exist_param("categogy")) {
-    $VIEW_NAME = "layout/category.php";
+} else if (exist_param("category")) {
+    $VIEW_NAME = "homepage/category.php";
+} else if (exist_param("introduce")) {
+    $VIEW_NAME = "homepage/introduce.php";
 } else {
     $VIEW_NAME = "homepage/home.php";
 }

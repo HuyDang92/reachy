@@ -6,12 +6,11 @@ $DAO_URL = "$ROOT_URL/dao"; //đường dẫn chứa tài nguyên tĩnh (img, cs
 $ADMIN_URL = "$ROOT_URL/admin"; //đường dẫn vào phần quản trị
 $SITE_URL = "$ROOT_URL/site"; //đường dẫn vào ohần site
 // đường dẫn chứa hình khi upload
-$IMAGE_DIR = $_SERVER["DOCUMENT_ROOT"] . "/content/images";
+$IMAGE_DIR = $_SERVER["DOCUMENT_ROOT"] . "/reachy/content/imgs";
 
 // 2 biến toàn cục để chia sẻ giữa controller và view
 $VIEW_NAME = "index.php";
 $MESSAGE = "";
-
 //Kiểm tra sự tồn tại của 1 tham số trong request, trả về true nếu tồn tại
 function exist_param($fieldname)
 {
@@ -90,5 +89,49 @@ function sendEmail($emailAddress)
         return $code;
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
+}
+function createMultiPage($base_url, $total_product, $page_num, $page_size = 3)
+{
+    if (isset($_GET['page_num'])) $page = $_GET['page_num'];
+    else $page = "";
+    if ($page_num <= 0) return "";
+    $total_pages = ceil($total_product / $page_size); //tính tổng số trang
+    if ($total_pages <= 1) return "";
+
+    $links = "<ul class='pagination'>";
+    if ($page_num > 1) { //chỉ hiện 2 link đầu, trước khi user từ trang 2 trở đi
+        // $first = "<li class='pageControl-option'><a href='{$base_url}'> << </a></li>";
+        $page_prev = $page_num - 1;
+        $prev = "<li class='pageControl-option'><a href='{$base_url}&page_num={$page_prev}'> < </a></li>";
+        $links .= $prev;
+    }
+    for ($i = 1; $i <= $total_pages; $i++) {
+        if ($page == $i) {
+            $links .= "<li class='pageControl-option active' data-type='page_selected'><a href='{$base_url}&page_num={$i}'>" . ($i) . "</a></li>";
+        } else if ($page == "") {
+            $links .= "<li class='pageControl-option active' data-type='page_selected'><a href='{$base_url}&page_num=1'>" . (1) . "</a></li>";
+            $page = 1;
+        } else {
+            $links .= "<li class='pageControl-option' data-type=''><a href='{$base_url}&page_num={$i}'>" . ($i) . "</a></li>";
+        }
+    }
+    if ($page_num < $total_pages) { //chỉ hiện link cuối, kế khi user kô ở trang cuối 
+        $page_next = $page_num + 1;
+        $next = "<li class='pageControl-option'><a href='{$base_url}&page_num={$page_next}'> > </a></li>";
+        // $last = "<li class='pageControl-option'><a href='{$base_url}&page_num={$total_pages}'> >> </a></li>";
+        $links .= $next;
+    }
+    $links .= "</ul>";
+    return $links;
+}
+function getRowInPage($table, $page_num, $page_size)
+{
+    try {
+        $startRow = ($page_num - 1) * $page_size;
+        $sql = "SELECT * FROM $table LIMIT $startRow,$page_size";
+        return pdo_query($sql);
+    } catch (Exception $e) {
+        die("Lỗi trong hàm " . __FUNCTION__ . ":" . $e->getMessage());
     }
 }

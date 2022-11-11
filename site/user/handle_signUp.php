@@ -12,7 +12,6 @@ if (user_checkExistEmail($email)) {
     global $name, $email, $phone_number;
 } else {
     try {
-        user_insert($user_name, $password, $email, $phone_number);
         $CONTENT_URL = "../../content";
         $code = sendEmail($email);
         add_session("code", $code);

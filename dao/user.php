@@ -40,7 +40,7 @@ function user_selectByEmail($email)
  */
 function user_insert($user_name, $password, $email, $phone_number)
 {
-    $sql = "INSERT INTO user(id_user,name,email,password,img,phone_number) VALUES (null,?,?,?,'default-avater.jpg',?)";
+    $sql = "INSERT INTO user(id_user,name,email,password,img,phone_number) VALUES (null,?,?,?,'default-avatar.jpg',?)";
     pdo_execute($sql, $user_name, $email, $password, $phone_number);
 }
 /**
@@ -144,4 +144,13 @@ function user_selectImgs($id_user)
 {
     $sql = "SELECT img FROM user WHERE id_user=?";
     return pdo_query_one($sql, $id_user);
+}
+/**
+* Cập nhật ảnh đại diện
+* @param int $id_user Mã khách hàng
+* @param string $img Ảnh đại diện mới
+*/
+function user_updateAvatar($id_user,$img){
+    $sql = "UPDATE user SET img=? WHERE id_user = ?";
+    pdo_execute($sql,$img,$id_user);
 }
