@@ -9,5 +9,4 @@
         <input type="reset" value="Nhập lại">
         <a href="<?=$ADMIN_URL?>?category&act=list"><input type="button" value="Danh sách"></a>
     </form>
-
 </div>
