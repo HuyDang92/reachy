@@ -24,7 +24,6 @@ $user = user_selectById($_SESSION['login']);
         </div>
         <div class="wrapper_tabcontent">
             <div id="info_account" class="tabcontent active">
-                <h2>Thông tin tài khoản</h2>
                 <?php
                 if (isset($_SESSION['message'])) {
                     $MESSAGE = $_SESSION['message'];
@@ -32,6 +31,8 @@ $user = user_selectById($_SESSION['login']);
                     unset($_SESSION['message']);
                 }
                 ?>
+                <h2>Thông tin tài khoản</h2>
+
                 <div class="user_info-flex">
                     <div class="user__avatar">
                         <label class="position" for="user__uploadImg--checkbox">
