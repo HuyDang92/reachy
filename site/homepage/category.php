@@ -55,9 +55,10 @@ $sql_product = getRowInPage("product", $page_num, $page_size);
                 <div class="category__details">
                     <h3>Thương Hiệu</h3>
                     <ul class="category__detail">
+                        <?php if(count($sql_brand)==0) echo "Không có thương hiệu"; ?>
                         <?php foreach ($sql_brand as $row_sql_brand) { ?>
                         <li>
-                            <a href="<?=$SITE_URL?>/homepage/?category&id_category=<?=$row_sql_brand['id_brand']?>&page_num=1">
+                            <a href="<?=$SITE_URL?>/homepage/?category&id_category=<?=$id_category?>&id_brand=<?=$row_sql_brand['id_brand']?>&page_num=1">
                                 <?= $row_sql_brand['name'] ?>
                             </a>
                         </li>
