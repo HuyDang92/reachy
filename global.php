@@ -81,7 +81,7 @@ function sendEmail($emailAddress)
         $mail->IsHTML(true);
         $mail->Username = "reachy432@gmail.com";
         $mail->Password = "qrqlcdfwmguahvzy";
-        $mail->SetFrom("nguyenthanhtai0371@gmail.com");
+        $mail->SetFrom("reachy432@gmail.com");
         $mail->Subject = "Electech xác nhận email của bạn: "; //Tiêu đề
         $mail->Body =  $mail__content;
         $mail->AddAddress("$emailAddress");
@@ -98,15 +98,24 @@ function createMultiPage($base_url, $total_product, $page_num, $page_size = 3)
     if ($page_num <= 0) return "";
     $total_pages = ceil($total_product / $page_size); //tính tổng số trang
     if ($total_pages <= 1) return "";
-
     $links = "<ul class='pagination'>";
     if ($page_num > 1) { //chỉ hiện 2 link đầu, trước khi user từ trang 2 trở đi
-        // $first = "<li class='pageControl-option'><a href='{$base_url}'> << </a></li>";
-        $page_prev = $page_num - 1;
-        $prev = "<li class='pageControl-option'><a href='{$base_url}&page_num={$page_prev}'> < </a></li>";
-        $links .= $prev;
+        $first = "<li class='pageControl-option'><a href='{$base_url}&page_num=1'> << </a></li>";
+        // $page_prev = $page_num - 1;
+        // $prev = "<li class='pageControl-option'><a href='{$base_url}&page_num={$page_prev}'> < </a></li>";
+        $links .= $first;
     }
-    for ($i = 1; $i <= $total_pages; $i++) {
+    if($page<3){
+        $pageLimitLeft = 1;
+    }else{
+        $pageLimitLeft = $page - 2;
+    }
+    if($page>$total_pages-3){
+        $pageLimitRight = $total_pages;
+    }else{
+        $pageLimitRight = $page + 2;
+    }
+    for ($i = $pageLimitLeft; $i <= $pageLimitRight; $i++) {
         if ($page == $i) {
             $links .= "<li class='pageControl-option active' data-type='page_selected'><a href='{$base_url}&page_num={$i}'>" . ($i) . "</a></li>";
         } else if ($page == "") {
@@ -118,9 +127,9 @@ function createMultiPage($base_url, $total_product, $page_num, $page_size = 3)
     }
     if ($page_num < $total_pages) { //chỉ hiện link cuối, kế khi user kô ở trang cuối 
         $page_next = $page_num + 1;
-        $next = "<li class='pageControl-option'><a href='{$base_url}&page_num={$page_next}'> > </a></li>";
-        // $last = "<li class='pageControl-option'><a href='{$base_url}&page_num={$total_pages}'> >> </a></li>";
-        $links .= $next;
+        // $next = "<li class='pageControl-option'><a href='{$base_url}&page_num={$page_next}'> > </a></li>";
+        $last = "<li class='pageControl-option'><a href='{$base_url}&page_num={$total_pages}'> >> </a></li>";
+        $links .= $last;
     }
     $links .= "</ul>";
     return $links;

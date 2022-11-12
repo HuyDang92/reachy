@@ -4,12 +4,13 @@ $sql_brand = brand_selectAll();
 $sql_deal = product_select_AllSaleOff();
 ?>
 <?php
+if(isset($_GET['id_category'])) $id_category = $_GET['id_category'];
 $page_num = 1;
 $page_size = 9;
 if (isset($_GET['page_num'])) $page_num = $_GET['page_num'] + 0;
 if ($page_num <= 0) $page_num = 1;
-$base_url = "$SITE_URL/homepage/?category";
-$total_products = count(product_selectAll());
+$base_url = "$SITE_URL/homepage/?category&id_category=$id_category";
+$total_products = count(product_selectAllByIdCategory($id_category));
 $sql_product = getRowInPage("product", $page_num, $page_size);
 ?>
 
