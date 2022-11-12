@@ -145,6 +145,7 @@ function getRowInPage($table, $page_num, $page_size)
             $id_brand = $_GET['id_brand'];
             $sql = "SELECT * FROM $table WHERE id_brand=$id_brand";
         }
+        $sql .= " LIMIT $startRow,$page_size";
         return pdo_query($sql);
     } catch (Exception $e) {
         die("Lỗi trong hàm " . __FUNCTION__ . ":" . $e->getMessage());

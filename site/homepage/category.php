@@ -1,10 +1,10 @@
 <?php
+if(isset($_GET['id_category'])) $id_category = $_GET['id_category'];
 $sql_category = category_selectAll();
-$sql_brand = brand_selectAll();
+$sql_brand = brand_selectAll_byCateId($id_category);
 $sql_deal = product_select_AllSaleOff();
 ?>
 <?php
-if(isset($_GET['id_category'])) $id_category = $_GET['id_category'];
 $page_num = 1;
 $page_size = 9;
 if (isset($_GET['page_num'])) $page_num = $_GET['page_num'] + 0;
@@ -45,7 +45,7 @@ $sql_product = getRowInPage("product", $page_num, $page_size);
                     <ul class="category__detail">
                         <?php foreach ($sql_category as $row_category) { ?>
                         <li>
-                            <a href="">
+                            <a href="<?=$SITE_URL?>/homepage/?category&id_category=<?=$row_category['id_category']?>&page_num=1">
                                 <?= $row_category['name'] ?>
                             </a>
                         </li>
@@ -57,7 +57,7 @@ $sql_product = getRowInPage("product", $page_num, $page_size);
                     <ul class="category__detail">
                         <?php foreach ($sql_brand as $row_sql_brand) { ?>
                         <li>
-                            <a href="">
+                            <a href="<?=$SITE_URL?>/homepage/?category&id_category=<?=$row_sql_brand['id_brand']?>&page_num=1">
                                 <?= $row_sql_brand['name'] ?>
                             </a>
                         </li>
@@ -104,6 +104,11 @@ $sql_product = getRowInPage("product", $page_num, $page_size);
 
                     </div>
                     <ul class="row-3">
+                        <?php 
+                            if($total_products==0){
+                                echo "Hết hàng";
+                            }
+                        ?>
                         <?php foreach ($sql_product as $row_product) {
                             $imgs__product = product_selectImgs($row_product['id_product']);
                             $discount_product = $row_product['price'] + $row_product['price'] * ($row_product['sale_off'] / 100);
