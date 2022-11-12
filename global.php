@@ -138,7 +138,13 @@ function getRowInPage($table, $page_num, $page_size)
 {
     try {
         $startRow = ($page_num - 1) * $page_size;
-        $sql = "SELECT * FROM $table LIMIT $startRow,$page_size";
+        if(isset($_GET['id_category'])){
+            $id_category = $_GET['id_category'];
+            $sql = "SELECT * FROM $table WHERE id_category=$id_category";
+        }else if(isset($_GET['id_brand'])){
+            $id_brand = $_GET['id_brand'];
+            $sql = "SELECT * FROM $table WHERE id_brand=$id_brand";
+        }
         return pdo_query($sql);
     } catch (Exception $e) {
         die("Lỗi trong hàm " . __FUNCTION__ . ":" . $e->getMessage());
