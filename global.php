@@ -94,7 +94,7 @@ function sendEmail($emailAddress)
 function createMultiPage($base_url, $total_product, $page_num, $page_size = 3)
 {
     if (isset($_GET['page_num'])) $page = $_GET['page_num'];
-    else $page = "";
+    else $page = 1;
     if ($page_num <= 0) return "";
     $total_pages = ceil($total_product / $page_size); //tính tổng số trang
     if ($total_pages <= 1) return "";

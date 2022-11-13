@@ -6,34 +6,37 @@
     $currentUrl = getCurrentUrl();
 ?>
 <?php  
-    // if(isset($_GET['page_num'])){
-    //     $page_num = $_GET['page_num'];
-    //     $currentUrl = explode('&page_num=',getCurrentUrl());
-    //     $currentUrl = $currentUrl[0] . substr($currentUrl[1],strlen($page_num));
-    // }else{
-
-    // }
+    if(isset($_GET['page_num'])){
+        $page_num = $_GET['page_num'];
+        $currentUrl = explode('&page_num=',getCurrentUrl());
+        $currentUrl = $currentUrl[0] . substr($currentUrl[1],strlen($page_num));
+    }
 ?>
+<!-- Lọc theo loại hàng -->
 <?php
-    $page_num = 1;
     $page_size = 9;
     if (isset($_GET['page_num'])) $page_num = $_GET['page_num'] + 0;
+    else $page_num = 1;
     if ($page_num <= 0) $page_num = 1;
     $base_url = "$SITE_URL/homepage/?category&id_category=$id_category";
     $sql_total_product = "SELECT * FROM product WHERE id_category = $id_category";
-    // Lọc thêm thương hiệu
+?>
+<!-- Lọc thêm thương hiệu -->
+<?php
     if(isset($_GET['id_brand'])){
         $id_brand = $_GET['id_brand'];
         $base_url .= "&id_brand=$id_brand";
         $sql_total_product .= " AND id_brand = $id_brand";
     };
-    // Lọc thêm giá tiền
+?>
+<!-- Lọc thêm giá tiền -->
+<?php
     if(isset($_GET['price'])){
         $price_breakpoint = $_GET['price'];
-        $base_url .= "&price=$price_breakpoint";
-        // $currentUrl = explode('&price=',getCurrentUrl());
-        // $currentUrl = $currentUrl[0] . substr($currentUrl[1],strlen($price_breakpoint));
-        // $base_url = $currentUrl ."&price=$price_breakpoint";
+        // $base_url .= "&price=$price_breakpoint";
+        $currentUrl = explode('&price=',getCurrentUrl());
+        $currentUrl = $currentUrl[0] . substr($currentUrl[1],strlen($price_breakpoint));
+        $base_url = $currentUrl ."&price=$price_breakpoint";
         if($price_breakpoint==0){
             $sql_total_product .= " AND price < 500000";
         }else if($price_breakpoint==1){
@@ -45,12 +48,23 @@
         }else if($price_breakpoint==4){
             $sql_total_product .= " AND price > 5000000";
         }
-        
     }
+?>
+<!-- Xử lí sắp xếp sản phẩm -->
+<?php
+    if(isset($_GET['sort'])){
+        $sortOpt = $_GET['sort'];
+        $currentUrl = explode('$sort',getCurrentUrl());
+        $currentUrl = $currentUrl[0] . substr($currentUrl[1],strlen($sortOpt));
+        $base_url = $currentUrl ."&sort=$sortOpt";
+        // if($sortOpt==)
+    }
+?>
+<!-- Xuất danh sách sản phẩm tương ứng -->
+<?php
     $total_products = count(pdo_query($sql_total_product));
     $sql_product = getRowInPage("product", $page_num, $page_size);
 ?>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -83,7 +97,7 @@
                         <?php foreach ($sql_category as $row_category) { ?>
                         <li>
                             <a <?php if(exist_param('id_category') && $_GET['id_category']==$row_category['id_category']) echo "style='color: var(--blue) ;'" ?>
-                            href="<?=$SITE_URL?>/homepage/?category&id_category=<?=$row_category['id_category']?>&page_num=1">
+                            href="<?=$SITE_URL?>/homepage/?category&id_category=<?=$row_category['id_category']?>">
                                 <?= $row_category['name'] ?>
                             </a>
                         </li>
@@ -97,7 +111,7 @@
                         <?php foreach ($sql_brand as $row_sql_brand) { ?>
                         <li>
                             <a  <?php if(exist_param('id_brand') && $_GET['id_brand']==$row_sql_brand['id_brand']) echo "style='color: var(--blue) ;'" ?>
-                            href="<?=$SITE_URL?>/homepage/?category&id_category=<?=$id_category?>&id_brand=<?=$row_sql_brand['id_brand']?>&page_num=1">
+                            href="<?=$SITE_URL?>/homepage/?category&id_category=<?=$id_category?>&id_brand=<?=$row_sql_brand['id_brand']?>">
                                 <?= $row_sql_brand['name'] ?>
                             </a>
                         </li>
@@ -109,31 +123,31 @@
                     <ul class="category__detail">
                         <li>
                             <a <?php if(exist_param('price') && $_GET['price']==0) echo "style='color: var(--blue) ;'" ?>
-                            href="<?=$currentUrl?>&price=0&page_num=1">
+                            href="<?=$currentUrl?>&price=0">
                                 Dưới 500,000đ
                             </a>
                         </li>
                         <li>
                             <a  <?php if(exist_param('price') && $_GET['price']==1) echo "style='color: var(--blue) ;'" ?>
-                            href="<?=$currentUrl?>&price=1&page_num=1">
+                            href="<?=$currentUrl?>&price=1">
                                 500,000đ - 1,000,000đ
                             </a>
                         </li>
                         <li>
                             <a  <?php if(exist_param('price') && $_GET['price']==2) echo "style='color: var(--blue) ;'" ?>
-                            href="<?=$currentUrl?>&price=2&page_num=1">
+                            href="<?=$currentUrl?>&price=2">
                                 1,000,000đ - 2,000,000đ
                             </a>
                         </li>
                         <li>
                             <a  <?php if(exist_param('price') && $_GET['price']==3) echo "style='color: var(--blue) ;'" ?>
-                            href="<?=$currentUrl?>&price=3&page_num=1">
+                            href="<?=$currentUrl?>&price=3">
                                 2,000,000đ - 5,000,000đ
                             </a>
                         </li>
                         <li>
                             <a  <?php if(exist_param('price') && $_GET['price']==4) echo "style='color: var(--blue) ;'" ?>
-                            href="<?=$currentUrl?>&price=4&page_num=1">
+                            href="<?=$currentUrl?>&price=4">
                                 Trên 5,000,000đ
                             </a>
                         </li>
@@ -145,13 +159,13 @@
                     <div class="btn_page">
                         <select class="product__sort" name="" id="">
                             <option value="">Sắp xếp mặc định</option>
-                            <option value="">Sản phẩm bán chạy</option>
-                            <option value="">Theo bảng chữ cái từ A - Z</option>
-                            <option value="">Theo bảng chữ cái từ Z - A</option>
-                            <option value="">Giá từ cao đến thấp</option>
-                            <option value="">Giá từ thấp đến cao</option>
-                            <option value="">Sản phẩm mới nhất</option>
-                            <option value="">Sản phẩm cũ nhất</option>
+                            <option value="banChay">Sản phẩm bán chạy</option>
+                            <option value="tenAZ">Theo bảng chữ cái từ A - Z</option>
+                            <option value="tenZA">Theo bảng chữ cái từ Z - A</option>
+                            <option value="giaGiam">Giá từ cao đến thấp</option>
+                            <option value="giaTang">Giá từ thấp đến cao</option>
+                            <option value="spMoi">Sản phẩm mới nhất</option>
+                            <option value="spCu">Sản phẩm cũ nhất</option>
                         </select>
                         <?php
                         echo createMultiPage($base_url, $total_products, $page_num, $page_size);
@@ -255,4 +269,5 @@
         </div>
     </div>
     <script src="<?= $CONTENT_URL ?>/js/cumstomSelect.js"></script>
+    <script src="<?= $CONTENT_URL ?>/js/category.js"></script>
 </body>
