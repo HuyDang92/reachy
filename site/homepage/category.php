@@ -1,23 +1,54 @@
 <?php
-if(isset($_GET['id_category'])) $id_category = $_GET['id_category'];
-$sql_category = category_selectAll();
-$sql_brand = brand_selectAll_byCateId($id_category);
-$sql_deal = product_select_AllSaleOff();
+    if(isset($_GET['id_category'])) $id_category = $_GET['id_category'];
+    $sql_category = category_selectAll();
+    $sql_brand = brand_selectAll_byCateId($id_category);
+    $sql_deal = product_select_AllSaleOff();
+    $currentUrl = getCurrentUrl();
+?>
+<?php  
+    // if(isset($_GET['page_num'])){
+    //     $page_num = $_GET['page_num'];
+    //     $currentUrl = explode('&page_num=',getCurrentUrl());
+    //     $currentUrl = $currentUrl[0] . substr($currentUrl[1],strlen($page_num));
+    // }else{
+
+    // }
 ?>
 <?php
-$page_num = 1;
-$page_size = 9;
-if (isset($_GET['page_num'])) $page_num = $_GET['page_num'] + 0;
-if ($page_num <= 0) $page_num = 1;
-$base_url = "$SITE_URL/homepage/?category&id_category=$id_category";
-$sql_total_product = "SELECT * FROM product WHERE id_category = $id_category";
-if(isset($_GET['id_brand'])){
-    $id_brand = $_GET['id_brand'];
-    $base_url .= "&id_brand=$id_brand";
-    $sql_total_product .= " AND id_brand = $id_brand";
-};
-$total_products = count(pdo_query($sql_total_product));
-$sql_product = getRowInPage("product", $page_num, $page_size);
+    $page_num = 1;
+    $page_size = 9;
+    if (isset($_GET['page_num'])) $page_num = $_GET['page_num'] + 0;
+    if ($page_num <= 0) $page_num = 1;
+    $base_url = "$SITE_URL/homepage/?category&id_category=$id_category";
+    $sql_total_product = "SELECT * FROM product WHERE id_category = $id_category";
+    // Lọc thêm thương hiệu
+    if(isset($_GET['id_brand'])){
+        $id_brand = $_GET['id_brand'];
+        $base_url .= "&id_brand=$id_brand";
+        $sql_total_product .= " AND id_brand = $id_brand";
+    };
+    // Lọc thêm giá tiền
+    if(isset($_GET['price'])){
+        $price_breakpoint = $_GET['price'];
+        $base_url .= "&price=$price_breakpoint";
+        // $currentUrl = explode('&price=',getCurrentUrl());
+        // $currentUrl = $currentUrl[0] . substr($currentUrl[1],strlen($price_breakpoint));
+        // $base_url = $currentUrl ."&price=$price_breakpoint";
+        if($price_breakpoint==0){
+            $sql_total_product .= " AND price < 500000";
+        }else if($price_breakpoint==1){
+            $sql_total_product .= " AND 500000 < price AND price < 1000000";
+        }else if($price_breakpoint==2){
+            $sql_total_product .= " AND 1000000 < price AND price < 2000000";
+        }else if($price_breakpoint==3){
+            $sql_total_product .= " AND 2000000 < price AND price < 5000000";
+        }else if($price_breakpoint==4){
+            $sql_total_product .= " AND price > 5000000";
+        }
+        
+    }
+    $total_products = count(pdo_query($sql_total_product));
+    $sql_product = getRowInPage("product", $page_num, $page_size);
 ?>
 
 <head>
@@ -51,7 +82,8 @@ $sql_product = getRowInPage("product", $page_num, $page_size);
                     <ul class="category__detail">
                         <?php foreach ($sql_category as $row_category) { ?>
                         <li>
-                            <a href="<?=$SITE_URL?>/homepage/?category&id_category=<?=$row_category['id_category']?>&page_num=1">
+                            <a <?php if(exist_param('id_category') && $_GET['id_category']==$row_category['id_category']) echo "style='color: var(--blue) ;'" ?>
+                            href="<?=$SITE_URL?>/homepage/?category&id_category=<?=$row_category['id_category']?>&page_num=1">
                                 <?= $row_category['name'] ?>
                             </a>
                         </li>
@@ -64,7 +96,8 @@ $sql_product = getRowInPage("product", $page_num, $page_size);
                         <?php if(count($sql_brand)==0) echo "Không có thương hiệu"; ?>
                         <?php foreach ($sql_brand as $row_sql_brand) { ?>
                         <li>
-                            <a href="<?=$SITE_URL?>/homepage/?category&id_category=<?=$id_category?>&id_brand=<?=$row_sql_brand['id_brand']?>&page_num=1">
+                            <a  <?php if(exist_param('id_brand') && $_GET['id_brand']==$row_sql_brand['id_brand']) echo "style='color: var(--blue) ;'" ?>
+                            href="<?=$SITE_URL?>/homepage/?category&id_category=<?=$id_category?>&id_brand=<?=$row_sql_brand['id_brand']?>&page_num=1">
                                 <?= $row_sql_brand['name'] ?>
                             </a>
                         </li>
@@ -75,19 +108,34 @@ $sql_product = getRowInPage("product", $page_num, $page_size);
                     <h3>Giá</h3>
                     <ul class="category__detail">
                         <li>
-                            <a href="">Dưới 500,000đ</a>
+                            <a <?php if(exist_param('price') && $_GET['price']==0) echo "style='color: var(--blue) ;'" ?>
+                            href="<?=$currentUrl?>&price=0&page_num=1">
+                                Dưới 500,000đ
+                            </a>
                         </li>
                         <li>
-                            <a href="">500,000đ - 1,000,000đ</a>
+                            <a  <?php if(exist_param('price') && $_GET['price']==1) echo "style='color: var(--blue) ;'" ?>
+                            href="<?=$currentUrl?>&price=1&page_num=1">
+                                500,000đ - 1,000,000đ
+                            </a>
                         </li>
                         <li>
-                            <a href="">1,000,000đ - 2,000,000đ</a>
+                            <a  <?php if(exist_param('price') && $_GET['price']==2) echo "style='color: var(--blue) ;'" ?>
+                            href="<?=$currentUrl?>&price=2&page_num=1">
+                                1,000,000đ - 2,000,000đ
+                            </a>
                         </li>
                         <li>
-                            <a href="">2,000,000đ - 5,000,000đ</a>
+                            <a  <?php if(exist_param('price') && $_GET['price']==3) echo "style='color: var(--blue) ;'" ?>
+                            href="<?=$currentUrl?>&price=3&page_num=1">
+                                2,000,000đ - 5,000,000đ
+                            </a>
                         </li>
                         <li>
-                            <a href="">Trên 5,000,000đ</a>
+                            <a  <?php if(exist_param('price') && $_GET['price']==4) echo "style='color: var(--blue) ;'" ?>
+                            href="<?=$currentUrl?>&price=4&page_num=1">
+                                Trên 5,000,000đ
+                            </a>
                         </li>
                     </ul>
                 </div>
