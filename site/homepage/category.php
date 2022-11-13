@@ -10,7 +10,13 @@ $page_size = 9;
 if (isset($_GET['page_num'])) $page_num = $_GET['page_num'] + 0;
 if ($page_num <= 0) $page_num = 1;
 $base_url = "$SITE_URL/homepage/?category&id_category=$id_category";
-$total_products = count(product_selectAllByIdCategory($id_category));
+$sql_total_product = "SELECT * FROM product WHERE id_category = $id_category";
+if(isset($_GET['id_brand'])){
+    $id_brand = $_GET['id_brand'];
+    $base_url .= "&id_brand=$id_brand";
+    $sql_total_product .= " AND id_brand = $id_brand";
+};
+$total_products = count(pdo_query($sql_total_product));
 $sql_product = getRowInPage("product", $page_num, $page_size);
 ?>
 
