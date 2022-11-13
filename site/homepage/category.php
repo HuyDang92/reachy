@@ -54,7 +54,9 @@
 <?php
     if(isset($_GET['sort'])){
         $sortOpt = $_GET['sort'];
-        $currentUrl = explode('$sort',getCurrentUrl());
+        $currentUrl = explode('&sort=',getCurrentUrl());
+        print_r($currentUrl);
+        echo substr($currentUrl[1],7);
         $currentUrl = $currentUrl[0] . substr($currentUrl[1],strlen($sortOpt));
         $base_url = $currentUrl ."&sort=$sortOpt";
         // if($sortOpt==)
@@ -157,15 +159,15 @@
             <div class="category__content-right">
                 <div class="product__container">
                     <div class="btn_page">
-                        <select class="product__sort" name="" id="">
+                        <select class="product__sort" name="" id="product__sort">
                             <option value="">Sắp xếp mặc định</option>
-                            <option value="banChay">Sản phẩm bán chạy</option>
-                            <option value="tenAZ">Theo bảng chữ cái từ A - Z</option>
-                            <option value="tenZA">Theo bảng chữ cái từ Z - A</option>
-                            <option value="giaGiam">Giá từ cao đến thấp</option>
-                            <option value="giaTang">Giá từ thấp đến cao</option>
-                            <option value="spMoi">Sản phẩm mới nhất</option>
-                            <option value="spCu">Sản phẩm cũ nhất</option>
+                            <option <?php if(isset($_GET['sort']) && $_GET['sort'] == 'banChay') echo 'selected' ?> value="banChay">Sản phẩm bán chạy</option>
+                            <option <?php if(isset($_GET['sort']) && $_GET['sort'] == 'tenAZ') echo 'selected' ?> value="tenAZ">Theo bảng chữ cái từ A - Z</option>
+                            <option <?php if(isset($_GET['sort']) && $_GET['sort'] == 'tenZA') echo 'selected' ?> value="tenZA">Theo bảng chữ cái từ Z - A</option>
+                            <option <?php if(isset($_GET['sort']) && $_GET['sort'] == 'giaGiam') echo 'selected' ?> value="giaGiam">Giá từ cao đến thấp</option>
+                            <option <?php if(isset($_GET['sort']) && $_GET['sort'] == 'giaTang') echo 'selected' ?> value="giaTang">Giá từ thấp đến cao</option>
+                            <option <?php if(isset($_GET['sort']) && $_GET['sort'] == 'spMoi') echo 'selected' ?> value="spMoi">Sản phẩm mới nhất</option>
+                            <option <?php if(isset($_GET['sort']) && $_GET['sort'] == 'spCu') echo 'selected' ?> value="spCu">Sản phẩm cũ nhất</option>
                         </select>
                         <?php
                         echo createMultiPage($base_url, $total_products, $page_num, $page_size);
@@ -268,6 +270,5 @@
             </div>
         </div>
     </div>
-    <script src="<?= $CONTENT_URL ?>/js/cumstomSelect.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/category.js"></script>
 </body>

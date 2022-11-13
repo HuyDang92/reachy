@@ -1,10 +1,10 @@
-const productSort = document.querySelector('.product__sort');
+const productSort = document.querySelector('#product__sort');
 productSort.addEventListener(
     "change",
     function (){
-        console.log(document.URL);
         let currentUrl = document.URL;
-        currentUrl += productSort.value;
+        currentUrl = currentUrl.concat("&sort=",productSort.value);
+        console.log("🚀 ~ file: category.js ~ line 6 ~ currentUrl", currentUrl)
         window.location.href = currentUrl;        
     }
 )
