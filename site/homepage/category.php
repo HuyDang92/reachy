@@ -6,21 +6,12 @@
     $currentUrl = getCurrentUrl();
     $sql_total_product = "SELECT * FROM product";
 ?>
-<!-- Xử lí sắp xếp sản phẩm -->
-<?php
-    if(isset($_POST['sort'])){
-        $sortProduct = $_POST['sort'];
-        if($sortProduct === "banChay"){
-            $sql_total_product = "SELECT product.* FROM product JOIN bill_detail ON product.id_product = bill_detail.id_product GROUP BY bill_detail.id_product";
-        }
-    }
-?>
 <?php  
-    // if(isset($_GET['page_num'])){
-    //     $page_num = $_GET['page_num'];
-    //     $currentUrl = explode('&page_num=',getCurrentUrl());
-    //     $currentUrl = $currentUrl[0] . substr($currentUrl[1],strlen($page_num));
-    // }
+    if(isset($_GET['page_num'])){
+        $page_num = $_GET['page_num'];
+        $currentUrl = explode('&page_num=',getCurrentUrl());
+        $currentUrl = $currentUrl[0];
+    }
 ?>
 <!-- Lọc theo loại hàng -->
 <?php
@@ -35,18 +26,20 @@
 <?php
     if(isset($_GET['id_brand'])){
         $id_brand = $_GET['id_brand'];
-        $base_url .= "&id_brand=$id_brand";
+        $currentUrl = explode('&id_brand=',$currentUrl);
+        $currentUrl = $currentUrl[0] . substr($currentUrl[1],strlen($id_brand));
+        $base_url = $currentUrl ."&id_brand=$id_brand";
         $sql_total_product .= " AND id_brand = $id_brand";
+        global $id_brand;
     };
 ?>
 <!-- Lọc thêm giá tiền -->
 <?php
     if(isset($_GET['price'])){
         $price_breakpoint = $_GET['price'];
-        // $base_url .= "&price=$price_breakpoint";
-        $currentUrl = explode('&price=',getCurrentUrl());
+        $currentUrl = explode('&price=',$currentUrl);
         $currentUrl = $currentUrl[0] . substr($currentUrl[1],strlen($price_breakpoint));
-        $base_url = $currentUrl ."&price=$price_breakpoint";
+        $base_url = $currentUrl  ."&price=$price_breakpoint";
         if($price_breakpoint==0){
             $sql_total_product .= " AND price < 500000";
         }else if($price_breakpoint==1){
@@ -60,24 +53,28 @@
         }
     }
 ?>
+<!-- Xử lí sắp xếp sản phẩm -->
 <?php  
     if(isset($_POST['sort'])){
         $sortProduct = $_POST['sort'];
         if($sortProduct === "banChay"){
-            echo str_replace("WHERE", "HAVING",$sql_total_product);
-            $sql_total_product .= " ORDER BY (COUNT(bill_detail.id_product)*bill_detail.amount) DESC";
+            $sql_total_product = str_replace("WHERE", "HAVING",$sql_total_product);
+            $sql_total_product = str_replace("SELECT * FROM product",
+                                            "SELECT product.* FROM product JOIN bill_detail ON product.id_product = bill_detail.id_product GROUP BY bill_detail.id_product",
+                                            $sql_total_product);
+            $sql_total_product .= " ORDER BY (COUNT(bill_detail.id_product)*bill_detail.amount)";
         }else if($sortProduct === "tenAZ"){
             $sql_total_product .= " ORDER BY name";
         }else if($sortProduct === "tenZA"){
             $sql_total_product .= " ORDER BY name DESC";
         }else if($sortProduct === "giaGiam"){
-            $sql_total_product .= " ORDER BY price";
-        }else if($sortProduct === "giaTang"){
             $sql_total_product .= " ORDER BY price DESC";
+        }else if($sortProduct === "giaTang"){
+            $sql_total_product .= " ORDER BY price";
         }else if($sortProduct === "spMoi"){
-            $sql_total_product .= " ORDER BY date";
-        }else if($sortProduct === "spCu"){
             $sql_total_product .= " ORDER BY date DESC";
+        }else if($sortProduct === "spCu"){
+            $sql_total_product .= " ORDER BY date";
         }
     }
 ?>
@@ -133,7 +130,7 @@
                         <?php foreach ($sql_brand as $row_sql_brand) { ?>
                         <li>
                             <a  <?php if(exist_param('id_brand') && $_GET['id_brand']==$row_sql_brand['id_brand']) echo "style='color: var(--blue) ;'" ?>
-                            href="<?=$SITE_URL?>/homepage/?category&id_category=<?=$id_category?>&id_brand=<?=$row_sql_brand['id_brand']?>">
+                            href="<?=$currentUrl?>&id_brand=<?=$row_sql_brand['id_brand']?>">
                                 <?= $row_sql_brand['name'] ?>
                             </a>
                         </li>
@@ -143,6 +140,7 @@
                 <div class="category__details">
                     <h3>Giá</h3>
                     <ul class="category__detail">
+                        <?php if(isset($id_brand)) $currentUrl .="&id_brand=$id_brand"; ?>
                         <li>
                             <a <?php if(exist_param('price') && $_GET['price']==0) echo "style='color: var(--blue) ;'" ?>
                             href="<?=$currentUrl?>&price=0">
