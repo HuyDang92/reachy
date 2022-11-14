@@ -176,7 +176,7 @@ $sql_product = getRowInPage("product", $page_num, $page_size);
                         $discount_deal = $row_deal['price'] + $row_deal['price'] * ($row_deal['sale_off'] / 100);
                     ?>
                     <li>
-                        <a href="">
+                        <a href="<?= $SITE_URL ?>/product?product&id_product<?= $row_deal['id_product'] ?>">
                             <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $imgs_deal['contain'] ?>" alt="">
                         </a>
                         <div class="deal__info">

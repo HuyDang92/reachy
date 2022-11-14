@@ -92,8 +92,8 @@
 .sub__menu{
     display: none;
     position: absolute;
-    top: 4.7rem;
-    right: 4%; 
+    top: 4.6rem;
+    right: 5%; 
     background-color: #fff;
     z-index: 10;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;

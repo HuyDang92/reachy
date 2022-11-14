@@ -1,0 +1,169 @@
+
+:root{
+    --blue : #21D1F5;
+    --green : #3BD1C8;
+    --white : #fff;
+    --darkgray : #1E1F29;
+    --lightgray : #E4E7ED;
+    --grey : #E8F0F2;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+    width: 100%;
+    height: 80%;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+    cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+/* Container for image text */
+
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Six columns side by side */
+.column {
+    width: 20%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+    opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+    opacity: 1;
+}
+
+.row {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+/*  */
+/* .product__detail-content, .product__tabs-container{
+    margin: 0 10%;
+} */
+section{
+    margin: 0 10%;
+}
+.product__detail-content{
+    display: flex;
+    
+}
+.product__detail-left{
+    width: 50%;
+    padding-right: 3rem;
+}
+.product__detail-top span{
+    font-size: 14px;
+}
+.product__detail-top small{
+    font-weight: 400;
+    color: rgb(122, 121, 121);
+}
+.product-size{
+    display: flex;
+    /* justify-content: space-between; */
+    padding: 1rem 0;
+}
+.col-size label{
+    padding: 0.8rem;
+    margin-right: 0.5rem;
+    border: 0.5px solid #000;
+    transition: all 0.3s;
+}
+.col-size>input:checked ~ label{
+    border: 1px solid var(--blue);
+    background-image: linear-gradient(90deg, var(--blue), var(--green));
+    color: white;
+}
+.product-tool .btn_submit-border{
+    width: 18rem !important;
+    /* height: 3.5rem !important; */
+    font-size: 18px !important;
+    border: 0.2em solid var(--blue) !important;
+}
+.product-tool{
+    transition: all 0.3s;
+}
+.product-tool span{
+    padding: 0.7rem;
+    margin: 0 0.2rem;
+    margin-top: 0.4rem;
+    border-radius: 50%;
+    border: 3px solid var(--blue);
+    color: var(--blue);
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.product-tool span:hover{
+    background-image: linear-gradient(90deg, var(--blue), var(--green));
+    color: white;
+}
+/* ================================ */
+.product__tabs-container{
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+}
+.product__tabs-container .tabs{
+    padding: 0.5rem 15%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #E4E7ED;
+}
+.product__tabs-container .tabs button{
+    margin-right: 1rem;
+    background-color: #fff;
+    border: none;
+}
+.product__tabs-container .wrapper_tabcontent{
+    padding: 1rem 2rem;
+    width: 100%;
+}
+#description p{
+    font-size: 20px;
+}

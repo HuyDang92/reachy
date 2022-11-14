@@ -8,6 +8,7 @@ function product_countAll()
     $sql = "SELECT COUNT(id_product) as pd_num FROM product;";
     return pdo_query($sql);
 }
+
 /**
  * Xuất toàn bộ sản phẩm
  */
@@ -188,7 +189,7 @@ function product_select_8WishList()
  */
 function product_select_8DateLasted()
 {
-    $sql = "SELECT * FROM product where special=0 ORDER BY date desc LIMIT 8";
+    $sql = "SELECT * FROM product where special=0 and not id_category=9 ORDER BY date desc LIMIT 8";
     return pdo_query($sql);
 }
 /**
@@ -201,10 +202,11 @@ function product_select_AllSaleOff()
     return pdo_query($sql);
 }
 /**
-* Xuất danh sách slide trang chủ
-* @return array Danh sách slide
-*/
-function product_selectAllSlide(){
+ * Xuất danh sách slide trang chủ
+ * @return array Danh sách slide
+ */
+function product_selectAllSlide()
+{
     $sql = "SELECT * FROM slider";
     return pdo_query($sql);
 }
