@@ -150,6 +150,16 @@ function product_select_specification($id_product)
  * @param int $id_product Mã sản phẩm
  * @return array Mảng ảnh
  */
+function product_selectArrayImgs($id_product)
+{
+    $sql = "SELECT * FROM product_img WHERE id_product=?";
+    return pdo_query($sql, $id_product);
+}
+/**
+ * Xuất ra mảng ảnh của sản phẩm tương ứng
+ * @param int $id_product Mã sản phẩm
+ * @return array Mảng ảnh
+ */
 function product_selectImgs($id_product)
 {
     $sql = "SELECT * FROM product_img WHERE id_product=?";
