@@ -4,13 +4,23 @@
     $sql_brand = brand_selectAll_byCateId($id_category);
     $sql_deal = product_select_AllSaleOff();
     $currentUrl = getCurrentUrl();
+    $sql_total_product = "SELECT * FROM product";
+?>
+<!-- Xử lí sắp xếp sản phẩm -->
+<?php
+    if(isset($_POST['sort'])){
+        $sortProduct = $_POST['sort'];
+        if($sortProduct === "banChay"){
+            $sql_total_product = "SELECT product.* FROM product JOIN bill_detail ON product.id_product = bill_detail.id_product GROUP BY bill_detail.id_product";
+        }
+    }
 ?>
 <?php  
-    if(isset($_GET['page_num'])){
-        $page_num = $_GET['page_num'];
-        $currentUrl = explode('&page_num=',getCurrentUrl());
-        $currentUrl = $currentUrl[0] . substr($currentUrl[1],strlen($page_num));
-    }
+    // if(isset($_GET['page_num'])){
+    //     $page_num = $_GET['page_num'];
+    //     $currentUrl = explode('&page_num=',getCurrentUrl());
+    //     $currentUrl = $currentUrl[0] . substr($currentUrl[1],strlen($page_num));
+    // }
 ?>
 <!-- Lọc theo loại hàng -->
 <?php
@@ -19,7 +29,7 @@
     else $page_num = 1;
     if ($page_num <= 0) $page_num = 1;
     $base_url = "$SITE_URL/homepage/?category&id_category=$id_category";
-    $sql_total_product = "SELECT * FROM product WHERE id_category = $id_category";
+    $sql_total_product .= " WHERE id_category = $id_category";
 ?>
 <!-- Lọc thêm thương hiệu -->
 <?php
@@ -50,22 +60,32 @@
         }
     }
 ?>
-<!-- Xử lí sắp xếp sản phẩm -->
-<?php
-    if(isset($_GET['sort'])){
-        $sortOpt = $_GET['sort'];
-        $currentUrl = explode('&sort=',getCurrentUrl());
-        print_r($currentUrl);
-        echo substr($currentUrl[1],7);
-        $currentUrl = $currentUrl[0] . substr($currentUrl[1],strlen($sortOpt));
-        $base_url = $currentUrl ."&sort=$sortOpt";
-        // if($sortOpt==)
+<?php  
+    if(isset($_POST['sort'])){
+        $sortProduct = $_POST['sort'];
+        if($sortProduct === "banChay"){
+            echo str_replace("WHERE", "HAVING",$sql_total_product);
+            $sql_total_product .= " ORDER BY (COUNT(bill_detail.id_product)*bill_detail.amount) DESC";
+        }else if($sortProduct === "tenAZ"){
+            $sql_total_product .= " ORDER BY name";
+        }else if($sortProduct === "tenZA"){
+            $sql_total_product .= " ORDER BY name DESC";
+        }else if($sortProduct === "giaGiam"){
+            $sql_total_product .= " ORDER BY price";
+        }else if($sortProduct === "giaTang"){
+            $sql_total_product .= " ORDER BY price DESC";
+        }else if($sortProduct === "spMoi"){
+            $sql_total_product .= " ORDER BY date";
+        }else if($sortProduct === "spCu"){
+            $sql_total_product .= " ORDER BY date DESC";
+        }
     }
 ?>
 <!-- Xuất danh sách sản phẩm tương ứng -->
 <?php
+    echo $sql_total_product;
     $total_products = count(pdo_query($sql_total_product));
-    $sql_product = getRowInPage("product", $page_num, $page_size);
+    $sql_product = getRowInPage("product",$sql_total_product, $page_num, $page_size);
 ?>
 <head>
     <meta charset="UTF-8">
@@ -159,16 +179,18 @@
             <div class="category__content-right">
                 <div class="product__container">
                     <div class="btn_page">
-                        <select class="product__sort" name="" id="product__sort">
-                            <option value="">Sắp xếp mặc định</option>
-                            <option <?php if(isset($_GET['sort']) && $_GET['sort'] == 'banChay') echo 'selected' ?> value="banChay">Sản phẩm bán chạy</option>
-                            <option <?php if(isset($_GET['sort']) && $_GET['sort'] == 'tenAZ') echo 'selected' ?> value="tenAZ">Theo bảng chữ cái từ A - Z</option>
-                            <option <?php if(isset($_GET['sort']) && $_GET['sort'] == 'tenZA') echo 'selected' ?> value="tenZA">Theo bảng chữ cái từ Z - A</option>
-                            <option <?php if(isset($_GET['sort']) && $_GET['sort'] == 'giaGiam') echo 'selected' ?> value="giaGiam">Giá từ cao đến thấp</option>
-                            <option <?php if(isset($_GET['sort']) && $_GET['sort'] == 'giaTang') echo 'selected' ?> value="giaTang">Giá từ thấp đến cao</option>
-                            <option <?php if(isset($_GET['sort']) && $_GET['sort'] == 'spMoi') echo 'selected' ?> value="spMoi">Sản phẩm mới nhất</option>
-                            <option <?php if(isset($_GET['sort']) && $_GET['sort'] == 'spCu') echo 'selected' ?> value="spCu">Sản phẩm cũ nhất</option>
-                        </select>
+                        <form action="" method="POST" id="sort__form"> 
+                            <select class="product__sort" name="sort" id="product__sort">
+                                <option value="">Sắp xếp mặc định</option>
+                                <option <?php if(isset($_POST['sort']) && $_POST['sort'] === 'banChay') echo 'selected' ?> value="banChay">Sản phẩm bán chạy</option>
+                                <option <?php if(isset($_POST['sort']) && $_POST['sort'] === 'tenAZ') echo 'selected' ?> value="tenAZ">Theo bảng chữ cái từ A - Z</option>
+                                <option <?php if(isset($_POST['sort']) && $_POST['sort'] === 'tenZA') echo 'selected' ?> value="tenZA">Theo bảng chữ cái từ Z - A</option>
+                                <option <?php if(isset($_POST['sort']) && $_POST['sort'] === 'giaGiam') echo 'selected' ?> value="giaGiam">Giá từ cao đến thấp</option>
+                                <option <?php if(isset($_POST['sort']) && $_POST['sort'] === 'giaTang') echo 'selected' ?> value="giaTang">Giá từ thấp đến cao</option>
+                                <option <?php if(isset($_POST['sort']) && $_POST['sort'] === 'spMoi') echo 'selected' ?> value="spMoi">Sản phẩm mới nhất</option>
+                                <option <?php if(isset($_POST['sort']) && $_POST['sort'] === 'spCu') echo 'selected' ?> value="spCu">Sản phẩm cũ nhất</option>
+                            </select>
+                        </form>
                         <?php
                         echo createMultiPage($base_url, $total_products, $page_num, $page_size);
                         ?>
@@ -223,7 +245,7 @@
                         <?php } ?>
                     </ul>
                     <div class="btn_page">
-                        <select class="product__sort" name="" id="">
+                        <!-- <select class="product__sort" name="" id="">
                             <option value="">Sắp xếp mặc định</option>
                             <option value="">Sản phẩm bán chạy</option>
                             <option value="">Theo bảng chữ cái từ A - Z</option>
@@ -232,7 +254,7 @@
                             <option value="">Giá từ thấp đến cao</option>
                             <option value="">Sản phẩm mới nhất</option>
                             <option value="">Sản phẩm cũ nhất</option>
-                        </select>
+                        </select> -->
                         <?php
                         echo createMultiPage($base_url, $total_products, $page_num, $page_size);
                         ?>

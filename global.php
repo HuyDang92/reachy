@@ -141,30 +141,11 @@ function createMultiPage($base_url, $total_product, $page_num, $page_size = 3)
 * @param int $page_size Số lượng sp trong 1 trang
 * @return array Danh sách sản phẩm
 */
-function getRowInPage($table, $page_num, $page_size)
+function getRowInPage($table,$sql, $page_num, $page_size)
 {
     try {
         $startRow = ($page_num - 1) * $page_size;
         $id_category = $_GET['id_category'];
-        $sql = "SELECT * FROM $table WHERE id_category=$id_category";
-        if(isset($_GET['id_brand'])){
-            $id_brand = $_GET['id_brand'];
-            $sql .= " AND id_brand=$id_brand";
-        }
-        if(isset($_GET['price'])){
-            $price_breakpoint = $_GET['price'];
-            if($price_breakpoint==0){
-                $sql .= " AND price < 500000";
-            }else if($price_breakpoint==1){
-                $sql .= " AND 500000 < price AND price < 1000000";
-            }else if($price_breakpoint==2){
-                $sql .= " AND 1000000 < price AND price < 2000000";
-            }else if($price_breakpoint==3){
-                $sql .= " AND 2000000 < price AND price < 5000000";
-            }else if($price_breakpoint==4){
-                $sql .= " AND price > 5000000";
-            }
-        }
         $sql .= " LIMIT $startRow,$page_size";
         return pdo_query($sql);
     } catch (Exception $e) {
