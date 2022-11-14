@@ -253,7 +253,7 @@ ul.product__selection li{
 .btn_add-buy>button.cart{
     position: absolute;
     top: 25%;
-    left: -70%;
+    left: -75%;
 }
 .btn_add-buy>button.buy{
     position: absolute;

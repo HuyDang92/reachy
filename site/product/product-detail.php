@@ -26,7 +26,7 @@ $i = 0;
         <img style="width: 100%; height: 50%; position: absolute; z-index: -10; top: 0;"
             src="<?= $CONTENT_URL ?>/imgs/interface/background.png" alt="">
     </div>
-    <div class="product__detail-container">
+    <section class="product__detail-container">
         <div class="title__sign-in">
             <h1>Chi Tiết</h1>
             <div class="title_link">
@@ -35,7 +35,7 @@ $i = 0;
                 <i class="fa-solid fa-arrow-right-long"></i> Product_name
             </div>
         </div>
-        <section class="product__detail-content">
+        <div class="product__detail-content">
             <div class="product__detail-left">
                 <div class="product-slide">
                     <?php foreach ($sql_imgs as $row_imgs) {
@@ -75,77 +75,77 @@ $i = 0;
                         </div> -->
                 </div>
             </div>
-    </div>
-    <div class="product__detail-right">
-        <div class="product__detail-top">
-            <h1><?= $sql_product['name'] ?></h1>
-            <span>MSP: <?= $sql_product['id_product'] ?></span>
-            <h1><?= number_format($sql_product['price']) ?>đ <small
-                    style="text-decoration: line-through;"><?= number_format(round($discount_product, -4)) ?>đ</small>
-            </h1>
-            <hr>
-        </div>
-        <div class="product__detail-bottom">
-            <div class="product-size">
-                <div class="col-size">
-                    <input type="radio" name="size" hidden id="s36">
-                    <label for="s36">36</label>
+            <div class="product__detail-right">
+                <div class="product__detail-top">
+                    <h1><?= $sql_product['name'] ?></h1>
+                    <span>MSP: <?= $sql_product['id_product'] ?></span>
+                    <h1><?= number_format($sql_product['price']) ?>đ <small
+                            style="text-decoration: line-through;"><?= number_format(round($discount_product, -4)) ?>đ</small>
+                    </h1>
+                    <hr>
                 </div>
-                <div class="col-size">
-                    <input type="radio" name="size" hidden id="s37">
-                    <label for="s37">37</label>
-                </div>
-                <div class="col-size">
-                    <input type="radio" name="size" hidden id="s38">
-                    <label for="s38">38</label>
-                </div>
-                <div class="col-size">
-                    <input type="radio" name="size" hidden id="s39">
-                    <label for="s39">39</label>
-                </div>
-                <div class="col-size">
-                    <input type="radio" name="size" hidden id="s40">
-                    <label for="s40">40</label>
-                </div>
-                <div class="col-size">
-                    <input type="radio" name="size" hidden id="s41">
-                    <label for="s41">41</label>
-                </div>
-                <div class="col-size">
-                    <input type="radio" name="size" hidden id="s42">
-                    <label for="s42">42</label>
-                </div>
-            </div>
-            <div class="product-tool">
-                <small style="color: green;">Còn hàng</small> <br>
-                <button type="submit">
-                    <div class="btn_submit">
-                        <div class="btn_submit-border">
-                            MUA NGAY
-                            <span></span><span></span><span></span><span></span>
+                <div class="product__detail-bottom">
+                    <div class="product-size">
+                        <div class="col-size">
+                            <input type="radio" name="size" hidden id="s36">
+                            <label for="s36">36</label>
+                        </div>
+                        <div class="col-size">
+                            <input type="radio" name="size" hidden id="s37">
+                            <label for="s37">37</label>
+                        </div>
+                        <div class="col-size">
+                            <input type="radio" name="size" hidden id="s38">
+                            <label for="s38">38</label>
+                        </div>
+                        <div class="col-size">
+                            <input type="radio" name="size" hidden id="s39">
+                            <label for="s39">39</label>
+                        </div>
+                        <div class="col-size">
+                            <input type="radio" name="size" hidden id="s40">
+                            <label for="s40">40</label>
+                        </div>
+                        <div class="col-size">
+                            <input type="radio" name="size" hidden id="s41">
+                            <label for="s41">41</label>
+                        </div>
+                        <div class="col-size">
+                            <input type="radio" name="size" hidden id="s42">
+                            <label for="s42">42</label>
                         </div>
                     </div>
-                </button>
-                <span class="material-symbols-outlined">
-                    shopping_cart
-                </span>
-                <span class="material-symbols-outlined">
-                    favorite
-                </span>
-            </div>
-            <p> (Description feature) </p>
-            <div class="product__bottom-bh">
-                <ul style="font-weight: 700;" class="product_content-bh">
-                    <li>- Hàng chính hãng</li>
-                    <li>- Giao hàng Toàn Quốc</li>
-                    <li>- Thanh Toán khi nhận hàng</li>
-                    <li>- Bảo hành chính hãng trọn đời sản phẩm</li>
-                    <li>- Bảo hành keo , chỉ trọn đời sản phẩm</li>
-                    <li>- Giao hàng Nhanh 60p tại Sài Gòn</li>
-                </ul>
+                    <div class="product-tool">
+                        <small style="color: green;">Còn hàng</small> <br>
+                        <button type="submit">
+                            <div class="btn_submit">
+                                <div class="btn_submit-border">
+                                    MUA NGAY
+                                    <span></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+                        </button>
+                        <span class="material-symbols-outlined">
+                            shopping_cart
+                        </span>
+                        <span class="material-symbols-outlined">
+                            favorite
+                        </span>
+                    </div>
+                    <p> (Description feature) </p>
+                    <div class="product__bottom-bh">
+                        <ul style="font-weight: 700;" class="product_content-bh">
+                            <li>- Hàng chính hãng</li>
+                            <li>- Giao hàng Toàn Quốc</li>
+                            <li>- Thanh Toán khi nhận hàng</li>
+                            <li>- Bảo hành chính hãng trọn đời sản phẩm</li>
+                            <li>- Bảo hành keo , chỉ trọn đời sản phẩm</li>
+                            <li>- Giao hàng Nhanh 60p tại Sài Gòn</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
     </section>
     <section class="product__tabs-container">
         <div class="tabs">

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -135,3 +136,7 @@ You can download it from http://leaverou.github.com/prefixfree/ -->
 </body>
 
 </html>
+=======
+<?php print_r($_REQUEST); ?>
+<form action=""><button type="submit" name="add">ADD</button></form>
+>>>>>>> cc5971eb712c1b9581eaf7f167b8817a3558001c

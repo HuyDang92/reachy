@@ -33,7 +33,7 @@
 <body>
     <div class="container">
         <header>
-            <?php //require "layout/header.php";
+            <?php require "layout/header.php";
             ?>
         </header>
         <main>

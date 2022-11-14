@@ -81,7 +81,7 @@ function sendEmail($emailAddress)
         $mail->IsHTML(true);
         $mail->Username = "reachy432@gmail.com";
         $mail->Password = "qrqlcdfwmguahvzy";
-        $mail->SetFrom("nguyenthanhtai0371@gmail.com");
+        $mail->SetFrom("reachy432@gmail.com");
         $mail->Subject = "Electech xác nhận email của bạn: "; //Tiêu đề
         $mail->Body =  $mail__content;
         $mail->AddAddress("$emailAddress");
@@ -94,19 +94,28 @@ function sendEmail($emailAddress)
 function createMultiPage($base_url, $total_product, $page_num, $page_size = 3)
 {
     if (isset($_GET['page_num'])) $page = $_GET['page_num'];
-    else $page = "";
+    else $page = 1;
     if ($page_num <= 0) return "";
     $total_pages = ceil($total_product / $page_size); //tính tổng số trang
     if ($total_pages <= 1) return "";
-
     $links = "<ul class='pagination'>";
     if ($page_num > 1) { //chỉ hiện 2 link đầu, trước khi user từ trang 2 trở đi
-        // $first = "<li class='pageControl-option'><a href='{$base_url}'> << </a></li>";
-        $page_prev = $page_num - 1;
-        $prev = "<li class='pageControl-option'><a href='{$base_url}&page_num={$page_prev}'> < </a></li>";
-        $links .= $prev;
+        $first = "<li class='pageControl-option'><a href='{$base_url}&page_num=1'> << </a></li>";
+        // $page_prev = $page_num - 1;
+        // $prev = "<li class='pageControl-option'><a href='{$base_url}&page_num={$page_prev}'> < </a></li>";
+        $links .= $first;
     }
-    for ($i = 1; $i <= $total_pages; $i++) {
+    if($page<3){
+        $pageLimitLeft = 1;
+    }else{
+        $pageLimitLeft = $page - 2;
+    }
+    if($page>$total_pages-3){
+        $pageLimitRight = $total_pages;
+    }else{
+        $pageLimitRight = $page + 2;
+    }
+    for ($i = $pageLimitLeft; $i <= $pageLimitRight; $i++) {
         if ($page == $i) {
             $links .= "<li class='pageControl-option active' data-type='page_selected'><a href='{$base_url}&page_num={$i}'>" . ($i) . "</a></li>";
         } else if ($page == "") {
@@ -118,20 +127,45 @@ function createMultiPage($base_url, $total_product, $page_num, $page_size = 3)
     }
     if ($page_num < $total_pages) { //chỉ hiện link cuối, kế khi user kô ở trang cuối 
         $page_next = $page_num + 1;
-        $next = "<li class='pageControl-option'><a href='{$base_url}&page_num={$page_next}'> > </a></li>";
-        // $last = "<li class='pageControl-option'><a href='{$base_url}&page_num={$total_pages}'> >> </a></li>";
-        $links .= $next;
+        // $next = "<li class='pageControl-option'><a href='{$base_url}&page_num={$page_next}'> > </a></li>";
+        $last = "<li class='pageControl-option'><a href='{$base_url}&page_num={$total_pages}'> >> </a></li>";
+        $links .= $last;
     }
     $links .= "</ul>";
     return $links;
 }
-function getRowInPage($table, $page_num, $page_size)
+/**
+* Xuất danh sách các hàng theo bảng tương ứng
+* @param string $table Tên bảng
+* @param int $page_num Thứ tự trang
+* @param int $page_size Số lượng sp trong 1 trang
+* @return array Danh sách sản phẩm
+*/
+function getRowInPage($table,$sql, $page_num, $page_size)
 {
     try {
         $startRow = ($page_num - 1) * $page_size;
-        $sql = "SELECT * FROM $table LIMIT $startRow,$page_size";
+        $id_category = $_GET['id_category'];
+        $sql .= " LIMIT $startRow,$page_size";
         return pdo_query($sql);
     } catch (Exception $e) {
         die("Lỗi trong hàm " . __FUNCTION__ . ":" . $e->getMessage());
     }
+}
+/**
+* Xuất đường dẫn hiện tại
+* @return string Đường dẫn website hiện tại
+*/
+function getCurrentUrl(){
+    if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')   
+        $url = "https://";   
+    else  
+        $url = "http://";   
+    // Append the host(domain name, ip) to the URL.   
+    $url.= $_SERVER['HTTP_HOST'];   
+
+    // Append the requested resource location to the URL   
+    $url.= $_SERVER['REQUEST_URI'];    
+    
+    return $url;  
 }
