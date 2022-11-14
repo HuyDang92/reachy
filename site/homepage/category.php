@@ -80,7 +80,6 @@
 ?>
 <!-- Xuất danh sách sản phẩm tương ứng -->
 <?php
-    echo $sql_total_product;
     $total_products = count(pdo_query($sql_total_product));
     $sql_product = getRowInPage("product",$sql_total_product, $page_num, $page_size);
 ?>
