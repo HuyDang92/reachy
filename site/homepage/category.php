@@ -205,7 +205,7 @@
                         ?>
                         <li>
                             <div class="product__selection-top">
-                                <a href="index.php?page=product&product_id=" target="">
+                                <a href="index.php?page=product&product_id=<?=$row_product['id_product']?>" target="">
                                     <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $imgs__product['contain'] ?>"
                                         alt="">
                                 </a>

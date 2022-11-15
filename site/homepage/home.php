@@ -24,25 +24,27 @@ $sql_slide = product_selectAllSlide();
         <section class="banner__area">
             <div class="owl-carousel owl-theme">
                 <?php foreach($sql_slide as $slide){ ?>
-                    <div class="main__slide-item">
-                        <div class="slide__item-left">
-                            <h1><?=$slide['title']?></h1>
-                            <p><?=$slide['content']?></p>
-                            <div class="btn__add-cart">
-                                <button>
-                                    <a href="">
-                                        <span class="material-symbols-outlined">
-                                            add
-                                        </span>
-                                    </a>
-                                </button>
-                                <h4>THÊM VÀO GIỎ HÀNG</h4>
+                    <a href="<?= $SITE_URL ?>/homepage?category&id_category=<?= $slide['id_category'] ?>&id_brand=<?=$slide['id_brand']?>">
+                        <div class="main__slide-item">
+                            <div class="slide__item-left">
+                                <h1><?=$slide['title']?></h1>
+                                <p><?=$slide['content']?></p>
+                                <!-- <div class="btn__add-cart">
+                                    <button>
+                                        <a href="">
+                                            <span class="material-symbols-outlined">
+                                                add
+                                            </span>
+                                        </a>
+                                    </button>
+                                    <h4>THÊM VÀO GIỎ HÀNG</h4>
+                                </div> -->
+                            </div>
+                            <div class="slide__item-right">
+                                <img src="<?= $CONTENT_URL ?>/imgs/interface/<?=$slide['img']?>" alt="">
                             </div>
                         </div>
-                        <div class="slide__item-right">
-                            <img src="<?= $CONTENT_URL ?>/imgs/interface/<?=$slide['img']?>" alt="">
-                        </div>
-                    </div>
+                    </a>
                 <?php } ?>
             </div>
         </section>
@@ -120,10 +122,14 @@ $sql_slide = product_selectAllSlide();
                                         </a>
                                         <span class="tooltiptext">Xem chi tiết</span>
                                     </i>
-                                    <button class="hover_tools tooltip btn-like">
-                                        <ion-icon name="heart-outline"></ion-icon>
+                                    <a <?php if(isset($_SESSION['login']) && product_checkLiked($row_product_new['id_product'],$_SESSION['login'])) echo 'style="color: red;"'?> href="<?=$SITE_URL?>/product/handle_addWishList.php?id_product=<?=$row_product_new['id_product']?>" class="hover_tools tooltip btn-like">
+                                        <?php if(isset($_SESSION['login']) && product_checkLiked($row_product_new['id_product'],$_SESSION['login'])){ ?>
+                                            <ion-icon name="heart"></ion-icon>
+                                        <?php }else{ ?>
+                                            <ion-icon name="heart-outline"></ion-icon>
+                                        <?php } ?>
                                         <span class="tooltiptext">Yêu thích</span>
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </li>
@@ -172,10 +178,14 @@ $sql_slide = product_selectAllSlide();
                                         </a>
                                         <span class="tooltiptext">Xem chi tiết</span>
                                     </i>
-                                    <i class="hover_tools tooltip btn-like">
-                                        <ion-icon name="heart-outline"></ion-icon>
+                                    <a <?php if(isset($_SESSION['login']) && product_checkLiked($row_product_new['id_product'],$_SESSION['login'])) echo 'style="color: red;"'?> href="<?=$SITE_URL?>/product/handle_addWishList.php?id_product=<?=$row_product_new['id_product']?>" class="hover_tools tooltip btn-like">
+                                        <?php if(isset($_SESSION['login']) && product_checkLiked($row_product_new['id_product'],$_SESSION['login'])){ ?>
+                                            <ion-icon name="heart"></ion-icon>
+                                        <?php }else{ ?>
+                                            <ion-icon name="heart-outline"></ion-icon>
+                                        <?php } ?>
                                         <span class="tooltiptext">Yêu thích</span>
-                                    </i>
+                                    </a>
                                 </div>
                             </div>
                         </li>
@@ -315,13 +325,10 @@ $sql_slide = product_selectAllSlide();
 </body>
 <script src="<?= $CONTENT_URL ?>/js/slide.js"></script>
 <script src="<?= $CONTENT_URL ?>/js/countdown_timer.js"></script>
-    <!-- <script>
-        const likeButton = document.querySelector(".btn-like");
-        likeButton.addEventListener(
-            "click",
-            function (event){
-                event.currentTarget.classList.toggle("likePink");
-            }
-        )
-    </script> -->
+<?php if(isset($_SESSION['message'])){ ?>
+    <script>
+        alert("<?=$_SESSION['message'];?>")
+    </script>
+    
+<?php unset($_SESSION['message']); } ?>
 </html>

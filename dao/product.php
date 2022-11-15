@@ -188,7 +188,7 @@ function product_select_8WishList()
  */
 function product_select_8DateLasted()
 {
-    $sql = "SELECT * FROM product where special=0 ORDER BY date desc LIMIT 8";
+    $sql = "SELECT * FROM product ORDER BY date desc LIMIT 8";
     return pdo_query($sql);
 }
 /**
@@ -207,4 +207,43 @@ function product_select_AllSaleOff()
 function product_selectAllSlide(){
     $sql = "SELECT * FROM slider";
     return pdo_query($sql);
+}
+
+// Table WISH_LIST
+
+/**
+* Xuất danh sách yêu thích
+* @return array Danh sách yêu thích
+*/
+function product_likeList(){
+    $sql = "SELECT * FROM wish_list";
+    return pdo_query($sql);
+}
+/**
+* Thích sản phẩm
+* @param int $id_product Mã sản phẩm
+* @param int $id_user Mã khách hàng
+*/
+function product_like($id_product,$id_user){
+    $sql = "INSERT INTO wish_list (id_product,id_user) VALUES (?,?)";
+    pdo_execute($sql,$id_product,$id_user);
+}
+/**
+* Kiểm tra sản phẩm tương ứng đã được người dùng thêm vào danh sách thích chưa
+* @param int $id_product Mã sản phẩm
+* @param int $id_user Mã khách hàng
+* @return bool True = Đã thích, False = Chưa thích
+*/
+function product_checkLiked($id_product,$id_user){
+    $sql = "SELECT * FROM wish_list WHERE id_product = ? AND id_user = ?";
+    return pdo_query_one($sql,$id_product,$id_user);
+}
+/**
+* Bỏ thích sản phẩm
+* @param int $id_product Mã sản phẩm
+* @param int $id_user Mã khách hàng
+*/
+function product_unLike($id_wishlist){
+    $sql = "DELETE FROM wish_list WHERE id_wishlist = ?";
+    pdo_execute($sql,$id_wishlist);
 }
