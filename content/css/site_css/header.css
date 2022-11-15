@@ -88,7 +88,6 @@
     position: relative;
     transition-delay: 0.5s;
 }
-
 .sub__menu{
     display: none;
     position: absolute;
@@ -196,6 +195,7 @@
     padding-top: 100px;
 }
 .control__user img{
-    width: 1.4rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
 }
