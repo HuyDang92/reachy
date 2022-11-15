@@ -13,6 +13,10 @@ if (exist_param("contact")) {
     $VIEW_NAME = "homepage/category.php";
 } else if (exist_param("introduce")) {
     $VIEW_NAME = "homepage/introduce.php";
+} else if (exist_param("search")) {
+    extract($_REQUEST);
+    $product_list = product_select_ByKeyWord($search);
+    $VIEW_NAME = "homepage/search.php";
 } else {
     $VIEW_NAME = "homepage/home.php";
 }

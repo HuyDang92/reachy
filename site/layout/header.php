@@ -118,7 +118,7 @@ $sql_category = category_selectAll();
                         <input type="checkbox" id="search_btn" hidden>
                         <label for="search_btn"><span class="material-symbols-outlined">search</span></label>
                         <form class="header__form-search" action="" method="GET">
-                            <input type="text" name="search" placeholder="Nhập từ khóa ">
+                            <input type="text" name="search" placeholder="Nhập từ khóa " required>
                             <label for="search_btn">
                                 <span class="material-symbols-outlined">
                                     close

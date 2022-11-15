@@ -170,8 +170,11 @@ function product_select_9SaleOff()
  */
 function product_select_ByKeyWord($keyword)
 {
-    $sql = "SELECT * FROM product WHERE name LIKE '%?%'";
-    return pdo_query($sql, $keyword);
+    $sql = "SELECT product.* FROM product
+            JOIN category ON product.id_category = category.id_category
+            JOIN brand ON product.id_brand = brand.id_brand
+            WHERE product.name LIKE '%$keyword%' OR brand.name LIKE '%$keyword%' OR category.name LIKE '%$keyword%'";
+    return pdo_query($sql);
 }
 /**
  * Xuất 8 sản phẩm được yêu thích nhất
