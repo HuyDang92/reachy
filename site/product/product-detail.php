@@ -92,6 +92,19 @@ $sql_imgs = product_selectArrayImgs($id_product);
                             <label for="s42">42</label>
                         </div>
                     </div>
+                    <div class="product-count">
+                        <button>
+                            <span class="material-symbols-outlined">
+                                remove
+                            </span>
+                        </button>
+                        <input type="number" value="1">
+                        <button>
+                            <span class="material-symbols-outlined">
+                                add
+                            </span>
+                        </button>
+                    </div>
                     <div class="product-tool">
                         <small style="color: green;">Còn hàng</small> <br>
                         <a href="">
@@ -111,7 +124,7 @@ $sql_imgs = product_selectArrayImgs($id_product);
                             favorite
                         </span>
                     </div>
-                    <p> (Description feature) </p>
+                    <p> <?= $sql_product['feature'] ?> </p>
                     <div class="product__bottom-bh">
                         <ul style="font-weight: 700;" class="product_content-bh">
                             <li>- Hàng chính hãng</li>
@@ -128,7 +141,7 @@ $sql_imgs = product_selectArrayImgs($id_product);
     </section>
     <section class="product__tabs-container">
         <div class="tabs">
-            <button class="tablinks active" data-electronic="description">Mô Tả</button> <br>
+            <button class="tablinks " data-electronic="description">Mô Tả</button> <br>
             <button class="tablinks" data-electronic="pd_detail">Chi Tiết</button>
             <button class="tablinks" data-electronic="comment">Bình luận</button>
             <button class="tablinks" data-electronic="rate">Đánh giá</button>
@@ -136,26 +149,204 @@ $sql_imgs = product_selectArrayImgs($id_product);
         <div class="wrapper_tabcontent">
             <div id="description" class="tabcontent active">
                 <p>
-                    Đây là một trong những đôi giày trắng với thiết kế cực đẹp và tinh tế đến từ nhà Nike Air Force
-                    1.
-
-                    Được làm từ chất liệu da mịn, phần mũi giày tạo điểm nhấn bằng các thiết kế đục lỗ cho phép
-                    không khí lưu thông giúp cho đôi chân chúng ta thông thoáng và thoải mái cả ngày. Theo phong
-                    cách đặc trưng của Nike AF1, hai bên thân giày được hoàn thiện bằng dấu Swoosh mang tính biểu
-                    tượng của thương hiệu và dây buộc được hoàn thiện bằng một lacestag màu bạc đánh bóng nổi bật và
-                    mang lại cái nhìn sang trọng hơn. Với điểm nhấn thương hiệu ở gót chân, đế giày được trang bị bộ
-                    phận Air của Nike có tác dụng phân bổ đều trọng lượng của bạn từ gót chân đến bàn chân trước để
-                    tạo sự ổn định và thoải mái tối ưu.
-
-                    Có thể nói, những chiếc Air Force 1 này sẽ là một sự kết hợp hoàn hảo với mọi thứ, từ quần jean,
-                    quần chạy bộ đến váy. Các khả năng phối outfit thực sự là vô tận!
-
-                    Sản phẩm được phân phối trực tiếp tại Reachy Shop.
+                    <?= $sql_product['description'] ?>
                 </p>
             </div>
             <div id="pd_detail" class="tabcontent">Chi tiết</div>
-            <div id="comment" class="tabcontent">Bình luận</div>
-            <div id="rate" class="tabcontent">Đánh giá</div>
+            <!-- bình luận -->
+            <div id="comment" class="tabcontent">
+                <div class="box_container">
+                    <div class="content_box">
+                        <div class="user-row">
+                            <div class="user-info">
+                                <div class="user-info-left">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHUvOd8Q-VihyupbJCdgjIR2FxnjGtAgMu3g&usqp=CAU"
+                                        alt="">
+                                    <div class="user-name">
+                                        <h3>NAME USER</h3>
+                                        <i>Date time</i>
+                                    </div>
+                                </div>
+                                <div class="user-reply">
+                                    <button>Trả lời</button>
+                                </div>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut
+                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                ullamco
+                                laboris nisi ut aliquip ex ea commodo
+                            </p>
+                        </div>
+                        <div class="comment-row">
+                            <div class="user-info">
+                                <div class="user-info-left">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHUvOd8Q-VihyupbJCdgjIR2FxnjGtAgMu3g&usqp=CAU"
+                                        alt="">
+                                    <div class="user-name">
+                                        <h3>NAME USER</h3>
+                                        <i>Date time</i>
+                                    </div>
+                                </div>
+                                <div class="user-reply">
+                                    <button>Trả lời</button>
+                                </div>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut
+                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                ullamco
+                                laboris nisi ut aliquip ex ea commodo
+                            </p>
+                        </div>
+
+                    </div>
+                    <form class="comment_form">
+                        <h1>Bình Luận</h1>
+                        <input type="text" name="name" id="" placeholder="Họ Tên"> <br>
+                        <input type="email" name="email" id="" placeholder="Email"> <br>
+                        <input type="number" name="phone_number" id="" placeholder="SDT"> <br>
+                        <textarea name="" id="" cols="30" rows="5" placeholder="Nội dung"></textarea>
+                        <button type="submit">
+                            <div class="btn_submit">
+                                <div class="btn_submit-border">
+                                    ĐĂNG
+                                    <span></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <!-- Đánh giá -->
+            <div id="rate" class="tabcontent">
+
+                <div class="box_container">
+                    <div class="content_box">
+                        <div class="overall-container">
+                            <div class="overall-left">
+                                <h2>Tổng Đánh Giá</h2>
+                                <strong>5.0</strong> <br>
+                                <span>(04 Đánh giá)</span>
+                            </div>
+                            <div class="overall-right">
+                                <h4 style="margin: 0;">Tất cả đánh giá</h4>
+                                <ul class="rate-all">
+                                    <li>
+                                        5 Sao
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        01
+                                    </li>
+                                    <li>
+                                        4 Sao
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-regular fa-star"></i> 01
+                                    </li>
+                                    <li>
+                                        3 Sao
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i> 01
+                                    </li>
+                                    <li>
+                                        2 Sao
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        01
+                                    </li>
+                                    <li>
+                                        1 Sao
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        01
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="user-row">
+                            <div class="user-info">
+                                <div class="user-info-left">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHUvOd8Q-VihyupbJCdgjIR2FxnjGtAgMu3g&usqp=CAU"
+                                        alt="">
+                                    <div class="user-name">
+                                        <h3>NAME USER</h3>
+                                        <i>Date time</i>
+                                        <div class="user-rate">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut
+                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                ullamco
+                                laboris nisi ut aliquip ex ea commodo
+                            </p>
+                        </div>
+                        <div class="comment-row">
+                            <div class="user-info">
+                                <div class="user-info-left">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHUvOd8Q-VihyupbJCdgjIR2FxnjGtAgMu3g&usqp=CAU"
+                                        alt="">
+                                    <div class="user-name">
+                                        <h3>NAME USER</h3>
+                                        <i>Date time</i>
+                                        <div class="user-rate">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut
+                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                ullamco
+                                laboris nisi ut aliquip ex ea commodo
+                            </p>
+                        </div>
+
+                    </div>
+                    <form class="comment_form">
+                        <h1>Đánh Giá</h1>
+                        <textarea name="" id="" cols="30" rows="5" placeholder="Nội dung"></textarea>
+                        <button type="submit">
+                            <div class="btn_submit">
+                                <div class="btn_submit-border">
+                                    ĐĂNG
+                                    <span></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
     <section class="deal__week-area">
