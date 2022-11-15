@@ -116,7 +116,8 @@ $sql_slide = product_selectAllSlide();
                             <div class="product__selection-tools">
                                 <div class="tools">
                                     <i class="hover_tools tooltip">
-                                        <a href="index.php?page=product&product_id=">
+                                        <a
+                                            href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product_new['id_product'] ?>">
                                             <ion-icon name="eye-outline"></ion-icon>
                                         </a>
                                         <span class="tooltiptext">Xem chi tiết</span>
@@ -169,7 +170,8 @@ $sql_slide = product_selectAllSlide();
                             <div class="product__selection-tools">
                                 <div class="tools">
                                     <i class="hover_tools tooltip">
-                                        <a href="index.php?page=product&product_id=">
+                                        <a
+                                            href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product_new['id_product'] ?>">
                                             <ion-icon name="eye-outline"></ion-icon>
                                         </a>
                                         <span class="tooltiptext">Xem chi tiết</span>

@@ -7,10 +7,9 @@ if (isset($_GET['id_product'])) {
 }
 $sql_category = category_selectOne($sql_product['id_category']);
 $sql_imgs = product_selectArrayImgs($id_product);
-$i = 0;
-
 // foreach ($sql_imgs as $row_imgs) {
-//     print_r($row_imgs['contain']);
+//     print_r($contain);
+//     print_r($sql_imgs['contain']);
 // }
 ?>
 
@@ -35,44 +34,22 @@ $i = 0;
                 <i class="fa-solid fa-arrow-right-long"></i> Product_name
             </div>
         </div>
+
         <div class="product__detail-content">
             <div class="product__detail-left">
-                <div class="product-slide">
+                <div id="slide">
                     <?php foreach ($sql_imgs as $row_imgs) {
+                        extract($row_imgs);
                     ?>
-                    <div class="mySlides">
-                        <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $row_imgs['contain'] ?>" style="width:100%">
+                    <div class="item">
+                        <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $contain ?>" alt="ảnh giày">
                     </div>
                     <?php } ?>
-                </div> -->
-                <div class="row">
-                    <?php
-                    foreach ($sql_imgs as $row_imgs) {
-                        $i++;
-                        print_r($i);
-                    ?>
-                    <div class="column">
-                        <img class="demo cursor" src="<?= $CONTENT_URL ?>/imgs/products/<?= $row_imgs['contain'] ?>"
-                            style="width:100%" onclick="currentSlide($i)" alt="">
-                    </div>
-                    <?php }
-                    ?>
-                    <!-- <div class="column">
-                            <img class="demo cursor" src="<?= $CONTENT_URL ?>/imgs/products/<?= $row_imgs['contain'] ?>"
-                                style="width:100%" onclick="currentSlide(2)" alt="">
-                        </div>
-                        <div class="column">
-                            <img class="demo cursor" src="<?= $CONTENT_URL ?>/imgs/products/<?= $row_imgs['contain'] ?>"
-                                style="width:100%" onclick="currentSlide(3)" alt="">
-                        </div>
-                        <div class="column">
-                            <img class="demo cursor" src="<?= $CONTENT_URL ?>/imgs/products/<?= $row_imgs['contain'] ?>"
-                                style="width:100%" onclick="currentSlide(4)" alt="">
-                        </div>
-                        <div class="column">
-                            <img class="demo cursor" src="<?= $CONTENT_URL ?>/imgs/products/<?= $row_imgs['contain'] ?>"
-                                style="width:100%" onclick="currentSlide(5)" alt="">
-                        </div> -->
+                </div>
+
+                <div class="buttons">
+                    <button id="prev"><i class="fa-solid fa-angle-left"></i></button>
+                    <button id="next"><i class="fa-solid fa-angle-right"></i></button>
                 </div>
             </div>
             <div class="product__detail-right">
@@ -117,14 +94,16 @@ $i = 0;
                     </div>
                     <div class="product-tool">
                         <small style="color: green;">Còn hàng</small> <br>
-                        <button type="submit">
-                            <div class="btn_submit">
-                                <div class="btn_submit-border">
-                                    MUA NGAY
-                                    <span></span><span></span><span></span><span></span>
+                        <a href="">
+                            <button type="submit">
+                                <div class="btn_submit">
+                                    <div class="btn_submit-border">
+                                        MUA NGAY
+                                        <span></span><span></span><span></span><span></span>
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
+                            </button>
+                        </a>
                         <span class="material-symbols-outlined">
                             shopping_cart
                         </span>
