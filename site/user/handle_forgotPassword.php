@@ -24,7 +24,7 @@
         add_session("message","Đã gửi lại, mời nhập mã xác nhận");
         header("location:index.php?forgot_password&iptCode");
     }else if(exist_param("btn_checkCode")){
-        $code = $_SESSION['code'];
+        $code = $_SESSION['code']; 
         if($ipt_code != $code){
             add_session("message","Mã xác nhận không chính xác");
             header("location:index.php?forgot_password&iptCode");
