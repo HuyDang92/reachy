@@ -195,6 +195,7 @@
     height: 10rem;
     border-radius: 50%;
     border: 1px solid #333;
+    object-fit: cover;
 }
 
 
