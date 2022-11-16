@@ -119,36 +119,10 @@
                         <?php } ?>
                     </ul>
                     <div class="btn_page">
-                        <form action="" method="POST" id="sort__form">
-                            <select class="product__sort" name="sort" id="product__sort">
-                                <option value="">Sắp xếp mặc định</option>
-                                <option
-                                    <?php if (isset($_POST['sort']) && $_POST['sort'] === 'banChay') echo 'selected' ?>
-                                    value="banChay">Sản phẩm bán chạy</option>
-                                <option
-                                    <?php if (isset($_POST['sort']) && $_POST['sort'] === 'tenAZ') echo 'selected' ?>
-                                    value="tenAZ">Theo bảng chữ cái từ A - Z</option>
-                                <option
-                                    <?php if (isset($_POST['sort']) && $_POST['sort'] === 'tenZA') echo 'selected' ?>
-                                    value="tenZA">Theo bảng chữ cái từ Z - A</option>
-                                <option
-                                    <?php if (isset($_POST['sort']) && $_POST['sort'] === 'giaGiam') echo 'selected' ?>
-                                    value="giaGiam">Giá từ cao đến thấp</option>
-                                <option
-                                    <?php if (isset($_POST['sort']) && $_POST['sort'] === 'giaTang') echo 'selected' ?>
-                                    value="giaTang">Giá từ thấp đến cao</option>
-                                <option
-                                    <?php if (isset($_POST['sort']) && $_POST['sort'] === 'spMoi') echo 'selected' ?>
-                                    value="spMoi">Sản phẩm mới nhất</option>
-                                <option <?php if (isset($_POST['sort']) && $_POST['sort'] === 'spCu') echo 'selected' ?>
-                                    value="spCu">Sản phẩm cũ nhất</option>
-                            </select>
-                        </form>
-                            <?php
-                            echo createMultiPage($base_url, $total_products, $page_num, $page_size);
-                            ?>
-    
-                        </div>
+                        <?php
+                        echo createMultiPage($base_url, $total_products, $page_num, $page_size);
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
