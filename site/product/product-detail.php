@@ -15,7 +15,10 @@ $sql_imgs = product_selectArrayImgs($id_product);
 //     print_r($sql_imgs['contain']);
 // }
 ?>
-
+<!-- COMMENT -->
+<?php  
+    $comments = comment_selectByIdProduct($_GET['id_product']);
+?>
 <head>
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/product-detail.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/home.css">
@@ -160,55 +163,35 @@ $sql_imgs = product_selectArrayImgs($id_product);
             <div id="comment" class="tabcontent">
                 <div class="box_container">
                     <div class="content_box">
-                        <div class="user-row">
-                            <div class="user-info">
-                                <div class="user-info-left">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHUvOd8Q-VihyupbJCdgjIR2FxnjGtAgMu3g&usqp=CAU"
-                                        alt="">
-                                    <div class="user-name">
-                                        <h3>NAME USER</h3>
-                                        <i>Date time</i>
+                        <?php foreach($comments as $comment_row){ 
+                            $user = user_selectById($comment_row['id_user']);
+                        ?>
+                            <div class="comment-row">
+                                <div class="user-info">
+                                    <div class="user-info-left">
+                                        <img src="<?=$CONTENT_URL?>/imgs/user/<?=$user['img']?>"
+                                            alt="Ảnh đại diện">
+                                        <div class="user-name">
+                                            <h3><?=$user['name']?></h3>
+                                            <i><?=$comment_row['date']?></i>
+                                        </div>
                                     </div>
+                                    <?php if ($user['role'] == 1 || $user['role'] == 2) { ?>
+                                        <div class="user-reply">
+                                            <button>Trả lời</button>
+                                        </div>
+                                    <?php } ?>
                                 </div>
-                                <div class="user-reply">
-                                    <button>Trả lời</button>
-                                </div>
+                                <p><?=$comment_row['content']?></p>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut
-                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco
-                                laboris nisi ut aliquip ex ea commodo
-                            </p>
-                        </div>
-                        <div class="comment-row">
-                            <div class="user-info">
-                                <div class="user-info-left">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHUvOd8Q-VihyupbJCdgjIR2FxnjGtAgMu3g&usqp=CAU"
-                                        alt="">
-                                    <div class="user-name">
-                                        <h3>NAME USER</h3>
-                                        <i>Date time</i>
-                                    </div>
-                                </div>
-                                <div class="user-reply">
-                                    <button>Trả lời</button>
-                                </div>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut
-                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco
-                                laboris nisi ut aliquip ex ea commodo
-                            </p>
-                        </div>
-
+                        <?php } ?>
                     </div>
                     <?php if(isset($_SESSION['login'])){ ?>
-                        <form class="comment_form">
+                        <form action="handle_comment.php" method="POST" class="comment_form">
                             <h1>Bình Luận</h1>
-                            <textarea name="" id="" cols="30" rows="5" placeholder="Nội dung"></textarea>
-                            <button type="submit">
+                            <textarea name="message" id="" cols="30" rows="5" placeholder="Nội dung" required></textarea>
+                            <input type="hidden" name="id_product" value="<?=$sql_product['id_product']?>">
+                            <button name="btn_uploadComment" type="submit">
                                 <div class="btn_submit">
                                     <div class="btn_submit-border">
                                         ĐĂNG
@@ -292,7 +275,7 @@ $sql_imgs = product_selectArrayImgs($id_product);
                                 </ul>
                             </div>
                         </div>
-                        <div class="user-row">
+                        <div class="rating-row">
                             <div class="user-info">
                                 <div class="user-info-left">
                                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHUvOd8Q-VihyupbJCdgjIR2FxnjGtAgMu3g&usqp=CAU"
@@ -319,7 +302,7 @@ $sql_imgs = product_selectArrayImgs($id_product);
                                 laboris nisi ut aliquip ex ea commodo
                             </p>
                         </div>
-                        <div class="comment-row">
+                        <div class="rating-row">
                             <div class="user-info">
                                 <div class="user-info-left">
                                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHUvOd8Q-VihyupbJCdgjIR2FxnjGtAgMu3g&usqp=CAU"
