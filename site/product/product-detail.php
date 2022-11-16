@@ -1,3 +1,6 @@
+<?php  
+    add_session('productLink',getCurrentUrl());
+?>
 <?php
 $sql_deal = product_select_AllSaleOff();
 if (isset($_GET['id_product'])) {
@@ -201,21 +204,32 @@ $sql_imgs = product_selectArrayImgs($id_product);
                         </div>
 
                     </div>
-                    <form class="comment_form">
-                        <h1>Bình Luận</h1>
-                        <input type="text" name="name" id="" placeholder="Họ Tên"> <br>
-                        <input type="email" name="email" id="" placeholder="Email"> <br>
-                        <input type="number" name="phone_number" id="" placeholder="SDT"> <br>
-                        <textarea name="" id="" cols="30" rows="5" placeholder="Nội dung"></textarea>
-                        <button type="submit">
-                            <div class="btn_submit">
-                                <div class="btn_submit-border">
-                                    ĐĂNG
-                                    <span></span><span></span><span></span><span></span>
+                    <?php if(isset($_SESSION['login'])){ ?>
+                        <form class="comment_form">
+                            <h1>Bình Luận</h1>
+                            <textarea name="" id="" cols="30" rows="5" placeholder="Nội dung"></textarea>
+                            <button type="submit">
+                                <div class="btn_submit">
+                                    <div class="btn_submit-border">
+                                        ĐĂNG
+                                        <span></span><span></span><span></span><span></span>
+                                    </div>
                                 </div>
-                            </div>
-                        </button>
-                    </form>
+                            </button>
+                        </form>
+                    <?php }else{ ?>
+                        <div>
+                            <h2>Bạn chưa đăng nhập vui lòng đăng nhập để có thể bình luận</h2>
+                            <a href="<?= $SITE_URL ?>/user?sign_in">
+                                <div  style="width: 50%; margin: 0 auto;" class="btn_submit">
+                                    <div class="btn_submit-border">
+                                        ĐĂNG NHẬP
+                                        <span></span><span></span><span></span><span></span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
             <!-- Đánh giá -->
