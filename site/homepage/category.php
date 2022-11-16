@@ -83,7 +83,7 @@ if (isset($_POST['sort'])) {
 <!-- Xuất danh sách sản phẩm tương ứng -->
 <?php
 $total_products = count(pdo_query($sql_total_product));
-$sql_product = getRowInPage("product", $sql_total_product, $page_num, $page_size);
+$sql_product = getRowInPageBySql( $sql_total_product, $page_num, $page_size);
 ?>
 
 <head>

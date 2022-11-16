@@ -1,12 +1,18 @@
 <?php 
-    $sanpham = getRowInPage('product', $page_num, $page_size);
+    $page_size = 9;
+    if (isset($_GET['page_num'])) $page_num = $_GET['page_num'] + 0;
+    else $page_num = 1;
+    if ($page_num <= 0) $page_num = 1;
+    $sanpham = getRowInPageByTable('product', $page_num, $page_size);
     $total_products = count(product_selectAll());
 ?>
 <div class="list__container">
     <h1 class="list__heading">Danh sách sản phẩm</h1>
     <?php
+        $base_url = $ADMIN_URL.'?product&act=list';
         echo createMultiPage($base_url, $total_products, $page_num, $page_size);
     ?>
+    
     <table border="1">
         <thead>
             <tr>
@@ -15,7 +21,7 @@
                 <th>Mã loại</th>
                 <th>Hình</th>
                 <th>Giá</th>
-                <th colspan="2">Số lượng</th>
+                <th colspan="2">Hành động</th>
             </tr>
         </thead>
         <tbody>
@@ -44,9 +50,6 @@
                         <?= number_format(round($price, -4)) ?>₫
                     </td>
                     <td>
-                        <?=$quantity?>
-                    </td>
-                    <td>
                         <a href="<?=$ADMIN_URL?>?product&act=update&id=<?=$id_product?>"><button>Sửa</button></a>
                         <a href="<?=$ADMIN_URL?>?product&act=del&id=<?=$id_product?>"><button>Xóa</button></a>
                     </td>
@@ -54,6 +57,9 @@
             <?php }?>
         </tbody>
     </table>
+    <?php
+        echo createMultiPage($base_url, $total_products, $page_num, $page_size);
+    ?>
     <button id="select_all">Chọn tất cả</button>
     <button id="unselect_all">Bỏ chọn tất cả</button>
     <button>Xóa các mục đã chọn</button>
