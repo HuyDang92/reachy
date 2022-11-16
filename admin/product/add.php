@@ -1,42 +1,46 @@
-
+<?php
+    $loai = category_selectAll();
+    $brand = brand_selectAll();
+?>
 <div class="add__container">
     <h1>Thêm mới sản phẩm</h1>
-    <form action="../main/index.php?san_pham&act=add" method='post' enctype="multipart/form-data" class="addloai__form">
+    <?php 
+        if(isset($noti)&&$noti!="") echo "<p class='add__noti'> $noti </p>"
+    ?>
+    <form action="index.php?product&act=add" method='post' enctype="multipart/form-data" class="addloai__form">
         <p>Mã sản phẩm</p>
         <input type="text" disabled class="add_input" placeholder="Auto Number">
         <p>Tên sản phẩm</p>
-        <input type="text" class="add_input">
+        <input type="text" class="add_input" name="name">
         <p>Mã loại</p>
-        <select id="">
-
-            <option value="">1 - Giày gì gì đấy</option>
-            <option value="">2 - Giày gì gì đấy</option>
-            
+        <select id="" name="id_cate">
+            <?php foreach($loai as $l){
+                extract($l)?>
+                <option value="<?=$id_category?>"><?=$id_category?> - <?=$name?></option>
+            <?php }?>
         </select>
         <p>Thương hiệu</p>
-        <select id="">
-
-            <option value="">1 - Thương hiệu gì gì đấy</option>
-            <option value="">2 - Thương hiệu gì gì đấy</option>
-            
+        <select id="" name="id_brand">
+            <?php foreach($brand as $b){
+                extract($b)?>
+                <option value="<?=$id_brand?>"><?=$id_brand?> - <?=$name?></option>
+            <?php }?>
         </select>
         <p>Giá</p>
-        <input type="number" class="add_input">
+        <input type="number" class="add_input" name="price">
         <p>Giảm giá</p>
-        <input type="number" class="add_input">
-        <p>Ảnh</p>
-        <input type="file" class="add_input">
-        <p>Ngày nhập</p>
-        <input type="date" class="add_input">
+        <input type="number" class="add_input" name="sale_off">
+        <p>Số lượng</p>
+        <input type="number" class="add_input" name="quantity">
         <p>Mô tả ngắn</p>
-        <textarea class="add_input" col="30" row="10"></textarea>
+        <textarea class="add_input" col="30" row="10" name="description"></textarea>
         <p>Mô tả dài</p>
-        <textarea class="add_input" col="30" row="10"></textarea>
+        <textarea class="add_input" col="30" row="10" name="feature"></textarea>
         <p>Nổi bật</p>
-        <span>Có</span><input type="radio" id="" value="1" class="noibat"> |
-        <span>Không</span><input type="radio" id="" value="0" class="noibat"><br>
+        <span>Có</span><input type="radio" id="" value="1" class="noibat" name="special"> |
+        <span>Không</span><input type="radio" id="" value="0" class="noibat" name="special"><br>
 
-        <input type="submit" value="Thêm mới">
+        <input type="submit" value="Thêm mới" name="submit">
         <input type="reset" value="Nhập lại">
         <a href="<?=$ADMIN_URL?>?product&act=list"><input type="button" value="Danh sách"></a>
     </form>

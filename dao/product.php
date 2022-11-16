@@ -57,10 +57,10 @@ function product_selectAllByIdBrand($id_brand)
  * @param string $feature Đặc trưng sản phẩm
  * @param string $description Mô tả sản phẩm
  */
-function product_insert($id_category, $id_brand, $name, $price, $sale_off, $quantity, $feature, $description)
+function product_insert($id_category, $id_brand, $name, $price, $sale_off, $quantity, $feature, $description, $special)
 {
-    $sql = "INSERT INTO product(id_product,id_category,id_brand,name,price,sale_off,quantity,feature,description) VALUES(NULL,?,?,?,?,?,?,?,?)";
-    pdo_execute($sql, $id_category, $id_brand, $name, $price, $sale_off, $quantity, $feature, $description);
+    $sql = "INSERT INTO product(id_product,id_category,id_brand,name,price,sale_off,quantity,feature,description, special) VALUES(NULL,?,?,?,?,?,?,?,?,?)";
+    pdo_execute($sql, $id_category, $id_brand, $name, $price, $sale_off, $quantity, $feature, $description, $special);
 }
 /**
  * Cập nhật thông tin sản phẩm
@@ -74,10 +74,10 @@ function product_insert($id_category, $id_brand, $name, $price, $sale_off, $quan
  * @param string $description Mô tả sản phẩm
  * @param int $id_product Mã sản phẩm
  */
-function product_update($id_category, $id_brand, $name, $price, $sale_off, $quantity, $feature, $description, $id_product)
+function product_update($id_category, $id_brand, $name, $price, $sale_off, $quantity, $feature, $description,$special, $id_product)
 {
-    $sql = "UPDATE product SET id_category=?,id_brand=?,name=?,price=?,sale_off=?,quantity=?,featurn=?,description=? WHERE id_product=?";
-    pdo_execute($sql, $id_category, $id_brand, $name, $price, $sale_off, $quantity, $feature, $description, $id_product);
+    $sql = "UPDATE product SET id_category=?,id_brand=?,name=?,price=?,sale_off=?,quantity=?,feature=?,description=?, special=? WHERE id_product=?";
+    pdo_execute($sql, $id_category, $id_brand, $name, $price, $sale_off, $quantity, $feature, $description,$special, $id_product);
 }
 /**
  * Xóa sản phẩm

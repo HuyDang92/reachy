@@ -1,4 +1,6 @@
-
+<?php
+    $loai = category_selectAll();
+?>
 <div class="list__container">
     <h1 class="list__heading">Danh sách loại</h1>
     <table border="1">
@@ -9,51 +11,24 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>
-                    <input class="list__checkbox" type="checkbox">
-                </td>
-                <td>
-                    1
-                </td>
-                <td>
-                    Giày cuồng nộ
-                </td>
-                <td>
-                    <a href="<?=$ADMIN_URL?>?category&act=update"><button>Sửa</button></a>
-                    <a href="<?=$ADMIN_URL?>?category&act=del"><button>Xóa</button></a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input class="list__checkbox" type="checkbox">
-                </td>
-                <td>
-                    2
-                </td>
-                <td>
-                    Giày bạc
-                </td>
-                <td>
-                    <a href="<?=$ADMIN_URL?>"><button>Sửa</button></a>
-                    <a href="<?=$ADMIN_URL?>"><button>Xóa</button></a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input class="list__checkbox" type="checkbox">
-                </td>
-                <td>
-                    3
-                </td>
-                <td>
-                    Giày vò cuộc sống
-                </td>
-                <td>
-                    <a href="<?=$ADMIN_URL?>"><button>Sửa</button></a>
-                    <a href="<?=$ADMIN_URL?>"><button>Xóa</button></a>
-                </td>
-            </tr>
+        <?php foreach($loai as $l){
+                extract($l)?>
+                <tr>
+                    <td>
+                        <input class="list__checkbox" type="checkbox">
+                    </td>
+                    <td>
+                        <?=$id_category?>
+                    </td>
+                    <td>
+                        <?=$name?>
+                    </td>
+                    <td>
+                        <a href="<?=$ADMIN_URL?>?category&act=update&id=<?=$id_category?>"><button>Sửa</button></a>
+                        <a href="<?=$ADMIN_URL?>?category&act=del&id=<?=$id_category?>"><button>Xóa</button></a>    
+                    </td>
+                </tr>
+            <?php }?>
         </tbody>
     </table>
     <button id="select_all">Chọn tất cả</button>

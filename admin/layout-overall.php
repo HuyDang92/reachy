@@ -1,3 +1,9 @@
+<?php 
+    require_once "../dao/pdo.php";
+    require_once "../dao/brand.php";
+    require_once "../dao/category.php";
+    require_once "../dao/product.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 

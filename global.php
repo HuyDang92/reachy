@@ -135,3 +135,13 @@ function getRowInPage($table, $page_num, $page_size)
         die("Lỗi trong hàm " . __FUNCTION__ . ":" . $e->getMessage());
     }
 }
+// function getRowInPage($sql, $page_num, $page_size)
+// {
+//     try {
+//         $startRow = ($page_num - 1) * $page_size;
+//         $sql .= " LIMIT $startRow,$page_size";
+//         return pdo_query($sql);
+//     } catch (Exception $e) {
+//         die("Lỗi trong hàm " . __FUNCTION__ . ":" . $e->getMessage());
+//     }
+// }
