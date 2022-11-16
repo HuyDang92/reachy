@@ -60,11 +60,11 @@ $sql_category = category_selectAll();
                         <a href="<?= $SITE_URL ?>/homepage">TRANG CHỦ</a>
                     </li>
                     <li class="cate">
-                        <a href="?category">DANH MỤC</a>
+                        <a href="">DANH MỤC</a>
                         <div class="category__title">
                             <?php foreach ($sql_category as $row_category) { ?>
                             <a
-                                href="<?= $SITE_URL ?>/homepage?category&id_category=<?= $row_category[0] ?>"><?= $row_category['name'] ?></a>
+                                href="<?= $SITE_URL ?>/homepage?category&id_category=<?= $row_category[0] ?>&page_num=1"><?= $row_category['name'] ?></a>
                             <?php } ?>
                         </div>
                     </li>
@@ -90,10 +90,10 @@ $sql_category = category_selectAll();
                             <a href="<?= $SITE_URL ?>/user?info">
                                 <div class="sub__menu-user">THÔNG TIN CÁC NHÂN</div>
                             </a>
-                            <?php if($user['role']==1 || $user['role']==2){ ?>
-                                <a href="<?= $ADMIN_URL ?>/">
-                                    <div class="sub__menu-user">QUẢN LÍ CỬA HÀNG</div>
-                                </a>
+                            <?php if ($user['role'] == 1 || $user['role'] == 2) { ?>
+                            <a href="<?= $ADMIN_URL ?>/">
+                                <div class="sub__menu-user">QUẢN LÍ CỬA HÀNG</div>
+                            </a>
                             <?php } ?>
                             <a href="<?= $SITE_URL ?>/user?sign_out">
                                 <div class="sub__menu-user">ĐĂNG XUẤT</div>
@@ -118,7 +118,7 @@ $sql_category = category_selectAll();
                         <input type="checkbox" id="search_btn" hidden>
                         <label for="search_btn"><span class="material-symbols-outlined">search</span></label>
                         <form class="header__form-search" action="" method="GET">
-                            <input type="text" name="search" placeholder="Nhập từ khóa ">
+                            <input type="text" name="search" placeholder="Nhập từ khóa " required>
                             <label for="search_btn">
                                 <span class="material-symbols-outlined">
                                     close

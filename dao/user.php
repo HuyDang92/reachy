@@ -121,7 +121,7 @@ function user_signIn($user_email, $password)
  * Nâng cấp quyền admin
  * @param int $id_user Mã khách hàng
  */
-function user_UpgradeRole($id_user)
+function user_upgradeRole($id_user)
 {
     $sql = "UPDATE user SET role = 1 WHERE id_user=?";
     pdo_execute($sql, $id_user);
@@ -130,7 +130,7 @@ function user_UpgradeRole($id_user)
  * Xóa quyền admin
  * @param int $id_user Mã khách hàng
  */
-function user_DowngradeRole($id_user)
+function user_downgradeRole($id_user)
 {
     $sql = "UPDATE user SET role = 0 WHERE id_user=?";
     pdo_execute($sql, $id_user);

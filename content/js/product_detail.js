@@ -1,0 +1,1 @@
+const addQuantityProduct = document.querySelector("#btn_addQuantityProduct");
