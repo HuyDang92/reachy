@@ -32,8 +32,6 @@
         <input type="number" class="add_input" value="<?=$price?>" name="price">
         <p>Giảm giá</p>
         <input type="number" class="add_input" value="<?=$sale_off?>" name="sale_off">
-        <p>Số lượng</p>
-        <input type="number" class="add_input" name="quantity" value="<?=$quantity?>">
         <p>Mô tả ngắn</p>
         <textarea class="add_input" col="30" row="10" name="description" value=""><?=$description?></textarea>
         <p>Mô tả dài</p>

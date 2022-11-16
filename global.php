@@ -7,7 +7,7 @@ $ADMIN_URL = "$ROOT_URL/admin"; //đường dẫn vào phần quản trị
 $SITE_URL = "$ROOT_URL/site"; //đường dẫn vào ohần site
 // đường dẫn chứa hình khi upload
 $IMAGE_DIR = $_SERVER["DOCUMENT_ROOT"] . "/reachy/content/imgs";
-
+$UPLOAD_USER_IMG = '../content/imgs/user/';
 // 2 biến toàn cục để chia sẻ giữa controller và view
 $VIEW_NAME = "index.php";
 $MESSAGE = "";

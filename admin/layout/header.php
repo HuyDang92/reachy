@@ -24,7 +24,7 @@
                         <a href="<?=$ADMIN_URL?>?comment&act=list">BÌNH LUẬN</a>
                     </li>
                     <li>
-                        <a href="<?=$ADMIN_URL?>?user&act=add">TÀI KHOẢN</a>
+                        <a href="<?=$ADMIN_URL?>?user&act=list">TÀI KHOẢN</a>
                     </li>
                     <li>
                         <a href="<?=$ADMIN_URL?>?stastitic">THỐNG KÊ</a>

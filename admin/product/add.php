@@ -30,8 +30,6 @@
         <input type="number" class="add_input" name="price">
         <p>Giảm giá</p>
         <input type="number" class="add_input" name="sale_off">
-        <p>Số lượng</p>
-        <input type="number" class="add_input" name="quantity">
         <p>Mô tả ngắn</p>
         <textarea class="add_input" col="30" row="10" name="description"></textarea>
         <p>Mô tả dài</p>

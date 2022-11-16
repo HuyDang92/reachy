@@ -8,7 +8,6 @@
                     $id_cate = $_POST['id_cate'];
                     $id_brand = $_POST['id_brand'];
                     $price = $_POST['price'];
-                    $quantity = $_POST['quantity'];
                     $sale_off = $_POST['sale_off'];
                     $description = $_POST['description'];
                     $feature = $_POST['feature'];
@@ -17,7 +16,7 @@
                     //upload
                     // $hinh = save_file('hinh', $UPLOAD_URL);
                     //insert
-                    product_insert($id_cate, $id_brand, $name, $price, $sale_off, $quantity, $feature, $description, $special);
+                    product_insert($id_cate, $id_brand, $name, $price, $sale_off, $feature, $description, $special);
                     //
                     $noti = 'Thêm thành công';
                 }
@@ -43,7 +42,6 @@
                     $id_cate = $_POST['id_cate'];
                     $id_brand = $_POST['id_brand'];
                     $price = $_POST['price'];
-                    $quantity = $_POST['quantity'];
                     $sale_off = $_POST['sale_off'];
                     $description = $_POST['description'];
                     $feature = $_POST['feature'];
@@ -52,7 +50,7 @@
                     //upload
                     // $hinh = save_file('hinh', $UPLOAD_URL);
                     //insert
-                    product_update($id_cate, $id_brand, $name, $price, $sale_off, $quantity, $feature, $description,$special, $id_product);
+                    product_update($id_cate, $id_brand, $name, $price, $sale_off, $feature, $description,$special, $id_product);
                     //
                     $noti = 'Thêm thành công';
                 }
