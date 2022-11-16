@@ -145,9 +145,6 @@
     padding-right: 2rem;
     width: 20%;
 }
-.btn__mew-product {
-    /* display: flex; */
-} 
 
 .tablinks {
     border: none;
@@ -274,8 +271,6 @@
 }
 
 /*  */
-#changepw{
-}
 #changepw form{
     padding: 0 2rem;
     
