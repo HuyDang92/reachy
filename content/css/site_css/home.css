@@ -83,12 +83,14 @@ section.exclusive__deal-area{
     display: flex;
 }
 .main__category-items{
+    justify-content: space-between;
     display: flex;
     flex-wrap: wrap;
-    width: 70%;
+    width: 65%;
+    padding-right: 3rem;
 }
 .category-item{
-    margin-right: 2rem;
+    /* margin-right: 2rem; */
     margin-bottom: 1.5rem;
     position: relative;
 }

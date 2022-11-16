@@ -145,9 +145,6 @@
     padding-right: 2rem;
     width: 20%;
 }
-.btn__mew-product {
-    /* display: flex; */
-} 
 
 .tablinks {
     border: none;
@@ -208,10 +205,10 @@
     border: 1px solid var(--blue);
     margin-bottom: 1rem;
     margin-right: 1rem;
-    width: 45%;
+    width: 90%;
 }
 .user_info-flex form button .btn_submit-border{
-    width: 8rem;
+    width: 20rem;
     margin-left: 0rem;
     margin-top: 0rem;
 }
@@ -219,39 +216,47 @@
     position: relative;
 }
 .user__uploadImg--contentbox form{
-    position: absolute;
-    padding: 0;
+    /* position: absolute; */
+    position: fixed;
     padding: 2rem;
     background-color: #fff;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    top: -13rem;
-    right: -13rem;
+    top: 8rem;
+    left: 40%;
     z-index: 100;
 }
-.user__uploadImg--contentbox form::after{
+.overplay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+    display: none;
+}
+
+.overplay_on:checked ~ .overplay{
+    display: block;
+}
+.add_img>i{
     position: absolute;
-    content: "";
-    top: 50%;
-    left: -5%;
-    width: 0;
-    height: 0;
-    border-top: 15px solid transparent;
-    border-right: 20px solid #fff;
-    border-bottom: 15px solid transparent;
+    padding: 3rem 3rem;
+    background: rgba(78, 76, 76, 0.5);
+    transform: translate(20%, 90%);
+    border-radius: 50%;
+    color: #fff;
+    left: 30%;
 }
 .user__uploadImg--contentbox img{
-    width: 6rem;
-    height: 6rem;
+    width: 20rem;
+    height: 20rem;
     margin-bottom: 0.4rem;
-    margin-left: 0.3rem;
 }
-.user__uploadImg--contentbox label{
-    padding: 0.4rem;
-    margin: 0.5rem;
-}
-.user__uploadImg--contentbox button .btn_submit-border{
-    width: 6rem !important;
-    margin-top: 0.4rem;
+
+.add_img button .btn_submit-border{
+    width: 20rem !important;
+    margin-top: 0.5rem;
 }
 .position{
     position: relative;
@@ -272,10 +277,11 @@
 .position:hover>span{
     display: block;
 }
-
-/*  */
-#changepw{
+.flex label{
+    width: 50%;
 }
+/*  */
+
 #changepw form{
     padding: 0 2rem;
     

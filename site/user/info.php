@@ -41,14 +41,17 @@ $user = user_selectById($_SESSION['login']);
                             </span>
                             <img class="hover" src="<?= $CONTENT_URL . '/imgs/user/' . $user['img'] ?>" alt="">
                         </label>
-                        <input type="checkbox" id="user__uploadImg--checkbox">
+                        <input class="overplay_on" type="checkbox" id="user__uploadImg--checkbox">
+                        <label class="overplay" for="user__uploadImg--checkbox"></label>
                         <div class="user__uploadImg--contentbox">
                             <form action="handle_user.php" method="POST" enctype="multipart/form-data">
-                                <img id="defaultUploadImg" src="<?= $CONTENT_URL ?>/imgs/interface/admin-main.png"
-                                    alt="Ảnh đại diện"> <br>
-                                <label for="browseImg">Tải ảnh lên</label> <br>
                                 <input style="display: none" name="new_avatar" accept="image/*" type="file"
                                     id="browseImg">
+                                <label class="add_img" for="browseImg">
+                                    <img id="defaultUploadImg" src="<?= $CONTENT_URL ?>/imgs/user/default-avatar.jpg"
+                                        alt="Ảnh đại diện">
+                                    <i class="fa-solid fa-camera"></i>
+                                </label> <br>
                                 <button type="submit" name="updateAvatar" id="btn-save">
                                     <div class="btn_submit">
                                         <div class="btn_submit-border">
@@ -61,11 +64,23 @@ $user = user_selectById($_SESSION['login']);
                         </div>
                     </div>
                     <form action="handle_user.php" method="POST">
-                        <div style="display: flex; flex-wrap: wrap;" class="flex">
-                            <input type="text" value="<?= $user['email'] ?>" disabled>
-                            <input type="text" name="name" value="<?= $user['name'] ?>">
-                            <input type="number" name="phone_number" value="<?= $user['phone_number'] ?>">
-                            <input type="date" name="" id="" placeholder="Ngày sinh">
+                        <div class="flex" style="display: flex; flex-wrap: wrap;">
+                            <label>
+                                Email <br>
+                                <input type="text" value="<?= $user['email'] ?>" disabled>
+                            </label>
+                            <label>
+                                Họ Tên <br>
+                                <input type="text" name="name" value="<?= $user['name'] ?>">
+                            </label>
+                            <label>
+                                SDT <br>
+                                <input type="number" name="phone_number" value="<?= $user['phone_number'] ?>">
+                            </label>
+                            <label>
+                                Ngày Sinh <br>
+                                <input type="date" name="" id="" placeholder="Ngày sinh">
+                            </label>
                         </div>
                         <br>
                         <button name="updateInfo" type="submit">

@@ -80,7 +80,7 @@
     align-items: center;
 }
 .header__left-control>li{
-    padding: 1.5rem 0.5rem;
+    padding: 1.3rem 0.5rem;
     cursor: pointer;
     width: 30%;
 }
@@ -91,7 +91,7 @@
 .sub__menu{
     display: none;
     position: absolute;
-    top: 4.6rem;
+    top: 4.3rem;
     right: 5%; 
     background-color: #fff;
     z-index: 10;
@@ -153,7 +153,7 @@
 .category__title{
     position: absolute;
     background-color: #fff;
-    top: 4.5rem;
+    top: 4.3rem;
     display: flex;
     flex-wrap: wrap;
     width: 20rem;
