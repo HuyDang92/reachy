@@ -1,6 +1,7 @@
 <?php
 if (isset($_GET['id_category'])) $id_category = $_GET['id_category'];
 $sql_category = category_selectAll();
+$sql_categoryOne = category_selectOne($id_category);
 $sql_brand = brand_selectAll_byCateId($id_category);
 $sql_deal = product_select_AllSaleOff();
 $currentUrl = getCurrentUrl();
@@ -107,7 +108,7 @@ $sql_product = getRowInPageBySql($sql_total_product, $page_num, $page_size);
             <h1>Danh Mục</h1>
             <div class="title_link">
                 <a style="color: #fff;" href="<?= $SITE_URL ?>/homepage">Home</a> <i
-                    class="fa-solid fa-arrow-right-long"></i> Category
+                    class="fa-solid fa-arrow-right-long"></i> <?=$sql_categoryOne['name']?>
             </div>
         </div>
         <div class="category_content">
@@ -176,7 +177,7 @@ $sql_product = getRowInPageBySql($sql_total_product, $page_num, $page_size);
                     </ul>
                 </div>
             </div>
-            <div class="category__content-right">1
+            <div class="category__content-right">
                 <div class="product__container">
                     <div class="btn_page">
                         <form action="" method="POST" id="sort__form">

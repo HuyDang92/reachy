@@ -9,6 +9,7 @@ if (isset($_GET['id_product'])) {
     $discount_product = $sql_product['price'] + $sql_product['price'] * ($sql_product['sale_off'] / 100);
 }
 $sql_category = category_selectOne($sql_product['id_category']);
+$sql_brand = brand_selectOne($sql_product['id_brand']);
 $sql_imgs = product_selectArrayImgs($id_product);
 // foreach ($sql_imgs as $row_imgs) {
 //     print_r($contain);
@@ -37,7 +38,8 @@ $sql_imgs = product_selectArrayImgs($id_product);
             <div class="title_link">
                 <a style="color: #fff;" href="<?= $SITE_URL ?>/homepage">Home</a>
                 <i class="fa-solid fa-arrow-right-long"></i> <a href=""><?= $sql_category['name'] ?></a>
-                <i class="fa-solid fa-arrow-right-long"></i> Product_name
+                <i class="fa-solid fa-arrow-right-long"></i> <a href=""><?= $sql_brand['name'] ?></a>
+                <i class="fa-solid fa-arrow-right-long"></i> <?=$sql_product['name']?>
             </div>
         </div>
 
@@ -99,13 +101,13 @@ $sql_imgs = product_selectArrayImgs($id_product);
                         </div>
                     </div>
                     <div class="product-count">
-                        <button id="btn_addQuantityProduct">
+                        <button id="btn_descreaseQuantityProduct">
                             <span class="material-symbols-outlined">
                                 remove
                             </span>
                         </button>
-                        <input type="number" value="1">
-                        <button id="btn_minusQuantityProduct">
+                        <input type="product_quantity" value="1" class="product_quantity" min="1">
+                        <button id="btn_increaseQuantityProduct">
                             <span class="material-symbols-outlined">
                                 add
                             </span>
@@ -123,12 +125,16 @@ $sql_imgs = product_selectArrayImgs($id_product);
                                 </div>
                             </button>
                         </a>
-                        <span class="material-symbols-outlined">
+                        <span class="material-icons-outlined">
                             shopping_cart
                         </span>
-                        <span class="material-symbols-outlined">
-                            favorite
-                        </span>
+                        <a href="<?=$SITE_URL?>/product/handle_addWishList.php?id_product=<?=$sql_product['id_product']?>">
+                            <?php if(isset($_SESSION['login']) && product_checkLiked($sql_product['id_product'],$_SESSION['login'])){?>
+                                <span style="color:red ;" class="material-icons-outlined"> favorite </span>
+                            <?php }else{ ?>     
+                                <span class="material-icons-outlined"> favorite_border </span>
+                            <?php } ?>
+                        </a>
                     </div>
                     <p> <?= $sql_product['feature'] ?> </p>
                     <div class="product__bottom-bh">
