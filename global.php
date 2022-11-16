@@ -161,7 +161,7 @@ function getRowInPageByTable($table, $page_num, $page_size)
 {
     try {
         $startRow = ($page_num - 1) * $page_size;
-        $sql = "SELECT * FROM $table";
+        $sql = "SELECT * FROM $table LIMIT $startRow,$page_size";
         return pdo_query($sql);
     } catch (Exception $e) {
         die("Lỗi trong hàm " . __FUNCTION__ . ":" . $e->getMessage());
