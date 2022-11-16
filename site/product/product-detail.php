@@ -42,7 +42,7 @@ $sql_imgs = product_selectArrayImgs($id_product);
                         extract($row_imgs);
                     ?>
                     <div class="item">
-                        <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $contain ?>" alt="ảnh giày">
+                        <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $contain ?>" alt="<?=$sql_product['name']?>">
                     </div>
                     <?php } ?>
                 </div>

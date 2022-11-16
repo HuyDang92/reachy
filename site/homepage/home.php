@@ -330,6 +330,19 @@ $sql_slide = product_selectAllSlide();
 </body>
 <script src="<?= $CONTENT_URL ?>/js/slide.js"></script>
 <script src="<?= $CONTENT_URL ?>/js/countdown_timer.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        var scrollpos = sessionStorage.getItem('scrollpos');
+        if (scrollpos) {
+            window.scrollTo(0, scrollpos);
+            sessionStorage.removeItem('scrollpos');
+        }
+    });
+
+    window.addEventListener("beforeunload", function (e) {
+        sessionStorage.setItem('scrollpos', window.scrollY);
+    });
+</script>
 <?php if(isset($_SESSION['message'])){ ?>
     <script>
         alert("<?=$_SESSION['message'];?>")
