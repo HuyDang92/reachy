@@ -9,18 +9,10 @@ require_once "../../dao/product.php";
 require_once "../../dao/comment.php";
 if (exist_param("contact")) {
     $VIEW_NAME = "homepage/contact.php";
-} else if (exist_param("category")) {
-    $VIEW_NAME = "homepage/category.php";
-} else if (exist_param("introduce")) {
-    $VIEW_NAME = "homepage/introduce.php";
-} else if (exist_param("search")) {
-    extract($_REQUEST);
-    $product_list = product_select_ByKeyWord($search);
-    $VIEW_NAME = "homepage/search.php";
 } else if (exist_param("product")) {
     $VIEW_NAME = "product/product-detail.php";
 } else {
-    $VIEW_NAME = "homepage/home.php";
+    $VIEW_NAME = "";
 }
 
 require '../layout-overall.php';

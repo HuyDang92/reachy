@@ -15,6 +15,8 @@ if (exist_param("info")) {
     $VIEW_NAME = "user/sign-up.php";
 } else if (exist_param("sign_out")) {
     $VIEW_NAME = "user/sign-out.php";
+}else if (exist_param("forgot_password")) {
+    $VIEW_NAME = "user/forgot_password.php";
 } else {
     $VIEW_NAME = "";
 }

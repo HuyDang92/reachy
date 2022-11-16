@@ -94,7 +94,7 @@ function sendEmail($emailAddress)
 function createMultiPage($base_url, $total_product, $page_num, $page_size = 3)
 {
     if (isset($_GET['page_num'])) $page = $_GET['page_num'];
-    else $page = "";
+    else $page = 1;
     if ($page_num <= 0) return "";
     $total_pages = ceil($total_product / $page_size); //tính tổng số trang
     if ($total_pages <= 1) return "";
@@ -134,19 +134,37 @@ function createMultiPage($base_url, $total_product, $page_num, $page_size = 3)
     $links .= "</ul>";
     return $links;
 }
-function getRowInPage($table, $page_num, $page_size)
+/**
+* Xuất danh sách các hàng theo bảng tương ứng
+* @param string $table Tên bảng
+* @param int $page_num Thứ tự trang
+* @param int $page_size Số lượng sp trong 1 trang
+* @return array Danh sách sản phẩm
+*/
+function getRowInPage($table,$sql, $page_num, $page_size)
 {
     try {
         $startRow = ($page_num - 1) * $page_size;
-        if(isset($_GET['id_category'])){
-            $id_category = $_GET['id_category'];
-            $sql = "SELECT * FROM $table WHERE id_category=$id_category";
-        }else if(isset($_GET['id_brand'])){
-            $id_brand = $_GET['id_brand'];
-            $sql = "SELECT * FROM $table WHERE id_brand=$id_brand";
-        }
+        $sql .= " LIMIT $startRow,$page_size";
         return pdo_query($sql);
     } catch (Exception $e) {
         die("Lỗi trong hàm " . __FUNCTION__ . ":" . $e->getMessage());
     }
+}
+/**
+* Xuất đường dẫn hiện tại
+* @return string Đường dẫn website hiện tại
+*/
+function getCurrentUrl(){
+    if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')   
+        $url = "https://";   
+    else  
+        $url = "http://";   
+    // Append the host(domain name, ip) to the URL.   
+    $url.= $_SERVER['HTTP_HOST'];   
+
+    // Append the requested resource location to the URL   
+    $url.= $_SERVER['REQUEST_URI'];    
+    
+    return $url;  
 }
