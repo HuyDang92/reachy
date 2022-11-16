@@ -1,8 +1,12 @@
 <?php 
     $sanpham = getRowInPage('product', $page_num, $page_size);
+    $total_products = count(product_selectAll());
 ?>
 <div class="list__container">
     <h1 class="list__heading">Danh sách sản phẩm</h1>
+    <?php
+        echo createMultiPage($base_url, $total_products, $page_num, $page_size);
+    ?>
     <table border="1">
         <thead>
             <tr>
