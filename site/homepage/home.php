@@ -18,7 +18,7 @@ $sql_slide = product_selectAllSlide();
 
 <body>
     <div class="background_header">
-        <img src="<?= $CONTENT_URL ?>/imgs/interface/background.png" alt="">
+        <img style="height: 80%;" src="<?= $CONTENT_URL ?>/imgs/interface/background.png" alt="">
     </div>
     <div class="container_main">
         <section class="banner__area">
@@ -95,7 +95,8 @@ $sql_slide = product_selectAllSlide();
                         ?>
                         <li>
                             <div class="product__selection-top">
-                                <a href="index.php?page=product&product_id=" target="">
+                                <a href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product_new['id_product'] ?>"
+                                    target="">
                                     <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $imgs__product_new['contain'] ?>"
                                         alt="">
                                 </a>
@@ -117,7 +118,8 @@ $sql_slide = product_selectAllSlide();
                             <div class="product__selection-tools">
                                 <div class="tools">
                                     <i class="hover_tools tooltip">
-                                        <a href="index.php?page=product&product_id=">
+                                        <a
+                                            href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product_new['id_product'] ?>">
                                             <ion-icon name="eye-outline"></ion-icon>
                                         </a>
                                         <span class="tooltiptext">Xem chi tiết</span>
@@ -138,7 +140,7 @@ $sql_slide = product_selectAllSlide();
                 </div>
                 <div class="product__new-container">
                     <div class="sec__title">
-                        <h1>Sản Phẩm Sắp Ra Mắt</h1>
+                        <h1>Sản Phẩm Được Yêu Thích</h1>
                         <small>“Đặt sự hài lòng của khách hàng là ưu tiên số 1 trong mọi suy nghĩ hành động của mình” là
                             sứ
                             mệnh,
@@ -152,7 +154,8 @@ $sql_slide = product_selectAllSlide();
                         ?>
                         <li>
                             <div class="product__selection-top">
-                                <a href="index.php?page=product&product_id=" target="">
+                                <a href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product_new['id_product'] ?>"
+                                    target="">
                                     <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $imgs['contain'] ?>" alt="">
                                 </a>
                                 <div class="stick_top">
@@ -173,7 +176,8 @@ $sql_slide = product_selectAllSlide();
                             <div class="product__selection-tools">
                                 <div class="tools">
                                     <i class="hover_tools tooltip">
-                                        <a href="index.php?page=product&product_id=">
+                                        <a
+                                            href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product_new['id_product'] ?>">
                                             <ion-icon name="eye-outline"></ion-icon>
                                         </a>
                                         <span class="tooltiptext">Xem chi tiết</span>
@@ -239,7 +243,8 @@ $sql_slide = product_selectAllSlide();
                             <div class="exclusive__product-name">
                                 <?= $row_product_special['name'] ?>
                             </div>
-                            <a href="" class="primary-btn">MUA NGAY</a>
+                            <a href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product_special['id_product'] ?>"
+                                class="primary-btn">MUA NGAY</a>
                         </div>
                     </div>
                     <?php } ?>
@@ -257,7 +262,7 @@ $sql_slide = product_selectAllSlide();
                         $discount_deal = $row_deal['price'] + $row_deal['price'] * ($row_deal['sale_off'] / 100);
                     ?>
                     <li>
-                        <a href="">
+                        <a href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_deal['id_product'] ?>">
                             <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $imgs_deal['contain'] ?>" alt="">
                         </a>
                         <div class="deal__info">

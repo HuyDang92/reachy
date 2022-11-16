@@ -24,7 +24,7 @@
     <!-- ion icon -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!--  -->
+    <!-- carousel -->
     <link rel="stylesheet" href="<?= $SITE_URL ?>/homepage/owlcarousel/assets/owl.carousel.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="<?= $SITE_URL ?>/homepage/owlcarousel/owl.carousel.min.js"></script>

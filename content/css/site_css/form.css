@@ -76,7 +76,7 @@
     overflow: hidden;
     z-index: 1;
     transition: 0.5s;
-    margin: 1em;
+    /* margin: 1em; */
     margin-top: 2rem;
 }
 
