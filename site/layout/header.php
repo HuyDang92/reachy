@@ -60,11 +60,11 @@ $sql_category = category_selectAll();
                         <a href="<?= $SITE_URL ?>/homepage">TRANG CHỦ</a>
                     </li>
                     <li class="cate">
-                        <a href="?category">DANH MỤC</a>
+                        <a href="">DANH MỤC</a>
                         <div class="category__title">
                             <?php foreach ($sql_category as $row_category) { ?>
                             <a
-                                href="<?= $SITE_URL ?>/homepage?category&id_category=<?= $row_category[0] ?>"><?= $row_category['name'] ?></a>
+                                href="<?= $SITE_URL ?>/homepage?category&id_category=<?= $row_category[0] ?>&page_num=1"><?= $row_category['name'] ?></a>
                             <?php } ?>
                         </div>
                     </li>
@@ -83,12 +83,18 @@ $sql_category = category_selectAll();
                         <?php if (isset($_SESSION['login'])) {
                             $id_user = $_SESSION['login'];
                             $img_user = user_selectImgs($id_user);
+                            $user = user_selectById($id_user);
                         ?>
                         <img src="<?= $CONTENT_URL ?>/imgs/user/<?= $img_user['img'] ?>" alt="Ảnh đại diện">
                         <div class="sub__menu">
                             <a href="<?= $SITE_URL ?>/user?info">
                                 <div class="sub__menu-user">THÔNG TIN CÁC NHÂN</div>
                             </a>
+                            <?php if ($user['role'] == 1 || $user['role'] == 2) { ?>
+                            <a href="<?= $ADMIN_URL ?>/">
+                                <div class="sub__menu-user">QUẢN LÍ CỬA HÀNG</div>
+                            </a>
+                            <?php } ?>
                             <a href="<?= $SITE_URL ?>/user?sign_out">
                                 <div class="sub__menu-user">ĐĂNG XUẤT</div>
                             </a>

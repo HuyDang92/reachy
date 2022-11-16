@@ -13,6 +13,8 @@ if (exist_param("contact")) {
     $VIEW_NAME = "homepage/category.php";
 } else if (exist_param("introduce")) {
     $VIEW_NAME = "homepage/introduce.php";
+} else if (exist_param("product")) {
+    $VIEW_NAME = "product/product-detail.php";
 } else {
     $VIEW_NAME = "homepage/home.php";
 }
