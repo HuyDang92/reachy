@@ -145,7 +145,6 @@ function getRowInPage($table,$sql, $page_num, $page_size)
 {
     try {
         $startRow = ($page_num - 1) * $page_size;
-        $id_category = $_GET['id_category'];
         $sql .= " LIMIT $startRow,$page_size";
         return pdo_query($sql);
     } catch (Exception $e) {

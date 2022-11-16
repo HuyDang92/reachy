@@ -93,13 +93,13 @@ $sql_imgs = product_selectArrayImgs($id_product);
                         </div>
                     </div>
                     <div class="product-count">
-                        <button>
+                        <button id="btn_addQuantityProduct">
                             <span class="material-symbols-outlined">
                                 remove
                             </span>
                         </button>
                         <input type="number" value="1">
-                        <button>
+                        <button id="btn_minusQuantityProduct">
                             <span class="material-symbols-outlined">
                                 add
                             </span>
@@ -379,6 +379,7 @@ $sql_imgs = product_selectArrayImgs($id_product);
     </div>
     <script src="<?= $CONTENT_URL ?>/js/slide_product.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/tabs.js"></script>
+    <script src="<?= $CONTENT_URL ?>/js/product_detail.js"></script>
 </body>
 
 </html>
