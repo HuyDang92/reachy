@@ -83,12 +83,14 @@ section.exclusive__deal-area{
     display: flex;
 }
 .main__category-items{
+    justify-content: space-between;
     display: flex;
     flex-wrap: wrap;
-    width: 70%;
+    width: 65%;
+    padding-right: 3rem;
 }
 .category-item{
-    margin-right: 2rem;
+    /* margin-right: 2rem; */
     margin-bottom: 1.5rem;
     position: relative;
 }
@@ -267,7 +269,7 @@ ul.product__selection li:hover .btn_add-buy>button.cart{
     left: 5%;
 }
 ul.product__selection li:hover .btn_add-buy>button.buy{
-    right: 22%;
+    right: 27%;
 }
 .tools{
     margin: 15px;

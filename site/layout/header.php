@@ -79,7 +79,7 @@ $sql_category = category_selectAll();
                     </li>
                 </ul>
                 <ul class="header__left-control">
-                    <li class="control__user">
+                    <li style="padding: 1rem 0.5rem;" class="control__user">
                         <?php if (isset($_SESSION['login'])) {
                             $id_user = $_SESSION['login'];
                             $img_user = user_selectImgs($id_user);
@@ -88,7 +88,7 @@ $sql_category = category_selectAll();
                         <img src="<?= $CONTENT_URL ?>/imgs/user/<?= $img_user['img'] ?>" alt="Ảnh đại diện">
                         <div class="sub__menu">
                             <a href="<?= $SITE_URL ?>/user?info">
-                                <div class="sub__menu-user">THÔNG TIN CÁC NHÂN</div>
+                                <div class="sub__menu-user">THÔNG TIN CÁ NHÂN</div>
                             </a>
                             <?php if ($user['role'] == 1 || $user['role'] == 2) { ?>
                             <a href="<?= $ADMIN_URL ?>/">
@@ -112,7 +112,9 @@ $sql_category = category_selectAll();
                         <?php } ?>
                     </li>
                     <li>
-                        <span class="material-symbols-outlined">garden_cart</span>
+                        <a href="<?= $SITE_URL ?>/product?cart">
+                            <span class="material-symbols-outlined">garden_cart</span>
+                        </a>
                     </li>
                     <li>
                         <input type="checkbox" id="search_btn" hidden>
