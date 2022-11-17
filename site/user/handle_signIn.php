@@ -8,7 +8,7 @@
     extract($_REQUEST);
     if(!user_checkExistEmail($email)){
         global $email;
-        $MESSAGE = "Địa chỉ email không tồn tại";
+        $MESSAGE = "Mật khẩu không đúng";
         $VIEW_NAME = "user/sign-in.php";
         require "../layout-overall.php";
     }else{

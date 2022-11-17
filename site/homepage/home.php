@@ -23,13 +23,14 @@ $sql_slide = product_selectAllSlide();
     <div class="container_main">
         <section class="banner__area">
             <div class="owl-carousel owl-theme">
-                <?php foreach($sql_slide as $slide){ ?>
-                    <a href="<?= $SITE_URL ?>/homepage?category&id_category=<?= $slide['id_category'] ?>&id_brand=<?=$slide['id_brand']?>">
-                        <div class="main__slide-item">
-                            <div class="slide__item-left">
-                                <h1><?=$slide['title']?></h1>
-                                <p><?=$slide['content']?></p>
-                                <!-- <div class="btn__add-cart">
+                <?php foreach ($sql_slide as $slide) { ?>
+                <a
+                    href="<?= $SITE_URL ?>/homepage?category&id_category=<?= $slide['id_category'] ?>&id_brand=<?= $slide['id_brand'] ?>">
+                    <div class="main__slide-item">
+                        <div class="slide__item-left">
+                            <h1><?= $slide['title'] ?></h1>
+                            <p><?= $slide['content'] ?></p>
+                            <!-- <div class="btn__add-cart">
                                     <button>
                                         <a href="">
                                             <span class="material-symbols-outlined">
@@ -39,12 +40,12 @@ $sql_slide = product_selectAllSlide();
                                     </button>
                                     <h4>THÊM VÀO GIỎ HÀNG</h4>
                                 </div> -->
-                            </div>
-                            <div class="slide__item-right">
-                                <img src="<?= $CONTENT_URL ?>/imgs/interface/<?=$slide['img']?>" alt="">
-                            </div>
                         </div>
-                    </a>
+                        <div class="slide__item-right">
+                            <img src="<?= $CONTENT_URL ?>/imgs/interface/<?= $slide['img'] ?>" alt="">
+                        </div>
+                    </div>
+                </a>
                 <?php } ?>
             </div>
         </section>
@@ -124,11 +125,13 @@ $sql_slide = product_selectAllSlide();
                                         </a>
                                         <span class="tooltiptext">Xem chi tiết</span>
                                     </i>
-                                    <a <?php if(isset($_SESSION['login']) && product_checkLiked($row_product_new['id_product'],$_SESSION['login'])) echo 'style="color: red;"'?> href="<?=$SITE_URL?>/product/handle_addWishList.php?id_product=<?=$row_product_new['id_product']?>" class="hover_tools tooltip btn-like">
-                                        <?php if(isset($_SESSION['login']) && product_checkLiked($row_product_new['id_product'],$_SESSION['login'])){ ?>
-                                            <ion-icon name="heart"></ion-icon>
-                                        <?php }else{ ?>
-                                            <ion-icon name="heart-outline"></ion-icon>
+                                    <a <?php if (isset($_SESSION['login']) && product_checkLiked($row_product_new['id_product'], $_SESSION['login'])) echo 'style="color: red;"' ?>
+                                        href="<?= $SITE_URL ?>/product/handle_addWishList.php?id_product=<?= $row_product_new['id_product'] ?>"
+                                        class="hover_tools tooltip btn-like">
+                                        <?php if (isset($_SESSION['login']) && product_checkLiked($row_product_new['id_product'], $_SESSION['login'])) { ?>
+                                        <ion-icon name="heart"></ion-icon>
+                                        <?php } else { ?>
+                                        <ion-icon name="heart-outline"></ion-icon>
                                         <?php } ?>
                                         <span class="tooltiptext">Yêu thích</span>
                                     </a>
@@ -182,11 +185,13 @@ $sql_slide = product_selectAllSlide();
                                         </a>
                                         <span class="tooltiptext">Xem chi tiết</span>
                                     </i>
-                                    <a <?php if(isset($_SESSION['login']) && product_checkLiked($row_product_new['id_product'],$_SESSION['login'])) echo 'style="color: red;"'?> href="<?=$SITE_URL?>/product/handle_addWishList.php?id_product=<?=$row_product_new['id_product']?>" class="hover_tools tooltip btn-like">
-                                        <?php if(isset($_SESSION['login']) && product_checkLiked($row_product_new['id_product'],$_SESSION['login'])){ ?>
-                                            <ion-icon name="heart"></ion-icon>
-                                        <?php }else{ ?>
-                                            <ion-icon name="heart-outline"></ion-icon>
+                                    <a <?php if (isset($_SESSION['login']) && product_checkLiked($row_product_new['id_product'], $_SESSION['login'])) echo 'style="color: red;"' ?>
+                                        href="<?= $SITE_URL ?>/product/handle_addWishList.php?id_product=<?= $row_product_new['id_product'] ?>"
+                                        class="hover_tools tooltip btn-like">
+                                        <?php if (isset($_SESSION['login']) && product_checkLiked($row_product_new['id_product'], $_SESSION['login'])) { ?>
+                                        <ion-icon name="heart"></ion-icon>
+                                        <?php } else { ?>
+                                        <ion-icon name="heart-outline"></ion-icon>
                                         <?php } ?>
                                         <span class="tooltiptext">Yêu thích</span>
                                     </a>
@@ -343,10 +348,12 @@ $sql_slide = product_selectAllSlide();
         sessionStorage.setItem('scrollpos', window.scrollY);
     });
 </script> -->
-<?php if(isset($_SESSION['message'])){ ?>
-    <script>
-        alert("<?=$_SESSION['message'];?>")
-    </script>
-    
-<?php unset($_SESSION['message']); } ?>
+<?php if (isset($_SESSION['message'])) { ?>
+<script>
+alert("<?= $_SESSION['message']; ?>")
+</script>
+
+<?php unset($_SESSION['message']);
+} ?>
+
 </html>
