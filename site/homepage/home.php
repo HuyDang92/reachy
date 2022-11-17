@@ -112,8 +112,8 @@ $sql_slide = product_selectAllSlide();
                             </div>
                             <div class="product__selection-info">
                                 <h4 class="product__name"><?= $row_product_new['name'] ?></h4>
-                                <div class="product__price"><?= number_format($row_product_new['price']) ?>₫
-                                    <span><?= number_format(round($discount_product_new, -4)) ?>₫</span>
+                                <div class="product__price"><?= number_format($row_product_new['price']*(100-$row_product_new['sale_off'])/100) ?>₫
+                                    <span><?= number_format($row_product_new['price']) ?>₫</span>
                                 </div>
                             </div>
                             <div class="product__selection-tools">
@@ -172,8 +172,8 @@ $sql_slide = product_selectAllSlide();
                             </div>
                             <div class="product__selection-info">
                                 <h4 class="product__name"><?= $row_product_new['name'] ?></h4>
-                                <div class="product__price"><?= number_format($row_product_new['price']) ?>₫
-                                    <span><?= number_format(round($discount, -4)) ?>₫</span>
+                                <div class="product__price"><?= number_format($row_product_new['price']*(100-$row_product_new['sale_off'])/100) ?>₫
+                                    <span><?= number_format($row_product_new['price']) ?>₫</span>
                                 </div>
                             </div>
                             <div class="product__selection-tools">

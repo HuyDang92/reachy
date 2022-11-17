@@ -64,59 +64,60 @@ $sql_imgs = product_selectArrayImgs($id_product);
                 <div class="product__detail-top">
                     <h1><?= $sql_product['name'] ?></h1>
                     <span>MSP: <?= $sql_product['id_product'] ?></span>
-                    <h1><?= number_format($sql_product['price']) ?>đ <small
-                            style="text-decoration: line-through;"><?= number_format(round($discount_product, -4)) ?>đ</small>
+                    <h1><?= number_format($sql_product['price']*(100-$sql_product['sale_off'])/100) ?>đ <small
+                            style="text-decoration: line-through;"><?= number_format($sql_product['price']) ?>đ</small>
                     </h1>
                     <hr>
                 </div>
                 <div class="product__detail-bottom">
-                    <div class="product-size">
-                        <div class="col-size">
-                            <input type="radio" name="size" hidden id="s36">
-                            <label for="s36">36</label>
+                    <form action="handle_product-detail.php" method="POST">
+                        <div class="product-size">
+                            <div class="col-size">
+                                <input checked type="radio" name="size" value="36" hidden id="s36">
+                                <label for="s36">36</label>
+                            </div>
+                            <div class="col-size">
+                                <input type="radio" name="size" value="37" hidden id="s37">
+                                <label for="s37">37</label>
+                            </div>
+                            <div class="col-size">
+                                <input type="radio" name="size" value="38" hidden id="s38">
+                                <label for="s38">38</label>
+                            </div>
+                            <div class="col-size">
+                                <input type="radio" name="size" value="39" hidden id="s39">
+                                <label for="s39">39</label>
+                            </div>
+                            <div class="col-size">
+                                <input type="radio" name="size" value="40" hidden id="s40">
+                                <label for="s40">40</label>
+                            </div>
+                            <div class="col-size">
+                                <input type="radio" name="size" value="41" hidden id="s41">
+                                <label for="s41">41</label>
+                            </div>
+                            <div class="col-size">
+                                <input type="radio" name="size" value="42" hidden id="s42">
+                                <label for="s42">42</label>
+                            </div>
                         </div>
-                        <div class="col-size">
-                            <input type="radio" name="size" hidden id="s37">
-                            <label for="s37">37</label>
+                        <div class="product-count">
+                            <button type="button" id="btn_descreaseQuantityProduct">
+                                <span class="material-symbols-outlined">
+                                    remove
+                                </span>
+                            </button>
+                            <input type="number" name="quantity"  value="1" class="product_quantity" min="1">
+                            <button type="button" id="btn_increaseQuantityProduct">
+                                <span class="material-symbols-outlined">
+                                    add
+                                </span>
+                            </button>
                         </div>
-                        <div class="col-size">
-                            <input type="radio" name="size" hidden id="s38">
-                            <label for="s38">38</label>
-                        </div>
-                        <div class="col-size">
-                            <input type="radio" name="size" hidden id="s39">
-                            <label for="s39">39</label>
-                        </div>
-                        <div class="col-size">
-                            <input type="radio" name="size" hidden id="s40">
-                            <label for="s40">40</label>
-                        </div>
-                        <div class="col-size">
-                            <input type="radio" name="size" hidden id="s41">
-                            <label for="s41">41</label>
-                        </div>
-                        <div class="col-size">
-                            <input type="radio" name="size" hidden id="s42">
-                            <label for="s42">42</label>
-                        </div>
-                    </div>
-                    <div class="product-count">
-                        <button id="btn_descreaseQuantityProduct">
-                            <span class="material-symbols-outlined">
-                                remove
-                            </span>
-                        </button>
-                        <input type="product_quantity" value="1" class="product_quantity" min="1">
-                        <button id="btn_increaseQuantityProduct">
-                            <span class="material-symbols-outlined">
-                                add
-                            </span>
-                        </button>
-                    </div>
-                    <div class="product-tool">
-                        <small style="color: green;">Còn hàng</small> <br>
-                        <a href="">
-                            <button type="submit">
+                        <div class="product-tool">
+                            <small style="color: green;">Còn hàng</small> <br>
+                            <input type="hidden" name="id_product" value="<?=$sql_product['id_product']?>">
+                            <button name="btn_buy" type="submit">
                                 <div class="btn_submit">
                                     <div class="btn_submit-border">
                                         MUA NGAY
@@ -124,29 +125,31 @@ $sql_imgs = product_selectArrayImgs($id_product);
                                     </div>
                                 </div>
                             </button>
-                        </a>
-                        <span class="material-icons-outlined">
-                            shopping_cart
-                        </span>
-                        <a href="<?=$SITE_URL?>/product/handle_addWishList.php?id_product=<?=$sql_product['id_product']?>">
-                            <?php if(isset($_SESSION['login']) && product_checkLiked($sql_product['id_product'],$_SESSION['login'])){?>
-                                <span style="color:red ;" class="material-icons-outlined"> favorite </span>
-                            <?php }else{ ?>     
-                                <span class="material-icons-outlined"> favorite_border </span>
-                            <?php } ?>
-                        </a>
-                    </div>
-                    <p> <?= $sql_product['feature'] ?> </p>
-                    <div class="product__bottom-bh">
-                        <ul style="font-weight: 700;" class="product_content-bh">
-                            <li>- Hàng chính hãng</li>
-                            <li>- Giao hàng Toàn Quốc</li>
-                            <li>- Thanh Toán khi nhận hàng</li>
-                            <li>- Bảo hành chính hãng trọn đời sản phẩm</li>
-                            <li>- Bảo hành keo , chỉ trọn đời sản phẩm</li>
-                            <li>- Giao hàng Nhanh 60p tại Sài Gòn</li>
-                        </ul>
-                    </div>
+                            <button name="btn_addCart">
+                                <span class="material-icons-outlined">
+                                    shopping_cart
+                                </span>
+                            </button>
+                            <a href="<?=$SITE_URL?>/product/handle_addWishList.php?id_product=<?=$sql_product['id_product']?>">
+                                <?php if(isset($_SESSION['login']) && product_checkLiked($sql_product['id_product'],$_SESSION['login'])){?>
+                                    <span style="color:red ;" class="material-icons-outlined"> favorite </span>
+                                <?php }else{ ?>
+                                    <span class="material-icons-outlined"> favorite_border </span>
+                                <?php } ?>
+                            </a>
+                        </div>
+                        <p> <?= $sql_product['feature'] ?> </p>
+                        <div class="product__bottom-bh">
+                            <ul style="font-weight: 700;" class="product_content-bh">
+                                <li>- Hàng chính hãng</li>
+                                <li>- Giao hàng Toàn Quốc</li>
+                                <li>- Thanh Toán khi nhận hàng</li>
+                                <li>- Bảo hành chính hãng trọn đời sản phẩm</li>
+                                <li>- Bảo hành keo , chỉ trọn đời sản phẩm</li>
+                                <li>- Giao hàng Nhanh 60p tại Sài Gòn</li>
+                            </ul>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -383,6 +386,13 @@ $sql_imgs = product_selectArrayImgs($id_product);
     <script src="<?= $CONTENT_URL ?>/js/slide_product.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/tabs.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/product_detail.js"></script>
+    <?php if (isset($_SESSION['message'])) { ?>
+    <script>
+    alert("<?= $_SESSION['message']; ?>")
+    </script>
+
+    <?php unset($_SESSION['message']);
+    } ?>
 </body>
 
 </html>

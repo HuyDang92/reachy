@@ -1,11 +1,5 @@
 <?php 
-    session_start();
-    $_SESSION['s'] = "sd";
-    if(isset($_SESSION['s'])){
-        echo $_SESSION['s'];
-        session_unset();
-    }
-    if(!isset($_SESSION['s'])){
-        echo "sss";
-    }
-?>
+    require_once "dao/pdo.php";
+    require_once "dao/product.php";
+    print_r(product_selectImgs(1));
+ ?>

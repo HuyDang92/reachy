@@ -14,7 +14,7 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
 }
-.cart__main>li{
+.cart__main li{
     margin-bottom: 1rem; 
     border-bottom: 1px dotted #ccc; 
     padding-bottom: 0.5rem; 
@@ -39,12 +39,12 @@
     align-items: center;
 }
 .product-count button span{
-
+    pointer-events: none;
     font-size: 13px;
 }
 .product-count button{
     padding: 5px 10px;
-    background-color: #ccc;
+    background-color: var(--blue);
     color: var(--white);
 }
 .product-count input{
