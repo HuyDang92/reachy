@@ -65,10 +65,13 @@
                             
                             ?>
                         </td>
-                        <td>
-                            <a href="<?=$ADMIN_URL?>?user&act=update&id=<?=$id_user?>">Sửa</a>
-                            <a href="<?=$ADMIN_URL?>?user&act=del&id=<?=$id_user?>">Xóa</a>
-                        </td>
+                    <td class="list__action--container">
+                        <div class="list__action">
+                            <a href="<?=$ADMIN_URL?>?user&act=update&id=<?=$id_user?>"><button type="button">Sửa</button></a>
+                            <a href="<?=$ADMIN_URL?>?user&act=del&id=<?=$id_user?>"><button type="button">Xóa</button></a>
+                        </div>
+                    </td>
+                        
                     </tr>
                 <?php }?>
         </tbody>

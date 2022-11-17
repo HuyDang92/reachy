@@ -23,9 +23,11 @@
                     <td>
                         <?=$name?>
                     </td>
-                    <td>
+                    <td class="list__action--container">
+                        <div class="list__action">
                         <a href="<?=$ADMIN_URL?>?category&act=update&id=<?=$id_category?>"><button>Sửa</button></a>
-                        <a href="<?=$ADMIN_URL?>?category&act=del&id=<?=$id_category?>"><button>Xóa</button></a>    
+                        <a href="<?=$ADMIN_URL?>?category&act=del&id=<?=$id_category?>"><button>Xóa</button></a>
+                        </div>
                     </td>
                 </tr>
             <?php }?>

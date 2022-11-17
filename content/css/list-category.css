@@ -40,3 +40,23 @@ td:last-child{
 .hinh{
     width: 15%;
 }
+/* .list__action--container{
+    text-align: start;
+} */
+.list__action{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* align-items: center; */
+}
+.list__action>a>button{
+    width: 5rem;
+    background-color: #fff;
+    /* background-image: linear-gradient(90deg, var(--blue), var(--green)); */
+    padding: 5px 10px;
+    /* transition: all 0.25s linear; */
+}
+.list__action>a>button:hover{
+    background-image: linear-gradient(90deg, var(--blue), var(--green));
+    color: #fff;
+}

@@ -49,9 +49,13 @@
                     <td>
                         <?= number_format(round($price, -4)) ?>₫
                     </td>
-                    <td>
-                        <a href="<?=$ADMIN_URL?>?product&act=update&id=<?=$id_product?>"><button>Sửa</button></a>
-                        <a href="<?=$ADMIN_URL?>?product&act=del&id=<?=$id_product?>"><button>Xóa</button></a>
+                    <td class="list__action--container">
+                        <div class="list__action">
+                            <a href="<?=$ADMIN_URL?>?product&act=update&id=<?=$id_product?>"><button>Sửa</button></a>
+                            <a href="<?=$ADMIN_URL?>?product&act=del&id=<?=$id_product?>"><button>Xóa</button></a>
+                            <a href="<?=$ADMIN_URL?>?comment&act=list&id=<?=$id_product?>"><button>Bình luận</button></a>
+                            <a href="<?=$ADMIN_URL?>?product&act=del&id=<?=$id_product?>"><button>Đánh giá</button></a>
+                        </div>
                     </td>
                 </tr>
             <?php }?>

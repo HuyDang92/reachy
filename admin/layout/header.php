@@ -15,13 +15,17 @@
                         <a style="color: #21D1F5" href="<?= $SITE_URL ?>/homepage">TRANG CHỦ</a>
                     </li>
                     <li>
-                        <a href="<?=$ADMIN_URL?>?category&act=add">LOẠI HÀNG</a>
+                        <a href="<?=$ADMIN_URL?>?category&act=list">LOẠI HÀNG</a>
                     </li>
                     <li>
-                        <a href="<?=$ADMIN_URL?>?product&act=add">SẢN PHẨM</a>
+                        <a href="<?=$ADMIN_URL?>?product&act=list">SẢN PHẨM</a>
                     </li>
-                    <li>
-                        <a href="<?=$ADMIN_URL?>?comment&act=list">BÌNH LUẬN</a>
+                    <li class="admin__dropdown">
+                        <a href="#">GIAO DIỆN</a>
+                        <div class="admin__dropdown--list">
+                            <div class="admin__dropdown--item"><a href="">Sliders</a></div>
+                            <div class="admin__dropdown--item"><a href="">Blogs</a></div>
+                        </div>
                     </li>
                     <li>
                         <a href="<?=$ADMIN_URL?>?user&act=list">TÀI KHOẢN</a>
