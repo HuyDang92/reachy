@@ -2,7 +2,7 @@
     $loai = category_selectAll();
 ?>
 <div class="list__container">
-    <h1 class="list__heading">Danh sách loại</h1>
+    <h1 class="list__heading">Danh sách loại hàng</h1>
     <table border="1">
         <thead>
             <tr>
