@@ -1,7 +1,7 @@
 <?php
     if(isset($_GET['id'])){
         $id_product = $_GET['id'];
-        $comment = comment_selectById($id_product);
+        $comment = comment_selectByIdProduct($id_product);
         $comment_export = comment_exportById($id_product);
         if(count($comment_export)>0){
             $product_name = product_selectOne($comment['id_product']);

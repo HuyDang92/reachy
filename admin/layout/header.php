@@ -21,9 +21,9 @@
                         <a href="<?=$ADMIN_URL?>?product&act=list">SẢN PHẨM</a>
                     </li>
                     <li class="admin__dropdown">
-                        <a href="#">GIAO DIỆN</a>
+                        <a href="">GIAO DIỆN</a>
                         <div class="admin__dropdown--list">
-                            <div class="admin__dropdown--item"><a href="">Sliders</a></div>
+                            <div class="admin__dropdown--item"><a href="<?=$ADMIN_URL?>?slider&act=list">Sliders</a></div>
                             <div class="admin__dropdown--item"><a href="">Blogs</a></div>
                         </div>
                     </li>
