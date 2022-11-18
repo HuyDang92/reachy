@@ -24,8 +24,8 @@
     <div class="container_blogs">  
         <div class="blogs_row"> 
             <a class="promotion_blogs" href="<?= $SITE_URL ?>/homepage?infor_blogs">
-                <div>
-                    <img src="<?= $CONTENT_URL ?>/imgs/blogs/blogs1.png " alt="">
+                <div class="img_blogs">
+                    <img src="<?= $CONTENT_URL ?>/imgs/blogs/blogs1.png " alt="" width="100%">
                 </div>
                 <div class="content_blogs">
                     <h2>Kết thúc của Yeezy có ý nghĩa gì đối với Sneakerverse?</h2><br>

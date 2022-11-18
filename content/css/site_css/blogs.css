@@ -10,12 +10,18 @@
 .content_blogs{
     margin-left: 2rem;
 }
-.view_more{
-    width: 7rem;  
-    margin-top: 2rem;
+.view_more{ 
+    width: fit-content;
+    margin-top: 1.6rem;
     background-image: linear-gradient( 180deg,#21D1F5 ,#3BD1C8 );
+    padding: 0.5rem;
 }
 .view_more>button{
-    font-size: 1.2rem;
+    font-size: 15px;
     color: #ffffff;
 }
+.img_blogs{
+    width: 110%;
+}
+
+

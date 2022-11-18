@@ -13,9 +13,17 @@ if (exist_param("contact")) {
     $VIEW_NAME = "homepage/category.php";
 } else if (exist_param("introduce")) {
     $VIEW_NAME = "homepage/introduce.php";
+} else if (exist_param("search")) {
+    extract($_REQUEST);
+    $product_list = product_select_ByKeyWord($search);
+    $VIEW_NAME = "homepage/search.php";
 } else if (exist_param("product")) {
     $VIEW_NAME = "product/product-detail.php";
-} else {
+} else if(exist_param("blogs")){
+    $VIEW_NAME = "homepage/blogs.php";
+}else if(exist_param("infor_blogs")){
+    $VIEW_NAME = "homepage/infor_blogs.php";
+}else {
     $VIEW_NAME = "homepage/home.php";
 }
 
