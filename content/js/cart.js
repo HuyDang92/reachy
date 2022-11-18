@@ -26,6 +26,12 @@ addBtns.forEach(btn_add => {
             product_quantity.value++;
             product_totalPrice.innerHTML = new Intl.NumberFormat().format(parseInt(product_price.getAttribute('data-value'))*product_quantity.value);
             product_totalPrice.setAttribute("data-value",parseInt(product_price.getAttribute('data-value'))*product_quantity.value);
+            let ipt_request = document.createElement("input");
+            ipt_request.setAttribute("name","btn_quantity");
+            ipt_request.setAttribute("type","hidden");
+            cartRow.appendChild(ipt_request);
+            cartRow.submit();
+
         }
     )
 });
@@ -37,9 +43,16 @@ minusBtns.forEach(btn_minus => {
             let product_quantity = cartRow.querySelector(".product_quantity");
             let product_price = cartRow.querySelector(".cart_currentPrice");
             let product_totalPrice = cartRow.querySelector(".cart_totalPrice");
-            product_quantity.value--;
+            if(product_quantity.value>0){
+                product_quantity.value--;
+            }
             product_totalPrice.innerHTML = new Intl.NumberFormat().format(parseInt(product_price.getAttribute('data-value'))*product_quantity.value);
             product_totalPrice.setAttribute("data-value",parseInt(product_price.getAttribute('data-value'))*product_quantity.value)
+            let ipt_request = document.createElement("input");
+            ipt_request.setAttribute("name","btn_quantity");
+            ipt_request.setAttribute("type","hidden");
+            cartRow.appendChild(ipt_request);
+            cartRow.submit();
         }
     )
 });
@@ -73,7 +86,6 @@ size_selecters.forEach(size_selecter => {
         "change",
         function (event){
             let cartRow = event.target.parentElement.parentElement.parentElement;
-            console.log("🚀 ~ file: cart.js ~ line 76 ~ cartRow", cartRow)
             cartRow.submit();
         }
     )

@@ -119,7 +119,7 @@ $sql_category = category_selectAll();
                     <li>
                         <input type="checkbox" id="search_btn" hidden>
                         <label for="search_btn"><span class="material-symbols-outlined">search</span></label>
-                        <form class="header__form-search" action="" method="GET">
+                        <form class="header__form-search" action="<?=$SITE_URL?>/homepage/" method="GET">
                             <input type="text" name="search" placeholder="Nhập từ khóa " required>
                             <label for="search_btn">
                                 <span class="material-symbols-outlined">
