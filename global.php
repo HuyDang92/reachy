@@ -135,8 +135,8 @@ function createMultiPage($base_url, $total_product, $page_num, $page_size = 3)
     return $links;
 }
 /**
-* Xuất danh sách các hàng theo bảng tương ứng
-* @param string $table Tên bảng
+* Xuất danh sách các hàng theo dòng lệnh sql tương ứng
+* @param string $sql Câu lệnh sql
 * @param int $page_num Thứ tự trang
 * @param int $page_size Số lượng sp trong 1 trang
 * @return array Danh sách sản phẩm
@@ -167,7 +167,6 @@ function getRowInPageByTable($table, $page_num, $page_size)
         die("Lỗi trong hàm " . __FUNCTION__ . ":" . $e->getMessage());
     }
 }
-
 /**
 * Xuất đường dẫn hiện tại
 * @return string Đường dẫn website hiện tại

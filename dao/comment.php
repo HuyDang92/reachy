@@ -4,7 +4,7 @@
     * @param int $id_product Mã sản phẩm
     * @return array Danh sách bình luận
     */
-    function comment_selectById($id_product){
+    function comment_selectByIdProduct($id_product){
         $sql = "SELECT * FROM comment WHERE id_product=?";
         return pdo_query_one($sql, $id_product);
     }

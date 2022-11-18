@@ -156,9 +156,9 @@ function product_selectArrayImgs($id_product)
     return pdo_query($sql, $id_product);
 }
 /**
- * Xuất ra mảng ảnh của sản phẩm tương ứng
+ * Xuất ra 1 ảnh của sản phẩm tương ứng
  * @param int $id_product Mã sản phẩm
- * @return array Mảng ảnh
+ * @return array 1 ảnh
  */
 function product_selectImgs($id_product)
 {

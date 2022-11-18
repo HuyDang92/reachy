@@ -4,10 +4,10 @@
 </head>
 
 <body>
+    <div class="background_header">
+        <img style="width: 100%; height: 50%;" src="<?= $CONTENT_URL ?>/imgs/interface/background.png" alt="">
+    </div>
     <div class="container__sign-in">
-        <div class="background_header">
-            <img style="width: 100%; height: 50%;" src="<?= $CONTENT_URL ?>/imgs/interface/background.png" alt="">
-        </div>
         <div style="margin-left: 65%;" class="title__sign-in">
             <h1>Kích hoạt tài khoản</h1>
         </div>
