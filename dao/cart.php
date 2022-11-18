@@ -32,9 +32,9 @@
     * @param string $size Kích thước sản phẩm
     * @param int $quantity Số lượng sản phẩm
     */
-    function cart_update($size,$quantity){
-        $sql = "UPDATE cart SET size=?, quantity = ?";
-        pdo_execute($sql,$size,$quantity);
+    function cart_update($id_cart,$size,$quantity){
+        $sql = "UPDATE cart SET size=?, quantity = ? WHERE id_cart = ?";
+        pdo_execute($sql,$size,$quantity,$id_cart);
     }
     function cart_checkExist($id_user,$id_product){
         $sql = "SELECT * FROM cart WHERE id_user = ? AND id_product = ?";

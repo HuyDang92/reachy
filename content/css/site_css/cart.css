@@ -22,7 +22,7 @@
     padding: 0.4rem;
     margin-top: 0.3rem;
 }
-.cart-row{
+.cart-row>form{
     display: flex;
     justify-content: space-between;
     align-items: center;

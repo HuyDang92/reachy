@@ -5,6 +5,7 @@
         echo '<script> alert("Hãy đăng nhập để sử dụng chức năng");</script>';
         $carts = array();
     }
+    add_session("lasted_url",getCurrentUrl());
 ?>
 <head>
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/cart.css">
@@ -33,24 +34,25 @@
                 $product_img = product_selectImgs($cart['id_product']);
                 $product = product_selectOne($cart['id_product']);
             ?>
-                <form action="">
-                    <li class="cart-row">
+                <li class="cart-row">
+                    <form action="handle_cart.php" method="POST"> 
                         <div style="display: flex;" class="group">
-                            <input type="checkbox" name="product_select" id="">
+                            <input type="checkbox" class="cart_selecter" name="cart_selecter">
+                            <input type="hidden" name="id_cart" value="<?=$cart['id_cart']?>">
                             <div style="margin-right: 1rem;" class="cart__product-img">
                                 <img style="width: 5rem;"
                                     src="<?=$CONTENT_URL?>/imgs/products/<?=$product_img['contain']?>" alt="">
                             </div>
                             <div class="cart__product-info">
                                 <h4 style="margin-bottom: 5px; margin-top: 0;"><?=$product['name']?></h4>
-                                <select name="size" id="">
-                                    <option <?php if($cart['size'] == "36") echo "selected" ?> value="">Size 36</option>
-                                    <option <?php if($cart['size'] == "37") echo "selected" ?> value="">Size 37</option>
-                                    <option <?php if($cart['size'] == "38") echo "selected" ?> value="">Size 38</option>
-                                    <option <?php if($cart['size'] == "39") echo "selected" ?> value="">Size 39</option>
-                                    <option <?php if($cart['size'] == "40") echo "selected" ?> value="">Size 40</option>
-                                    <option <?php if($cart['size'] == "41") echo "selected" ?> value="">Size 41</option>
-                                    <option <?php if($cart['size'] == "42") echo "selected" ?> value="">Size 42</option>
+                                <select name="size" id="" class="size_selecter">
+                                    <option <?php if($cart['size'] == "36") echo "selected" ?> value="36">Size 36</option>
+                                    <option <?php if($cart['size'] == "37") echo "selected" ?> value="37">Size 37</option>
+                                    <option <?php if($cart['size'] == "38") echo "selected" ?> value="38">Size 38</option>
+                                    <option <?php if($cart['size'] == "39") echo "selected" ?> value="39">Size 39</option>
+                                    <option <?php if($cart['size'] == "40") echo "selected" ?> value="40">Size 40</option>
+                                    <option <?php if($cart['size'] == "41") echo "selected" ?> value="41">Size 41</option>
+                                    <option <?php if($cart['size'] == "42") echo "selected" ?> value="42">Size 42</option>
                                 </select>
                             </div>
                         </div>
@@ -77,15 +79,15 @@
                         </div>
                         <div class="cart-total">
                             <span  style="font-size: 18px; font-weight: 600;">Thành tiền: <br> <strong class="cart_totalPrice"
-                                    style="font-size: 20px;color: darkred; ">1,000,000</strong><strong style="font-size: 20px;color: darkred; ">đ</strong></span> <br>
+                                    style="font-size: 20px;color: darkred; "></strong><strong style="font-size: 20px;color: darkred; ">đ</strong></span> <br>
                             <a href=""><i class="fa-solid fa-trash-can"></i></a>
                         </div>
-                    </li>
-                </form>
+                    </form>
+                </li>
             <?php } ?>
-            <div style="display: flex; justify-content: space-between;" class="cart-note">
+            <!-- <div style="display: flex; justify-content: space-between;" class="cart-note">
                 <div style="width: 50%; padding-right: 1rem;" class="note-left">
-                    Hình
+                    <img src="/imgs/interface/sport3.webp" alt="Giày Nike">
                 </div>
                 <ul style="width: 50%;" class="note-right">
                     <strong>Chính sách đổi trả</strong>
@@ -94,7 +96,7 @@
                     <li>Đối với khách hàng ở tỉnh ngoài HCM sản phẩm được đổi size trong 7 ngày kể từ ngày nhận</li>
                     <li>Liên hệ: 09xxxxxxxx để được hỗ trợ nhanh nhất ạ</li>
                 </ul>
-            </div>
+            </div> -->
             <a href="">
                 <button type="submit">
                     <div class="btn_submit">
@@ -110,7 +112,7 @@
             <li>
                 <h4 style="margin: 0;">Thông tin đơn hàng</h4>
             </li>
-            <li>Tổng tiền: <span style="float: right; font-weight: 700;">0đ</span></li>
+            <li>Tổng tiền: <span id="cart_finalPrice" style="float: right; font-weight: 700;" data-value="0">0đ</span></li>
             <li>Bạn có thể nhập mã giảm giá ở trang thanh toán</li>
             <a href="">
                 <button type="submit">

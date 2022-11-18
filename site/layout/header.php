@@ -91,9 +91,9 @@ $sql_category = category_selectAll();
                                 <div class="sub__menu-user">THÔNG TIN CÁ NHÂN</div>
                             </a>
                             <?php if ($user['role'] == 1 || $user['role'] == 2) { ?>
-                            <a href="<?= $ADMIN_URL ?>/">
-                                <div class="sub__menu-user">QUẢN LÍ CỬA HÀNG</div>
-                            </a>
+                                <a href="<?= $ADMIN_URL ?>/">
+                                    <div class="sub__menu-user">QUẢN LÍ CỬA HÀNG</div>
+                                </a>
                             <?php } ?>
                             <a href="<?= $SITE_URL ?>/user?sign_out">
                                 <div class="sub__menu-user">ĐĂNG XUẤT</div>
