@@ -81,7 +81,7 @@
                         <div class="cart-total">
                             <span  style="font-size: 18px; font-weight: 600;">Thành tiền: <br> <strong class="cart_totalPrice"
                                     style="font-size: 20px;color: darkred; "></strong><strong style="font-size: 20px;color: darkred; ">đ</strong></span> <br>
-                            <a href=""><i class="fa-solid fa-trash-can"></i></a>
+                            <a href="handle_cart.php?id_cart=<?=$cart['id_cart']?>"><i class="fa-solid fa-trash-can"></i></a>
                         </div>
                     </form>
                 </li>

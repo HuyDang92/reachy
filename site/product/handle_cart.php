@@ -9,6 +9,8 @@
     $id_user = $_SESSION['login'];
     if(exist_param("btn_quantity")){
         cart_update($id_cart,$size,$quantity);
+    }else if(true){
+        cart_delete($id_cart);
     }else{
         if(cart_checkExistSize($id_user,$id_product,$size)){
             $allCarts = cart_checkExistSize($id_user,$id_product,$size);
