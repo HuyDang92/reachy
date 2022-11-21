@@ -39,12 +39,13 @@
                         <div style="display: flex;" class="group">
                             <input type="checkbox" class="cart_selecter" name="cart_selecter">
                             <input type="hidden" name="id_cart" value="<?=$cart['id_cart']?>">
+                            <input type="hidden" name="id_product" value="<?=$cart['id_product']?>">
                             <div style="margin-right: 1rem;" class="cart__product-img">
                                 <img style="width: 5rem;"
                                     src="<?=$CONTENT_URL?>/imgs/products/<?=$product_img['contain']?>" alt="">
                             </div>
                             <div class="cart__product-info">
-                                <h4 style="margin-bottom: 5px; margin-top: 0;"><?=$product['name']?></h4>
+                                <h4 style="margin-bottom: 5px; margin-top: 0;"><a href="<?=$SITE_URL?>/product/?product&id_product=<?=$cart['id_product']?>"><?=$product['name']?></a></h4>
                                 <select name="size" id="" class="size_selecter">
                                     <option <?php if($cart['size'] == "36") echo "selected" ?> value="36">Size 36</option>
                                     <option <?php if($cart['size'] == "37") echo "selected" ?> value="37">Size 37</option>
@@ -57,13 +58,13 @@
                             </div>
                         </div>
                         <div class="product-count">
-                            <button type="button" class="btn_descreaseQuantityProduct">
+                            <button type="button" name="btn_quantity" class="btn_descreaseQuantityProduct">
                                 <span class="material-symbols-outlined">
                                     remove
                                 </span>
                             </button>
                             <input type="number" name="quantity" class="product_quantity" value="<?=$cart['quantity']?>">
-                            <button type="button" class="btn_increaseQuantityProduct">
+                            <button type="button" name="btn_quantity" class="btn_increaseQuantityProduct">
                                 <span class="material-symbols-outlined">
                                     add
                                 </span>
@@ -80,7 +81,7 @@
                         <div class="cart-total">
                             <span  style="font-size: 18px; font-weight: 600;">Thành tiền: <br> <strong class="cart_totalPrice"
                                     style="font-size: 20px;color: darkred; "></strong><strong style="font-size: 20px;color: darkred; ">đ</strong></span> <br>
-                            <a href=""><i class="fa-solid fa-trash-can"></i></a>
+                            <a href="handle_cart.php?id_cart=<?=$cart['id_cart']?>"><i class="fa-solid fa-trash-can"></i></a>
                         </div>
                     </form>
                 </li>
@@ -128,4 +129,17 @@
         </div>
     </section>
     <script src="<?=$CONTENT_URL?>/js/cart.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            var scrollpos = sessionStorage.getItem('scrollpos');
+            if (scrollpos) {
+                window.scrollTo(0, scrollpos);
+                sessionStorage.removeItem('scrollpos');
+            }
+        });
+
+        window.addEventListener("beforeunload", function (e) {
+            sessionStorage.setItem('scrollpos', window.scrollY);
+        });
+    </script>
 </body>
