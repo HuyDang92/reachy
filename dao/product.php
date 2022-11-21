@@ -156,9 +156,9 @@ function product_selectArrayImgs($id_product)
     return pdo_query($sql, $id_product);
 }
 /**
- * Xuất ra mảng ảnh của sản phẩm tương ứng
+ * Xuất ra 1 ảnh của sản phẩm tương ứng
  * @param int $id_product Mã sản phẩm
- * @return array Mảng ảnh
+ * @return array 1 ảnh
  */
 function product_selectImgs($id_product)
 {
@@ -261,4 +261,13 @@ function product_checkLiked($id_product,$id_user){
 function product_unLike($id_wishlist){
     $sql = "DELETE FROM wish_list WHERE id_wishlist = ?";
     pdo_execute($sql,$id_wishlist);
+}
+/**
+* Kiểm tra sản phẩm có thuộc tính size không
+* @param int $id_product Mã sản phẩm
+* @return array Danh sách size của sản phẩm tương ứng
+*/
+function product_checkSizeExist($id_product){
+    $sql = "SELECT * FROM size WHERE id_product = ?";
+    return pdo_query_one($sql,$id_product);
 }

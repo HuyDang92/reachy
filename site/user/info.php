@@ -45,13 +45,12 @@ $user = user_selectById($_SESSION['login']);
                         <label class="overplay" for="user__uploadImg--checkbox"></label>
                         <div class="user__uploadImg--contentbox">
                             <form action="handle_user.php" method="POST" enctype="multipart/form-data">
-                                <input style="display: none" name="new_avatar" accept="image/*" type="file"
+                                <img id="defaultUploadImg" src="<?= $CONTENT_URL ?>/imgs/interface/admin-main.png"
+                                    alt="Ảnh đại diện"> <br>
+                                <label for="browseImg">Tải ảnh lên</label> <br>
+                                <input style="display: none" value="<?= $CONTENT_URL . '/imgs/user/' . $user['img'] ?>" name="new_avatar" accept="image/*" type="file"
                                     id="browseImg">
-                                <label class="add_img" for="browseImg">
-                                    <img id="defaultUploadImg" src="<?= $CONTENT_URL ?>/imgs/user/default-avatar.jpg"
-                                        alt="Ảnh đại diện">
-                                    <i class="fa-solid fa-camera"></i>
-                                </label> <br>
+                                <input type="hidden" name="old_img" value="<?=$user['img']?>">
                                 <button type="submit" name="updateAvatar" id="btn-save">
                                     <div class="btn_submit">
                                         <div class="btn_submit-border">

@@ -91,9 +91,9 @@ $sql_category = category_selectAll();
                                 <div class="sub__menu-user">THÔNG TIN CÁ NHÂN</div>
                             </a>
                             <?php if ($user['role'] == 1 || $user['role'] == 2) { ?>
-                            <a href="<?= $ADMIN_URL ?>/">
-                                <div class="sub__menu-user">QUẢN LÍ CỬA HÀNG</div>
-                            </a>
+                                <a href="<?= $ADMIN_URL ?>/">
+                                    <div class="sub__menu-user">QUẢN LÍ CỬA HÀNG</div>
+                                </a>
                             <?php } ?>
                             <a href="<?= $SITE_URL ?>/user?sign_out">
                                 <div class="sub__menu-user">ĐĂNG XUẤT</div>
@@ -119,7 +119,7 @@ $sql_category = category_selectAll();
                     <li>
                         <input type="checkbox" id="search_btn" hidden>
                         <label for="search_btn"><span class="material-symbols-outlined">search</span></label>
-                        <form class="header__form-search" action="" method="GET">
+                        <form class="header__form-search" action="<?=$SITE_URL?>/homepage/" method="GET">
                             <input type="text" name="search" placeholder="Nhập từ khóa " required>
                             <label for="search_btn">
                                 <span class="material-symbols-outlined">
