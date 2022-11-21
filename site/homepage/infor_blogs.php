@@ -30,11 +30,11 @@
         <div class="container_i4">
             <h2><?=$blog['title']?></h2>
             <br><br><span><?=$blog_content[0]?></span>
-            <br><br><div class="i4_img"><img src="<?= $CONTENT_URL ?>/imgs/blogs/blogs1.png " alt="" width="100%" ></div>
+            <br><br><div class="i4_img"><img src="<?= $CONTENT_URL ?>/imgs/blogs/<?=$blog_img[0]?> " alt="" width="100%" ></div>
             <br><span><?=$blog_content[1]?></span>
-            <br><br><div class="i4_img"><img src="<?= $CONTENT_URL ?>/imgs/blogs/blogs2.png " alt="" width="100%"></div>
+            <br><br><div class="i4_img"><img src="<?= $CONTENT_URL ?>/imgs/blogs/<?=$blog_img[1]?> " alt="" width="100%"></div>
             <br><span><?=$blog_content[2]?></span>
-            <br><br><div class="i4_img"><img src="<?= $CONTENT_URL ?>/imgs/blogs/blogs3.png " alt="" width="100%"></div>
+            <br><br><div class="i4_img"><img src="<?= $CONTENT_URL ?>/imgs/blogs/<?=$blog_img[2]?> " alt="" width="100%"></div>
             <br><span><?=$blog_content[3]?></span><br><br>
         </div>
     </div>

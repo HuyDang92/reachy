@@ -26,17 +26,17 @@
     </div>
     <div class="container_blogs">  
         <?php foreach($blog_list as $blog_row){ 
-            // $blog_firstContent = $
+            $blog_content = explode("`",$blog_row['content']);
         ?>
             <div class="blogs_row"> 
                 <a class="promotion_blogs" href="<?= $SITE_URL ?>/homepage?infor_blogs&id_blog=<?=$blog_row['id_blog']?>">
                     <div class="img_blogs">
-                        <img src="<?= $CONTENT_URL ?>/imgs/blogs/blogs1.png " alt="" width="100%">
+                        <img src="<?= $CONTENT_URL ?>/imgs/blogs/<?=blog_selectFirstImg($blog_row['id_blog'])?> " alt="" width="100%">
                     </div>
                     <div class="content_blogs">
                         <h2><?=$blog_row['title']?></h2><br>
                         <i><?=$blog_row['date']?></i>
-                        <div class="blog_shortContent"><?=$blog_row['content']?></div>
+                        <div class="blog_shortContent"><?=$blog_content[0]?></div>
                         <div class="view_more"><button type="submit">Xem thêm</button></div>
                     </div>
                 </a>

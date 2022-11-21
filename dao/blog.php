@@ -25,4 +25,14 @@
         $sql = "DELETE FROM blog WHERE id_blog = ?";
         pdo_execute($sql,$id_blog);
     }
+    /**
+    * Lấy ảnh bìa tin tức
+    * @param int $id_blog Mã tin tức
+    * @return string Ảnh
+    */
+    function blog_selectFirstImg($id_blog){
+        $blog = blog_selectById($id_blog);
+        $firstImg = explode("`",$blog['img']);
+        return $firstImg[0];
+    }
 ?>
