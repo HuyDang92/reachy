@@ -35,7 +35,7 @@
                     </div>
                     <div class="content_blogs">
                         <h2><?=$blog_row['title']?></h2><br>
-                        <i><?=$blog_row['date']?></i>
+                        <i><span>Lượt xem: <?=$blog_row['view']?></span> | <?=$blog_row['date']?></i>
                         <div class="blog_shortContent"><?=$blog_content[0]?></div>
                         <div class="view_more"><button type="submit">Xem thêm</button></div>
                     </div>

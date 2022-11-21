@@ -11,6 +11,7 @@
 </head>
 <?php  
     $blog = blog_selectById($_GET['id_blog']);
+    blog_increaseView($_GET['id_blog']);
     $blog_content = explode("`",$blog['content']);
     $blog_img = explode("`",$blog['img']);
 ?>

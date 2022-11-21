@@ -35,4 +35,12 @@
         $firstImg = explode("`",$blog['img']);
         return $firstImg[0];
     }
+    /**
+    * Tăng lượt xem tin tức
+    * @param int $id_blog Mã tin tức
+    */
+    function blog_increaseView($id_blog){
+        $sql = "UPDATE blog SET view = view + 1 WHERE id_blog = ?";
+        pdo_execute($sql,$id_blog);
+    }
 ?>

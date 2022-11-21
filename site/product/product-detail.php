@@ -71,36 +71,18 @@ $sql_imgs = product_selectArrayImgs($id_product);
                 </div>
                 <div class="product__detail-bottom">
                     <form action="handle_product-detail.php" method="POST">
-                        <div class="product-size">
-                            <div class="col-size">
-                                <input checked type="radio" name="size" value="36" hidden id="s36">
-                                <label for="s36">36</label>
+                        <?php if(product_checkSizeExist($sql_product['id_product'])){ 
+                            $product_size = product_checkSizeExist($sql_product['id_product']);
+                        ?>
+                            <div class="product-size">
+                                <?php for($i = 36;$i<43;$i++){ ?>
+                                    <div class="col-size">
+                                        <input <?php if($product_size[$i]==0) echo "disabled"?> type="radio" name="size" value="<?=$i?>" hidden id="s<?=$i?>">
+                                        <label for="s<?=$i?>"><?=$i?></label>
+                                    </div>
+                                <?php } ?>
                             </div>
-                            <div class="col-size">
-                                <input type="radio" name="size" value="37" hidden id="s37">
-                                <label for="s37">37</label>
-                            </div>
-                            <div class="col-size">
-                                <input type="radio" name="size" value="38" hidden id="s38">
-                                <label for="s38">38</label>
-                            </div>
-                            <div class="col-size">
-                                <input type="radio" name="size" value="39" hidden id="s39">
-                                <label for="s39">39</label>
-                            </div>
-                            <div class="col-size">
-                                <input type="radio" name="size" value="40" hidden id="s40">
-                                <label for="s40">40</label>
-                            </div>
-                            <div class="col-size">
-                                <input type="radio" name="size" value="41" hidden id="s41">
-                                <label for="s41">41</label>
-                            </div>
-                            <div class="col-size">
-                                <input type="radio" name="size" value="42" hidden id="s42">
-                                <label for="s42">42</label>
-                            </div>
-                        </div>
+                        <?php } ?>
                         <div class="product-count">
                             <button type="button" id="btn_descreaseQuantityProduct">
                                 <span class="material-symbols-outlined">

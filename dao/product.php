@@ -262,3 +262,12 @@ function product_unLike($id_wishlist){
     $sql = "DELETE FROM wish_list WHERE id_wishlist = ?";
     pdo_execute($sql,$id_wishlist);
 }
+/**
+* Kiểm tra sản phẩm có thuộc tính size không
+* @param int $id_product Mã sản phẩm
+* @return array Danh sách size của sản phẩm tương ứng
+*/
+function product_checkSizeExist($id_product){
+    $sql = "SELECT * FROM size WHERE id_product = ?";
+    return pdo_query_one($sql,$id_product);
+}
