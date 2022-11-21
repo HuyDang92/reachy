@@ -7,6 +7,7 @@ require_once "../../dao/category.php";
 require_once "../../dao/brand.php";
 require_once "../../dao/product.php";
 require_once "../../dao/comment.php";
+require_once "../../dao/blog.php";
 if (exist_param("contact")) {
     $VIEW_NAME = "homepage/contact.php";
 } else if (exist_param("category")) {
