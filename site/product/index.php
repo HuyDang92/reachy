@@ -12,6 +12,8 @@ if (exist_param("product")) {
     $VIEW_NAME = "product/product-detail.php";
 } else if (exist_param("cart")) {
     $VIEW_NAME = "product/cart.php";
+    // } else if (exist_param("buy")) {
+    //     $VIEW_NAME = "product/order.php";
 } else {
     $VIEW_NAME = "";
 }
