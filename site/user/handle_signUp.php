@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 require_once "../../global.php";
 require_once "../../dao/pdo.php";
 require_once "../../dao/user.php";

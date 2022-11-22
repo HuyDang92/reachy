@@ -14,8 +14,8 @@ if (exist_param("btn-sendmail")) {
 } else {
     if ($code_ipt == $_SESSION['code']) {
         user_insert($user_name, $password, $email, $phone_number);
-        user_activate($_SESSION['login']);
         user_signIn($email, $password);
+        user_activate($_SESSION['login']);
         unset($_SESSION['code']);
         header("location:../../index.php");
     } else {
