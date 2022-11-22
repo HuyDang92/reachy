@@ -2,17 +2,14 @@
     if(isset($_GET['id'])){
         $id_product = $_GET['id'];
         $comment = comment_selectByIdProduct($id_product);
-        $comment_export = comment_exportById($id_product);
-        if(count($comment_export)>0){
-            $product_name = product_selectOne($comment['id_product']);
-            $user__name = user_selectById($comment['id_user']);
+        $product_name = product_selectOne($id_product);
         }        
-    }
+    
 ?>
 <div class="list__container">
     <h1 class="list__heading">Quản lý bình luận</h1>
     <?php
-        if(count($comment_export)>0){?>
+        if(count($comment)>0){?>
             <p>Tên sản phẩm: <?=$product_name["name"]?></p>
             <table border="1">
                 <thead>
@@ -25,7 +22,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php foreach($comment_export as $cmt){?>
+                <?php foreach($comment as $cmt){
+                    $user__name = user_selectById($cmt['id_user']);?>
                     <tr>
                         <td>
                             <input class="list__checkbox" type="checkbox">

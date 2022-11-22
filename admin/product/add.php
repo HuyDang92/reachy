@@ -1,6 +1,6 @@
 <?php
     $loai = category_selectAll();
-    $brand = brand_selectAll();
+    // $brand = brand_selectAll();
 ?>
 <div class="add__container">
     <h1>Thêm mới sản phẩm</h1>
@@ -13,18 +13,21 @@
         <p>Tên sản phẩm</p>
         <input type="text" class="add_input" name="name">
         <p>Mã loại</p>
-        <select id="" name="id_cate">
+        <select id="product_cates" name="id_cate" onchange="selecterValue('add')">
             <?php foreach($loai as $l){
                 extract($l)?>
                 <option value="<?=$id_category?>"><?=$id_category?> - <?=$name?></option>
             <?php }?>
         </select>
         <p>Thương hiệu</p>
-        <select id="" name="id_brand">
-            <?php foreach($brand as $b){
-                extract($b)?>
-                <option value="<?=$id_brand?>"><?=$id_brand?> - <?=$name?></option>
-            <?php }?>
+        <select id="product_brands" name="id_brand">
+            <?php foreach($loai as $l){
+                $brand = brand_selectAll_byCateId($l['id_category']);   
+                foreach($brand as $b){?>
+                    <option value="<?=$b['id_category'] . '-' . $b['id_brand']?>"><?=$b['id_brand'] .' - '. $b['name']?></option>
+                <?php } 
+            } ?>
+            
         </select>
         <p>Giá</p>
         <input type="number" class="add_input" name="price">

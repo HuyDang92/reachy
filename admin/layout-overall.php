@@ -52,5 +52,5 @@
         </footer>
     </div>
 </body>
-
+<script src="<?= $CONTENT_URL ?>/js/brandByCate.js"></script>
 </html>
