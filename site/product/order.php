@@ -1,4 +1,5 @@
-
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/root.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/order.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/form.css">
+
 </head>
     <?php 
         $user_order = user_selectById($_SESSION['login']);
@@ -18,25 +20,10 @@
         }
     ?>
 <body>
-    <div class="background_header">
-        <img style="width: 100%; height: 50%; position: absolute; z-index: -10; top: 0;"
-            src="<?= $CONTENT_URL ?>/imgs/interface/background.png" alt="">
-    </div>
-    <div class="title__sign-in">
-        <h1>Mua hàng</h1>
-        <div class="title_link">
-            <a style="color: #fff;" href="<?= $SITE_URL ?>/homepage">Home</a>
-            <i class="fa-solid fa-arrow-right-long"></i>Mua hàng
-        </div>
-    </div>
+
     <div class="container-order">
         <div class="order-left">
-            <a style="display: flex;" href="<?= $SITE_URL ?>/homepage">
-                <img style="margin-right: 1rem; width: 2rem;" src="<?= $CONTENT_URL ?>/imgs/interface/logo.svg"
-                    alt="logo">
-                <h2 style="font-size: 40px; font-weight: 700;">REACHY</h2>
-            </a>
-            <h3 style="margin: 1rem 0 0 0;">Thông tin giao hàng</h3>
+            <h4 style="margin: 0;">THÔNG TIN GIAO HÀNG</h4>
             <!-- <span style="margin-bottom: 1rem;">Bạn có tài khoản
                 <a style="color: darkturquoise;" href="<?= $SITE_URL ?>/user?sign_in">
                     Đăng nhập
@@ -44,15 +31,15 @@
             </span> -->
             <form action="">
                 <span>Họ và tên</span> <br>
-                <input type="text" name="" id="" value="<?=$user_order['name']?>" readonly> <br>
+                <input type="text" name="" id="" value="<?= $user_order['name'] ?>" readonly> <br>
                 <div class="box-flex">
                     <label style="margin-right: 0.5rem; width: 70%;">
                         <span>Email</span> <br>
-                        <input type="text" name="" value="<?=$user_order['email']?>" readonly>
+                        <input type="text" name="" value="<?= $user_order['email'] ?>" readonly>
                     </label>
                     <label>
                         <span>Số điện thoại</span> <br>
-                        <input type="text" name="" value="<?=$user_order['phone_number']?>" readonly>
+                        <input type="text" name="" value="<?= $user_order['phone_number'] ?>" readonly>
                     </label>
                 </div>
                 <div class="deliver">
@@ -135,7 +122,44 @@
                     <span>Tổng cộng</span>
                     <h2><?php echo number_format($product_row['price']*$product['quantity'] + 30000); ?>đ</h2>
                 </div>
+                <form class="payment" action="">
+                    <div class="pay-row">
+                        <input type="radio" name="payment" id="cash" checked>
+                        <label for="cash">Trả tiền mặt khi nhận hàng</label>
+                    </div>
+                    <div style="display: block;" class="pay-row">
+                        <input type="radio" name="payment" id="card">
+                        <label for="card">Chuyển khoản ngân hàng</label> <br>
+                        <p>Thực hiện thanh toán vào ngay tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng Mã đơn hàng
+                            của bạn trong phần Nội dung thanh toán. Đơn hàng sẽ đươc giao sau khi tiền đã chuyển.</p>
+                    </div>
+                    <div class="pay-row">
+                        <input type="radio" name="payment" id="momo">
+                        <label for="momo">Quét mã MoMo</label>
+                        <img src="<?= $CONTENT_URL ?>/imgs/momo 1.svg" alt="">
+                    </div>
+                    <div class="pay-row">
+                        <input type="radio" name="payment" id="zalo">
+                        <label for="zalo">Quét mã ZaloPay</label>
+                        <img src="<?= $CONTENT_URL ?>/imgs/zaloPay 1.svg" alt="">
+
+                    </div>
+                    <div class="pay-row">
+                        <input type="radio" name="payment" id="viettel">
+                        <label for="viettel">Quét mã ViettelPay</label>
+                        <img src="<?= $CONTENT_URL ?>/imgs/viettel 1.svg" alt="">
+
+                    </div>
+                    <div style="margin-top: 1rem; display: flex;" class="agree">
+                        <input style="margin-right: 0.5rem;" type="checkbox" id="agree">
+                        <label for="agree">Tôi đã đọc và
+                            đồng ý với điều khoản và
+                            điều kiện của
+                            website</label>
+                    </div>
+                </form>
             </div>
+
             <a href="">
                 <button type="submit">
                     <div class="btn_submit">
@@ -146,6 +170,9 @@
                     </div>
                 </button>
             </a>
+            <p style="color: #bbbbbb;">Thông tin cá nhân của bạn sẽ được sử dụng để xử lý đơn hàng, tăng trải nghiệm sử
+                dụng website, và cho các
+                mục đích cụ thể khác đã được mô tả trong chính sách riêng tư của chúng tôi.</p>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
@@ -187,9 +214,9 @@
                 for (const w of dataWards) {
                     wards.options[wards.options.length] = new Option(w.Name, w.Name);
                 }
-                }
-            };
-        }
+            }
+        };
+    }
     </script>
 
 </body>

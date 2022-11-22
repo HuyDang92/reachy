@@ -111,10 +111,11 @@ $sql_category = category_selectAll();
                         </div>
                         <?php } ?>
                     </li>
-                    <li>
+                    <li style="display: flex;">
                         <a href="<?= $SITE_URL ?>/product?cart">
                             <span class="material-symbols-outlined">garden_cart</span>
                         </a>
+                        <small>(0)</small>
                     </li>
                     <li>
                         <input type="checkbox" id="search_btn" hidden>

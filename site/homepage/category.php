@@ -108,7 +108,7 @@ $sql_product = getRowInPageBySql($sql_total_product, $page_num, $page_size);
             <h1>Danh Mục</h1>
             <div class="title_link">
                 <a style="color: #fff;" href="<?= $SITE_URL ?>/homepage">Home</a> <i
-                    class="fa-solid fa-arrow-right-long"></i> <?=$sql_categoryOne['name']?>
+                    class="fa-solid fa-arrow-right-long"></i> <?= $sql_categoryOne['name'] ?>
             </div>
         </div>
         <div class="category_content">
@@ -222,19 +222,23 @@ $sql_product = getRowInPageBySql($sql_total_product, $page_num, $page_size);
                         ?>
                         <li>
                             <div class="product__selection-top">
-                                <a href="index.php?page=product&product_id=<?=$row_product['id_product']?>" target="">
-                                <a href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product['id_product'] ?>"
-                                    target="">
-                                    <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $imgs__product['contain'] ?>"
-                                        alt="">
-                                </a>
-                                <div class="stick_top">
-                                    <span class="sale">-<?= $row_product['sale_off'] ?>%</span>
-                                    <span class="new">NEW</span>
-                                </div>
+                                <a href="index.php?page=product&product_id=<?= $row_product['id_product'] ?>" target="">
+                                    <a href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product['id_product'] ?>"
+                                        target="">
+                                        <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $imgs__product['contain'] ?>"
+                                            alt="">
+                                    </a>
+                                    <div class="stick_top">
+                                        <span class="sale">-<?= $row_product['sale_off'] ?>%</span>
+                                        <span class="new">NEW</span>
+                                    </div>
                             </div>
                             <div class="btn_add-buy">
-                                <button class="cart">ADD VÀO GIỎ</button>
+                                <button name="btn_addCart" class="cart">
+                                    <span class="add-to-cart">THÊM VÀO GIỎ</span>
+                                    <span class="added">ĐÃ THÊM</span>
+                                    <i class="fa fa-shopping-cart"></i> <i class="fa fa-square"></i>
+                                </button>
                                 <button class="buy">MUA NGAY</button>
                             </div>
                             <div class="product__selection-info">
@@ -309,4 +313,5 @@ $sql_product = getRowInPageBySql($sql_total_product, $page_num, $page_size);
         </div>
     </div>
     <script src="<?= $CONTENT_URL ?>/js/category.js"></script>
+    <script src="<?= $CONTENT_URL ?>/js/cart.js"></script>
 </body>

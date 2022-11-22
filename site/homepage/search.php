@@ -3,19 +3,21 @@
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/category.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/root.css">
     <style>
-        .search__products--container{
-            width: 100%;
-            margin-top: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .search__products--container>.search__title{
-            text-align: left;
-            margin: 1.5rem 0;
-        }
+    .search__products--container {
+        width: 100%;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search__products--container>.search__title {
+        text-align: left;
+        margin: 1.5rem 0;
+    }
     </style>
 </head>
+
 <body>
     <div class="background_header">
         <img style="width: 100%; height: 50%; position: absolute; z-index: -10; top: 0;"
@@ -31,12 +33,12 @@
         </div>
         <div class="search__products--container">
             <div class="search__title">
-                <h2>Kết quả tìm kiếm cho: "<?=$search?>"</h2>
-                <?php if($total_products != 0){ ?>
-                    <small>Có <?=$total_products?> sản phẩm tương ứng</small>
+                <h2>Kết quả tìm kiếm cho: "<?= $search ?>"</h2>
+                <?php if ($total_products != 0) { ?>
+                <small>Có <?= $total_products ?> sản phẩm tương ứng</small>
                 <?php } ?>
             </div>
-            <div class="category__content-right">
+            <div style="margin: 0 10%;" class="container-search">
                 <div class="product__container">
                     <div class="btn_page">
                         <form action="" method="POST" id="sort__form">
@@ -78,18 +80,18 @@
                             $imgs__product = product_selectImgs($row_product['id_product']);
                             $discount_product = $row_product['price'] + $row_product['price'] * ($row_product['sale_off'] / 100);
                         ?>
-                        <li>
+                        <li style="flex-basis: 24%;">
                             <div class="product__selection-top">
-                                <a href="index.php?page=product&product_id=<?=$row_product['id_product']?>" target="">
-                                <a href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product['id_product'] ?>"
-                                    target="">
-                                    <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $imgs__product['contain'] ?>"
-                                        alt="">
-                                </a>
-                                <div class="stick_top">
-                                    <span class="sale">-<?= $row_product['sale_off'] ?>%</span>
-                                    <span class="new">NEW</span>
-                                </div>
+                                <a href="index.php?page=product&product_id=<?= $row_product['id_product'] ?>" target="">
+                                    <a href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product['id_product'] ?>"
+                                        target="">
+                                        <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $imgs__product['contain'] ?>"
+                                            alt="">
+                                    </a>
+                                    <div class="stick_top">
+                                        <span class="sale">-<?= $row_product['sale_off'] ?>%</span>
+                                        <span class="new">NEW</span>
+                                    </div>
                             </div>
                             <div class="btn_add-buy">
                                 <button class="cart">ADD VÀO GIỎ</button>

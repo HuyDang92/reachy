@@ -9,15 +9,6 @@
         return pdo_query($sql, $id_product);
     }
     /**
-    * Xuất bình luận theo mã sản phẩm
-    * @param int $id_product Mã sản phẩm
-    * @return array Danh sách bình luận
-    */
-    function comment_exportById($id_product){
-        $sql = "SELECT * FROM comment WHERE id_product=?";
-        return pdo_query($sql, $id_product);
-    }
-    /**
     * Thêm bình luận
     * @param int $id_product
     * @param int $id_user

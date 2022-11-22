@@ -90,3 +90,25 @@ size_selecters.forEach(size_selecter => {
         }
     )
 });
+
+
+// hiệu ứng add 
+document.addEventListener("DOMContentLoaded", function(event) {
+
+
+    const cartButtons = document.querySelectorAll('.cart');
+
+    cartButtons.forEach(button => {
+
+        button.addEventListener('click', cartClick);
+
+    });
+
+    function cartClick() {
+        let button = this;
+        button.classList.add('clicked');
+    }
+
+
+
+});
