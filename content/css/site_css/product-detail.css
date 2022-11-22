@@ -185,6 +185,10 @@ section{
     border: 0.5px solid #000;
     transition: all 0.3s;
 }
+.col-size>input:disabled ~ label{
+    cursor: not-allowed;
+    opacity: 0.3;
+}
 .col-size>input:checked ~ label{
     border: 1px solid var(--blue);
     background-image: linear-gradient(90deg, var(--blue), var(--green));

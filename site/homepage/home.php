@@ -30,16 +30,7 @@ $sql_slide = product_selectAllSlide();
                         <div class="slide__item-left">
                             <h1><?= $slide['title'] ?></h1>
                             <p><?= $slide['content'] ?></p>
-                            <!-- <div class="btn__add-cart">
-                                    <button>
-                                        <a href="">
-                                            <span class="material-symbols-outlined">
-                                                add
-                                            </span>
-                                        </a>
-                                    </button>
-                                    <h4>THÊM VÀO GIỎ HÀNG</h4>
-                                </div> -->
+
                         </div>
                         <div class="slide__item-right">
                             <img src="<?= $CONTENT_URL ?>/imgs/interface/<?= $slide['img'] ?>" alt="">
@@ -107,12 +98,15 @@ $sql_slide = product_selectAllSlide();
                                 </div>
                             </div>
                             <div class="btn_add-buy">
-                                <button class="cart">ADD VÀO GIỎ</button>
-                                <button class="buy">MUA NGAY</button>
+                                <button name="btn_addCart" class="cart">ADD VÀO GIỎ</button>
+                                <a
+                                    href="<?= $SITE_URL ?>/product/order.php?id_product=<?= $row_product_new['id_product'] ?>"><button
+                                        class="buy">MUA NGAY</button></a>
                             </div>
                             <div class="product__selection-info">
                                 <h4 class="product__name"><?= $row_product_new['name'] ?></h4>
-                                <div class="product__price"><?= number_format($row_product_new['price']*(100-$row_product_new['sale_off'])/100) ?>₫
+                                <div class="product__price">
+                                    <?= number_format($row_product_new['price'] * (100 - $row_product_new['sale_off']) / 100) ?>₫
                                     <span><?= number_format($row_product_new['price']) ?>₫</span>
                                 </div>
                             </div>
@@ -168,11 +162,14 @@ $sql_slide = product_selectAllSlide();
                             </div>
                             <div class="btn_add-buy">
                                 <button class="cart">ADD VÀO GIỎ</button>
-                                <button class="buy">MUA NGAY</button>
+                                <a
+                                    href="<?= $SITE_URL ?>/product/order.php?id_product=<?= $row_product_new['id_product'] ?>"><button
+                                        class="buy">MUA NGAY</button></a>
                             </div>
                             <div class="product__selection-info">
                                 <h4 class="product__name"><?= $row_product_new['name'] ?></h4>
-                                <div class="product__price"><?= number_format($row_product_new['price']*(100-$row_product_new['sale_off'])/100) ?>₫
+                                <div class="product__price">
+                                    <?= number_format($row_product_new['price'] * (100 - $row_product_new['sale_off']) / 100) ?>₫
                                     <span><?= number_format($row_product_new['price']) ?>₫</span>
                                 </div>
                             </div>
