@@ -6,11 +6,15 @@
     require_once "../../dao/cart.php";
     session_start();
     extract($_REQUEST);
+    print_r($_REQUEST);
     $id_user = $_SESSION['login'];
     if(exist_param("btn_quantity")){
         cart_update($id_cart,$size,$quantity);
-    }else if(true){
-        cart_delete($id_cart);
+        if($quantity==0){
+            cart_delete($id_cart);
+        }
+    }else if($_GET['id_cart']){
+        cart_delete($_GET['id_cart']);
     }else{
         if(cart_checkExistSize($id_user,$id_product,$size)){
             $allCarts = cart_checkExistSize($id_user,$id_product,$size);

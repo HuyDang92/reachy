@@ -1,6 +1,8 @@
 <?php
 $sql_category = category_selectAll();
-
+if(isset($_SESSION['login'])){
+    $user_carts = cart_selectByUserId($_SESSION['login']);
+}
 ?>
 
 <head>
@@ -115,7 +117,11 @@ $sql_category = category_selectAll();
                         <a href="<?= $SITE_URL ?>/product?cart">
                             <span class="material-symbols-outlined">garden_cart</span>
                         </a>
-                        <small>(0)</small>
+                        <?php if(isset($_SESSION['login'])){ ?>
+                            <small>(<?php echo count($user_carts); ?>)</small>
+                        <?php }else{ ?>
+                            <small>(0)</small>
+                        <?php } ?>
                     </li>
                     <li>
                         <input type="checkbox" id="search_btn" hidden>

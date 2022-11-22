@@ -36,7 +36,7 @@ add_session("lasted_url", getCurrentUrl());
                 $product = product_selectOne($cart['id_product']);
             ?>
             <li class="cart-row">
-                <form action="handle_cart.php" method="POST">
+                <form action="handle_cart.php" method="POST" target="demo">
                     <div style="display: flex;" class="group">
                         <input type="checkbox" class="cart_selecter" name="cart_selecter">
                         <input type="hidden" name="id_cart" value="<?= $cart['id_cart'] ?>">
@@ -126,6 +126,7 @@ add_session("lasted_url", getCurrentUrl());
 
         </div>
     </section>
+    <iframe name="demo" style="display: none;"></iframe>
     <script src="<?= $CONTENT_URL ?>/js/cart.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function(event) {

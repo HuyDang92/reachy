@@ -104,7 +104,7 @@ $sql_slide = product_selectAllSlide();
                                     <i class="fa fa-shopping-cart"></i> <i class="fa fa-square"></i>
                                 </button>
                                 <a
-                                    href="<?= $SITE_URL ?>/product/order.php?id_product=<?= $row_product_new['id_product'] ?>"><button
+                                    href="<?= $SITE_URL ?>/product/?buy&id_product=<?= $row_product_new['id_product'] ?>"><button
                                         class="buy">MUA NGAY</button></a>
                             </div>
                             <div class="product__selection-info">

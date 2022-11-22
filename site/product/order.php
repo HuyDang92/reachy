@@ -14,9 +14,11 @@
         $user_order = user_selectById($_SESSION['login']);
         if(isset($_SESSION['product'])){
             $product = $_SESSION['product'];
+            unset($_SESSION['product']);
         }
         if(isset($_SESSION['product-list'])){
             $product_list = $_SESSION['product-list'];
+            unset($_SESSION['product-list']);
         }
     ?>
 <body>
@@ -151,7 +153,7 @@
 
                     </div>
                     <div style="margin-top: 1rem; display: flex;" class="agree">
-                        <input style="margin-right: 0.5rem;" type="checkbox" id="agree">
+                        <input style="margin-right: 0.5rem;" type="checkbox" id="agree" required>
                         <label for="agree">Tôi đã đọc và
                             đồng ý với điều khoản và
                             điều kiện của
