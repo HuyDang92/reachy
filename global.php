@@ -135,17 +135,33 @@ function createMultiPage($base_url, $total_product, $page_num, $page_size = 3)
     return $links;
 }
 /**
-* Xuất danh sách các hàng theo bảng tương ứng
-* @param string $table Tên bảng
+* Xuất danh sách các hàng theo dòng lệnh sql tương ứng
+* @param string $sql Câu lệnh sql
 * @param int $page_num Thứ tự trang
 * @param int $page_size Số lượng sp trong 1 trang
 * @return array Danh sách sản phẩm
 */
-function getRowInPage($table,$sql, $page_num, $page_size)
+function getRowInPageBySql($sql, $page_num, $page_size)
 {
     try {
         $startRow = ($page_num - 1) * $page_size;
         $sql .= " LIMIT $startRow,$page_size";
+        return pdo_query($sql);
+    } catch (Exception $e) {
+        die("Lỗi trong hàm " . __FUNCTION__ . ":" . $e->getMessage());
+    }
+}
+/**
+* Xuất danh sách theo bảng tương ứng
+* @param string $table bảng tương ứng
+* @param int $page_num Thứ tự trang
+* @param int $page_size Số lượng sp trong 1 trang
+*/
+function getRowInPageByTable($table, $page_num, $page_size)
+{
+    try {
+        $startRow = ($page_num - 1) * $page_size;
+        $sql = "SELECT * FROM $table LIMIT $startRow,$page_size";
         return pdo_query($sql);
     } catch (Exception $e) {
         die("Lỗi trong hàm " . __FUNCTION__ . ":" . $e->getMessage());

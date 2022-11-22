@@ -8,6 +8,9 @@
     $user = user_selectById($id_user);
     if(exist_param("updateAvatar")){
         $img = save_file("new_avatar","$IMAGE_DIR/user/");
+        if($img == ""){
+            $img = $old_img;
+        }
         user_updateAvatar($id_user,$img);
         header("location:../user/?info");
     }else if(exist_param("updateInfo")){
