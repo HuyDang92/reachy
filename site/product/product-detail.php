@@ -158,6 +158,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
             <div id="comment" class="tabcontent">
                 <div class="box_container">
                     <div class="content_box">
+<<<<<<< HEAD
                         <?php foreach ($comments as $comment_row) {
                             $user = user_selectById($comment_row['id_user']);
                         ?>
@@ -168,6 +169,21 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                     <div class="user-name">
                                         <h3><?= $user['name'] ?></h3>
                                         <i><?= $comment_row['date'] ?></i>
+=======
+                        <?php if(count($comments)>0){ 
+                            foreach($comments as $comment_row){ 
+                            $user_cm = user_selectById($comment_row['id_user']);
+                        ?>
+                            <div class="comment-row">
+                                <div class="user-info">
+                                    <div class="user-info-left">
+                                        <img src="<?=$CONTENT_URL?>/imgs/user/<?=$user['img']?>"
+                                            alt="Ảnh đại diện">
+                                        <div class="user-name">
+                                            <h3><?=$user_cm['name']?></h3>
+                                            <i><?=$comment_row['date']?></i>
+                                        </div>
+>>>>>>> fbbb9dc12225575091a350a87d3e30e29e003b0e
                                     </div>
                                 </div>
                                 <?php if ($user['role'] == 1 || $user['role'] == 2) { ?>
@@ -176,8 +192,14 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                 </div>
                                 <?php } ?>
                             </div>
+<<<<<<< HEAD
                             <p><?= $comment_row['content'] ?></p>
                         </div>
+=======
+                            <?php } ?>
+                        <?php }else{ ?>
+                            <h2>Không có bình luận</h2>
+>>>>>>> fbbb9dc12225575091a350a87d3e30e29e003b0e
                         <?php } ?>
                     </div>
                     <?php if (isset($_SESSION['login'])) { ?>
@@ -372,7 +394,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
     <script src="<?= $CONTENT_URL ?>/js/slide_product.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/tabs.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/product_detail.js"></script>
-    <?php if (isset($_SESSION['message'])) { ?>
+    <?php if(isset($_SESSION['message'])) { ?>
     <script>
     alert("<?= $_SESSION['message']; ?>")
     </script>

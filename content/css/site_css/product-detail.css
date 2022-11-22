@@ -187,7 +187,7 @@ section{
 }
 .col-size>input:disabled ~ label{
     cursor: not-allowed;
-    background-color: gray;
+    opacity: 0.3;
 }
 .col-size>input:checked ~ label{
     border: 1px solid var(--blue);
