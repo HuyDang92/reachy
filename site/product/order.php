@@ -1,4 +1,5 @@
-
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,30 +8,17 @@
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/root.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/order.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/form.css">
+
 </head>
-    <?php 
-        $user_order = user_selectById($_SESSION['login']);
-    ?>
+<?php
+$user_order = user_selectById($_SESSION['login']);
+?>
+
 <body>
-    <div class="background_header">
-        <img style="width: 100%; height: 50%; position: absolute; z-index: -10; top: 0;"
-            src="<?= $CONTENT_URL ?>/imgs/interface/background.png" alt="">
-    </div>
-    <div class="title__sign-in">
-        <h1>Mua hàng</h1>
-        <div class="title_link">
-            <a style="color: #fff;" href="<?= $SITE_URL ?>/homepage">Home</a>
-            <i class="fa-solid fa-arrow-right-long"></i>Mua hàng
-        </div>
-    </div>
+
     <div class="container-order">
         <div class="order-left">
-            <a style="display: flex;" href="<?= $SITE_URL ?>/homepage">
-                <img style="margin-right: 1rem; width: 2rem;" src="<?= $CONTENT_URL ?>/imgs/interface/logo.svg"
-                    alt="logo">
-                <h2 style="font-size: 40px; font-weight: 700;">REACHY</h2>
-            </a>
-            <h3 style="margin: 1rem 0 0 0;">Thông tin giao hàng</h3>
+            <h4 style="margin: 0;">THÔNG TIN GIAO HÀNG</h4>
             <!-- <span style="margin-bottom: 1rem;">Bạn có tài khoản
                 <a style="color: darkturquoise;" href="<?= $SITE_URL ?>/user?sign_in">
                     Đăng nhập
@@ -38,15 +26,15 @@
             </span> -->
             <form action="">
                 <span>Họ và tên</span> <br>
-                <input type="text" name="" id="" value="<?=$user_order['name']?>" readonly> <br>
+                <input type="text" name="" id="" value="<?= $user_order['name'] ?>" readonly> <br>
                 <div class="box-flex">
                     <label style="margin-right: 0.5rem; width: 70%;">
                         <span>Email</span> <br>
-                        <input type="text" name="" value="<?=$user_order['email']?>" readonly>
+                        <input type="text" name="" value="<?= $user_order['email'] ?>" readonly>
                     </label>
                     <label>
                         <span>Số điện thoại</span> <br>
-                        <input type="text" name="" value="<?=$user_order['phone_number']?>" readonly>
+                        <input type="text" name="" value="<?= $user_order['phone_number'] ?>" readonly>
                     </label>
                 </div>
                 <div class="deliver">
@@ -179,46 +167,46 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script>
-        var citis = document.getElementById("city");
-        var districts = document.getElementById("district");
-        var wards = document.getElementById("ward");
-        var Parameter = {
-            url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json", 
-            method: "GET", 
-            responseType: "application/json", 
-        };
-        var promise = axios(Parameter);
-        promise.then(function (result) {
-            nderCity(result.data);
-        });
+    var citis = document.getElementById("city");
+    var districts = document.getElementById("district");
+    var wards = document.getElementById("ward");
+    var Parameter = {
+        url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+        method: "GET",
+        responseType: "application/json",
+    };
+    var promise = axios(Parameter);
+    promise.then(function(result) {
+        nderCity(result.data);
+    });
 
-        function renderCity(data) {
-            for (const x of data) {
-                citis.options[citis.options.length] = new Option(x.Name, x.Id);
-            }
-            citis.onchange = function () {
-                district.length = 1;
-                ward.length = 1;
-                if(this.value != ""){
+    function renderCity(data) {
+        for (const x of data) {
+            citis.options[citis.options.length] = new Option(x.Name, x.Id);
+        }
+        citis.onchange = function() {
+            district.length = 1;
+            ward.length = 1;
+            if (this.value != "") {
                 const result = data.filter(n => n.Id === this.value);
 
                 for (const k of result[0].Districts) {
                     district.options[district.options.length] = new Option(k.Name, k.Id);
                 }
-                }
-            };
-            district.onchange = function () {
-                ward.length = 1;
-                const dataCity = data.filter((n) => n.Id === citis.value);
-                if (this.value != "") {
+            }
+        };
+        district.onchange = function() {
+            ward.length = 1;
+            const dataCity = data.filter((n) => n.Id === citis.value);
+            if (this.value != "") {
                 const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
 
                 for (const w of dataWards) {
                     wards.options[wards.options.length] = new Option(w.Name, w.Id);
                 }
-                }
-            };
-        }
+            }
+        };
+    }
     </script>
 
 </body>

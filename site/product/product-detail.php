@@ -103,7 +103,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                             <input type="hidden" name="id_product" value="<?= $sql_product['id_product'] ?>">
                             <button name="btn_buy" type="submit">
                                 <div class="btn_submit">
-                                    <div class="btn_submit-border">
+                                    <div style="margin-top: 0;" class="btn_submit-border">
                                         MUA NGAY
                                         <span></span><span></span><span></span><span></span>
                                     </div>
@@ -142,7 +142,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
     </section>
     <section class="product__tabs-container">
         <div class="tabs">
-            <button class="tablinks " data-electronic="description">Mô Tả</button> <br>
+            <button class="tablinks active" data-electronic="description">Mô Tả</button> <br>
             <button class="tablinks" data-electronic="pd_detail">Chi Tiết</button>
             <button class="tablinks" data-electronic="comment">Bình luận</button>
             <button class="tablinks" data-electronic="rate">Đánh giá</button>
@@ -158,7 +158,6 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
             <div id="comment" class="tabcontent">
                 <div class="box_container">
                     <div class="content_box">
-<<<<<<< HEAD
                         <?php foreach ($comments as $comment_row) {
                             $user = user_selectById($comment_row['id_user']);
                         ?>
@@ -169,21 +168,6 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                     <div class="user-name">
                                         <h3><?= $user['name'] ?></h3>
                                         <i><?= $comment_row['date'] ?></i>
-=======
-                        <?php if(count($comments)>0){ 
-                            foreach($comments as $comment_row){ 
-                            $user_cm = user_selectById($comment_row['id_user']);
-                        ?>
-                            <div class="comment-row">
-                                <div class="user-info">
-                                    <div class="user-info-left">
-                                        <img src="<?=$CONTENT_URL?>/imgs/user/<?=$user['img']?>"
-                                            alt="Ảnh đại diện">
-                                        <div class="user-name">
-                                            <h3><?=$user_cm['name']?></h3>
-                                            <i><?=$comment_row['date']?></i>
-                                        </div>
->>>>>>> fbbb9dc12225575091a350a87d3e30e29e003b0e
                                     </div>
                                 </div>
                                 <?php if ($user['role'] == 1 || $user['role'] == 2) { ?>
@@ -192,14 +176,8 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                 </div>
                                 <?php } ?>
                             </div>
-<<<<<<< HEAD
                             <p><?= $comment_row['content'] ?></p>
                         </div>
-=======
-                            <?php } ?>
-                        <?php }else{ ?>
-                            <h2>Không có bình luận</h2>
->>>>>>> fbbb9dc12225575091a350a87d3e30e29e003b0e
                         <?php } ?>
                     </div>
                     <?php if (isset($_SESSION['login'])) { ?>
@@ -394,7 +372,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
     <script src="<?= $CONTENT_URL ?>/js/slide_product.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/tabs.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/product_detail.js"></script>
-    <?php if(isset($_SESSION['message'])) { ?>
+    <?php if (isset($_SESSION['message'])) { ?>
     <script>
     alert("<?= $_SESSION['message']; ?>")
     </script>

@@ -9,6 +9,7 @@
 .container-order{
     margin: 2rem 15%;
     display: flex;
+    margin-top: 8rem;
 }
 .order-left{
     border-right: 1px dotted #ccc;
