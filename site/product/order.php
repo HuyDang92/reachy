@@ -140,7 +140,44 @@ require_once "../../dao/cart.php";
                     <span>Tổng cộng</span>
                     <h2>1,000,000đ</h2>
                 </div>
+                <form class="payment" action="">
+                    <div class="pay-row">
+                        <input type="radio" name="payment" id="cash" checked>
+                        <label for="cash">Trả tiền mặt khi nhận hàng</label>
+                    </div>
+                    <div style="display: block;" class="pay-row">
+                        <input type="radio" name="payment" id="card">
+                        <label for="card">Chuyển khoản ngân hàng</label> <br>
+                        <p>Thực hiện thanh toán vào ngay tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng Mã đơn hàng
+                            của bạn trong phần Nội dung thanh toán. Đơn hàng sẽ đươc giao sau khi tiền đã chuyển.</p>
+                    </div>
+                    <div class="pay-row">
+                        <input type="radio" name="payment" id="momo">
+                        <label for="momo">Quét mã MoMo</label>
+                        <img src="<?= $CONTENT_URL ?>/imgs/momo 1.svg" alt="">
+                    </div>
+                    <div class="pay-row">
+                        <input type="radio" name="payment" id="zalo">
+                        <label for="zalo">Quét mã ZaloPay</label>
+                        <img src="<?= $CONTENT_URL ?>/imgs/zaloPay 1.svg" alt="">
+
+                    </div>
+                    <div class="pay-row">
+                        <input type="radio" name="payment" id="viettel">
+                        <label for="viettel">Quét mã ViettelPay</label>
+                        <img src="<?= $CONTENT_URL ?>/imgs/viettel 1.svg" alt="">
+
+                    </div>
+                    <div style="margin-top: 1rem; display: flex;" class="agree">
+                        <input style="margin-right: 0.5rem;" type="checkbox" id="agree">
+                        <label for="agree">Tôi đã đọc và
+                            đồng ý với điều khoản và
+                            điều kiện của
+                            website</label>
+                    </div>
+                </form>
             </div>
+
             <a href="">
                 <button type="submit">
                     <div class="btn_submit">
@@ -151,6 +188,9 @@ require_once "../../dao/cart.php";
                     </div>
                 </button>
             </a>
+            <p style="color: #bbbbbb;">Thông tin cá nhân của bạn sẽ được sử dụng để xử lý đơn hàng, tăng trải nghiệm sử
+                dụng website, và cho các
+                mục đích cụ thể khác đã được mô tả trong chính sách riêng tư của chúng tôi.</p>
         </div>
     </div>
 

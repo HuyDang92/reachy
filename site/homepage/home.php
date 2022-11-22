@@ -98,7 +98,11 @@ $sql_slide = product_selectAllSlide();
                                 </div>
                             </div>
                             <div class="btn_add-buy">
-                                <button name="btn_addCart" class="cart">ADD VÀO GIỎ</button>
+                                <button name="btn_addCart" class="cart">
+                                    <span class="add-to-cart">THÊM VÀO GIỎ</span>
+                                    <span class="added">ĐÃ THÊM </span>
+                                    <i class="fa fa-shopping-cart"></i> <i class="fa fa-square"></i>
+                                </button>
                                 <a
                                     href="<?= $SITE_URL ?>/product/order.php?id_product=<?= $row_product_new['id_product'] ?>"><button
                                         class="buy">MUA NGAY</button></a>
@@ -161,7 +165,11 @@ $sql_slide = product_selectAllSlide();
                                 </div>
                             </div>
                             <div class="btn_add-buy">
-                                <button class="cart">ADD VÀO GIỎ</button>
+                                <button class="cart">
+                                    <span class="add-to-cart">THÊM VÀO GIỎ</span>
+                                    <span class="added">ĐÃ THÊM</span>
+                                    <i class="fa fa-shopping-cart"></i> <i class="fa fa-square"></i>
+                                </button>
                                 <a
                                     href="<?= $SITE_URL ?>/product/order.php?id_product=<?= $row_product_new['id_product'] ?>"><button
                                         class="buy">MUA NGAY</button></a>
@@ -330,6 +338,7 @@ $sql_slide = product_selectAllSlide();
         </section>
     </div>
 </body>
+<script src="<?= $CONTENT_URL ?>/js/cart.js"></script>
 <script src="<?= $CONTENT_URL ?>/js/slide.js"></script>
 <script src="<?= $CONTENT_URL ?>/js/countdown_timer.js"></script>
 <!-- <script>
