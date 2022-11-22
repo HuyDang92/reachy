@@ -1,44 +1,28 @@
-<?php
-session_start();
-require '../../global.php';
-require_once "../../dao/pdo.php";
-require_once "../../dao/user.php";
-require_once "../../dao/category.php";
-require_once "../../dao/brand.php";
-require_once "../../dao/product.php";
-require_once "../../dao/comment.php";
-require_once "../../dao/cart.php";
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="<?= $CONTENT_URL ?>/imgs/interface/logo.svg" />
-    <title>Thanh toán</title>
-    <!-- google -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Nunito:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <!-- ion icon -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!-- css -->
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/root.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/order.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/form.css">
 </head>
-
+    <?php 
+        $user_order = user_selectById($_SESSION['login']);
+    ?>
 <body>
+    <div class="background_header">
+        <img style="width: 100%; height: 50%; position: absolute; z-index: -10; top: 0;"
+            src="<?= $CONTENT_URL ?>/imgs/interface/background.png" alt="">
+    </div>
+    <div class="title__sign-in">
+        <h1>Mua hàng</h1>
+        <div class="title_link">
+            <a style="color: #fff;" href="<?= $SITE_URL ?>/homepage">Home</a>
+            <i class="fa-solid fa-arrow-right-long"></i>Mua hàng
+        </div>
+    </div>
     <div class="container-order">
         <div class="order-left">
             <a style="display: flex;" href="<?= $SITE_URL ?>/homepage">
@@ -47,22 +31,22 @@ require_once "../../dao/cart.php";
                 <h2 style="font-size: 40px; font-weight: 700;">REACHY</h2>
             </a>
             <h3 style="margin: 1rem 0 0 0;">Thông tin giao hàng</h3>
-            <span style="margin-bottom: 1rem;">Bạn có tài khoản
+            <!-- <span style="margin-bottom: 1rem;">Bạn có tài khoản
                 <a style="color: darkturquoise;" href="<?= $SITE_URL ?>/user?sign_in">
                     Đăng nhập
                 </a>
-            </span>
+            </span> -->
             <form action="">
                 <span>Họ và tên</span> <br>
-                <input type="text" name="" id="" placeholder="Họ và tên"> <br>
+                <input type="text" name="" id="" value="<?=$user_order['name']?>" readonly> <br>
                 <div class="box-flex">
                     <label style="margin-right: 0.5rem; width: 70%;">
                         <span>Email</span> <br>
-                        <input type="text" name="" placeholder="Email của bạn">
+                        <input type="text" name="" value="<?=$user_order['email']?>" readonly>
                     </label>
                     <label>
                         <span>Số điện thoại</span> <br>
-                        <input type="text" name="" placeholder="Số điện thoại của bạn">
+                        <input type="text" name="" value="<?=$user_order['phone_number']?>" readonly>
                     </label>
                 </div>
                 <div class="deliver">

@@ -6,7 +6,7 @@
     */
     function comment_selectByIdProduct($id_product){
         $sql = "SELECT * FROM comment WHERE id_product=?";
-        return pdo_query_one($sql, $id_product);
+        return pdo_query($sql, $id_product);
     }
     /**
     * Xuất bình luận theo mã sản phẩm

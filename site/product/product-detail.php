@@ -154,8 +154,9 @@ $sql_imgs = product_selectArrayImgs($id_product);
             <div id="comment" class="tabcontent">
                 <div class="box_container">
                     <div class="content_box">
-                        <?php foreach($comments as $comment_row){ 
-                            $user = user_selectById($comment_row['id_user']);
+                        <?php if(count($comments)>0){ 
+                            foreach($comments as $comment_row){ 
+                            $user_cm = user_selectById($comment_row['id_user']);
                         ?>
                             <div class="comment-row">
                                 <div class="user-info">
@@ -163,7 +164,7 @@ $sql_imgs = product_selectArrayImgs($id_product);
                                         <img src="<?=$CONTENT_URL?>/imgs/user/<?=$user['img']?>"
                                             alt="Ảnh đại diện">
                                         <div class="user-name">
-                                            <h3><?=$user['name']?></h3>
+                                            <h3><?=$user_cm['name']?></h3>
                                             <i><?=$comment_row['date']?></i>
                                         </div>
                                     </div>
@@ -175,6 +176,9 @@ $sql_imgs = product_selectArrayImgs($id_product);
                                 </div>
                                 <p><?=$comment_row['content']?></p>
                             </div>
+                            <?php } ?>
+                        <?php }else{ ?>
+                            <h2>Không có bình luận</h2>
                         <?php } ?>
                     </div>
                     <?php if(isset($_SESSION['login'])){ ?>
@@ -368,7 +372,7 @@ $sql_imgs = product_selectArrayImgs($id_product);
     <script src="<?= $CONTENT_URL ?>/js/slide_product.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/tabs.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/product_detail.js"></script>
-    <?php if (isset($_SESSION['message'])) { ?>
+    <?php if(isset($_SESSION['message'])) { ?>
     <script>
     alert("<?= $_SESSION['message']; ?>")
     </script>
