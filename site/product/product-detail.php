@@ -75,9 +75,35 @@ $sql_imgs = product_selectArrayImgs($id_product);
                             $product_size = product_checkSizeExist($sql_product['id_product']);
                         ?>
                             <div class="product-size">
-                                <?php for($i = 36;$i<43;$i++){ ?>
+                                <?php $check_status = ""; for($i = 36;$i<43;$i++){ ?>
                                     <div class="col-size">
-                                        <input <?php if($product_size[$i]==0) echo "disabled"?> type="radio" name="size" value="<?=$i?>" hidden id="s<?=$i?>">
+                                        <input <?php if($product_size[$i]==0) echo "disabled"?>
+                                        <?php if($product_size[$i]!=0 && $check_status != "done"){
+                                                if($i==36){
+                                                    echo "checked";
+                                                    $check_status = "done";
+                                                }else if($i==37){
+                                                    echo "checked";
+                                                    $check_status = "done";
+                                                }else if($i==38){
+                                                    echo "checked";
+                                                    $check_status = "done";
+                                                }else if($i==39){
+                                                    echo "checked";
+                                                    $check_status = "done";
+                                                }else if($i==40){
+                                                    echo "checked";
+                                                    $check_status = "done";
+                                                }else if($i==41){
+                                                    echo "checked";
+                                                    $check_status = "done";
+                                                }else if($i==42){
+                                                    echo "checked";
+                                                    $check_status = "done";
+                                                }
+                                            
+                                            }; ?>  
+                                        type="radio" name="size" value="<?=$i?>" hidden id="s<?=$i?>">
                                         <label for="s<?=$i?>"><?=$i?></label>
                                     </div>
                                 <?php } ?>

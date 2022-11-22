@@ -10,6 +10,12 @@
 </head>
     <?php 
         $user_order = user_selectById($_SESSION['login']);
+        if(isset($_SESSION['product'])){
+            $product = $_SESSION['product'];
+        }
+        if(isset($_SESSION['product-list'])){
+            $product_list = $_SESSION['product-list'];
+        }
     ?>
 <body>
     <div class="background_header">
@@ -95,34 +101,39 @@
             <h4 style="margin: 0 0 1rem 0;">ĐƠN HÀNG CỦA BẠN</h4>
             <div class="bill">
                 <ul class="product-rows">
-                    <li class="product-row">
-                        <div class="product-row-left">
-                            <div class="pd-thumbal">
-                                <img src="<?= $CONTENT_URL ?>/imgs/products/293e08e8-e661-4010-b852-e65b2d7db7e5.webp"
-                                    alt="">
-                                <span class="amount">1</span>
+                    <?php if(isset($product)){
+                        $product_row = product_selectOne($product['id_product']);
+                        $product_img = product_selectImgs($product['id_product']);
+                    ?>
+                        <li class="product-row">
+                            <div class="product-row-left">
+                                <div class="pd-thumbal">
+                                    <img src="<?= $CONTENT_URL ?>/imgs/products/<?=$product_img['contain']?>"
+                                        alt="">
+                                    <span class="amount"><?=$product['quantity']?></span>
+                                </div>
+                                <div style="margin: 0 0 0.5rem 0.5rem;" class="pd-info">
+                                    <p style="margin-top: 0;"><?=$product_row['name']?></p>
+                                    <span style="font-size: 15px; color: #ccc;">Size: <?=$product['size']?></span>
+                                </div>
                             </div>
-                            <div style="margin: 0 0 0.5rem 0.5rem;" class="pd-info">
-                                <p style="margin-top: 0;">Name product</p>
-                                <span style="font-size: 15px; color: #ccc;">Size 40</span>
+                            <div class="pd-price">
+                                <span><?php echo number_format($product_row['price']*$product['quantity']); ?>đ</span>
                             </div>
-                        </div>
-                        <div class="pd-price">
-                            <span>1,000,000đ</span>
-                        </div>
-                    </li>
+                        </li>
+                    <?php } ?>
                 </ul>
                 <div class="code-discount">
                     <input type="text" name="" id="" placeholder="Mã giảm giá">
                     <button>Sử dụng</button>
                 </div>
                 <div class="bill-total">
-                    <div style="margin-bottom: 0.5rem;" class="price-pd">Tạm tính <span>1,000,000đ</span></div>
+                    <div style="margin-bottom: 0.5rem;" class="price-pd">Tạm tính <span><?php echo number_format($product_row['price']*$product['quantity']); ?>đ</span></div>
                     <div class="price-pd">Phí vận chuyển <span>30,000đ</span></div>
                 </div>
                 <div class="price-total">
                     <span>Tổng cộng</span>
-                    <h2>1,000,000đ</h2>
+                    <h2><?php echo number_format($product_row['price']*$product['quantity'] + 30000); ?>đ</h2>
                 </div>
             </div>
             <a href="">
@@ -149,32 +160,32 @@
         };
         var promise = axios(Parameter);
         promise.then(function (result) {
-            nderCity(result.data);
+            renderCity(result.data);
         });
 
         function renderCity(data) {
             for (const x of data) {
-                citis.options[citis.options.length] = new Option(x.Name, x.Id);
+                citis.options[citis.options.length] = new Option(x.Name, x.Name);
             }
             citis.onchange = function () {
                 district.length = 1;
                 ward.length = 1;
                 if(this.value != ""){
-                const result = data.filter(n => n.Id === this.value);
+                const result = data.filter(n => n.Name === this.value);
 
                 for (const k of result[0].Districts) {
-                    district.options[district.options.length] = new Option(k.Name, k.Id);
+                    district.options[district.options.length] = new Option(k.Name, k.Name);
                 }
                 }
             };
             district.onchange = function () {
                 ward.length = 1;
-                const dataCity = data.filter((n) => n.Id === citis.value);
+                const dataCity = data.filter((n) => n.Name === citis.value);
                 if (this.value != "") {
-                const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
+                const dataWards = dataCity[0].Districts.filter(n => n.Name === this.value)[0].Wards;
 
                 for (const w of dataWards) {
-                    wards.options[wards.options.length] = new Option(w.Name, w.Id);
+                    wards.options[wards.options.length] = new Option(w.Name, w.Name);
                 }
                 }
             };
