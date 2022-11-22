@@ -1,11 +1,12 @@
-<?php 
-    require_once "../dao/pdo.php";
-    require_once "../dao/brand.php";
-    require_once "../dao/category.php";
-    require_once "../dao/product.php";
-    require_once "../dao/user.php";
-    require_once "../dao/comment.php";
-    require_once "../dao/slider.php";
+<?php
+session_start();
+require_once "../dao/pdo.php";
+require_once "../dao/brand.php";
+require_once "../dao/category.php";
+require_once "../dao/product.php";
+require_once "../dao/user.php";
+require_once "../dao/comment.php";
+require_once "../dao/slider.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +35,10 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <?php session_start(); ?>
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+
 </head>
 
 <body>
@@ -53,4 +57,5 @@
     </div>
 </body>
 <script src="<?= $CONTENT_URL ?>/js/brandByCate.js"></script>
+
 </html>

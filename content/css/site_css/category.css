@@ -54,7 +54,7 @@ ul.row-3 li{
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     transition: 0.5s;
     overflow: hidden;
-    flex-basis: 32% !important;
+    flex-basis: 32% ;
 }
 ul.row-3 li:hover .product__selection-top{
     filter: blur(5px);
