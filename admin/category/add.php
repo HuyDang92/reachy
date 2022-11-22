@@ -5,9 +5,9 @@
         <input type="text" name="id_cate" disabled class="add_input" placeholder="Auto Number">
         <p>Tên loại</p>
         <input type="text" name="name_cate" class="add_input" require><br>
-        <input type="submit" value="Thêm mới" name="submit">
-        <input type="reset" value="Nhập lại">
-        <a href="<?=$ADMIN_URL?>?category&act=list"><input type="button" value="Danh sách"></a>
+        <input type="submit" value="Thêm mới" name="submit" class="admin_btn">
+        <input type="reset" value="Nhập lại" class="admin_btn">
+        <a href="<?=$ADMIN_URL?>?category&act=list"><input type="button" value="Danh sách" class="admin_btn"></a>
     </form>
     <?php 
         if(isset($noti)&&$noti!="") echo "<p class='add__noti'> $noti </p>"

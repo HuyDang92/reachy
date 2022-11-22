@@ -13,8 +13,8 @@
         <p>Tên loại</p>
         <input type="text" class="add_input" autofocus value="<?=$name?>" name="name"><br>
         <input type="hidden" name="hidden"value="<?php if(isset($id_category)&&$id_category!="") echo $id_category?>">
-        <input type="submit" value="Cập nhật" name="submit">
-        <input type="reset" value="Nhập lại">
-        <a href="<?=$ADMIN_URL?>?category&act=list"><input type="button" value="Danh sách"></a>
+        <input type="submit" value="Cập nhật" name="submit" class="admin_btn">
+        <input type="reset" value="Nhập lại" class="admin_btn">
+        <a href="<?=$ADMIN_URL?>?category&act=list"><input type="button" value="Danh sách" class="admin_btn"></a>
     </form>
 </div>
