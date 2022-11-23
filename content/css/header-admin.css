@@ -60,7 +60,7 @@
     padding: 1.5rem 0.5rem;
     cursor: pointer;
     font-size: smaller;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 .header__left-menu>li>a{
 
