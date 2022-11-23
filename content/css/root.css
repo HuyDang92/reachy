@@ -35,7 +35,7 @@ input{
 
 .title__sign-in{
     margin: 10rem 0;
-    margin-bottom: 8rem;
+    margin-bottom: 12rem;
     margin-left: 65%;
     font-weight: 800;
     color: #ffff;
@@ -48,3 +48,10 @@ input{
     font-weight: 500;
     letter-spacing: px;
 }
+/* @media only screen 
+and (min-device-width: 1400px)
+and (max-device-width: 1550px) {
+    .title__sign-in{
+        margin-bottom: 20rem;
+    }
+} */
