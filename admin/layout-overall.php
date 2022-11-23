@@ -1,10 +1,9 @@
 <?php
-session_start();
-require_once "../dao/pdo.php";
+// require_once "../dao/pdo.php";
 require_once "../dao/brand.php";
 require_once "../dao/category.php";
 require_once "../dao/product.php";
-require_once "../dao/user.php";
+// require_once "../dao/user.php";
 require_once "../dao/comment.php";
 require_once "../dao/slider.php";
 ?>

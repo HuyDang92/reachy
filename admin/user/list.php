@@ -76,9 +76,9 @@
                 <?php }?>
         </tbody>
     </table>
-    <button id="select_all" class="admin_btn">Chọn tất cả</button>
-    <button id="unselect_all" class="admin_btn">Bỏ chọn tất cả</button>
-    <button class="admin_btn">Xóa các mục đã chọn</button>
+    <button id="select_all" class="admin_btn" type="button">Chọn tất cả</button>
+    <button id="unselect_all" class="admin_btn" type="button">Bỏ chọn tất cả</button>
+    <button class="admin_btn" type="button">Xóa các mục đã chọn</button>
     <?php if($user_role['role']==2){?>
         <input type="submit" value="Lưu" class="admin_btn">
     <?php } ?>
