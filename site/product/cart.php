@@ -35,64 +35,64 @@ add_session("lasted_url", getCurrentUrl());
                 $product_img = product_selectImgs($cart['id_product']);
                 $product = product_selectOne($cart['id_product']);
             ?>
-            <li class="cart-row">
-                <form action="handle_cart.php" method="POST" target="demo">
-                    <div style="display: flex;" class="group">
-                        <input type="checkbox" class="cart_selecter" name="cart_selecter">
-                        <input type="hidden" name="id_cart" value="<?= $cart['id_cart'] ?>">
-                        <input type="hidden" name="id_product" value="<?= $cart['id_product'] ?>">
-                        <div style="margin-right: 1rem;" class="cart__product-img">
-                            <img style="width: 5rem;"
-                                src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>" alt="">
+                <li class="cart-row">
+                    <form action="handle_cart.php" method="POST" target="demo">
+                        <div style="display: flex;" class="group">
+                            <input type="checkbox" class="cart_selecter" name="cart_selecter">
+                            <input type="hidden" name="id_cart" value="<?= $cart['id_cart'] ?>">
+                            <input type="hidden" name="id_product" value="<?= $cart['id_product'] ?>">
+                            <div style="margin-right: 1rem;" class="cart__product-img">
+                                <img style="width: 5rem;"
+                                    src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>" alt="">
+                            </div>
+                            <div class="cart__product-info">
+                                <h4 style="margin-bottom: 5px; margin-top: 0;"><a
+                                        href="<?= $SITE_URL ?>/product/?product&id_product=<?= $cart['id_product'] ?>"><?= $product['name'] ?></a>
+                                </h4>
+                                <select name="size" id="" class="size_selecter">
+                                    <option <?php if ($cart['size'] == "36") echo "selected" ?> value="36">Size 36</option>
+                                    <option <?php if ($cart['size'] == "37") echo "selected" ?> value="37">Size 37</option>
+                                    <option <?php if ($cart['size'] == "38") echo "selected" ?> value="38">Size 38</option>
+                                    <option <?php if ($cart['size'] == "39") echo "selected" ?> value="39">Size 39</option>
+                                    <option <?php if ($cart['size'] == "40") echo "selected" ?> value="40">Size 40</option>
+                                    <option <?php if ($cart['size'] == "41") echo "selected" ?> value="41">Size 41</option>
+                                    <option <?php if ($cart['size'] == "42") echo "selected" ?> value="42">Size 42</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="cart__product-info">
-                            <h4 style="margin-bottom: 5px; margin-top: 0;"><a
-                                    href="<?= $SITE_URL ?>/product/?product&id_product=<?= $cart['id_product'] ?>"><?= $product['name'] ?></a>
-                            </h4>
-                            <select name="size" id="" class="size_selecter">
-                                <option <?php if ($cart['size'] == "36") echo "selected" ?> value="36">Size 36</option>
-                                <option <?php if ($cart['size'] == "37") echo "selected" ?> value="37">Size 37</option>
-                                <option <?php if ($cart['size'] == "38") echo "selected" ?> value="38">Size 38</option>
-                                <option <?php if ($cart['size'] == "39") echo "selected" ?> value="39">Size 39</option>
-                                <option <?php if ($cart['size'] == "40") echo "selected" ?> value="40">Size 40</option>
-                                <option <?php if ($cart['size'] == "41") echo "selected" ?> value="41">Size 41</option>
-                                <option <?php if ($cart['size'] == "42") echo "selected" ?> value="42">Size 42</option>
-                            </select>
+                        <div class="product-count">
+                            <button type="button" name="btn_quantity" class="btn_descreaseQuantityProduct">
+                                <span class="material-symbols-outlined">
+                                    remove
+                                </span>
+                            </button>
+                            <input type="number" name="quantity" class="product_quantity" value="<?= $cart['quantity'] ?>">
+                            <button type="button" name="btn_quantity" class="btn_increaseQuantityProduct">
+                                <span class="material-symbols-outlined">
+                                    add
+                                </span>
+                            </button>
                         </div>
-                    </div>
-                    <div class="product-count">
-                        <button type="button" name="btn_quantity" class="btn_descreaseQuantityProduct">
-                            <span class="material-symbols-outlined">
-                                remove
-                            </span>
-                        </button>
-                        <input type="number" name="quantity" class="product_quantity" value="<?= $cart['quantity'] ?>">
-                        <button type="button" name="btn_quantity" class="btn_increaseQuantityProduct">
-                            <span class="material-symbols-outlined">
-                                add
-                            </span>
-                        </button>
-                    </div>
-                    <div class="cart-price">
-                        <?php if ($product['sale_off'] != 0) { ?>
-                        <span class="cart_currentPrice"
-                            data-value="<?= $product['price'] * (100 - $product['sale_off']) / 100 ?>"><?= number_format($product['price'] * (100 - $product['sale_off']) / 100) ?>đ
-                        </span><br>
-                        <small style="text-decoration: line-through;"><?= number_format($product['price']) ?></small>
-                        <?php } else { ?>
-                        <span class="cart_currentPrice"
-                            data-value="<?= $product['price'] ?>"><?= number_format($product['price']) ?>đ </span>
-                        <?php } ?>
-                    </div>
-                    <div class="cart-total">
-                        <span style="font-size: 18px; font-weight: 600;">Thành tiền: <br> <strong
-                                class="cart_totalPrice" style="font-size: 20px;color: darkred; "></strong><strong
-                                style="font-size: 20px;color: darkred; ">đ</strong></span> <br>
-                        <a href="handle_cart.php?id_cart=<?= $cart['id_cart'] ?>"><i
-                                class="fa-solid fa-trash-can"></i></a>
-                    </div>
-                </form>
-            </li>
+                        <div class="cart-price">
+                            <?php if ($product['sale_off'] != 0) { ?>
+                            <span class="cart_currentPrice"
+                                data-value="<?= $product['price'] * (100 - $product['sale_off']) / 100 ?>"><?= number_format($product['price'] * (100 - $product['sale_off']) / 100) ?>đ
+                            </span><br>
+                            <small style="text-decoration: line-through;"><?= number_format($product['price']) ?></small>
+                            <?php } else { ?>
+                            <span class="cart_currentPrice"
+                                data-value="<?= $product['price'] ?>"><?= number_format($product['price']) ?>đ </span>
+                            <?php } ?>
+                        </div>
+                        <div class="cart-total">
+                            <span style="font-size: 18px; font-weight: 600;">Thành tiền: <br> <strong
+                                    class="cart_totalPrice" style="font-size: 20px;color: darkred; "></strong><strong
+                                    style="font-size: 20px;color: darkred; ">đ</strong></span> <br>
+                            <a href="handle_cart.php?id_cart=<?= $cart['id_cart'] ?>"><i
+                                    class="fa-solid fa-trash-can"></i></a>
+                        </div>
+                    </form>
+                </li>
             <?php } ?>
 
             <a href="">

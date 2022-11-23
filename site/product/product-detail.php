@@ -141,11 +141,11 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                             </button>
 
                             <a
-                                href="<?= $SITE_URL ?>/product/handle_addWishList.php?id_product=<?= $sql_product['id_product'] ?>">
+                                href="<?= $SITE_URL ?>/product/handle_addWishList.php?id_product=<?= $sql_product['id_product'] ?>" target="frame" id="btn_like">
                                 <?php if (isset($_SESSION['login']) && product_checkLiked($sql_product['id_product'], $_SESSION['login'])) { ?>
-                                <span style="color:red ;" class="material-icons-outlined"> favorite </span>
+                                <span id="like_span" style="color:red ;" class="material-icons-outlined" data-status="liked"> favorite </span>
                                 <?php } else { ?>
-                                <span class="material-icons-outlined"> favorite_border </span>
+                                <span id="like_span" class="material-icons-outlined" data-status="none"> favorite_border </span>
                                 <?php } ?>
                             </a>
                         </div>
@@ -393,6 +393,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
         </div>
     </section>
     </div>
+    <iframe name="frame" style="display: none;"></iframe>
     <script src="<?= $CONTENT_URL ?>/js/cart.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/slide_product.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/tabs.js"></script>

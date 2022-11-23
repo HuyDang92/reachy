@@ -3,6 +3,7 @@ var addBtns = document.querySelectorAll(".btn_increaseQuantityProduct");
 var minusBtns = document.querySelectorAll(".btn_descreaseQuantityProduct");
 var cart_rows = document.querySelectorAll(".cart-row");
 var cart_selecters = document.querySelectorAll(".cart_selecter");
+var size_selecters = document.querySelectorAll(".size_selecter");
 cart_rows.forEach(cart_row => {
     window.addEventListener(
         "load",
@@ -20,6 +21,7 @@ addBtns.forEach(btn_add => {
         "click",
         function(event){
             let cartRow = event.target.parentElement.parentElement;
+            console.log("🚀 ~ file: cart.js ~ line 23 ~ cartRow", cartRow)
             let product_quantity = cartRow.querySelector(".product_quantity");
             let product_price = cartRow.querySelector(".cart_currentPrice");
             let product_totalPrice = cartRow.querySelector(".cart_totalPrice");
@@ -31,7 +33,6 @@ addBtns.forEach(btn_add => {
             ipt_request.setAttribute("type","hidden");
             cartRow.appendChild(ipt_request);
             cartRow.submit();
-
         }
     )
 });
@@ -40,6 +41,7 @@ minusBtns.forEach(btn_minus => {
         "click",
         function(event){
             let cartRow = event.target.parentElement.parentElement;
+            console.log("🚀 ~ file: cart.js ~ line 42 ~ cartRow", cartRow)
             let product_quantity = cartRow.querySelector(".product_quantity");
             let product_price = cartRow.querySelector(".cart_currentPrice");
             let product_totalPrice = cartRow.querySelector(".cart_totalPrice");
@@ -80,7 +82,6 @@ cart_selecters.forEach(cart_selecter => {
         }
     )
 });
-var size_selecters = document.querySelectorAll(".size_selecter");
 size_selecters.forEach(size_selecter => {
     size_selecter.addEventListener(
         "change",
@@ -90,8 +91,24 @@ size_selecters.forEach(size_selecter => {
         }
     )
 });
-
-
+size_selecters.forEach(size_selecter => {
+    size_selecter.addEventListener(
+        "change",
+        function (){
+            console.log("ss");
+            let quantity = document.querySelectorAll(".product_quantity");
+            for (let index = 0; index < cart_selecters.length; index++) {
+                for (let index1 = 0; index1 < quantity.length; index1++) {
+                    if(cart_selecters[index].value == cart_selecters[index1].value){
+                        quantity[index1].value += quantity[index].value;
+                        console.log('s');
+                        // cart_rows[index].remove();
+                    }
+                }
+            }
+        }
+    )
+});
 // hiệu ứng add 
 document.addEventListener("DOMContentLoaded", function(event) {
 
@@ -108,7 +125,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
         let button = this;
         button.classList.add('clicked');
     }
-
-
 
 });

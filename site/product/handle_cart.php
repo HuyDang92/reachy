@@ -13,7 +13,7 @@
         if($quantity==0){
             cart_delete($id_cart);
         }
-    }else if($_GET['id_cart']){
+    }else if(isset($_GET['id_cart'])){
         cart_delete($_GET['id_cart']);
     }else{
         if(cart_checkExistSize($id_user,$id_product,$size)){
@@ -23,6 +23,7 @@
                 if($cart['size'] == $size){
                     $i++;
                     cart_inscreaseQuantity($cart['id_cart'],$quantity);
+                    add_session("reload","true");
                 }
                 if($i>0){
                     cart_delete($id_cart);
@@ -34,5 +35,5 @@
     }
     $lasted_url = $_SESSION['lasted_url'];
     unset($_SESSION['lasted_url']);
-    header("location:$lasted_url");
+    // header("location:$lasted_url");
 ?>

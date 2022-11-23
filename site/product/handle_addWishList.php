@@ -22,9 +22,9 @@
             $productLink = $_SESSION['productLink'];
             unset($_SESSION['productLink']);
             header("location:$productLink");
-        }else{
-            header("location:../../index.php");
-        }
+            }else{
+                header("location:../../index.php");
+            }
         }else{
             product_like($id_product,$_SESSION['login']);
             if(isset($_SESSION['productLink'])){

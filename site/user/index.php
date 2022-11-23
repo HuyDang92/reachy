@@ -7,6 +7,7 @@ require_once "../../dao/category.php";
 require_once "../../dao/brand.php";
 require_once "../../dao/product.php";
 require_once "../../dao/comment.php";
+require_once "../../dao/cart.php";
 if (exist_param("info")) {
     $VIEW_NAME = "user/info.php";
 } else if (exist_param("sign_in")) {

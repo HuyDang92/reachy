@@ -3,6 +3,7 @@ $sql_product_new =  product_select_8DateLasted();
 $sql_product_special = product_select_special();
 $sql_deal = product_select_AllSaleOff();
 $sql_slide = product_selectAllSlide();
+add_session('productLink', getCurrentUrl());
 ?>
 <!DOCTYPE html>
 <html lang="en">
