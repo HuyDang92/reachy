@@ -1,6 +1,6 @@
 <?php
 $sql_category = category_selectAll();
-if(isset($_SESSION['login'])){
+if (isset($_SESSION['login'])) {
     $user_carts = cart_selectByUserId($_SESSION['login']);
 }
 ?>
@@ -113,14 +113,14 @@ if(isset($_SESSION['login'])){
                         </div>
                         <?php } ?>
                     </li>
-                    <li style="display: flex;">
+                    <li style="display: flex; position: relative;">
                         <a href="<?= $SITE_URL ?>/product?cart">
                             <span class="material-symbols-outlined">garden_cart</span>
                         </a>
-                        <?php if(isset($_SESSION['login'])){ ?>
-                            <small><span id="cart_quantity"><?php echo count($user_carts); ?></span></small>
-                        <?php }else{ ?>
-                            <small>(0)</small>
+                        <?php if (isset($_SESSION['login'])) { ?>
+                        <small><span id="cart_quantity"><?php echo count($user_carts); ?></span></small>
+                        <?php } else { ?>
+                        <small>(0)</small>
                         <?php } ?>
                     </li>
                     <li>

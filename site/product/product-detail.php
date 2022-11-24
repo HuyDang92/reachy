@@ -76,40 +76,39 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                         <?php if (product_checkSizeExist($sql_product['id_product'])) {
                             $product_size = product_checkSizeExist($sql_product['id_product']);
                         ?>
-                            <div class="product-size">
-                                <?php $check_status = ""; for($i = 36;$i<43;$i++){ ?>
-                                    <div class="col-size">
-                                        <input <?php if($product_size[$i]==0) echo "disabled"?>
-                                        <?php if($product_size[$i]!=0 && $check_status != "done"){
-                                                if($i==36){
-                                                    echo "checked";
-                                                    $check_status = "done";
-                                                }else if($i==37){
-                                                    echo "checked";
-                                                    $check_status = "done";
-                                                }else if($i==38){
-                                                    echo "checked";
-                                                    $check_status = "done";
-                                                }else if($i==39){
-                                                    echo "checked";
-                                                    $check_status = "done";
-                                                }else if($i==40){
-                                                    echo "checked";
-                                                    $check_status = "done";
-                                                }else if($i==41){
-                                                    echo "checked";
-                                                    $check_status = "done";
-                                                }else if($i==42){
-                                                    echo "checked";
-                                                    $check_status = "done";
-                                                }
-                                            
-                                            }; ?>  
-                                        type="radio" name="size" value="<?=$i?>" hidden id="s<?=$i?>">
-                                        <label for="s<?=$i?>"><?=$i?></label>
-                                    </div>
-                                <?php } ?>
+                        <div class="product-size">
+                            <?php $check_status = "";
+                                for ($i = 36; $i < 43; $i++) { ?>
+                            <div class="col-size">
+                                <input <?php if ($product_size[$i] == 0) echo "disabled" ?> <?php if ($product_size[$i] != 0 && $check_status != "done") {
+                                                                                                        if ($i == 36) {
+                                                                                                            echo "checked";
+                                                                                                            $check_status = "done";
+                                                                                                        } else if ($i == 37) {
+                                                                                                            echo "checked";
+                                                                                                            $check_status = "done";
+                                                                                                        } else if ($i == 38) {
+                                                                                                            echo "checked";
+                                                                                                            $check_status = "done";
+                                                                                                        } else if ($i == 39) {
+                                                                                                            echo "checked";
+                                                                                                            $check_status = "done";
+                                                                                                        } else if ($i == 40) {
+                                                                                                            echo "checked";
+                                                                                                            $check_status = "done";
+                                                                                                        } else if ($i == 41) {
+                                                                                                            echo "checked";
+                                                                                                            $check_status = "done";
+                                                                                                        } else if ($i == 42) {
+                                                                                                            echo "checked";
+                                                                                                            $check_status = "done";
+                                                                                                        }
+                                                                                                    }; ?> type="radio"
+                                    name="size" value="<?= $i ?>" hidden id="s<?= $i ?>">
+                                <label for="s<?= $i ?>"><?= $i ?></label>
                             </div>
+                            <?php } ?>
+                        </div>
                         <?php } ?>
                         <div class="product-count">
                             <button type="button" id="btn_descreaseQuantityProduct">
@@ -127,26 +126,30 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                         <div class="product-tool">
                             <small style="color: green;">Còn hàng</small> <br>
                             <input type="hidden" name="id_product" value="<?= $sql_product['id_product'] ?>">
-                            <button name="btn_buy" type="submit">
-                                <div class="btn_submit">
-                                    <div style="margin-top: 0;" class="btn_submit-border">
-                                        MUA NGAY
-                                        <span></span><span></span><span></span><span></span>
+                            <a href="<?= $SITE_URL ?>/product/?buy&id_product=<?= $sql_product['id_product'] ?>">
+                                <div style="display: inline-flex;" name="btn_buy" type="submit">
+                                    <div class="btn_submit">
+                                        <div style="margin-top: 0;" class="btn_submit-border">
+                                            MUA NGAY
+                                            <span></span><span></span><span></span><span></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </button>
+                            </a>
                             <button name="btn_addCart">
                                 <span class="material-icons-outlined">
                                     shopping_cart
                                 </span>
                             </button>
 
-                            <a
-                                href="<?= $SITE_URL ?>/product/handle_addWishList.php?id_product=<?= $sql_product['id_product'] ?>" target="frame" id="btn_like">
+                            <a href="<?= $SITE_URL ?>/product/handle_addWishList.php?id_product=<?= $sql_product['id_product'] ?>"
+                                target="frame" id="btn_like">
                                 <?php if (isset($_SESSION['login']) && product_checkLiked($sql_product['id_product'], $_SESSION['login'])) { ?>
-                                <span id="like_span" style="color:red ;" class="material-icons-outlined" data-status="liked"> favorite </span>
+                                <span id="like_span" style="color:red ;" class="material-icons-outlined"
+                                    data-status="liked"> favorite </span>
                                 <?php } else { ?>
-                                <span id="like_span" class="material-icons-outlined" data-status="none"> favorite_border </span>
+                                <span id="like_span" class="material-icons-outlined" data-status="none"> favorite_border
+                                </span>
                                 <?php } ?>
                             </a>
                         </div>
@@ -406,23 +409,23 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
 
     <?php unset($_SESSION['message']);
     } ?>
-    <?php if(isset($_SESSION['login'])){ ?>
-        <script>
-            const btn_like = document.querySelector("#btn_like");
-            btn_like.addEventListener(
-                "click",
-                function (){
-                    const span_like = document.querySelector("#like_span");
-                    if(span_like.innerHTML=="favorite"){
-                        span_like.innerText = "favorite_border";
-                        span_like.style.color = "var(--blue)";
-                    }else{
-                        span_like.innerText = "favorite";
-                        span_like.style.color = "red";
-                    }
-                }
-            )
-        </script>
+    <?php if (isset($_SESSION['login'])) { ?>
+    <script>
+    const btn_like = document.querySelector("#btn_like");
+    btn_like.addEventListener(
+        "click",
+        function() {
+            const span_like = document.querySelector("#like_span");
+            if (span_like.innerHTML == "favorite") {
+                span_like.innerText = "favorite_border";
+                span_like.style.color = "var(--blue)";
+            } else {
+                span_like.innerText = "favorite";
+                span_like.style.color = "red";
+            }
+        }
+    )
+    </script>
     <?php } ?>
 </body>
 
