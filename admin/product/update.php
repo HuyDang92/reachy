@@ -41,8 +41,8 @@
         <span>Không</span><input type="radio" id="" value="0" class="noibat" name="special" <?php $check = $special==0?'checked':''; echo $check?>><br>
 
         <input type="hidden" value="<?php if(isset($id_product)&&$id_product!='') echo $id_product?>" name="hidden">
-        <input type="submit" value="Cập nhật" name="submit">
-        <input type="reset" value="Nhập lại">
-        <a href="<?=$ADMIN_URL?>?product&act=list"><input type="button" value="Danh sách"></a>
+        <input type="submit" value="Cập nhật" name="submit" class="admin_btn">
+        <input type="reset" value="Nhập lại" class="admin_btn">
+        <a href="<?=$ADMIN_URL?>?product&act=list"><input type="button" value="Danh sách" class="admin_btn"></a>
     </form>
 </div>

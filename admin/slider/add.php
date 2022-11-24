@@ -30,8 +30,8 @@
         <input type="file" name="hinh">
         <p>Nội dung</p>
         <textarea class="add_input" col="30" row="15" name="content"></textarea>
-        <input type="submit" value="Thêm mới" name="submit">
-        <input type="reset" value="Nhập lại">
-        <a href="<?=$ADMIN_URL?>?slider&act=list"><input type="button" value="Danh sách"></a>
+        <input type="submit" value="Thêm mới" name="submit" class="admin_btn">
+        <input type="reset" value="Nhập lại" class="admin_btn">
+        <a href="<?=$ADMIN_URL?>?slider&act=list"><input type="button" value="Danh sách" class="admin_btn"></a>
     </form>
 </div>

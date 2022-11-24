@@ -41,8 +41,8 @@
         <span>Có</span><input type="radio" id="" value="1" class="noibat" name="special"> |
         <span>Không</span><input type="radio" id="" value="0" class="noibat" name="special"><br>
 
-        <input type="submit" value="Thêm mới" name="submit">
-        <input type="reset" value="Nhập lại">
-        <a href="<?=$ADMIN_URL?>?product&act=list"><input type="button" value="Danh sách"></a>
+        <input type="submit" value="Thêm mới" name="submit" class="admin_btn">
+        <input type="reset" value="Nhập lại" class="admin_btn">
+        <a href="<?=$ADMIN_URL?>?product&act=list"><input type="button" value="Danh sách" class="admin_btn"></a>
     </form>
 </div>

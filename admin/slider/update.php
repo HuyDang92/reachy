@@ -34,8 +34,8 @@
         <p>Nội dung</p>
         <textarea class="add_input" col="30" row="15" name="content"><?=$content?></textarea>
         <input type="hidden" value="<?php if(isset($id_slide)&&$id_slide!='') echo $id_slide?>" name="hidden">
-        <input type="submit" value="Cập nhật" name="submit">
-        <input type="reset" value="Nhập lại">
-        <a href="<?=$ADMIN_URL?>?slider&act=list"><input type="button" value="Danh sách"></a>
+        <input type="submit" value="Cập nhật" name="submit" class="admin_btn">
+        <input type="reset" value="Nhập lại" class="admin_btn">
+        <a href="<?=$ADMIN_URL?>?slider&act=list"><input type="button" value="Danh sách" class="admin_btn"></a>
     </form>
 </div>
