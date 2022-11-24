@@ -22,7 +22,9 @@
                             "quantity" => $quantity
                         );
             add_session("product",$product);
-            header("location:../product/?buy");
+            echo "
+                <script>window.parent.location.href='../product/?buy'</script>
+                ";
         }else{
             $id_user = $_SESSION['login'];
             if(cart_checkExist($id_user,$id_product)){

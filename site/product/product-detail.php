@@ -127,7 +127,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                         <div class="product-tool">
                             <small style="color: green;">Còn hàng</small> <br>
                             <input type="hidden" name="id_product" value="<?= $sql_product['id_product'] ?>">
-                            <button name="btn_buy" type="submit">
+                            <button name="btn_buy">
                                 <div class="btn_submit">
                                     <div style="margin-top: 0;" class="btn_submit-border">
                                         MUA NGAY
