@@ -11,9 +11,17 @@ require_once "../../dao/cart.php";
 if (exist_param("product")) {
     $VIEW_NAME = "product/product-detail.php";
 } else if (exist_param("cart")) {
-    $VIEW_NAME = "product/cart.php";
+    if(isset($_SESSION['login'])){
+        $VIEW_NAME = "product/cart.php";
+    }else{
+        header("location:../../index.php");
+    }
 } else if (exist_param("buy")) {
-    $VIEW_NAME = "product/order.php";
+    if(isset($_SESSION['login'])){
+        $VIEW_NAME = "product/order.php";
+    }else{
+        header("location:../../index.php");
+    }
 } else {
     $VIEW_NAME = "";
 }

@@ -4,18 +4,30 @@ var minusBtns = document.querySelectorAll(".btn_descreaseQuantityProduct");
 var cart_rows = document.querySelectorAll(".cart-row");
 var cart_selecters = document.querySelectorAll(".cart_selecter");
 var size_selecters = document.querySelectorAll(".size_selecter");
+var cart_quantity = document.querySelectorAll(".product_quantity");
+var cart_delete = document.querySelectorAll(".btn_delete");
+/**
+* Tính tổng tiền theo từng hàng khi load trang
+*/
 cart_rows.forEach(cart_row => {
     window.addEventListener(
         "load",
-        function(){
-            let product_quantity = cart_row.querySelector(".product_quantity");
-            let product_price = cart_row.querySelector(".cart_currentPrice");
-            let product_totalPrice = cart_row.querySelector(".cart_totalPrice");
-            product_totalPrice.innerHTML = new Intl.NumberFormat().format(parseInt(product_price.getAttribute('data-value'))*product_quantity.value);
-            product_totalPrice.setAttribute("data-value",parseInt(product_price.getAttribute('data-value'))*product_quantity.value);
-        }
+        solve_cartRow_totalPrice(cart_row)
     )
 });
+/**
+* Tính tổng tiền theo từng hàng sản phẩm
+*/
+function solve_cartRow_totalPrice(cart_row){
+    let product_quantity = cart_row.querySelector(".product_quantity");
+    let product_price = cart_row.querySelector(".cart_currentPrice");
+    let product_totalPrice = cart_row.querySelector(".cart_totalPrice");
+    product_totalPrice.innerHTML = new Intl.NumberFormat().format(parseInt(product_price.getAttribute('data-value'))*product_quantity.value);
+    product_totalPrice.setAttribute("data-value",parseInt(product_price.getAttribute('data-value'))*product_quantity.value);
+}
+/**
+* Tăng số lượng sản phẩm và thay đổi giá
+*/
 addBtns.forEach(btn_add => {
     btn_add.addEventListener(
         "click",
@@ -36,6 +48,9 @@ addBtns.forEach(btn_add => {
         }
     )
 });
+/**
+* Giảm số lượng sản phẩm và thay đổi giá
+*/
 minusBtns.forEach(btn_minus => {
     btn_minus.addEventListener(
         "click",
@@ -58,6 +73,9 @@ minusBtns.forEach(btn_minus => {
         }
     )
 });
+/**
+* Chọn sản phẩm muốn mua và hiển thị giá
+*/
 cart_selecters.forEach(cart_selecter => {
     cart_selecter.addEventListener(
         "click",
@@ -82,30 +100,49 @@ cart_selecters.forEach(cart_selecter => {
         }
     )
 });
+/**
+* Chọn size và xóa các hàng trùng size + cộng dồn số lượng sản phẩm
+*/
 size_selecters.forEach(size_selecter => {
     size_selecter.addEventListener(
         "change",
         function (event){
             let cartRow = event.target.parentElement.parentElement.parentElement;
+            remove_cartRow(cartRow);
             cartRow.submit();
         }
     )
 });
-size_selecters.forEach(size_selecter => {
-    size_selecter.addEventListener(
-        "change",
-        function (){
-            console.log("ss");
-            let quantity = document.querySelectorAll(".product_quantity");
-            for (let index = 0; index < cart_selecters.length; index++) {
-                for (let index1 = 0; index1 < quantity.length; index1++) {
-                    if(cart_selecters[index].value == cart_selecters[index1].value){
-                        quantity[index1].value += quantity[index].value;
-                        console.log('s');
-                        // cart_rows[index].remove();
-                    }
-                }
-            }
+/**
+* Hàm xóa hàng sản phẩm trùng size
+*/
+function remove_cartRow(cartRow){
+    let check = 0;
+    let cartRow_div = cartRow.parentElement;
+    let seleter = cartRow.querySelector(".size_selecter");
+    let quantity = cartRow.querySelector(".product_quantity");
+    for (let index = 0; index < cart_rows.length; index++) {
+        if(seleter.value==size_selecters[index].value){
+            check++;
+        }
+        if(check==2){
+            cart_quantity[index].value = parseInt(cart_quantity[index].value) + parseInt(quantity.value);
+            cartRow_div.style.display = "none";
+            break;
+        }   
+    }
+    cart_rows.forEach(cart_row => {
+        solve_cartRow_totalPrice(cart_row);
+    });
+}
+cart_delete.forEach(btn_delete => {
+    btn_delete.addEventListener(
+        "click",
+        function(event){
+            let cartRow = event.target.parentElement.parentElement.parentElement.parentElement;
+            let cart_quantity = document.querySelector("#cart_quantity");
+            cartRow.style.display = "none";
+            cart_quantity.innerHTML = parseInt(cart_quantity.innerHTML) - 1;
         }
     )
 });

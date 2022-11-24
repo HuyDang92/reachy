@@ -36,7 +36,7 @@ add_session("lasted_url", getCurrentUrl());
                 $product = product_selectOne($cart['id_product']);
             ?>
                 <li class="cart-row">
-                    <form action="handle_cart.php" method="POST" target="demo">
+                    <form action="handle_cart.php" method="POST" target="frame">
                         <div style="display: flex;" class="group">
                             <input type="checkbox" class="cart_selecter" name="cart_selecter">
                             <input type="hidden" name="id_cart" value="<?= $cart['id_cart'] ?>">
@@ -88,7 +88,7 @@ add_session("lasted_url", getCurrentUrl());
                             <span style="font-size: 18px; font-weight: 600;">Thành tiền: <br> <strong
                                     class="cart_totalPrice" style="font-size: 20px;color: darkred; "></strong><strong
                                     style="font-size: 20px;color: darkred; ">đ</strong></span> <br>
-                            <a href="handle_cart.php?id_cart=<?= $cart['id_cart'] ?>"><i
+                            <a class="btn_delete" href="handle_cart.php?id_cart=<?= $cart['id_cart'] ?>" target="frame"><i
                                     class="fa-solid fa-trash-can"></i></a>
                         </div>
                     </form>
@@ -126,7 +126,7 @@ add_session("lasted_url", getCurrentUrl());
 
         </div>
     </section>
-    <iframe name="demo" style="display: none;"></iframe>
+    <iframe name="frame" style="display: none;"></iframe>
     <script src="<?= $CONTENT_URL ?>/js/cart.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function(event) {

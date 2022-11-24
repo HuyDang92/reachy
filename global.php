@@ -58,8 +58,8 @@ function add_session($name, $value)
     $_SESSION[$name] = $value;
 }
 /*
-        * Tạo mã xác nhận ngẫu nhiên và gửi mã về email đầu vào
-        */
+* Tạo mã xác nhận ngẫu nhiên và gửi mã về email đầu vào
+*/
 function sendEmail($emailAddress)
 {
     $CONTENT_URL = $GLOBALS['CONTENT_URL'];
@@ -81,7 +81,8 @@ function sendEmail($emailAddress)
         $mail->Port = 465; // or 587
         $mail->IsHTML(true);
         $mail->Username = "reachy432@gmail.com";
-        $mail->Password = "qrqlcdfwmguahvzy";
+        $mail->Password = "0reachy0@";
+        // qrqlcdfwmguahvzy
         $mail->SetFrom("reachy432@gmail.com");
         $mail->Subject = "Electech xác nhận email của bạn: "; //Tiêu đề
         $mail->Body =  $mail__content;

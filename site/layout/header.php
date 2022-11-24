@@ -118,7 +118,7 @@ if(isset($_SESSION['login'])){
                             <span class="material-symbols-outlined">garden_cart</span>
                         </a>
                         <?php if(isset($_SESSION['login'])){ ?>
-                            <small>(<?php echo count($user_carts); ?>)</small>
+                            <small><span id="cart_quantity"><?php echo count($user_carts); ?></span></small>
                         <?php }else{ ?>
                             <small>(0)</small>
                         <?php } ?>

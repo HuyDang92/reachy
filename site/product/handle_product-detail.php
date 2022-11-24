@@ -7,6 +7,7 @@
     require_once "../../dao/bill.php";
     session_start();
     extract($_REQUEST);
+    if($quantity==0) $quantity=1;
     if(!isset($_SESSION['login'])){
         add_session("message","Vui lòng đăng nhập để thực hiện chức năng!");
         $productLink = $_SESSION['productLink'];

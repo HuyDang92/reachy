@@ -72,7 +72,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                     <hr>
                 </div>
                 <div class="product__detail-bottom">
-                    <form action="handle_product-detail.php" method="POST">
+                    <form action="handle_product-detail.php" method="POST" target="frame">
                         <?php if (product_checkSizeExist($sql_product['id_product'])) {
                             $product_size = product_checkSizeExist($sql_product['id_product']);
                         ?>
@@ -406,6 +406,24 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
 
     <?php unset($_SESSION['message']);
     } ?>
+    <?php if(isset($_SESSION['login'])){ ?>
+        <script>
+            const btn_like = document.querySelector("#btn_like");
+            btn_like.addEventListener(
+                "click",
+                function (){
+                    const span_like = document.querySelector("#like_span");
+                    if(span_like.innerHTML=="favorite"){
+                        span_like.innerText = "favorite_border";
+                        span_like.style.color = "var(--blue)";
+                    }else{
+                        span_like.innerText = "favorite";
+                        span_like.style.color = "red";
+                    }
+                }
+            )
+        </script>
+    <?php } ?>
 </body>
 
 </html>

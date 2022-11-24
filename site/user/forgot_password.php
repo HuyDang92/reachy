@@ -82,10 +82,6 @@
                         </div>
                     <?php } ?>
                 </form>
-                <!-- <div class="sign__up-link">
-                    <a href="<?= $SITE_URL ?>/user?sign_up">Đăng ký</a>
-                    <a href="<?= $SITE_URL ?>/user?sign_in">Đăng nhập</a>
-                </div> -->
             </div>
         </div>
     </div>
