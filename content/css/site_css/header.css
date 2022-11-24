@@ -200,7 +200,7 @@
     border-radius: 50%;
     object-fit: cover;
 }
-#cart_quantity{
+.amount-cart{
     position: absolute;
     padding: 0.2rem 0.5rem;
     border-radius: 50%;

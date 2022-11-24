@@ -123,8 +123,8 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                 </span>
                             </button>
                         </div>
-                        <div class="product-tool">
-                            <small style="color: green;">Còn hàng</small> <br>
+                        <small style="color: green;">Còn hàng</small> <br>
+                        <div style="display: flex; align-items: center;" class="product-tool">
                             <input type="hidden" name="id_product" value="<?= $sql_product['id_product'] ?>">
                             <a href="<?= $SITE_URL ?>/product/?buy&id_product=<?= $sql_product['id_product'] ?>">
                                 <div style="display: inline-flex;" name="btn_buy" type="submit">
@@ -136,12 +136,11 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                     </div>
                                 </div>
                             </a>
-                            <button name="btn_addCart">
-                                <span class="material-icons-outlined">
+                            <button id="add_cart" name="btn_addCart">
+                                <span class="material-icons-outlined add-to-cart">
                                     shopping_cart
                                 </span>
                             </button>
-
                             <a href="<?= $SITE_URL ?>/product/handle_addWishList.php?id_product=<?= $sql_product['id_product'] ?>"
                                 target="frame" id="btn_like">
                                 <?php if (isset($_SESSION['login']) && product_checkLiked($sql_product['id_product'], $_SESSION['login'])) { ?>
@@ -163,6 +162,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                 <li>- Bảo hành keo , chỉ trọn đời sản phẩm</li>
                                 <li>- Giao hàng Nhanh 60p tại Sài Gòn</li>
                             </ul>
+
                         </div>
                     </form>
                 </div>
@@ -419,14 +419,22 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
             if (span_like.innerHTML == "favorite") {
                 span_like.innerText = "favorite_border";
                 span_like.style.color = "var(--blue)";
+                // span_like.style.border = "3px solid var(--blue)";
             } else {
                 span_like.innerText = "favorite";
                 span_like.style.color = "red";
+                // span_like.style.border = "3px solid red";
             }
         }
     )
     </script>
     <?php } ?>
+    <script>
+    let amount_cart = document.getElementById("cart_quantity");
+    const btn_cart = document.getElementById("add_cart").addEventListener("click", function() {
+        amount_cart.innerHTML++;
+    })
+    </script>
 </body>
 
 </html>
