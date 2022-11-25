@@ -126,16 +126,14 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                         <small style="color: green;">Còn hàng</small> <br>
                         <div style="display: flex; align-items: center;" class="product-tool">
                             <input type="hidden" name="id_product" value="<?= $sql_product['id_product'] ?>">
-                            <a href="<?= $SITE_URL ?>/product/?buy&id_product=<?= $sql_product['id_product'] ?>">
-                                <div style="display: inline-flex;" name="btn_buy" type="submit">
-                                    <div class="btn_submit">
-                                        <div style="margin-top: 0;" class="btn_submit-border">
-                                            MUA NGAY
-                                            <span></span><span></span><span></span><span></span>
-                                        </div>
+                            <div style="display: inline-flex;" name="btn_buy" type="submit">
+                                <div class="btn_submit">
+                                    <div style="margin-top: 0;" class="btn_submit-border">
+                                        MUA NGAY
+                                        <span></span><span></span><span></span><span></span>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
                             <button id="add_cart" name="btn_addCart">
                                 <span class="material-icons-outlined add-to-cart">
                                     shopping_cart
