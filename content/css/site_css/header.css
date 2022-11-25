@@ -91,7 +91,7 @@
 .sub__menu{
     display: none;
     position: absolute;
-    top: 4.2rem;
+    top: 100%;
     right: 5%; 
     background-color: #fff;
     z-index: 10;
@@ -153,10 +153,10 @@
 .category__title{
     position: absolute;
     background-color: #fff;
-    top: 4.2rem;
+    top: 100%;
     display: flex;
     flex-wrap: wrap;
-    width: 20rem;
+    width: 30%;
     transition: all 0.3s;
     transition-delay: 0.2s;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;

@@ -44,25 +44,29 @@ add_session('productLink', getCurrentUrl());
         <section class="category__sale-area">
             <div class="main__category-container">
                 <div class="main__category-items">
-                    <div class="category-item">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/sport1.webp" alt="">
-                        <div class="overplay__cate"></div>
-                        <a href=""><span>SNEAKER CHO THỂ THAO</span></a>
+                    <div class="box-flex">
+                        <div class="category-item">
+                            <img src="<?= $CONTENT_URL ?>/imgs/interface/sport1.webp" alt="">
+                            <div class="overplay__cate"></div>
+                            <a href=""><span>SNEAKER CHO THỂ THAO</span></a>
+                        </div>
+                        <div class="category-item">
+                            <img src="<?= $CONTENT_URL ?>/imgs/interface/sport2.webp" alt="">
+                            <div class="overplay__cate"></div>
+                            <a href=""><span>SNEAKER CHO THỂ THAO</span></a>
+                        </div>
                     </div>
-                    <div class="category-item">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/sport2.webp" alt="">
-                        <div class="overplay__cate"></div>
-                        <a href=""><span>SNEAKER CHO THỂ THAO</span></a>
-                    </div>
-                    <div class="category-item">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/sport3.webp" alt="">
-                        <div class="overplay__cate"></div>
-                        <a href=""><span>SNEAKER XU HƯỚNG</span></a>
-                    </div>
-                    <div class="category-item">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/sport4.webp" alt="">
-                        <div class="overplay__cate"></div>
-                        <a href=""><span>SNEAKER ĐƯỢC YÊU THÍCH</span></a>
+                    <div class="box-flex">
+                        <div class="category-item">
+                            <img src="<?= $CONTENT_URL ?>/imgs/interface/sport3.webp" alt="">
+                            <div class="overplay__cate"></div>
+                            <a href=""><span>SNEAKER XU HƯỚNG</span></a>
+                        </div>
+                        <div class="category-item">
+                            <img src="<?= $CONTENT_URL ?>/imgs/interface/sport4.webp" alt="">
+                            <div class="overplay__cate"></div>
+                            <a href=""><span>SNEAKER ĐƯỢC YÊU THÍCH</span></a>
+                        </div>
                     </div>
                 </div>
                 <div class="main__category-poster">
@@ -233,7 +237,6 @@ add_session('productLink', getCurrentUrl());
                                 <span id="second"></span> <br> <i>GIÂY</i>
                             </li>
                         </ul>
-                        <a href="" class="primary-btn">MUA NGAY</a>
                     </div>
                 </div>
             </div>

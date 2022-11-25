@@ -201,6 +201,10 @@ section.exclusive__deal-area{
     color: var(--blue);
 }
 /* --------------------------------- */
+.box-flex{
+    display: flex;
+    justify-content: space-between;
+}
 .category__sale-area{
     margin: 1rem;
     margin-top: 5rem;
@@ -212,7 +216,7 @@ section.exclusive__deal-area{
 }
 .main__category-items{
     justify-content: space-between;
-    display: flex;
+    /* display: flex; */
     flex-wrap: wrap;
     width: 65%;
     padding-right: 3rem;
