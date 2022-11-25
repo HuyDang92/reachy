@@ -13,12 +13,10 @@
     <?php 
         $user_order = user_selectById($_SESSION['login']);
         if(isset($_SESSION['product'])){
-            $product = $_SESSION['product'];
-            unset($_SESSION['product']);
-        }
-        if(isset($_SESSION['product-list'])){
-            $product_list = $_SESSION['product-list'];
-            unset($_SESSION['product-list']);
+            $products = $_SESSION['product'];
+            if(!is_array($products[0])){
+                $products = array($products);
+            }
         }
     ?>
 <body>
@@ -90,9 +88,10 @@
             <h4 style="margin: 0 0 1rem 0;">ĐƠN HÀNG CỦA BẠN</h4>
             <div class="bill">
                 <ul class="product-rows">
-                    <?php if(isset($product)){
-                        $product_row = product_selectOne($product['id_product']);
-                        $product_img = product_selectImgs($product['id_product']);
+                    <?php if(isset($products)){
+                        foreach($products as $product){
+                            $product_row = product_selectOne($product['id_product']);
+                            $product_img = product_selectImgs($product['id_product']);
                     ?>
                         <li class="product-row">
                             <div class="product-row-left">
@@ -110,6 +109,7 @@
                                 <span><?php echo number_format($product_row['price']*$product['quantity']); ?>đ</span>
                             </div>
                         </li>
+                        <?php } ?>
                     <?php } ?>
                 </ul>
                 <div class="code-discount">

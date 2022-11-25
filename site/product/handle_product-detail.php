@@ -17,7 +17,7 @@
     }else{
         if(exist_param("btn_buy")){
             $product = array(
-                            "id_product" => $id_product,
+                            "0","id_product" => $id_product,
                             "size" => $size,
                             "quantity" => $quantity
                         );
