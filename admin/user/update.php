@@ -18,6 +18,6 @@
             <p>Mật khẩu</p>
             <input type="password" name="password" require ><br>
             <input type="hidden" value="<?php if(isset($id_user)&&$id_user!='') echo $id_user?>" name="hidden">
-            <input type="submit" class="login__content--action" name="submit" value="Cập nhật">
+            <input type="submit" class="login__content--action" name="submit" value="Cập nhật" >
         </form>
     </div>

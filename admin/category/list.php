@@ -33,9 +33,9 @@
             <?php }?>
         </tbody>
     </table>
-    <button id="select_all">Chọn tất cả</button>
-    <button id="unselect_all">Bỏ chọn tất cả</button>
-    <button>Xóa các mục đã chọn</button>
-    <a href="<?=$ADMIN_URL?>?category&act=add"><button>Nhập thêm</button></a>
+    <button id="select_all" class="admin_btn">Chọn tất cả</button>
+    <button id="unselect_all" class="admin_btn">Bỏ chọn tất cả</button>
+    <button class="admin_btn">Xóa các mục đã chọn</button>
+    <a href="<?=$ADMIN_URL?>?category&act=add"><button class="admin_btn">Nhập thêm</button></a>
 </div>
 
