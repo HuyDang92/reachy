@@ -63,7 +63,7 @@ function add_session($name, $value)
 function sendEmail($emailAddress)
 {
     $CONTENT_URL = $GLOBALS['CONTENT_URL'];
-    $code = rand(1000, 10000);
+    $code = rand(100000, 1000000);
     $mail__content = file_get_contents("$CONTENT_URL/doc/send-mail.txt");
     $mail__content = str_replace('{code}', $code, $mail__content);
     require "$CONTENT_URL/PHPMailer/src/Exception.php";
@@ -81,10 +81,10 @@ function sendEmail($emailAddress)
         $mail->Port = 465; // or 587
         $mail->IsHTML(true);
         $mail->Username = "reachy432@gmail.com";
-        $mail->Password = "0reachy0@";
+        $mail->Password = "qrqlcdfwmguahvzy";
         // qrqlcdfwmguahvzy
         $mail->SetFrom("reachy432@gmail.com");
-        $mail->Subject = "Reachy xác nhận email của bạn: "; //Tiêu đề
+        $mail->Subject = "Reachy xác nhận email của bạn"; //Tiêu đề
         $mail->Body =  $mail__content;
         $mail->AddAddress("$emailAddress");
         $mail->Send();

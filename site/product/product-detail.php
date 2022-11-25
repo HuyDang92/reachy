@@ -137,7 +137,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                         <span></span><span></span><span></span><span></span>
                                     </div>
                                 </div>
-                            </a>
+                            </button>
                             <button id="add_cart" name="btn_addCart">
                                 <span class="material-icons-outlined add-to-cart">
                                     shopping_cart
