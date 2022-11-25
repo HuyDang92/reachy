@@ -84,7 +84,7 @@ function sendEmail($emailAddress)
         $mail->Password = "0reachy0@";
         // qrqlcdfwmguahvzy
         $mail->SetFrom("reachy432@gmail.com");
-        $mail->Subject = "Electech xác nhận email của bạn: "; //Tiêu đề
+        $mail->Subject = "Reachy xác nhận email của bạn: "; //Tiêu đề
         $mail->Body =  $mail__content;
         $mail->AddAddress("$emailAddress");
         $mail->Send();
