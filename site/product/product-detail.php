@@ -81,29 +81,29 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                 for ($i = 36; $i < 43; $i++) { ?>
                             <div class="col-size">
                                 <input <?php if ($product_size[$i] == 0) echo "disabled" ?> <?php if ($product_size[$i] != 0 && $check_status != "done") {
-                                                                                                        if ($i == 36) {
-                                                                                                            echo "checked";
-                                                                                                            $check_status = "done";
-                                                                                                        } else if ($i == 37) {
-                                                                                                            echo "checked";
-                                                                                                            $check_status = "done";
-                                                                                                        } else if ($i == 38) {
-                                                                                                            echo "checked";
-                                                                                                            $check_status = "done";
-                                                                                                        } else if ($i == 39) {
-                                                                                                            echo "checked";
-                                                                                                            $check_status = "done";
-                                                                                                        } else if ($i == 40) {
-                                                                                                            echo "checked";
-                                                                                                            $check_status = "done";
-                                                                                                        } else if ($i == 41) {
-                                                                                                            echo "checked";
-                                                                                                            $check_status = "done";
-                                                                                                        } else if ($i == 42) {
-                                                                                                            echo "checked";
-                                                                                                            $check_status = "done";
-                                                                                                        }
-                                                                                                    }; ?> type="radio"
+                                    if ($i == 36) {
+                                        echo "checked";
+                                        $check_status = "done";
+                                    } else if ($i == 37) {
+                                        echo "checked";
+                                        $check_status = "done";
+                                    } else if ($i == 38) {
+                                        echo "checked";
+                                        $check_status = "done";
+                                    } else if ($i == 39) {
+                                        echo "checked";
+                                        $check_status = "done";
+                                    } else if ($i == 40) {
+                                        echo "checked";
+                                        $check_status = "done";
+                                    } else if ($i == 41) {
+                                        echo "checked";
+                                        $check_status = "done";
+                                    } else if ($i == 42) {
+                                        echo "checked";
+                                        $check_status = "done";
+                                    }
+                                }; ?> type="radio"
                                     name="size" value="<?= $i ?>" hidden id="s<?= $i ?>">
                                 <label for="s<?= $i ?>"><?= $i ?></label>
                             </div>
@@ -123,10 +123,14 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                 </span>
                             </button>
                         </div>
-                        <small style="color: green;">Còn hàng</small> <br>
+                        <?php if($sql_product['in_stock']==1){ ?>
+                            <small style="color: green;">Còn hàng</small> <br>
+                        <?php }else{ ?>
+                            <small style="color: gray;">Hết hàng</small> <br>
+                        <?php } ?>
                         <div style="display: flex; align-items: center;" class="product-tool">
                             <input type="hidden" name="id_product" value="<?= $sql_product['id_product'] ?>">
-                            <button name="btn_buy">
+                            <button name="btn_buy" <?php if($sql_product['in_stock']==0) echo "disabled style='cursor: not-allowed' ";?>>
                                 <div class="btn_submit">
                                     <div style="margin-top: 0;" class="btn_submit-border">
                                         MUA NGAY
@@ -429,7 +433,9 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
     <?php } ?>
     <script>
     let amount_cart = document.getElementById("cart_quantity");
-    const btn_cart = document.getElementById("add_cart").addEventListener("click", function() {
+    const btn_cart = document.getElementById("add_cart").addEventListener(
+        "click", 
+        function() {
         amount_cart.innerHTML++;
     })
     </script>
