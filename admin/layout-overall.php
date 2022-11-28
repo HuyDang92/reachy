@@ -6,6 +6,7 @@ require_once "../dao/product.php";
 // require_once "../dao/user.php";
 require_once "../dao/comment.php";
 require_once "../dao/slider.php";
+require_once "../dao/blog.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

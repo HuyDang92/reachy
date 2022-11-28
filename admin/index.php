@@ -18,6 +18,8 @@ if(isset($_SESSION['login'])){
             $VIEW_NAME = "stastitic/index.php";
         } else if (exist_param("slider")) {
             $VIEW_NAME = "slider/index.php";
+        } else if (exist_param("blog")) {
+        $VIEW_NAME = "blog/index.php";
         } else {
             $VIEW_NAME = "layout/main-admin.php";
         }
