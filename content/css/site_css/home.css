@@ -98,19 +98,19 @@ section.exclusive__deal-area{
 }
 
 .cart.clicked .fa-shopping-cart {
-    animation: cart 2s ease-in forwards
+    animation: cart 1s ease-in forwards
 }
 
 .cart.clicked .fa-square {
-    animation: box 2s ease-in forwards
+    animation: box 1s ease-in forwards
 }
 
 .cart.clicked span.add-to-cart {
-    animation: addcart 2s ease-in forwards
+    animation: addcart 1s ease-in forwards
 }
 
 .cart.clicked span.added {
-    animation: added 2s ease-in forwards
+    animation: added 1s ease-in forwards
 }
 
 @keyframes cart {
