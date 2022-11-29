@@ -20,7 +20,7 @@ section.exclusive__deal-area{
     margin-bottom: 2rem;
 
 }
-.slide__item-left>h1{
+.slide__item-left h1{
     font-size: 50px;
     width: 25rem;
 }
@@ -744,3 +744,89 @@ ul.deal__week-content>li:hover>a::after{
 .policy-container>li:hover span{
     color: var(--blue);
 }
+@media only screen and (max-width: 850px){
+    section {
+        margin: 0 5% ;
+    }
+    .banner__area {
+        margin-top: 9rem ;
+        margin-bottom: 2rem ;
+    }
+    .slide__item-left>h1 {
+        font-size: 35px;
+        width: 15rem;
+    }
+    .slide__item-left>p {
+        width: 15rem;
+    }
+    .background_header>img {
+        height: 45% !important;
+    }
+    .main__category-poster img {
+        width: 75%;
+    }
+    .main__category-items {
+        width: 80%;
+        padding-right: 0rem;
+    }
+    .category__sale-area {
+        margin-top: 4rem;
+        margin-left: 5%;
+        margin-right: 0%;
+    }
+    .category-item {
+        margin-right: 2rem;
+    }
+    .category-item>img {
+        height: 95%;
+    }
+    .product__new-area .owl-next{
+        right: 23%;
+    }.product__new-area .owl-prev{
+        left: 23%;
+    }
+    /*  */
+    ul.product__selection li:hover .btn_add-buy button.buy {
+        right: 32%;
+    }
+    ul.product__selection li {
+        flex-basis: calc(50% - 1rem);
+        margin-right: 1rem;
+    }
+    /*  */
+    .deal__title h1 {
+        font-size: 40px;
+    }
+    /* .exclusive__deal-left img {
+        height: 75%;
+    } */
+    .exclusive__deal-content {
+        padding: 35% 6%;
+    }
+    .deal__timer ul>li {
+        padding: 0.5rem;
+    }
+    .exclusive__deal-left {
+        height: 32rem;
+    }
+    /*  */
+    ul.deal__week-content>li {
+        margin-right: 0.5rem;
+        width: 32%;
+        margin-bottom: 0.5rem;
+    }
+    ul.deal__week-content {
+        width: 100%;
+    }
+    .deal__banner {
+        display: none;
+    }
+    /*  */
+    .policy-container>li {
+        padding: 1rem;
+    }
+    .policy-container>li p{
+        font-size: 15px;
+    }
+}
+

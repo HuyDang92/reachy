@@ -145,7 +145,7 @@
 }
 #search_btn:checked ~ .header__form-search{
     display: flex;
-    transform: translateY(4rem);
+    transform: translateY(100%);
     z-index:-1;
 }
 
