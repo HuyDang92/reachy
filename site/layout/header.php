@@ -10,6 +10,7 @@ if (isset($_SESSION['login'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/header.css">
+    <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/header-mobile.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/root.css">
     <?php if (exist_param("contact")) { ?>
     <style>
@@ -81,7 +82,7 @@ if (isset($_SESSION['login'])) {
                     </li>
                 </ul>
                 <ul class="header__left-control">
-                    <li style="padding: 1.3rem 1rem;" class="control__user">
+                    <li class="control__user">
                         <?php if (isset($_SESSION['login'])) {
                             $id_user = $_SESSION['login'];
                             $img_user = user_selectImgs($id_user);
@@ -136,6 +137,24 @@ if (isset($_SESSION['login'])) {
                             </label>
                         </form>
                     </li>
+                    <!-- memu -->
+                    <div class="nav_logo-mobile">
+                        <label for="menu-input" class="icon-mobile">
+                            <i class="fa-solid fa-bars"></i>
+                        </label>
+                        <input type="checkbox" id="menu-input" class="nav-input" hidden>
+                        <label for="menu-input" class="menu-overplay"> </label>
+                        <div class="menu__mobile" id="nav">
+                            <div class="nav__container">
+                                <div class="header-mobile">
+                                    <h3>MENU</h3>
+                                    <label for="menu-input"><i class="fa-solid fa-xmark"></i></label>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
                 </ul>
             </div>
         </div>
