@@ -44,6 +44,7 @@ addBtns.forEach(btn_add => {
             ipt_request.setAttribute("name","btn_quantity");
             ipt_request.setAttribute("type","hidden");
             cartRow.appendChild(ipt_request);
+            solve_cartRow_totalPrice(cartRow);
             cartRow.submit();
         }
     )
@@ -56,20 +57,25 @@ minusBtns.forEach(btn_minus => {
         "click",
         function(event){
             let cartRow = event.target.parentElement.parentElement;
-            console.log("🚀 ~ file: cart.js ~ line 42 ~ cartRow", cartRow)
             let product_quantity = cartRow.querySelector(".product_quantity");
             let product_price = cartRow.querySelector(".cart_currentPrice");
             let product_totalPrice = cartRow.querySelector(".cart_totalPrice");
-            if(product_quantity.value>0){
+            console.log(product_quantity.value);
+            if(product_quantity.value>1){
                 product_quantity.value--;
+                product_totalPrice.innerHTML = new Intl.NumberFormat().format(parseInt(product_price.getAttribute('data-value'))*product_quantity.value);
+                product_totalPrice.setAttribute("data-value",parseInt(product_price.getAttribute('data-value'))*product_quantity.value)
+                let ipt_request = document.createElement("input");
+                ipt_request.setAttribute("name","btn_quantity");
+                ipt_request.setAttribute("type","hidden");
+                cartRow.appendChild(ipt_request);
+                cartRow.submit();
+            }else{
+                cartRow_prt = cartRow.parentElement;
+                cartRow_prt.style.display = "none";
+                cartRow.submit();
             }
-            product_totalPrice.innerHTML = new Intl.NumberFormat().format(parseInt(product_price.getAttribute('data-value'))*product_quantity.value);
-            product_totalPrice.setAttribute("data-value",parseInt(product_price.getAttribute('data-value'))*product_quantity.value)
-            let ipt_request = document.createElement("input");
-            ipt_request.setAttribute("name","btn_quantity");
-            ipt_request.setAttribute("type","hidden");
-            cartRow.appendChild(ipt_request);
-            cartRow.submit();
+
         }
     )
 });
@@ -82,6 +88,7 @@ cart_selecters.forEach(cart_selecter => {
         function(event){
             if(event.target.checked == true){
                 let cartRow = event.target.parentElement.parentElement;
+                console.log("🚀 ~ file: cart.js ~ line 86 ~ cartRow", cartRow)
                 let product_totalPrice = cartRow.querySelector(".cart_totalPrice");
                 let final_price = document.querySelector("#cart_finalPrice");
                 let old_price = final_price.getAttribute("data-value");
@@ -108,7 +115,7 @@ size_selecters.forEach(size_selecter => {
         "change",
         function (event){
             let cartRow = event.target.parentElement.parentElement.parentElement;
-            remove_cartRow(cartRow);
+            remove_cartRow_sizeExisted(cartRow);
             cartRow.submit();
         }
     )
@@ -116,7 +123,7 @@ size_selecters.forEach(size_selecter => {
 /**
 * Hàm xóa hàng sản phẩm trùng size
 */
-function remove_cartRow(cartRow){
+function remove_cartRow_sizeExisted_sizeExisted(cartRow){
     let check = 0;
     let cartRow_div = cartRow.parentElement;
     let seleter = cartRow.querySelector(".size_selecter");
@@ -131,9 +138,6 @@ function remove_cartRow(cartRow){
             break;
         }   
     }
-    cart_rows.forEach(cart_row => {
-        solve_cartRow_totalPrice(cart_row);
-    });
 }
 cart_delete.forEach(btn_delete => {
     btn_delete.addEventListener(
