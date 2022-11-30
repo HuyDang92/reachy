@@ -19,7 +19,7 @@ add_session('productLink', getCurrentUrl());
 
 <body>
     <div class="background_header">
-        <img style="height: 80%;" src="<?= $CONTENT_URL ?>/imgs/interface/background.png" alt="">
+        <img style="height: 85%;" src="<?= $CONTENT_URL ?>/imgs/interface/background.png" alt="">
     </div>
     <div class="container_main">
         <section class="banner__area">
