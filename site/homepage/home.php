@@ -99,11 +99,13 @@ add_session('productLink', getCurrentUrl());
                                 </div>
                             </div>
                             <div class="btn_add-buy">
-                                <button name="btn_addCart" class="cart">
-                                    <span class="add-to-cart">THÊM VÀO GIỎ</span>
-                                    <span class="added">ĐÃ THÊM </span>
-                                    <i class="fa fa-shopping-cart"></i> <i class="fa fa-square"></i>
-                                </button>
+                                <a href="<?=$SITE_URL?>/product/handle_product-detail.php?addCart_idProduct=<?=$row_product_new['id_product']?>">
+                                    <button class="cart">
+                                        <span class="add-to-cart">THÊM VÀO GIỎ</span>
+                                        <span class="added">ĐÃ THÊM </span>
+                                        <i class="fa fa-shopping-cart"></i> <i class="fa fa-square"></i>
+                                    </button>
+                                </a>
                                 <a
                                     href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product_new['id_product'] ?>"><button
                                         class="buy">MUA NGAY</button></a>
@@ -166,11 +168,11 @@ add_session('productLink', getCurrentUrl());
                                 </div>
                             </div>
                             <div class="btn_add-buy">
-                                <button class="cart">
+                                <a href="<?=$SITE_URL?>/product/handle_product-detail.php?addCart_idProduct=<?=$row_product_new['id_product']?>" class="cart">
                                     <span class="add-to-cart">THÊM VÀO GIỎ</span>
                                     <span class="added">ĐÃ THÊM</span>
                                     <i class="fa fa-shopping-cart"></i> <i class="fa fa-square"></i>
-                                </button>
+                                </a>
                                 <a
                                     href="<?= $SITE_URL ?>/product/order.php?id_product=<?= $row_product_new['id_product'] ?>"><button
                                         class="buy">MUA NGAY</button></a>
