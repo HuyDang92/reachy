@@ -82,7 +82,7 @@ if (isset($_SESSION['login'])) {
                     </li>
                 </ul>
                 <ul class="header__left-control">
-                    <li class="control__user">
+                    <li class="control__user" style="position: relative;">
                         <?php if (isset($_SESSION['login'])) {
                             $id_user = $_SESSION['login'];
                             $img_user = user_selectImgs($id_user);
