@@ -29,17 +29,17 @@
                     Đăng nhập
                 </a>
             </span> -->
-            <form action="">
+            <form action="handle_order.php" id="order_form" method="POST" target="frame">
                 <span>Họ và tên</span> <br>
-                <input type="text" name="" id="" value="<?= $user_order['name'] ?>" readonly> <br>
+                <input type="text" name="username" id="" value="<?= $user_order['name'] ?>"> <br>
                 <div class="box-flex">
                     <label style="margin-right: 0.5rem; width: 70%;">
                         <span>Email</span> <br>
-                        <input type="text" name="" value="<?= $user_order['email'] ?>" readonly>
+                        <input type="text" name="email" value="<?= $user_order['email'] ?>">
                     </label>
                     <label>
                         <span>Số điện thoại</span> <br>
-                        <input type="text" name="" value="<?= $user_order['phone_number'] ?>" readonly>
+                        <input type="text" name="phone_number" value="<?= $user_order['phone_number'] ?>">
                     </label>
                 </div>
                 <div class="deliver">
@@ -47,15 +47,15 @@
                     <label for="home">Giao tận nơi</label> -->
                     <div class="home">
                         <span>Địa chỉ</span> <br>
-                        <input type="text" name="" id="" placeholder="VD: Tên đường, số nhà...">
+                        <input type="text" name="address" id="" placeholder="VD: Tên đường, số nhà..." required>
                         <div class="box-flex">
-                            <select name="" id="city" aria-label=".form-select-sm">
+                            <select name="province" id="city" aria-label=".form-select-sm" required>
                                 <option value="">Chọn tỉnh / thành</option>
                             </select>
-                            <select name="" id="district" aria-label=".form-select-sm">
+                            <select name="district" id="district" aria-label=".form-select-sm" required>
                                 <option value="">Chọn quận / huyện</option>
                             </select>
-                            <select name="" id="ward" aria-label=".form-select-sm">
+                            <select name="village" id="ward" aria-label=".form-select-sm" required>
                                 <option value="">Chọn phường / xã</option>
                             </select>
                         </div>
@@ -72,8 +72,8 @@
                 </div>
                 <span>Ghi chú</span> <br>
                 <div class="cart-note">
-                    <textarea name="" id="" cols="30" rows="5"
-                        placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn giao hàng chi tiết hơn."></textarea>
+                    <textarea name="note" id="" cols="30" rows="5"
+                        placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn giao hàng chi tiết hơn." required></textarea>
                     <!-- <ul style="width: 50%;" class="note-right">
                         <strong>Chính sách đổi trả</strong>
                         <li>Sản phẩm được hỗ trợ đổi size trong vòng 3 ngày</li>
@@ -124,46 +124,44 @@
                     <span>Tổng cộng</span>
                     <h2><?php echo number_format($product_row['price'] * $product['quantity'] + 30000); ?>đ</h2>
                 </div>
-                <form class="payment" action="">
+                <div class="payment">
                     <div class="pay-row">
-                        <input type="radio" name="payment" id="cash" checked>
+                        <input type="radio" form="order_form" value="cod" name="payment" id="cash" checked>
                         <label for="cash">Trả tiền mặt khi nhận hàng</label>
                     </div>
                     <div style="display: block;" class="pay-row">
-                        <input type="radio" name="payment" id="card">
+                        <input type="radio" form="order_form" value="Bank" name="payment" id="card">
                         <label for="card">Chuyển khoản ngân hàng</label> <br>
                         <p>Thực hiện thanh toán vào ngay tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng Mã đơn hàng
                             của bạn trong phần Nội dung thanh toán. Đơn hàng sẽ đươc giao sau khi tiền đã chuyển.</p>
                     </div>
                     <div class="pay-row">
-                        <input type="radio" name="payment" id="momo">
+                        <input type="radio" form="order_form" value="Momo" name="payment" id="momo">
                         <label for="momo">Quét mã MoMo</label>
                         <img src="<?= $CONTENT_URL ?>/imgs/momo 1.svg" alt="">
                     </div>
                     <div class="pay-row">
-                        <input type="radio" name="payment" id="zalo">
+                        <input type="radio" form="order_form" value="ZaloPay" name="payment" id="zalo">
                         <label for="zalo">Quét mã ZaloPay</label>
                         <img src="<?= $CONTENT_URL ?>/imgs/zaloPay 1.svg" alt="">
 
                     </div>
                     <div class="pay-row">
-                        <input type="radio" name="payment" id="viettel">
+                        <input type="radio" form="order_form" value="ViettlePay" name="payment" id="viettel">
                         <label for="viettel">Quét mã ViettelPay</label>
                         <img src="<?= $CONTENT_URL ?>/imgs/viettel 1.svg" alt="">
 
                     </div>
-                    <div style="margin-top: 1rem; display: flex;" class="agree">
+                    <!-- <div style="margin-top: 1rem; display: flex;" class="agree">
                         <input style="margin-right: 0.5rem;" type="checkbox" id="agree" required>
                         <label for="agree">Tôi đã đọc và
                             đồng ý với điều khoản và
                             điều kiện của
                             website</label>
-                    </div>
-                </form>
+                    </div> -->
+                </div>
             </div>
-
-            <a href="">
-                <button type="submit">
+                <button form="order_form" type="submit" id="order_submit">
                     <div class="btn_submit">
                         <div style="width: 10rem; margin: 1rem 0; " class="btn_submit-border">
                             ĐẶT HÀNG
@@ -171,56 +169,14 @@
                         </div>
                     </div>
                 </button>
-            </a>
             <p style="color: #bbbbbb;">Thông tin cá nhân của bạn sẽ được sử dụng để xử lý đơn hàng, tăng trải nghiệm sử
                 dụng website, và cho các
                 mục đích cụ thể khác đã được mô tả trong chính sách riêng tư của chúng tôi.</p>
         </div>
     </div>
+    <iframe name="frame" hidden></iframe>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    <script>
-    var citis = document.getElementById("city");
-    var districts = document.getElementById("district");
-    var wards = document.getElementById("ward");
-    var Parameter = {
-        url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
-        method: "GET",
-        responseType: "application/json",
-    };
-    var promise = axios(Parameter);
-    promise.then(function(result) {
-        renderCity(result.data);
-    });
-
-    function renderCity(data) {
-        for (const x of data) {
-            citis.options[citis.options.length] = new Option(x.Name, x.Name);
-        }
-        citis.onchange = function() {
-            district.length = 1;
-            ward.length = 1;
-            if (this.value != "") {
-                const result = data.filter(n => n.Name === this.value);
-
-                for (const k of result[0].Districts) {
-                    district.options[district.options.length] = new Option(k.Name, k.Name);
-                }
-            }
-        };
-        district.onchange = function() {
-            ward.length = 1;
-            const dataCity = data.filter((n) => n.Name === citis.value);
-            if (this.value != "") {
-                const dataWards = dataCity[0].Districts.filter(n => n.Name === this.value)[0].Wards;
-
-                for (const w of dataWards) {
-                    wards.options[wards.options.length] = new Option(w.Name, w.Name);
-                }
-            }
-        };
-    }
-    </script>
-
+    <script src="<?=$CONTENT_URL?>/js/order.js"></script>
 </body>
 
 </html>

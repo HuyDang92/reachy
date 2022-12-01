@@ -31,6 +31,9 @@
             $id_user = $_SESSION['login'];
             $id_product = $addCart_idProduct;
             cart_insert($id_user,$id_product,$size,$quantity);
+            $productLink = $_SESSION['productLink'];
+            unset($_SESSION['productLink']);
+            header("location:$productLink");
         }else{
             //Nút thêm giỏ hàng trong trang chi tiết
             $id_user = $_SESSION['login'];
@@ -51,10 +54,10 @@
             }else{
                 cart_insert($id_user,$id_product,$size,$quantity);
             }
+            $productLink = $_SESSION['productLink'];
+            unset($_SESSION['productLink']);
+            header("location:$productLink");
         }
+        
     }
-    $productLink = $_SESSION['productLink'];
-    unset($_SESSION['productLink']);
-    header("location:$productLink");
-    
 ?>
