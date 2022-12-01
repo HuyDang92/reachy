@@ -56,3 +56,20 @@ and (max-device-width: 1550px) {
         margin-bottom: 20rem;
     }
 } */
+@media only screen and (max-width: 450px){
+    .title__sign-in {
+        margin: 6rem 0;
+        margin-bottom: 2rem;
+        margin-left: 60%;
+        font-weight: 800;
+        color: #ffff;
+    }
+    .title__sign-in {
+        font-size: 11px;
+    }
+    .title_link {
+        font-weight: 500;
+        letter-spacing: px;
+        font-size: 11px;
+    }
+}

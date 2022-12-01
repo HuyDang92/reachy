@@ -152,7 +152,31 @@ if (isset($_SESSION['login'])) {
                                 </div>
 
                             </div>
-
+                            <ul class="mobile__menu">
+                                <li class="home">
+                                    <a href="<?= $SITE_URL ?>/homepage">TRANG CHỦ</a>
+                                </li>
+                                <li class="cate">
+                                    <input type="checkbox" id="cate_mobile" hidden>
+                                    <label for="cate_mobile">DANH MỤC</label>
+                                    <div class="category__sub">
+                                        <?php foreach ($sql_category as $row_category) { ?>
+                                        <a
+                                            href="<?= $SITE_URL ?>/homepage?category&id_category=<?= $row_category[0] ?>&page_num=1"><?= $row_category['name'] ?>
+                                            <br></a>
+                                        <?php } ?>
+                                    </div>
+                                </li>
+                                <li class="blogs">
+                                    <a href="<?= $SITE_URL ?>/homepage?blogs">BLOGS</a>
+                                </li>
+                                <li class="introduce">
+                                    <a href="<?= $SITE_URL ?>/homepage?introduce">GIỚI THIỆU</a>
+                                </li>
+                                <li class="contact">
+                                    <a href="<?= $SITE_URL ?>/homepage?contact">LIÊN HỆ</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </ul>

@@ -766,7 +766,7 @@ ul.deal__week-content>li:hover>a::after{
         width: 75%;
     }
     .main__category-items {
-        width: 80%;
+        width: 100%;
         padding-right: 0rem;
     }
     .category__sale-area {
@@ -831,7 +831,7 @@ ul.deal__week-content>li:hover>a::after{
 }
 @media only screen and (max-width: 450px){
     .background_header>img {
-        height: 32% !important;
+        height: 30% !important;
     }
     .banner__area {
         margin-top: 5rem;
@@ -871,7 +871,10 @@ ul.deal__week-content>li:hover>a::after{
         margin-right: 0%;
     }
     .category-item {
-        margin-right: 1rem;
+        margin-right: 0.5rem;
+    }
+    .main__category-container {
+        display: block;
     }
     .category__sale-area {
         margin-top: 1rem;
@@ -879,8 +882,7 @@ ul.deal__week-content>li:hover>a::after{
         margin-right: 5%;
     }
     .main__category-poster img {
-        width: 5rem;
-        height: 85%;
+        width: 100%;
         object-fit: cover;
     }
     .category-item a {
@@ -890,7 +892,11 @@ ul.deal__week-content>li:hover>a::after{
         bottom: 5px;
     }
     .category-item {
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+    .category-item:nth-child(2)>img, .category-item:nth-child(3)>img {
+        height: 95%;
+        margin: 0;
     }
     .sec__title {
         text-align: center;
@@ -927,7 +933,8 @@ ul.deal__week-content>li:hover>a::after{
     }
     .product__selection-top img {
         width: 100%;
-        height: 8rem;
+        height: 9rem;
+        object-fit: cover;
     }
     .product__selection-top {
         padding: 0.2rem;
