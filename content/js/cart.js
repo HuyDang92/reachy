@@ -57,6 +57,7 @@ minusBtns.forEach(btn_minus => {
         "click",
         function(event){
             let cartRow = event.target.parentElement.parentElement;
+            console.log("🚀 ~ file: cart.js:60 ~ cartRow ", cartRow )
             let product_quantity = cartRow.querySelector(".product_quantity");
             let product_price = cartRow.querySelector(".cart_currentPrice");
             let product_totalPrice = cartRow.querySelector(".cart_totalPrice");
@@ -79,6 +80,21 @@ minusBtns.forEach(btn_minus => {
         }
     )
 });
+
+function final_price(cartRow,opr){
+    let product_totalPrice = cartRow.querySelector(".cart_totalPrice");
+    let final_price = document.querySelector("#cart_finalPrice");
+    let old_price = final_price.getAttribute("data-value");
+    if(opr=="+"){
+        let new_price = parseInt(old_price) + parseInt(product_totalPrice.getAttribute("data-value"));
+        final_price.innerHTML = new Intl.NumberFormat().format(new_price) +"đ";
+        final_price.setAttribute("data-value",new_price);
+    }else{
+        let new_price = parseInt(old_price) - parseInt(product_totalPrice.getAttribute("data-value"));
+        final_price.innerHTML = new Intl.NumberFormat().format(new_price) +"đ";
+        final_price.setAttribute("data-value",new_price);
+    }
+}
 /**
 * Chọn sản phẩm muốn mua và hiển thị giá
 */
@@ -88,21 +104,10 @@ cart_selecters.forEach(cart_selecter => {
         function(event){
             if(event.target.checked == true){
                 let cartRow = event.target.parentElement.parentElement;
-                console.log("🚀 ~ file: cart.js ~ line 86 ~ cartRow", cartRow)
-                let product_totalPrice = cartRow.querySelector(".cart_totalPrice");
-                let final_price = document.querySelector("#cart_finalPrice");
-                let old_price = final_price.getAttribute("data-value");
-                let new_price = parseInt(old_price) + parseInt(product_totalPrice.getAttribute("data-value"));
-                final_price.innerHTML = new Intl.NumberFormat().format(new_price) +"đ";
-                final_price.setAttribute("data-value",new_price);
+                final_price(cartRow,"+");
             }else{
                 let cartRow = event.target.parentElement.parentElement;
-                let product_totalPrice = cartRow.querySelector(".cart_totalPrice");
-                let final_price = document.querySelector("#cart_finalPrice");
-                let old_price = final_price.getAttribute("data-value");
-                let new_price = parseInt(old_price) - parseInt(product_totalPrice.getAttribute("data-value"));
-                final_price.innerHTML = new Intl.NumberFormat().format(new_price) +"đ";
-                final_price.setAttribute("data-value",new_price);
+                final_price(cartRow,"-");
             }
         }
     )

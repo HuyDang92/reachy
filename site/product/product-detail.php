@@ -5,6 +5,7 @@ add_session('productLink', getCurrentUrl());
 $sql_deal = product_select_AllSaleOff();
 if (isset($_GET['id_product'])) {
     $id_product = $_GET['id_product'];
+    $specification = product_select_specification($id_product);
     $sql_product = product_selectOne($id_product);
     $discount_product = $sql_product['price'] + $sql_product['price'] * ($sql_product['sale_off'] / 100);
 }
@@ -184,7 +185,35 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                     <?= $sql_product['description'] ?>
                 </p>
             </div>
-            <div id="pd_detail" class="tabcontent">Chi tiết</div>
+            <div id="pd_detail" class="tabcontent">
+                <h3>Chi tiết</h3>
+                <table border="1" class="pd_detail-content">
+                    <tr>
+                        <td>Chiều dài</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Chiều rộng</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Chiều cao</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Cân nặng</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Kiểm tra hàng</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Bảo hành</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
             <!-- bình luận -->
             <div id="comment" class="tabcontent">
                 <div class="box_container">
