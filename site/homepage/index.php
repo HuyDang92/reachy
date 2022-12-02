@@ -20,7 +20,7 @@ if (exist_param("contact")) {
     if (isset($_GET['page_num'])) $page_num = $_GET['page_num'] + 0;
     else $page_num = 1;
     if ($page_num <= 0) $page_num = 1;
-    $page_size = 9;
+    $page_size = 12;
     $sql = "SELECT product.* FROM product
             JOIN category ON product.id_category = category.id_category
             JOIN brand ON product.id_brand = brand.id_brand

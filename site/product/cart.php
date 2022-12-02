@@ -45,6 +45,7 @@ add_session("lasted_url", getCurrentUrl());
                             <img style="width: 5rem;"
                                 src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>" alt="">
                         </div>
+<<<<<<< HEAD
                         <div class="cart__product-info">
                             <h4 style="margin-bottom: 5px; margin-top: 0;"><a
                                     href="<?= $SITE_URL ?>/product/?product&id_product=<?= $cart['id_product'] ?>"><?= $product['name'] ?></a>
@@ -58,6 +59,20 @@ add_session("lasted_url", getCurrentUrl());
                                 <option <?php if ($cart['size'] == "41") echo "selected" ?> value="41">Size 41</option>
                                 <option <?php if ($cart['size'] == "42") echo "selected" ?> value="42">Size 42</option>
                             </select>
+=======
+                        <div class="product-count">
+                            <button type="button" name="btn_quantity" class="btn_descreaseQuantityProduct">
+                                <span class="material-symbols-outlined">
+                                    remove
+                                </span>
+                            </button>
+                            <input readonly type="number" name="quantity" class="product_quantity" value="<?= $cart['quantity'] ?>">
+                            <button type="button" name="btn_quantity" class="btn_increaseQuantityProduct">
+                                <span class="material-symbols-outlined">
+                                    add
+                                </span>
+                            </button>
+>>>>>>> 16242105264a79292530d2f9dbe89bda7277857c
                         </div>
                     </div>
                     <div class="product-count">

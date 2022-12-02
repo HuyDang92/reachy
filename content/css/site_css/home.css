@@ -208,8 +208,8 @@ section.exclusive__deal-area{
 .category__sale-area{
     margin: 1rem;
     margin-top: 5rem;
-    margin-left: 10%;
-    margin-right: 5%;
+    margin-left: 12%;
+    margin-right: 8%;
 }
 .main__category-container{
     display: flex;
@@ -218,7 +218,7 @@ section.exclusive__deal-area{
     justify-content: space-between;
     /* display: flex; */
     flex-wrap: wrap;
-    width: 65%;
+    width: 68%;
     padding-right: 3rem;
 }
 .category-item{

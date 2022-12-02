@@ -1,4 +1,4 @@
-@import url('/content/css/root.css');
+@import url('../root.css');
 
 .background_header{
     margin: 0;
@@ -157,7 +157,11 @@
     top: 100%;
     display: flex;
     flex-wrap: wrap;
+<<<<<<< HEAD
     width: 30%;
+=======
+    width: 22rem;
+>>>>>>> 16242105264a79292530d2f9dbe89bda7277857c
     transition: all 0.3s;
     transition-delay: 0.2s;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
