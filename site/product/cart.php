@@ -66,7 +66,7 @@ add_session("lasted_url", getCurrentUrl());
                                     remove
                                 </span>
                             </button>
-                            <input type="number" name="quantity" class="product_quantity" value="<?= $cart['quantity'] ?>">
+                            <input readonly type="number" name="quantity" class="product_quantity" value="<?= $cart['quantity'] ?>">
                             <button type="button" name="btn_quantity" class="btn_increaseQuantityProduct">
                                 <span class="material-symbols-outlined">
                                     add

@@ -7,7 +7,8 @@
     require_once "../../dao/bill.php";
     session_start();
     extract($_REQUEST);
-    if($quantity==0) $quantity=1;
+    if(!isset($quantity) || $quantity==0) $quantity=1;
+    if(!isset($size)) $size=36;
     if(!isset($_SESSION['login'])){
         add_session("message","Vui lòng đăng nhập để thực hiện chức năng!");
         $productLink = $_SESSION['productLink'];
@@ -16,6 +17,7 @@
         header("location:$productLink");
     }else{
         if(exist_param("btn_buy")){
+            //Nút mua trong trang chi tiết
             $product = array(
                             "0","id_product" => $id_product,
                             "size" => $size,
@@ -25,7 +27,15 @@
             echo "
                 <script>window.parent.location.href='../product/?buy'</script>
                 ";
+        }else if(exist_param("addCart_idProduct")){
+            $id_user = $_SESSION['login'];
+            $id_product = $addCart_idProduct;
+            cart_insert($id_user,$id_product,$size,$quantity);
+            $productLink = $_SESSION['productLink'];
+            unset($_SESSION['productLink']);
+            header("location:$productLink");
         }else{
+            //Nút thêm giỏ hàng trong trang chi tiết
             $id_user = $_SESSION['login'];
             if(cart_checkExist($id_user,$id_product)){
                 $old_carts = cart_checkExist($id_user,$id_product);
@@ -42,13 +52,12 @@
                     cart_insert($id_user,$id_product,$size,$quantity);
                 }
             }else{
-                echo "thêm mới";
                 cart_insert($id_user,$id_product,$size,$quantity);
             }
             $productLink = $_SESSION['productLink'];
             unset($_SESSION['productLink']);
             header("location:$productLink");
         }
+        
     }
-    
 ?>
