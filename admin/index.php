@@ -14,8 +14,8 @@ if(isset($_SESSION['login'])){
             $VIEW_NAME = "comment/index.php";
         } else if (exist_param("user")) {
             $VIEW_NAME = "user/index.php";
-        } else if (exist_param("stastitic")) {
-            $VIEW_NAME = "stastitic/index.php";
+        } else if (exist_param("bill")) {
+            $VIEW_NAME = "bill/index.php";
         } else if (exist_param("slider")) {
             $VIEW_NAME = "slider/index.php";
         } else if (exist_param("blog")) {
