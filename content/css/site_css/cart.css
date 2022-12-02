@@ -38,6 +38,11 @@
     display: flex; 
     width: 40%;
 }
+.cart-row form{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .product-count{
     display: flex;
     align-items: center;
@@ -80,5 +85,5 @@
 }
 .cart_pay .btn_submit-border{
     width: 15rem !important;
-    height: 3rem !important;
+    height: 2.6rem !important;
 }

@@ -12,23 +12,25 @@ require_once "../../dao/bill.php";
 if (exist_param("product")) {
     $VIEW_NAME = "product/product-detail.php";
 } else if (exist_param("cart")) {
-    if(isset($_SESSION['login'])){
+    if (isset($_SESSION['login'])) {
         $VIEW_NAME = "product/cart.php";
-    }else{
+    } else {
         header("location:../../index.php");
     }
 } else if (exist_param("buy")) {
-    if(isset($_SESSION['login'])){
+    if (isset($_SESSION['login'])) {
         $VIEW_NAME = "product/order.php";
-    }else{
+    } else {
         header("location:../../index.php");
     }
 } else if (exist_param("order_return")) {
-    if(isset($_SESSION['login'])){
+    if (isset($_SESSION['login'])) {
         $VIEW_NAME = "product/order_return.php";
-    }else{
+    } else {
         header("location:../../index.php");
     }
+} else if (isset($_SESSION['login'])) {
+    $VIEW_NAME = "user/info.php";
 } else {
     $VIEW_NAME = "";
 }

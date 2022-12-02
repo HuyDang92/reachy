@@ -147,20 +147,19 @@ if (isset($_SESSION['product'])) {
                         <input type="radio" form="order_form" value="ZaloPay" name="payment" id="zalo">
                         <label for="zalo">Quét mã ZaloPay</label>
                         <img src="<?= $CONTENT_URL ?>/imgs/zaloPay 1.svg" alt="">
-
                     </div>
                     <div class="pay-row">
-                        <input type="radio" name="payment" id="viettel">
-                        <label for="viettel">Thanh toán VNPAY</label>
+                        <input type="radio" name="payment" id="vnpay">
+                        <label for="vnpay">Thanh toán VNPAY</label>
                         <img src="<?= $CONTENT_URL ?>/imgs/logoVNPAY 1.svg" alt="">
                     </div>
-                    <!-- <div style="margin-top: 1rem; display: flex;" class="agree">
+                    <div style="margin-top: 1rem; display: flex;" class="agree">
                         <input style="margin-right: 0.5rem;" type="checkbox" id="agree" required>
                         <label for="agree">Tôi đã đọc và
                             đồng ý với điều khoản và
                             điều kiện của
                             website</label>
-                    </div> -->
+                    </div>
                 </div>
             </div>
             <button form="order_form" type="submit" id="order_submit">
