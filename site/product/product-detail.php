@@ -131,12 +131,8 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                         <?php } ?>
                         <div class="product-tool">
                             <input type="hidden" name="id_product" value="<?= $sql_product['id_product'] ?>">
-<<<<<<< HEAD
-                            <button name="btn_buy"
+                            <button type="submit" name="btn_buy"
                                 <?php if ($sql_product['in_stock'] == 0) echo "disabled style='cursor: not-allowed' "; ?>>
-=======
-                            <button type="submit" name="btn_buy" <?php if($sql_product['in_stock']==0) echo "disabled style='cursor: not-allowed' ";?>>
->>>>>>> 16242105264a79292530d2f9dbe89bda7277857c
                                 <div class="btn_submit">
                                     <div style="margin-top: 0;" class="btn_submit-border">
                                         MUA NGAY
@@ -144,16 +140,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                     </div>
                                 </div>
                             </button>
-<<<<<<< HEAD
-                            <!-- <button id="add_cart" name="btn_addCart">
-=======
-                            <button id="add_cart" name="btn_addCart">
->>>>>>> 16242105264a79292530d2f9dbe89bda7277857c
-                                <span class="material-icons-outlined add-to-cart">
-                                    shopping_cart
-                                </span>
-                            </button> -->
-                            <button id="add_cart" name="btn_addCart" class="cart-cir">
+                            <button style="margin: 0 0.5rem;" id="add_cart" name="btn_addCart" class="cart-cir">
                                 <span class="add-to-cart"><i class="fa-solid fa-cart-shopping"></i></span>
                                 <span class="added"><i class="fa-solid fa-cart-shopping"></i></span>
                                 <i class="fa fa-shopping-cart"></i> <i class="fa fa-square"></i>

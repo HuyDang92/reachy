@@ -103,7 +103,8 @@ add_session('productLink', getCurrentUrl());
                                 </div>
                             </div>
                             <div class="btn_add-buy">
-                                <a href="<?=$SITE_URL?>/product/handle_product-detail.php?addCart_idProduct=<?=$row_product_new['id_product']?>">
+                                <a
+                                    href="<?= $SITE_URL ?>/product/handle_product-detail.php?addCart_idProduct=<?= $row_product_new['id_product'] ?>">
                                     <button class="cart">
                                         <span class="add-to-cart">THÊM VÀO GIỎ</span>
                                         <span class="added">ĐÃ THÊM </span>
@@ -172,7 +173,8 @@ add_session('productLink', getCurrentUrl());
                                 </div>
                             </div>
                             <div class="btn_add-buy">
-                                <a href="<?=$SITE_URL?>/product/handle_product-detail.php?addCart_idProduct=<?=$row_product_new['id_product']?>" class="cart">
+                                <a href="<?= $SITE_URL ?>/product/handle_product-detail.php?addCart_idProduct=<?= $row_product_new['id_product'] ?>"
+                                    class="cart">
                                     <span class="add-to-cart">THÊM VÀO GIỎ</span>
                                     <span class="added">ĐÃ THÊM</span>
                                     <i class="fa fa-shopping-cart"></i> <i class="fa fa-square"></i>

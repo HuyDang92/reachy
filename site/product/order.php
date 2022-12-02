@@ -74,7 +74,8 @@ if (isset($_SESSION['product'])) {
                 <span>Ghi chú</span> <br>
                 <div class="cart-note">
                     <textarea name="note" id="" cols="30" rows="5"
-                        placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn giao hàng chi tiết hơn." required></textarea>
+                        placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn giao hàng chi tiết hơn."
+                        required></textarea>
                     <!-- <ul style="width: 50%;" class="note-right">
                         <strong>Chính sách đổi trả</strong>
                         <li>Sản phẩm được hỗ trợ đổi size trong vòng 3 ngày</li>
@@ -149,16 +150,9 @@ if (isset($_SESSION['product'])) {
 
                     </div>
                     <div class="pay-row">
-<<<<<<< HEAD
                         <input type="radio" name="payment" id="viettel">
                         <label for="viettel">Thanh toán VNPAY</label>
                         <img src="<?= $CONTENT_URL ?>/imgs/logoVNPAY 1.svg" alt="">
-=======
-                        <input type="radio" form="order_form" value="ViettlePay" name="payment" id="viettel">
-                        <label for="viettel">Quét mã ViettelPay</label>
-                        <img src="<?= $CONTENT_URL ?>/imgs/viettel 1.svg" alt="">
->>>>>>> 16242105264a79292530d2f9dbe89bda7277857c
-
                     </div>
                     <!-- <div style="margin-top: 1rem; display: flex;" class="agree">
                         <input style="margin-right: 0.5rem;" type="checkbox" id="agree" required>
@@ -169,14 +163,14 @@ if (isset($_SESSION['product'])) {
                     </div> -->
                 </div>
             </div>
-                <button form="order_form" type="submit" id="order_submit">
-                    <div class="btn_submit">
-                        <div style="width: 10rem; margin: 1rem 0; " class="btn_submit-border">
-                            ĐẶT HÀNG
-                            <span></span><span></span><span></span><span></span>
-                        </div>
+            <button form="order_form" type="submit" id="order_submit">
+                <div class="btn_submit">
+                    <div style="width: 10rem; margin: 1rem 0; " class="btn_submit-border">
+                        ĐẶT HÀNG
+                        <span></span><span></span><span></span><span></span>
                     </div>
-                </button>
+                </div>
+            </button>
             <p style="color: #bbbbbb;">Thông tin cá nhân của bạn sẽ được sử dụng để xử lý đơn hàng, tăng trải nghiệm sử
                 dụng website, và cho các
                 mục đích cụ thể khác đã được mô tả trong chính sách riêng tư của chúng tôi.</p>
@@ -184,7 +178,7 @@ if (isset($_SESSION['product'])) {
     </div>
     <iframe name="frame" hidden></iframe>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    <script src="<?=$CONTENT_URL?>/js/order.js"></script>
+    <script src="<?= $CONTENT_URL ?>/js/order.js"></script>
 </body>
 
 </html>
