@@ -1,6 +1,7 @@
 const bill_detail = document.querySelectorAll('.bill_detail');
 const bill_contain = document.querySelectorAll('.bill__detail--contain');
 const user_name = document.querySelectorAll('.name');
+const user_email = document.querySelectorAll('.email');
 const product = document.querySelectorAll('.pro');
 const date_bill = document.querySelectorAll('.date');
 const address = document.querySelectorAll('.address');
@@ -17,6 +18,7 @@ function detail_info(e){
         <div class="bill__container">
             <h2>Thông tin chi tiết</h2>
             <p><span>Tên khách hàng:</span> ${user_name[bill_num].value}</p>
+            <p><span>Email:</span> ${user_email[bill_num].value}</p>
             <p><span>Tên sản phẩm:</span> ${product[bill_num].value}</p>
             <p><span>Ngày đặt:</span> ${date_bill[bill_num].value}</p>
             <p><span>Địa chỉ:</span> ${address[bill_num].value}</p>

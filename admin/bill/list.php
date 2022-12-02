@@ -52,6 +52,7 @@
                         </div>
                     </td>
                         <input type="hidden" data-bill="<?=$i?>" class="name" value="<?=$user['name']?>">
+                        <input type="hidden" data-bill="<?=$i?>" class="email" value="<?=$user['email']?>">
                         <input type="hidden" data-bill="<?=$i?>" class="pro" value="<?=$pro['name']?>">
                         <input type="hidden" data-bill="<?=$i?>" class="date" value="<?=$date?>">
                         <input type="hidden" data-bill="<?=$i?>" class="address" value="<?=$address?>">
