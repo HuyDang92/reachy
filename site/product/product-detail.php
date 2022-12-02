@@ -131,7 +131,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                         <?php } ?>
                         <div class="product-tool">
                             <input type="hidden" name="id_product" value="<?= $sql_product['id_product'] ?>">
-                            <button type="submit" name="btn_buy"
+                            <button name="btn_buy"
                                 <?php if ($sql_product['in_stock'] == 0) echo "disabled style='cursor: not-allowed' "; ?>>
                                 <div class="btn_submit">
                                     <div style="margin-top: 0;" class="btn_submit-border">

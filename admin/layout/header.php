@@ -70,7 +70,7 @@
                     <a href="<?= $ADMIN_URL ?>?user&act=list">TÀI KHOẢN</a>
                 </li>
                 <li class="thongke">
-                    <a href="<?= $ADMIN_URL ?>?stastitic">THỐNG KÊ</a>
+                    <a href="<?= $ADMIN_URL ?>?bill&act=list">ĐƠN HÀNG</a>
                 </li>
             </ul>
             <ul class="header__left-control">
