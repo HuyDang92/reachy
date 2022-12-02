@@ -36,4 +36,52 @@
         $sql = "INSERT INTO bill_detail(id_billdetail,id_bill,id_product,size,amount) VALUES (null,?,?,?,?)";
         pdo_execute($sql,$id_bill,$id_product,$size,$quantity);
     }
+    /**
+    * Xuất danh sách sản phẩm trong hóa đơn
+    * @param int $id_bill Mã hóa đơn
+    */
+    function bill_detail_selectByIdBill($id_bill){
+        $sql = "SELECT * FROM bill_detail WHERE id_bill = ?";
+        return pdo_query($sql,$id_bill);
+    }
+    /**
+    * Xuất tất cả hóa đơn đang đóng gói
+    * @param int $id_user Mã khách hàng
+    */
+    function bill_selectAllByStatusParking($id_user){
+        $sql = "SELECT * FROM bill WHERE status = 0 AND id_user = ?";
+        return pdo_query($sql,$id_user);
+    }
+    /**
+    * Xuất tất cả hóa đơn đang vận chuyển
+    * @param int $id_user Mã khách hàng
+    */
+    function bill_selectAllByStatusDelivering($id_user){
+        $sql = "SELECT * FROM bill WHERE status = 1 AND id_user = ?";
+        return pdo_query($sql,$id_user);
+    }
+    /**
+    * Xuất tất cả hóa đơn đã hoàn tất
+    * @param int $id_user Mã khách hàng
+    */
+    function bill_selectAllByStatusFinish($id_user){
+        $sql = "SELECT * FROM bill WHERE status = 2 AND id_user = ?";
+        return pdo_query($sql,$id_user);
+    }
+    /**
+    * Hủy đơn hàng
+    * @param int $id_bill Mã hóa đơn
+    */
+    function bill_cancel($id_bill){
+        $sql = "UPDATE bill SET status = 3 WHERE id_bill = ?";
+        pdo_execute($sql,$id_bill);
+    }
+    /**
+    * Đã nhận được hàng
+    * @param int $id_bill Mã hóa đơn
+    */
+    function bill_taken($id_bill){
+        $sql = "UPDATE bill SET status = 2 WHERE id_bill = ?";
+        pdo_execute($sql,$id_bill);
+    }
 ?>
