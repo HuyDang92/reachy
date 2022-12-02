@@ -36,4 +36,12 @@
         $sql = "INSERT INTO bill_detail(id_billdetail,id_bill,id_product,size,amount) VALUES (null,?,?,?,?)";
         pdo_execute($sql,$id_bill,$id_product,$size,$quantity);
     }
+    /* Xóa đơn hàng theo mã đơn hàng
+    * @param int $id_bill Mã đơn hàng
+    * @return array đơn hàng theo mã tương ứng
+    */
+    function bill_delete($id_bill){
+        $sql = "DELETE FROM bill WHERE id_bill = ?";
+        pdo_execute($sql,$id_bill);
+    }
 ?>
