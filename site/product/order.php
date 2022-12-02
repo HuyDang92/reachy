@@ -10,15 +10,16 @@
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/form.css">
 
 </head>
-    <?php 
-        $user_order = user_selectById($_SESSION['login']);
-        if(isset($_SESSION['product'])){
-            $products = $_SESSION['product'];
-            if(!is_array($products[0])){
-                $products = array($products);
-            }
-        }
-    ?>
+<?php
+$user_order = user_selectById($_SESSION['login']);
+if (isset($_SESSION['product'])) {
+    $products = $_SESSION['product'];
+    if (!is_array($products[0])) {
+        $products = array($products);
+    }
+}
+?>
+
 <body>
 
     <div class="container-order">
@@ -88,27 +89,27 @@
             <h4 style="margin: 0 0 1rem 0;">ĐƠN HÀNG CỦA BẠN</h4>
             <div class="bill">
                 <ul class="product-rows">
-                    <?php if(isset($products)){
-                        foreach($products as $product){
+                    <?php if (isset($products)) {
+                        foreach ($products as $product) {
                             $product_row = product_selectOne($product['id_product']);
                             $product_img = product_selectImgs($product['id_product']);
                     ?>
-                        <li class="product-row">
-                            <div class="product-row-left">
-                                <div class="pd-thumbal">
-                                    <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>" alt="">
-                                    <span class="amount"><?= $product['quantity'] ?></span>
-                                </div>
-                                <div style="margin: 0 0 0.5rem 0.5rem;" class="pd-info">
-                                    <p style="margin-top: 0;"><?= $product_row['name'] ?></p>
-                                    <span style="font-size: 15px; color: #ccc;">Size: <?= $product['size'] ?></span>
-                                </div>
+                    <li class="product-row">
+                        <div class="product-row-left">
+                            <div class="pd-thumbal">
+                                <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>" alt="">
+                                <span class="amount"><?= $product['quantity'] ?></span>
                             </div>
-                            <div class="pd-price">
-                                <span><?php echo number_format($product_row['price'] * $product['quantity']); ?>đ</span>
+                            <div style="margin: 0 0 0.5rem 0.5rem;" class="pd-info">
+                                <p style="margin-top: 0;"><?= $product_row['name'] ?></p>
+                                <span style="font-size: 15px; color: #ccc;">Size: <?= $product['size'] ?></span>
                             </div>
-                        </li>
-                        <?php } ?>
+                        </div>
+                        <div class="pd-price">
+                            <span><?php echo number_format($product_row['price'] * $product['quantity']); ?>đ</span>
+                        </div>
+                    </li>
+                    <?php } ?>
                     <?php } ?>
                 </ul>
                 <div class="code-discount">
@@ -117,7 +118,8 @@
                 </div>
                 <div class="bill-total">
                     <div style="margin-bottom: 0.5rem;" class="price-pd">Tạm tính
-                        <span><?php echo number_format($product_row['price'] * $product['quantity']); ?>đ</span></div>
+                        <span><?php echo number_format($product_row['price'] * $product['quantity']); ?>đ</span>
+                    </div>
                     <div class="price-pd">Phí vận chuyển <span>30,000đ</span></div>
                 </div>
                 <div class="price-total">
@@ -147,9 +149,9 @@
 
                     </div>
                     <div class="pay-row">
-                        <input type="radio" form="order_form" value="ViettlePay" name="payment" id="viettel">
-                        <label for="viettel">Quét mã ViettelPay</label>
-                        <img src="<?= $CONTENT_URL ?>/imgs/viettel 1.svg" alt="">
+                        <input type="radio" name="payment" id="viettel">
+                        <label for="viettel">Thanh toán VNPAY</label>
+                        <img src="<?= $CONTENT_URL ?>/imgs/logoVNPAY 1.svg" alt="">
 
                     </div>
                     <!-- <div style="margin-top: 1rem; display: flex;" class="agree">

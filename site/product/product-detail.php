@@ -129,7 +129,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                         <?php } else { ?>
                         <small style="color: gray;">Hết hàng</small> <br>
                         <?php } ?>
-                        <div style="display: flex; align-items: center;" class="product-tool">
+                        <div class="product-tool">
                             <input type="hidden" name="id_product" value="<?= $sql_product['id_product'] ?>">
 <<<<<<< HEAD
                             <button name="btn_buy"
@@ -144,10 +144,15 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                     </div>
                                 </div>
                             </button>
-                            <button id="add_cart" name="btn_addCart">
+                            <!-- <button id="add_cart" name="btn_addCart">
                                 <span class="material-icons-outlined add-to-cart">
                                     shopping_cart
                                 </span>
+                            </button> -->
+                            <button id="add_cart" name="btn_addCart" class="cart-cir">
+                                <span class="add-to-cart"><i class="fa-solid fa-cart-shopping"></i></span>
+                                <span class="added"><i class="fa-solid fa-cart-shopping"></i></span>
+                                <i class="fa fa-shopping-cart"></i> <i class="fa fa-square"></i>
                             </button>
                             <a href="<?= $SITE_URL ?>/product/handle_addWishList.php?id_product=<?= $sql_product['id_product'] ?>"
                                 target="frame" id="btn_like">
@@ -160,6 +165,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                 <?php } ?>
                             </a>
                         </div>
+
                         <p> <?= $sql_product['feature'] ?> </p>
                         <div class="product__bottom-bh">
                             <ul style="font-weight: 700;" class="product_content-bh">
@@ -434,7 +440,6 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
     </section>
     </div>
     <iframe name="frame" style="display: none;"></iframe>
-    <script src="<?= $CONTENT_URL ?>/js/cart.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/slide_product.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/tabs.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/product_detail.js"></script>
@@ -472,6 +477,20 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
         function() {
             amount_cart.innerHTML++;
         })
+    </script>
+    <script>
+    const cartButtons = document.querySelectorAll('.cart-cir');
+
+    cartButtons.forEach(button => {
+
+        button.addEventListener('click', cartClick);
+
+    });
+
+    function cartClick() {
+        let button = this;
+        button.classList.toggle('clicked');
+    }
     </script>
 </body>
 

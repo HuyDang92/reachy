@@ -34,6 +34,10 @@
     color: var(--darkgray);
     margin-bottom: 5px;
 }
+.group{
+    display: flex; 
+    width: 40%;
+}
 .product-count{
     display: flex;
     align-items: center;
