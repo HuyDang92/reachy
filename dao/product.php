@@ -271,3 +271,14 @@ function product_checkSizeExist($id_product){
     $sql = "SELECT * FROM size WHERE id_product = ?";
     return pdo_query_one($sql,$id_product);
 }
+/**
+* Đánh giá sản phẩm
+* @param int $id_product Mã sản phẩm
+* @param int $id_user Mã khách hàng
+* @param int $rating Đánh giá sản phẩm
+* @param string $content Nội dung đánh giá
+*/
+function product_rating($id_product,$id_user,$rating,$content){
+    $sql = "INSERT INTO rating(id_rating,id_product,id_user,rating,content) VALUES (null,?,?,?,?)";
+    pdo_execute($sql,$id_product,$id_user,$rating,$content);
+}

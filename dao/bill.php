@@ -69,6 +69,14 @@
         return pdo_query($sql,$id_user);
     }
     /**
+    * Xuất tất cả hóa đơn đã hủy
+    * @param int $id_user Mã khách hàng
+    */
+    function bill_selectAllByStatusCancel($id_user){
+        $sql = "SELECT * FROM bill WHERE status = 3 AND id_user = ?";
+        return pdo_query($sql,$id_user);
+    }
+    /**
     * Hủy đơn hàng
     * @param int $id_bill Mã hóa đơn
     */
