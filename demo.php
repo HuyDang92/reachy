@@ -1,81 +1,212 @@
- <!-- menu-mobile -->
+<!DOCTYPE html>
+<html lang="en">
 
- <input hidden type="checkbox" id="menu-input" class="nav-input">
- <label for="menu-input" class="menu-overplay"> </label>
- <div class="menu__mobile" id="nav">
-     <div class="nav__container">
-         <div class="nav_logo">
-             <a href="index.html">
-                 <img src="/img/logo2.svg" alt="logo">
-             </a>
-         </div>
-         <div class="search__container-mobile">
-             <input class="search" type="text" placeholder="Search..">
-             <i class="fa-solid fa-magnifying-glass"></i>
-         </div>
-         <div class="nav__main">
-             <!-- <input type="radio" name="move" id="home" checked>
-                            <input type="radio" name="move" id="discovery">
-                            <input type="radio" name="move" id="list">
-                            <input type="radio" name="move" id="history">
-                            <input type="radio" name="move" id="sign-in"> -->
-             <h3 id="mn">MENU</h3>
-             <label for="menu-input"><i class="fa-solid fa-xmark"></i></label>
-             <ul class="nav__main-list">
-                 <div class="border" id="bd"></div>
-                 <li class="nav__main-first">
-                     <a href="#" class="blue">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    /* tab */
+    .tabs {
+        padding-right: 2rem;
+        width: 22%;
+    }
 
-                         <!-- <label for="home" class="home"> -->
-                         <i class="fa-solid fa-house"></i>
-                         <span>Home</span>
-                         <!-- </label> -->
-                     </a>
-                 </li>
-                 <li>
-                     <a href="#">
-                         <!-- <label for="discovery" class="discovery"> -->
-                         <i class="fa-solid fa-compass"></i>
-                         <span>Discovery</span>
-                         <!-- </label> -->
-                     </a>
-                 </li>
-                 <li>
-                     <a href="/explore.html">
+    .tablinks {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 0.8rem 1rem;
+        font-size: 13px;
+        text-transform: uppercase;
+        font-weight: 600;
+        transition: 0.2s ease;
+        border: 0.5px solid #ccc;
+        width: 100%;
+    }
 
-                         <!-- <label for="list" class="list">                     -->
-                         <i class="fa-solid fa-display light"></i>
-                         <span>Explore</span>
-                         <!-- </label> -->
-                     </a>
+    .tablinks:hover {
+        background-image: linear-gradient(90deg, var(--blue), var(--green));
+        color: #fff;
+    }
 
-                 </li>
-                 <li>
-                     <a href="">
-                         <!-- <label for="history" class="history"> -->
-                         <i class="fa-solid fa-clock-rotate-left"></i>
-                         <span>History</span>
-                         <!-- </label> -->
-                     </a>
-                 </li>
-             </ul>
-             <h3>PERSONAL</h3>
-             <ul class="nav__main-list">
-                 <li>
-                     <a href="">
-                         <!-- <label for="sign-in" class="sign-in"> -->
-                         <i class="fa-solid fa-right-to-bracket light"></i>
-                         <span><a href="/sign-in.html">Sign In</a></span>
-                         <!-- </label> -->
-                     </a>
-                 </li>
-                 <!-- <li class="dark__mode">
-                                    <i class="fa-solid fa-sun"></i>
-                                    <input  type="checkbox" id="light-dark" class="switch">
-                                    <i class="fa-solid fa-moon"></i>
-                                </li> -->
-             </ul>
-         </div>
-     </div>
+    .tablinks.active {
+        background-image: linear-gradient(90deg, var(--blue), var(--green));
+        color: #fff;
+    }
 
- </div>
+    .tabcontent {
+        display: none;
+    }
+
+    .tabcontent p {
+        color: #333;
+        font-size: 16px;
+    }
+
+    .tabcontent.active {
+        display: block;
+    }
+
+    .tabcontent h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .wrapper_tabcontent {
+        width: 80%;
+    }
+
+    /* tab order */
+    .tabs_order {
+        width: 100%;
+    }
+
+    .tabs_order .btn_order {
+        display: flex;
+    }
+
+    .tablinks_order {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 0.8rem 1rem;
+        font-size: 13px;
+        text-transform: uppercase;
+        font-weight: 600;
+        transition: 0.2s ease;
+        border: 0.5px solid #ccc;
+        width: 100%;
+    }
+
+    .tablinks_order:hover {
+        background-image: linear-gradient(90deg, var(--blue), var(--green));
+        color: #fff;
+    }
+
+    .tablinks_order.active {
+        background-image: linear-gradient(90deg, var(--blue), var(--green));
+        color: #fff;
+    }
+
+    .tabcontent_order {
+        display: none;
+    }
+
+    .tabcontent_order p {
+        color: #333;
+        font-size: 16px;
+    }
+
+    .tabcontent_order.active {
+        display: block;
+    }
+
+    .tabcontent_order h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .wrapper_tabcontent_order {
+        width: 80%;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="tabs">
+        <div class="btn__mew-product">
+            <button class="tablinks active" data-electronic="info_account">Thông tin tài khoản</button> <br>
+            <button class="tablinks" data-electronic="changepw">Đổi mật khẩu</button>
+            <button class="tablinks" data-electronic="order">Đơn hàng</button>
+        </div>
+    </div>
+    <div class="wrapper_tabcontent">
+        <div id="info_account" class="tabcontent active">
+            <h1>1</h1>
+        </div>
+        <div id="changepw" class="tabcontent">
+            <div class="tabs_order">
+                <div class="btn_order">
+                    <button class="tablinks_order active" data-electronic="order_parking">Chờ xác nhận</button> <br>
+                    <button class="tablinks_order" data-electronic="order_delivering">Đang vận chuyển</button>
+                    <button class="tablinks_order" data-electronic="order_finish">Đã mua</button>
+                    <button class="tablinks_order" data-electronic="order_cancel">Đã hủy</button>
+                </div>
+            </div>
+            <div class="wrapper_tabcontent_order">
+                <div id="order_parking" class="tabcontent_order active">
+                    <h1>1 test</h1>
+                </div>
+                <div id="order_delivering" class="tabcontent_order">
+                    <h1>2</h1>
+                </div>
+                <div id="order_finish" class="tabcontent_order">
+                    <h1>3</h1>
+                </div>
+                <div id="order_cancel" class="tabcontent_order">
+                    <h1>4</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    var tabLinks = document.querySelectorAll(".tablinks");
+    var tabContent = document.querySelectorAll(".tabcontent");
+
+    tabLinks.forEach(function(el) {
+        el.addEventListener("click", openTabs);
+    });
+
+
+    function openTabs(el) {
+        var btn = el.currentTarget; // lắng nghe sự kiện và hiển thị các element
+        var electronic = btn.dataset.electronic; // lấy giá trị trong data-electronic
+
+        tabContent.forEach(function(el) {
+            el.classList.remove("active");
+        }); //lặp qua các tab content để remove class active
+
+        tabLinks.forEach(function(el) {
+            el.classList.remove("active");
+        }); //lặp qua các tab links để remove class active
+
+        document.querySelector("#" + electronic).classList.add("active");
+        // trả về phần tử đầu tiên có id="" được add class active
+
+        btn.classList.add("active");
+        // các button mà chúng ta click vào sẽ được add class active
+    }
+    </script>
+    <script>
+    var tabLinks_order = document.querySelectorAll(".tablinks_order");
+    var tabcontent_order = document.querySelectorAll(".tabcontent_order");
+
+    tabLinks_order.forEach(function(el) {
+        el.addEventListener("click", openTabs);
+    });
+
+
+    function openTabs(el) {
+        var btn = el.currentTarget; // lắng nghe sự kiện và hiển thị các element
+        var electronic = btn.dataset.electronic; // lấy giá trị trong data-electronic
+
+        tabcontent_order.forEach(function(el) {
+            el.classList.remove("active");
+        }); //lặp qua các tab content để remove class active
+
+        tabLinks_order.forEach(function(el) {
+            el.classList.remove("active");
+        }); //lặp qua các tab links để remove class active
+
+        document.querySelector("#" + electronic).classList.add("active");
+        // trả về phần tử đầu tiên có id="" được add class active
+
+        btn.classList.add("active");
+        // các button mà chúng ta click vào sẽ được add class active
+    }
+    </script>
+</body>
+
+</html>
