@@ -6,6 +6,8 @@ require_once "../dao/product.php";
 // require_once "../dao/user.php";
 require_once "../dao/comment.php";
 require_once "../dao/slider.php";
+require_once "../dao/blog.php";
+require_once "../dao/bill.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,5 +58,6 @@ require_once "../dao/slider.php";
     </div>
 </body>
 <script src="<?= $CONTENT_URL ?>/js/brandByCate.js"></script>
+<script src="<?= $CONTENT_URL ?>/js/billDetail.js"></script>
 
 </html>

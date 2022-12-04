@@ -2,7 +2,7 @@
 .list__container{
     width: 60%;
     margin: 150px auto;
-        background-color: #F8F9FF;
+    background-color: #F8F9FF;
     padding: 30px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
@@ -17,10 +17,14 @@ table{
     width: 100%;
     margin-top: 20px;
     margin-bottom: 10px;
+    /* border-color: gray; */
 }
 thead{
+    /* background-image: linear-gradient(90deg, var(--blue), var(--green)); */
+
     background-color: #e7e7e7;
     font-weight: bold;
+    /* color: black */
 }
 tr{
     text-align: center;
@@ -47,7 +51,7 @@ td:last-child{
     display: flex;
     flex-direction: column;
     gap: 8px;
-    /* align-items: center; */
+    align-items: center;
 }
 .list__action>a>button{
     width: 5rem;
@@ -57,6 +61,17 @@ td:last-child{
     /* transition: all 0.25s linear; */
 }
 .list__action>a>button:hover{
+    background-image: linear-gradient(90deg, var(--blue), var(--green));
+    color: #fff;
+}
+.list__action>button{
+    width: 5rem;
+    background-color: #fff;
+    /* background-image: linear-gradient(90deg, var(--blue), var(--green)); */
+    padding: 5px 10px;
+    /* transition: all 0.25s linear; */
+}
+.list__action>button:hover{
     background-image: linear-gradient(90deg, var(--blue), var(--green));
     color: #fff;
 }
@@ -73,4 +88,31 @@ td:last-child{
     background-image: linear-gradient(90deg, var(--blue), var(--green));
     color: #fff;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.bill__detail{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999999;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bill__container{
+    width: 40rem;
+    margin: 0 auto;
+    padding: 20px 40px;
+    background-color: #fff;
+}
+.bill__container>h2{
+    text-align: center;
+}
+.bill__container>p{
+    text-align: start;
+}
+.bill__container>p>span{
+    font-weight: bold;
 }

@@ -62,15 +62,15 @@
                 <li class="admin__dropdown layout">
                     <a href="">GIAO DIỆN</a>
                     <div class="admin__dropdown--list">
-                        <div class="admin__dropdown--item"><a href="<?= $ADMIN_URL ?>?slider&act=list">Sliders</a></div>
-                        <div class="admin__dropdown--item"><a href="">Blogs</a></div>
+                        <div class="admin__dropdown--item"><a href="<?=$ADMIN_URL?>?slider&act=list">Sliders</a></div>
+                        <div class="admin__dropdown--item"><a href="<?=$ADMIN_URL?>?blog&act=list">Blogs</a></div>
                     </div>
                 </li>
                 <li class="account">
                     <a href="<?= $ADMIN_URL ?>?user&act=list">TÀI KHOẢN</a>
                 </li>
                 <li class="thongke">
-                    <a href="<?= $ADMIN_URL ?>?stastitic">THỐNG KÊ</a>
+                    <a href="<?= $ADMIN_URL ?>?bill&act=list">ĐƠN HÀNG</a>
                 </li>
             </ul>
             <ul class="header__left-control">

@@ -63,7 +63,7 @@ ul.row-3 li:hover .btn_add-buy>button.cart{
     left: 5%;
 }
 ul.row-3 li:hover .btn_add-buy>button.buy{
-    right: 28%;
+    right: 24%;
 }
 /* phân trang  */
 .btn_page{
@@ -159,4 +159,45 @@ select.product__sort{
 }
 .pagination>.active{
     background-image: linear-gradient(90deg, var(--blue), var(--green));
+}
+@media only screen and (max-width: 450px){
+    .category__container {
+        margin: 0px 2%;
+    }
+    .category_content {
+        display: block;
+        margin-top: 4rem;
+    }
+    .category__content-left {
+        width: 100%;
+        padding-right: 0;
+    }
+    .category__details {
+        margin-bottom: 1rem;
+    }
+    .category__content-right {
+        width: 100%;
+    }
+    .btn_page {
+        padding: 0.5rem 25%;
+        display: block;
+        margin-bottom: 1rem;
+    }
+    select.product__sort {
+        border: none;
+        padding: 0.5rem;
+        width: 100%;
+        font-size: 15px;
+    }
+    .pagination {
+        display: flex;
+        margin-top: 0.5rem;
+        font-size: 12px;
+    }
+    .pageControl-option {
+        padding: 0.3rem 0.5rem;
+    }
+    ul.row-3 li {
+        flex-basis: 49%;
+    }
 }

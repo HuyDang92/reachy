@@ -75,10 +75,10 @@ function product_insert($id_category, $id_brand, $name, $price, $sale_off, $feat
  * @param string $description Mô tả sản phẩm
  * @param int $id_product Mã sản phẩm
  */
-function product_update($id_category, $id_brand, $name, $price, $sale_off, $feature, $description,$special, $id_product)
+function product_update($id_category, $id_brand, $name, $price, $sale_off, $feature, $description, $special, $id_product)
 {
     $sql = "UPDATE product SET id_category=?,id_brand=?,name=?,price=?,sale_off=?,feature=?,description=?, special=? WHERE id_product=?";
-    pdo_execute($sql, $id_category, $id_brand, $name, $price, $sale_off, $feature, $description,$special, $id_product);
+    pdo_execute($sql, $id_category, $id_brand, $name, $price, $sale_off, $feature, $description, $special, $id_product);
 }
 /**
  * Xóa sản phẩm
@@ -211,7 +211,7 @@ function product_select_8DateLasted()
  */
 function product_select_AllSaleOff()
 {
-    $sql = "SELECT * FROM product WHERE sale_off = 20 ";
+    $sql = "SELECT * FROM product WHERE sale_off = 20 limit 6";
     return pdo_query($sql);
 }
 /**
@@ -227,58 +227,64 @@ function product_selectAllSlide()
 // Table WISH_LIST
 
 /**
-* Xuất danh sách yêu thích
-* @return array Danh sách yêu thích
-*/
-function product_likeList(){
+ * Xuất danh sách yêu thích
+ * @return array Danh sách yêu thích
+ */
+function product_likeList()
+{
     $sql = "SELECT * FROM wish_list";
     return pdo_query($sql);
 }
 /**
-* Thích sản phẩm
-* @param int $id_product Mã sản phẩm
-* @param int $id_user Mã khách hàng
-*/
-function product_like($id_product,$id_user){
+ * Thích sản phẩm
+ * @param int $id_product Mã sản phẩm
+ * @param int $id_user Mã khách hàng
+ */
+function product_like($id_product, $id_user)
+{
     $sql = "INSERT INTO wish_list (id_product,id_user) VALUES (?,?)";
-    pdo_execute($sql,$id_product,$id_user);
+    pdo_execute($sql, $id_product, $id_user);
 }
 /**
-* Kiểm tra sản phẩm tương ứng đã được người dùng thêm vào danh sách thích chưa
-* @param int $id_product Mã sản phẩm
-* @param int $id_user Mã khách hàng
-* @return bool True = Đã thích, False = Chưa thích
-*/
-function product_checkLiked($id_product,$id_user){
+ * Kiểm tra sản phẩm tương ứng đã được người dùng thêm vào danh sách thích chưa
+ * @param int $id_product Mã sản phẩm
+ * @param int $id_user Mã khách hàng
+ * @return bool True = Đã thích, False = Chưa thích
+ */
+function product_checkLiked($id_product, $id_user)
+{
     $sql = "SELECT * FROM wish_list WHERE id_product = ? AND id_user = ?";
-    return pdo_query_one($sql,$id_product,$id_user);
+    return pdo_query_one($sql, $id_product, $id_user);
 }
 /**
-* Bỏ thích sản phẩm
-* @param int $id_product Mã sản phẩm
-* @param int $id_user Mã khách hàng
-*/
-function product_unLike($id_wishlist){
+ * Bỏ thích sản phẩm
+ * @param int $id_product Mã sản phẩm
+ * @param int $id_user Mã khách hàng
+ */
+function product_unLike($id_wishlist)
+{
     $sql = "DELETE FROM wish_list WHERE id_wishlist = ?";
-    pdo_execute($sql,$id_wishlist);
+    pdo_execute($sql, $id_wishlist);
 }
 /**
-* Kiểm tra sản phẩm có thuộc tính size không
-* @param int $id_product Mã sản phẩm
-* @return array Danh sách size của sản phẩm tương ứng
-*/
-function product_checkSizeExist($id_product){
+ * Kiểm tra sản phẩm có thuộc tính size không
+ * @param int $id_product Mã sản phẩm
+ * @return array Danh sách size của sản phẩm tương ứng
+ */
+function product_checkSizeExist($id_product)
+{
     $sql = "SELECT * FROM size WHERE id_product = ?";
-    return pdo_query_one($sql,$id_product);
+    return pdo_query_one($sql, $id_product);
 }
 /**
-* Đánh giá sản phẩm
-* @param int $id_product Mã sản phẩm
-* @param int $id_user Mã khách hàng
-* @param int $rating Đánh giá sản phẩm
-* @param string $content Nội dung đánh giá
-*/
-function product_rating($id_product,$id_user,$rating,$content){
+ * Đánh giá sản phẩm
+ * @param int $id_product Mã sản phẩm
+ * @param int $id_user Mã khách hàng
+ * @param int $rating Đánh giá sản phẩm
+ * @param string $content Nội dung đánh giá
+ */
+function product_rating($id_product, $id_user, $rating, $content)
+{
     $sql = "INSERT INTO rating(id_rating,id_product,id_user,rating,content) VALUES (null,?,?,?,?)";
-    pdo_execute($sql,$id_product,$id_user,$rating,$content);
+    pdo_execute($sql, $id_product, $id_user, $rating, $content);
 }
