@@ -440,7 +440,7 @@ $user = user_selectById($_SESSION['login']);
                                     <b><?=number_format($total_price)?>đ</b>
                                 </div>
                                 <div class="order__row--right">
-                                    <a href="<?=$SITE_URL?>/product/handle_order.php?repurchase=<?=$orders_cancel['id_bill']?>" target="frame">
+                                    <a href="<?=$SITE_URL?>/product/handle_order.php?repurchase=<?=$order_cancel['id_bill']?>" target="frame">
                                         Mua lại
                                     </a>
                                 </div>
