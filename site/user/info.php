@@ -497,7 +497,6 @@ $user = user_selectById($_SESSION['login']);
                                     </div>
                                     <?php } ?>
                                 </div>
-<<<<<<< HEAD
                                 <div class="order__row--middle">
                                     <span>Tổng giá: </span> <br>
                                     <b><?=number_format($total_price)?>đ</b>
@@ -506,19 +505,6 @@ $user = user_selectById($_SESSION['login']);
                                     <a href="<?=$SITE_URL?>/product/handle_order.php?repurchase=<?=$order_cancel['id_bill']?>" target="frame">
                                         Mua lại
                                     </a>
-=======
-                                <div class="box_right--order">
-                                    <div class="order__row--middle">
-                                        <span>Tổng giá: </span> <br>
-                                        <b><?= number_format($total_price) ?>đ</b>
-                                    </div>
-                                    <div class="order__row--right">
-                                        <a href="<?= $SITE_URL ?>/product/handle_order.php?repurchase=<?= $order_cancel['id_bill'] ?>"
-                                            target="frame">
-                                            Mua lại
-                                        </a>
-                                    </div>
->>>>>>> 2a24ba2def22a7f01c656509f6fb1ba35d51e48d
                                 </div>
                             </li>
                             <?php } ?>
