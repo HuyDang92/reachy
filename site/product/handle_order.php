@@ -12,6 +12,23 @@
     }else if(exist_param("taken")){
         $id_bill = $_GET['taken'];
         bill_taken($id_bill);
+    }else if(exist_param("repurchase")){
+        $bill_detail = bill_detail_selectByIdBill($_GET['repurchase']);
+        $product_list = array();
+        foreach($bill_detail as $product_row){
+            $temp = array(
+                "id_product" => $product_row['id_product'],
+                "size" => $product_row['size'],
+                "quantity" => $product_row['amount']
+            );
+            array_push($product_list,$temp);
+        }
+        add_session("product",$product_list);
+        echo "
+            <script>window.parent.location.href='../product/?buy'</script>
+        ";
+    }else if(exist_param("rating")){
+        
     }else{
         $full_address = $address .", " .$village .", " .$district .", " .$province;
         $id_user = $_SESSION['login'];

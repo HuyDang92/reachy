@@ -91,9 +91,11 @@ if (isset($_SESSION['product'])) {
             <div class="bill">
                 <ul class="product-rows">
                     <?php if (isset($products)) {
+                        $total_price = 0;
                         foreach ($products as $product) {
                             $product_row = product_selectOne($product['id_product']);
                             $product_img = product_selectImgs($product['id_product']);
+                            $total_price += $product_row['price'] * $product['quantity'];
                     ?>
                     <li class="product-row">
                         <div class="product-row-left">
@@ -119,13 +121,13 @@ if (isset($_SESSION['product'])) {
                 </div>
                 <div class="bill-total">
                     <div style="margin-bottom: 0.5rem;" class="price-pd">Tạm tính
-                        <span><?php echo number_format($product_row['price'] * $product['quantity']); ?>đ</span>
+                        <span><?php echo number_format($total_price); ?>đ</span>
                     </div>
                     <div class="price-pd">Phí vận chuyển <span>30,000đ</span></div>
                 </div>
                 <div class="price-total">
                     <span>Tổng cộng</span>
-                    <h2><?php echo number_format($product_row['price'] * $product['quantity'] + 30000); ?>đ</h2>
+                    <h2><?php echo number_format($total_price + 30000); ?>đ</h2>
                 </div>
                 <div class="payment">
                     <div class="pay-row">
