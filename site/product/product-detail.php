@@ -189,29 +189,29 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
             </div>
             <div id="pd_detail" class="tabcontent">
                 <h3>Chi tiết</h3>
-                <table border="1" class="pd_detail-content">
-                    <tr>
+                <table class="pd_detail-content">
+                    <tr class="pd_detail-row">
                         <td>Chiều dài</td>
                         <td><?=$specification['width']?>mm</td>
                     </tr>
-                    <tr>
+                    <tr class="pd_detail-row">
                         <td>Chiều rộng</td>
                         <td><?=$specification['height']?>mm</td>
                     </tr>
-                    <tr>
+                    <tr class="pd_detail-row">
                         <td>Chiều cao</td>
                         <td><?=$specification['dept']?>mm</td>
                     </tr>
-                    <tr>
+                    <tr class="pd_detail-row">
                         <td>Cân nặng</td>
                         <td><?=$specification['weight']?>gm</td>
                     </tr>
-                    <tr>
+                    <tr class="pd_detail-row">
                         <td>Kiểm tra hàng</td>
                         <td><?php if($specification['quality_checking']==1) echo "Cho phép kiểm hàng";
                         else echo "Không"; ?></td>
                     </tr>
-                    <tr>
+                    <tr class="pd_detail-row">
                         <td>Bảo hành</td>
                         <td><?=$specification['insurance']?></td>
                     </tr>
