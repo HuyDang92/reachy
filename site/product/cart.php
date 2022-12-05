@@ -28,7 +28,7 @@ add_session("lasted_url", getCurrentUrl());
             <i class="fa-solid fa-arrow-right-long"></i>Giỏ hàng
         </div>
     </div>
-    <section style="display: flex; margin-bottom: 4rem;" class="cart__container">
+    <section style="margin-bottom: 4rem; display: flex;" class="cart__container">
         <div class="cart__main">
             <span style="margin-bottom: 0.5rem;">Bạn có <?= count($carts) ?> sản phẩm trong giỏ hàng </span>
             <?php foreach ($carts as $cart) {

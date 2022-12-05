@@ -18,8 +18,8 @@ add_session('productLink', getCurrentUrl());
 </head>
 
 <body>
-    <div class="background_header">
-        <img style="height: 80%;" src="<?= $CONTENT_URL ?>/imgs/interface/background.png" alt="">
+    <div class="background_header home_img-fixed">
+        <img style="height: 85%;" src="<?= $CONTENT_URL ?>/imgs/interface/background.png" alt="">
     </div>
     <div class="container_main">
         <section class="banner__area">
@@ -103,11 +103,14 @@ add_session('productLink', getCurrentUrl());
                                 </div>
                             </div>
                             <div class="btn_add-buy">
-                                <button name="btn_addCart" class="cart">
-                                    <span class="add-to-cart">THÊM VÀO GIỎ</span>
-                                    <span class="added">ĐÃ THÊM </span>
-                                    <i class="fa fa-shopping-cart"></i> <i class="fa fa-square"></i>
-                                </button>
+                                <a
+                                    href="<?= $SITE_URL ?>/product/handle_product-detail.php?addCart_idProduct=<?= $row_product_new['id_product'] ?>">
+                                    <button class="cart">
+                                        <span class="add-to-cart">THÊM VÀO GIỎ</span>
+                                        <span class="added">ĐÃ THÊM </span>
+                                        <i class="fa fa-shopping-cart"></i> <i class="fa fa-square"></i>
+                                    </button>
+                                </a>
                                 <a
                                     href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product_new['id_product'] ?>"><button
                                         class="buy">MUA NGAY</button></a>
@@ -170,11 +173,12 @@ add_session('productLink', getCurrentUrl());
                                 </div>
                             </div>
                             <div class="btn_add-buy">
-                                <button class="cart">
+                                <a href="<?= $SITE_URL ?>/product/handle_product-detail.php?addCart_idProduct=<?= $row_product_new['id_product'] ?>"
+                                    class="cart">
                                     <span class="add-to-cart">THÊM VÀO GIỎ</span>
                                     <span class="added">ĐÃ THÊM</span>
                                     <i class="fa fa-shopping-cart"></i> <i class="fa fa-square"></i>
-                                </button>
+                                </a>
                                 <a
                                     href="<?= $SITE_URL ?>/product/order.php?id_product=<?= $row_product_new['id_product'] ?>"><button
                                         class="buy">MUA NGAY</button></a>

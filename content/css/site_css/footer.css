@@ -58,3 +58,14 @@
       font-size: 15px;
     }
 }
+@media only screen and (max-width: 450px){
+    .footer_colums {
+        display: block;
+    }
+    .container_footer {
+        padding: 1rem;
+    }
+    .footer_colum {
+        width: 100%;
+    }
+}

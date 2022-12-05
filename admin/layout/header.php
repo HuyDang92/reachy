@@ -37,7 +37,10 @@
     </style>
     <?php } ?>
     </style>
+
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
 <div class="container_header" id="main-menu__fixed">
     <header class="header">
         <div class="header__right">
@@ -62,31 +65,41 @@
                 <li class="admin__dropdown layout">
                     <a href="">GIAO DIỆN</a>
                     <div class="admin__dropdown--list">
-                        <div class="admin__dropdown--item"><a href="<?=$ADMIN_URL?>?slider&act=list">Sliders</a></div>
-                        <div class="admin__dropdown--item"><a href="<?=$ADMIN_URL?>?blog&act=list">Blogs</a></div>
+                        <div class="admin__dropdown--item"><a href="<?= $ADMIN_URL ?>?slider&act=list">Sliders</a></div>
+                        <div class="admin__dropdown--item"><a href="<?= $ADMIN_URL ?>?blog&act=list">Blogs</a></div>
                     </div>
                 </li>
                 <li class="account">
                     <a href="<?= $ADMIN_URL ?>?user&act=list">TÀI KHOẢN</a>
                 </li>
                 <li class="thongke">
-                    <a href="<?= $ADMIN_URL ?>?stastitic">THỐNG KÊ</a>
+                    <a href="<?= $ADMIN_URL ?>?bill&act=list">ĐƠN HÀNG</a>
                 </li>
             </ul>
             <ul class="header__left-control">
                 <li class="control__user">
-                    <span class="material-symbols-outlined">account_circle</span>
-                    <?php if (isset($_SESSION['login'])) { ?>
-                    <div class="sub__menu">
+                    <?php if (isset($_SESSION['login'])) {
+                        $id_user = $_SESSION['login'];
+                        $img_user = user_selectImgs($id_user);
+                        $user = user_selectById($id_user);
+                    ?>
+                    <img src="<?= $CONTENT_URL ?>/imgs/user/<?= $img_user['img'] ?>" alt="Ảnh đại diện">
+                    <div style="width: 10rem;" class="sub__menu sub_menu-mobile">
                         <a href="<?= $SITE_URL ?>/user?info">
-                            <div class="sub__menu-user">THÔNG TIN CÁC NHÂN</div>
+                            <div class="sub__menu-user">THÔNG TIN CÁ NHÂN</div>
                         </a>
+                        <?php if ($user['role'] == 1 || $user['role'] == 2) { ?>
+                        <a href="<?= $ADMIN_URL ?>/">
+                            <div class="sub__menu-user">QUẢN LÍ CỬA HÀNG</div>
+                        </a>
+                        <?php } ?>
                         <a href="<?= $SITE_URL ?>/user?sign_out">
                             <div class="sub__menu-user">ĐĂNG XUẤT</div>
                         </a>
                     </div>
                     <?php } else { ?>
-                    <div class="sub__menu">
+                    <span class="material-symbols-outlined">account_circle</span>
+                    <div style="width: 8rem;" class="sub__menu">
                         <a href="<?= $SITE_URL ?>/user?sign_in">
                             <div class="sub__menu-user">ĐĂNG NHẬP</div>
                         </a>
@@ -96,7 +109,7 @@
                     </div>
                     <?php } ?>
                 </li>
-                <li>
+                <!-- <li>
                     <span class="material-symbols-outlined">garden_cart</span>
                 </li>
                 <li>
@@ -108,7 +121,7 @@
                                 close
                             </span></label>
                     </form>
-                </li>
+                </li> -->
             </ul>
         </div>
     </header>

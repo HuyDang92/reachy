@@ -5,6 +5,7 @@ add_session('productLink', getCurrentUrl());
 $sql_deal = product_select_AllSaleOff();
 if (isset($_GET['id_product'])) {
     $id_product = $_GET['id_product'];
+    $specification = product_select_specification($id_product);
     $sql_product = product_selectOne($id_product);
     $discount_product = $sql_product['price'] + $sql_product['price'] * ($sql_product['sale_off'] / 100);
 }
@@ -23,14 +24,14 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/product-detail.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/home.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/form.css">
+    <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/product-detail.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/root.css">
 </head>
 
 <body>
-    <div class="background_header">
+    <div class="background_header pd_img-fixed">
         <img style="width: 100%; height: 50%; position: absolute; z-index: -10; top: 0;"
             src="<?= $CONTENT_URL ?>/imgs/interface/background.png" alt="">
     </div>
@@ -139,12 +140,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                     </div>
                                 </div>
                             </button>
-                            <!-- <button id="add_cart" name="btn_addCart">
-                                <span class="material-icons-outlined add-to-cart">
-                                    shopping_cart
-                                </span>
-                            </button> -->
-                            <button id="add_cart" name="btn_addCart" class="cart-cir">
+                            <button style="margin: 0 0.5rem;" id="add_cart" name="btn_addCart" class="cart-cir">
                                 <span class="add-to-cart"><i class="fa-solid fa-cart-shopping"></i></span>
                                 <span class="added"><i class="fa-solid fa-cart-shopping"></i></span>
                                 <i class="fa fa-shopping-cart"></i> <i class="fa fa-square"></i>
@@ -191,7 +187,35 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                     <?= $sql_product['description'] ?>
                 </p>
             </div>
-            <div id="pd_detail" class="tabcontent">Chi tiết</div>
+            <div id="pd_detail" class="tabcontent">
+                <h3>Chi tiết</h3>
+                <table border="1" class="pd_detail-content">
+                    <tr>
+                        <td>Chiều dài</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Chiều rộng</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Chiều cao</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Cân nặng</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Kiểm tra hàng</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Bảo hành</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
             <!-- bình luận -->
             <div id="comment" class="tabcontent">
                 <div class="box_container">

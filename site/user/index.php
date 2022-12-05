@@ -8,6 +8,7 @@
     require_once "../../dao/product.php";
     require_once "../../dao/comment.php";
     require_once "../../dao/cart.php";
+    require_once "../../dao/bill.php";
     if (exist_param("info")) {
         if(isset($_SESSION['login'])){
             $VIEW_NAME = "user/info.php";

@@ -52,7 +52,7 @@ if (isset($_SESSION['login'])) {
             <div class="header__right">
                 <a href="<?= $SITE_URL ?>/homepage">
                     <div class="header_right-logo">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/logo.svg" alt="logo">
+                        <img style="margin-bottom: 5px;" src="<?= $CONTENT_URL ?>/imgs/interface/logo.svg" alt="logo">
                         <h2>REACHY</h2>
                     </div>
                 </a>
@@ -89,7 +89,7 @@ if (isset($_SESSION['login'])) {
                             $user = user_selectById($id_user);
                         ?>
                         <img src="<?= $CONTENT_URL ?>/imgs/user/<?= $img_user['img'] ?>" alt="Ảnh đại diện">
-                        <div class="sub__menu">
+                        <div style="width: 10rem;" class="sub__menu sub_menu-mobile">
                             <a href="<?= $SITE_URL ?>/user?info">
                                 <div class="sub__menu-user">THÔNG TIN CÁ NHÂN</div>
                             </a>
@@ -104,7 +104,7 @@ if (isset($_SESSION['login'])) {
                         </div>
                         <?php } else { ?>
                         <span class="material-symbols-outlined">account_circle</span>
-                        <div class="sub__menu">
+                        <div style="width: 8rem;" class="sub__menu">
                             <a href="<?= $SITE_URL ?>/user?sign_in">
                                 <div class="sub__menu-user">ĐĂNG NHẬP</div>
                             </a>
@@ -152,7 +152,31 @@ if (isset($_SESSION['login'])) {
                                 </div>
 
                             </div>
-
+                            <ul class="mobile__menu">
+                                <li class="home">
+                                    <a href="<?= $SITE_URL ?>/homepage">TRANG CHỦ</a>
+                                </li>
+                                <li class="cate">
+                                    <input type="checkbox" id="cate_mobile" hidden>
+                                    <label for="cate_mobile">DANH MỤC</label>
+                                    <div class="category__sub">
+                                        <?php foreach ($sql_category as $row_category) { ?>
+                                        <a
+                                            href="<?= $SITE_URL ?>/homepage?category&id_category=<?= $row_category[0] ?>&page_num=1"><?= $row_category['name'] ?>
+                                            <br></a>
+                                        <?php } ?>
+                                    </div>
+                                </li>
+                                <li class="blogs">
+                                    <a href="<?= $SITE_URL ?>/homepage?blogs">BLOGS</a>
+                                </li>
+                                <li class="introduce">
+                                    <a href="<?= $SITE_URL ?>/homepage?introduce">GIỚI THIỆU</a>
+                                </li>
+                                <li class="contact">
+                                    <a href="<?= $SITE_URL ?>/homepage?contact">LIÊN HỆ</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </ul>

@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/form.css">
 <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/user.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <?php
 $user = user_selectById($_SESSION['login']);
 ?>
@@ -15,10 +16,10 @@ $user = user_selectById($_SESSION['login']);
         </div>
     </div>
     <div class="user__info-container">
-
         <div class="tabs">
             <div class="btn__mew-product">
                 <button class="tablinks active" data-electronic="info_account">Thông tin tài khoản</button> <br>
+                <button class="tablinks" data-electronic="order">Đơn hàng</button>
                 <button class="tablinks" data-electronic="changepw">Đổi mật khẩu</button>
             </div>
         </div>
@@ -118,7 +119,457 @@ $user = user_selectById($_SESSION['login']);
                     </button>
                 </form>
             </div>
+            <div id="order" class="tabcontent">
+                <div class="tabs_order">
+                    <div class="btn_order">
+                        <button class="tablinks_order active" data-electronic="order_parking">Chờ lấy hàng</button> <br>
+                        <button class="tablinks_order" data-electronic="order_delivering">Đang vận chuyển</button>
+                        <button class="tablinks_order" data-electronic="order_finish">Đã mua</button>
+                        <button class="tablinks_order" data-electronic="order_cancel">Đã hủy</button>
+                    </div>
+                </div>
+                <div class="wrapper_tabcontent_order">
+                    <div id="order_parking" class="tabcontent_order active">
+                        <ul class="order__rows--container" style="margin-top: 1rem;">
+                            <?php
+                            $orders_parking = bill_selectAllByStatusParking($_SESSION['login']);
+                            foreach ($orders_parking as $order_parking) {
+                                $bill_details = bill_detail_selectByIdBill($order_parking['id_bill']);
+                                $firstProduct_info = product_selectOne($bill_details[0]['id_product']);
+                                $firstProduct_img = product_selectImgs($firstProduct_info['id_product']);
+                                $countProducts = count($bill_details);
+                                $total_price = 0;
+                                foreach ($bill_details as $bill_detail) {
+                                    $product_row = product_selectOne($bill_detail['id_product']);
+                                    $total_price += $bill_detail['amount'] * $product_row['price'];
+                                }
+                            ?>
+                            <li class="order__row">
+                                <div class="order__row--left">
+                                    <div>
+                                        <img width="50px" height="50px"
+                                            src="<?= $CONTENT_URL ?>/imgs/products/<?= $firstProduct_img['contain'] ?>"
+                                            alt="<?= $firstProduct_info['name'] ?>">
+                                    </div>
+                                    <span class="product-info">
+                                        <b><?= $firstProduct_info['name'] ?></b> <br>
+                                        <div class="order_info">
+                                            <i>Size: <?= $bill_details[0]['size'] ?></i>
+                                            <i>SL: <?= $bill_details[0]['amount'] ?></i>
+                                            <i>Giá: <?= number_format($firstProduct_info['price']) ?>đ</i>
+                                        </div>
+                                    </span>
+                                    <br>
+                                    <?php if (count($bill_details) > 1) { ?>
+                                    <!-- <div>
+                                        <i><label for="productDropdown-checkbox">Và <?= $countProducts - 1 ?> sản phẩm
+                                                khác</label></i>
+                                        <input type="checkbox" name="" id="productDropdown-checkbox">
+                                        <div class="order__row--fullProduct">
+                                            <ul>
+                                                <?php for ($i = 1; $i < count($bill_details); $i++) {
+                                                    $product_row = product_selectOne($bill_details[$i]['id_product']);
+                                                    $product_img = product_selectImgs($product_row['id_product']);
+                                                ?>
+                                                <li>
+                                                    <div>
+                                                        <div>
+                                                            <img width="50px" height="50px"
+                                                                src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>"
+                                                                alt="<?= $product_row['name'] ?>">
+                                                        </div>
+                                                        <div class="product-info">
+                                                            <b><?= $product_row['name'] ?></b>
+                                                            <i>Size: <?= $bill_details[$i]['size'] ?></i>
+                                                            <i>SL: <?= $bill_details[$i]['amount'] ?></i>
+                                                        </div>
+                                                        <span>Giá:<?= number_format($product_row['price']) ?>đ</span>
+                                                    </div>
+                                                </li>
+                                                <?php } ?>
+                                            </ul>
+                                        </div>
+                                    </div> -->
+                                    <?php } ?>
+                                </div>
+                                <div class="box_right--order">
+                                    <div class="order__row--middle">
+                                        <span>Tổng giá: </span> <br>
+                                        <b><?= number_format($total_price) ?>đ</b>
+                                    </div>
+                                    <div class="order__row--right">
+                                        <a href="<?= $SITE_URL ?>/product/handle_order.php?cancel=<?= $order_parking['id_bill'] ?>"
+                                            target="frame">
+                                            Hủy đơn hàng
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                    <div id="order_delivering" class="tabcontent_order">
+                        <ul class="order__rows--container">
+                            <?php
+                            $orders_cancel = bill_selectAllByStatusDelivering($_SESSION['login']);
+                            foreach ($orders_cancel as $order_cancel) {
+                                $bill_details = bill_detail_selectByIdBill($order_cancel['id_bill']);
+                                $firstProduct_info = product_selectOne($bill_details[0]['id_product']);
+                                $firstProduct_img = product_selectImgs($firstProduct_info['id_product']);
+                                $countProducts = count($bill_details);
+                                $total_price = 0;
+                                foreach ($bill_details as $bill_detail) {
+                                    $product_row = product_selectOne($bill_detail['id_product']);
+                                    $total_price += $bill_detail['amount'] * $product_row['price'];
+                                }
+                            ?>
+                            <li class="order__row">
+                                <div class="order__row--left">
+                                    <div>
+                                        <img width="50px" height="50px"
+                                            src="<?= $CONTENT_URL ?>/imgs/products/<?= $firstProduct_img['contain'] ?>"
+                                            alt="<?= $firstProduct_info['name'] ?>">
+                                    </div>
+                                    <span class="product-info">
+                                        <b><?= $firstProduct_info['name'] ?></b>
+                                        <div class="order_info">
+                                            <i>Size: <?= $bill_details[0]['size'] ?></i>
+                                            <i>SL: <?= $bill_details[0]['amount'] ?></i>
+                                            <i>Giá: <?= number_format($firstProduct_info['price']) ?>đ</i>
+                                        </div>
+                                    </span>
+                                    <br>
+                                    <?php if (count($bill_details) > 1) { ?>
+                                    <div>
+                                        <i><label for="productDropdown-checkbox">Và <?= $countProducts - 1 ?> sản phẩm
+                                                khác</label></i>
+                                        <input type="checkbox" name="" id="productDropdown-checkbox">
+                                        <div class="order__row--fullProduct">
+                                            <ul>
+                                                <?php for ($i = 1; $i < count($bill_details); $i++) {
+                                                            $product_row = product_selectOne($bill_details[$i]['id_product']);
+                                                            $product_img = product_selectImgs($product_row['id_product']);
+                                                        ?>
+                                                <li>
+                                                    <div>
+                                                        <div>
+                                                            <img width="50px" height="50px"
+                                                                src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>"
+                                                                alt="<?= $product_row['name'] ?>">
+                                                        </div>
+                                                        <div class="product-info">
+                                                            <b><?= $product_row['name'] ?></b>
+                                                            <i>Size: <?= $bill_details[$i]['size'] ?></i>
+                                                            <i>SL: <?= $bill_details[$i]['amount'] ?></i>
+                                                        </div>
+                                                        <span>Giá:<?= number_format($product_row['price']) ?>đ</span>
+                                                    </div>
+                                                </li>
+                                                <?php } ?>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <?php } ?>
+                                </div>
+                                <div class="box_right--order">
+                                    <div class="order__row--middle">
+                                        <span>Tổng giá: </span> <br>
+                                        <b><?= number_format($total_price) ?>đ</b>
+                                    </div>
+                                    <div class="order__row--right">
+                                        <a href="<?= $SITE_URL ?>/product/handle_order.php?taken=<?= $order_cancel['id_bill'] ?>"
+                                            target="frame">
+                                            Đã nhận được hàng
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                    <div id="order_finish" class="tabcontent_order">
+                        <ul class="order__rows--container">
+                            <?php
+                            $orders_finish = bill_selectAllByStatusFinish($_SESSION['login']);
+                            foreach ($orders_finish as $order_finish) {
+                                $bill_details = bill_detail_selectByIdBill($order_finish['id_bill']);
+                                $firstProduct_info = product_selectOne($bill_details[0]['id_product']);
+                                $firstProduct_img = product_selectImgs($firstProduct_info['id_product']);
+                                $countProducts = count($bill_details);
+                                $total_price = 0;
+                                foreach ($bill_details as $bill_detail) {
+                                    $product_row = product_selectOne($bill_detail['id_product']);
+                                    $total_price += $bill_detail['amount'] * $product_row['price'];
+                                }
+                            ?>
+                            <li class="order__row">
+                                <div class="order__row--left">
+                                    <div>
+                                        <img width="50px" height="50px"
+                                            src="<?= $CONTENT_URL ?>/imgs/products/<?= $firstProduct_img['contain'] ?>"
+                                            alt="<?= $firstProduct_info['name'] ?>">
+                                    </div>
+                                    <span class="product-info">
+                                        <b><?= $firstProduct_info['name'] ?></b>
+                                        <div class="order_info">
+                                            <i>Size: <?= $bill_details[0]['size'] ?></i>
+                                            <i>SL: <?= $bill_details[0]['amount'] ?></i>
+                                            <i>Giá: <?= number_format($firstProduct_info['price']) ?>đ</i>
+                                        </div>
+                                    </span>
+                                    <br>
+                                    <?php if (count($bill_details) > 1) { ?>
+                                    <div>
+                                        <i><label for="productDropdown-checkbox">Và <?= $countProducts - 1 ?> sản phẩm
+                                                khác</label></i>
+                                        <input type="checkbox" name="" id="productDropdown-checkbox">
+                                        <div class="order__row--fullProduct">
+                                            <ul>
+                                                <?php for ($i = 1; $i < count($bill_details); $i++) {
+                                                            $product_row = product_selectOne($bill_details[$i]['id_product']);
+                                                            $product_img = product_selectImgs($product_row['id_product']);
+                                                        ?>
+                                                <li>
+                                                    <div>
+                                                        <div>
+                                                            <img width="50px" height="50px"
+                                                                src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>"
+                                                                alt="<?= $product_row['name'] ?>">
+                                                        </div>
+                                                        <div class="product-info">
+                                                            <b><?= $product_row['name'] ?></b>
+                                                            <i>Size: <?= $bill_details[$i]['size'] ?></i>
+                                                            <i>SL: <?= $bill_details[$i]['amount'] ?></i>
+                                                        </div>
+                                                        <span>Giá:<?= number_format($product_row['price']) ?>đ</span>
+                                                    </div>
+                                                </li>
+                                                <?php } ?>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <?php } ?>
+                                </div>
+                                <div class="box_right--order">
+                                    <div class="order__row--middle">
+                                        <span>Tổng giá: </span> <br>
+                                        <b><?= number_format($total_price) ?>đ</b>
+                                    </div>
+                                    <div class="order__row--right">
+                                        <label class="rating_pd" for="rating_checkbox">Đánh giá sản phẩm</label>
+                                        <input type="checkbox" name="" id="rating_checkbox" hidden>
+                                        <label class="overplay" for="rating_checkbox"></label>
+                                        <div class="rating_container">
+                                            <label style="float: right;" for="rating_checkbox"><i
+                                                    class="fa-solid fa-xmark"></i>
+                                            </label>
+                                            <?php
+                                                foreach ($bill_details as $bill_detail) {
+                                                    $product_row = product_selectOne($bill_detail['id_product']);
+                                                    $product_img = product_selectImgs($product_row['id_product']);
+                                                ?>
+                                            <form action="<?= $SITE_URL ?>/product/handle_order.php" method="POST"
+                                                target="frame">
+                                                <div class="box_flex-order">
+                                                    <div>
+                                                        <img width="50px" height="50px"
+                                                            src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>"
+                                                            alt="<?= $product_row['name'] ?>">
+                                                    </div>
+                                                    <div class="product-info">
+                                                        <b
+                                                            style="font-size: 15px; white-space: nowrap;"><?= $product_row['name'] ?></b>
+                                                        <br>
+                                                        <i>Size: <?= $bill_detail['size'] ?></i>
+                                                        <i>SL: <?= $bill_detail['amount'] ?></i>
+                                                    </div>
+                                                </div>
+                                                <div class="box_rating">
+                                                    <ul class="rate-area">
+                                                        <input type="radio" id="5-star" name="rating" value="5">
+                                                        <label for="5-star" title="Tuyệt vời">5 stars</label>
+                                                        <input type="radio" id="4-star" name="rating" value="4">
+                                                        <label for="4-star" title="Tốt">4 stars</label>
+                                                        <input type="radio" id="3-star" name="rating" value="3">
+                                                        <label for="3-star" title="Tạm được">3 stars</label>
+                                                        <input type="radio" id="2-star" name="rating" value="2">
+                                                        <label for="2-star" title="Kém">2 stars</label>
+                                                        <input type="radio" id="không tốt" required="" name="rating"
+                                                            value="1" aria-required="true">
+                                                        <label for="1-star" title="Kém">1 star</label>
+
+                                                    </ul>
+                                                    <textarea name="rating_content" id="" cols="30" rows="4"
+                                                        placeholder="Nội dung"></textarea> <br>
+
+                                                    <button name="rating">Đánh giá</button>
+                                                </div>
+                                            </form>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                    <div id="order_cancel" class="tabcontent_order">
+                        <ul class="order__rows--container">
+                            <?php
+                            $orders_cancel = bill_selectAllByStatusCancel($_SESSION['login']);
+                            foreach ($orders_cancel as $order_cancel) {
+                                $bill_details = bill_detail_selectByIdBill($order_cancel['id_bill']);
+                                $firstProduct_info = product_selectOne($bill_details[0]['id_product']);
+                                $firstProduct_img = product_selectImgs($firstProduct_info['id_product']);
+                                $countProducts = count($bill_details);
+                                $total_price = 0;
+                                foreach ($bill_details as $bill_detail) {
+                                    $product_row = product_selectOne($bill_detail['id_product']);
+                                    $total_price += $bill_detail['amount'] * $product_row['price'];
+                                }
+                            ?>
+                            <li class="order__row">
+                                <div class="order__row--left">
+                                    <div>
+                                        <img width="50px" height="50px"
+                                            src="<?= $CONTENT_URL ?>/imgs/products/<?= $firstProduct_img['contain'] ?>"
+                                            alt="<?= $firstProduct_info['name'] ?>">
+                                    </div>
+                                    <span class="product-info">
+                                        <b><?= $firstProduct_info['name'] ?></b>
+                                        <div class="order_info">
+                                            <i>Size: <?= $bill_details[0]['size'] ?></i>
+                                            <i>SL: <?= $bill_details[0]['amount'] ?></i>
+                                            <i>Giá: <?= number_format($firstProduct_info['price']) ?>đ</i>
+                                        </div>
+                                    </span>
+                                    <br>
+                                    <?php if (count($bill_details) > 1) { ?>
+                                    <div>
+                                        <i><label for="productDropdown-checkbox">Và <?= $countProducts - 1 ?> sản phẩm
+                                                khác</label></i>
+                                        <input type="checkbox" name="" id="productDropdown-checkbox">
+                                        <div class="order__row--fullProduct">
+                                            <ul>
+                                                <?php for ($i = 1; $i < count($bill_details); $i++) {
+                                                            $product_row = product_selectOne($bill_details[$i]['id_product']);
+                                                            $product_img = product_selectImgs($product_row['id_product']);
+                                                        ?>
+                                                <li>
+                                                    <div>
+                                                        <div>
+                                                            <img width="50px" height="50px"
+                                                                src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>"
+                                                                alt="<?= $product_row['name'] ?>">
+                                                        </div>
+                                                        <div class="product-info">
+                                                            <b><?= $product_row['name'] ?></b>
+                                                            <i>Size: <?= $bill_details[$i]['size'] ?></i>
+                                                            <i>SL: <?= $bill_details[$i]['amount'] ?></i>
+                                                        </div>
+                                                        <span>Giá:<?= number_format($product_row['price']) ?>đ</span>
+                                                    </div>
+                                                </li>
+                                                <?php } ?>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <?php } ?>
+                                </div>
+                                <div class="box_right--order">
+                                    <div class="order__row--middle">
+                                        <span>Tổng giá: </span> <br>
+                                        <b><?= number_format($total_price) ?>đ</b>
+                                    </div>
+                                    <div class="order__row--right">
+                                        <a href="<?= $SITE_URL ?>/product/handle_order.php?repurchase=<?= $order_cancel['id_bill'] ?>"
+                                            target="frame">
+                                            Mua lại
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <iframe name="frame" hidden></iframe>
+    <script src="<?= $CONTENT_URL ?>/js/user.js"></script>
+    <script>
+    var tabLinks = document.querySelectorAll(".tablinks");
+    var tabContent = document.querySelectorAll(".tabcontent");
+
+    tabLinks.forEach(function(el) {
+        el.addEventListener("click", openTabs);
+    });
+
+
+    function openTabs(el) {
+        var btn = el.currentTarget; // lắng nghe sự kiện và hiển thị các element
+        var electronic = btn.dataset.electronic; // lấy giá trị trong data-electronic
+
+        tabContent.forEach(function(el) {
+            el.classList.remove("active");
+        }); //lặp qua các tab content để remove class active
+
+        tabLinks.forEach(function(el) {
+            el.classList.remove("active");
+        }); //lặp qua các tab links để remove class active
+
+        document.querySelector("#" + electronic).classList.add("active");
+        // trả về phần tử đầu tiên có id="" được add class active
+
+        btn.classList.add("active");
+        // các button mà chúng ta click vào sẽ được add class active
+    }
+    </script>
+    <script>
+    var tabLinks_order = document.querySelectorAll(".tablinks_order");
+    var tabcontent_order = document.querySelectorAll(".tabcontent_order");
+
+    tabLinks_order.forEach(function(el) {
+        el.addEventListener("click", openTabs);
+    });
+
+
+    function openTabs(el) {
+        var btn = el.currentTarget; // lắng nghe sự kiện và hiển thị các element
+        var electronic = btn.dataset.electronic; // lấy giá trị trong data-electronic
+
+        tabcontent_order.forEach(function(el) {
+            el.classList.remove("active");
+        }); //lặp qua các tab content để remove class active
+
+        tabLinks_order.forEach(function(el) {
+            el.classList.remove("active");
+        }); //lặp qua các tab links để remove class active
+
+        document.querySelector("#" + electronic).classList.add("active");
+        // trả về phần tử đầu tiên có id="" được add class active
+
+        btn.classList.add("active");
+        // các button mà chúng ta click vào sẽ được add class active
+    }
+    </script>
+    <!-- <script>
+    $('.fa').on('mouseover', function() {
+        var $this = $(this);
+        $this.nextAll().removeClass('fa-star').addClass("fa-star-o");
+        $this.prevAll().removeClass("fa-star-o").addClass('fa-star');
+        $this.removeClass("fa-star-o").addClass('fa-star');
+    });
+    $('.fa').one('click', function() {
+        var $this = $(this);
+        $this.addClass('active').siblings().removeClass('active');
+    });
+    $('.fa').on('mouseleave', function() {
+        var select = $('.active');
+        select.nextAll().removeClass('fa-star').addClass('fa-star-o');
+        select.prevAll().removeClass('fa-star-o').addClass('fa-star');
+        select.removeClass('fa-star-o').addClass('fa-star');
+    });
+    </script> -->
 </body>
-<script src="<?= $CONTENT_URL ?>/js/user.js"></script>

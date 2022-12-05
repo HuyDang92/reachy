@@ -57,7 +57,7 @@
                     <input class="first_name" type="text" placeholder="Tên">
                     <input class="number" type="text" placeholder="SDT">
                     <input class="mail" type="text" placeholder="Email">
-                    <textarea class="idea_content" name="" id="" cols="85" rows="5" placeholder="Ghi chú"></textarea>
+                    <textarea class="idea_content" name="" id="" cols="85" rows="3" placeholder="Ghi chú"></textarea>
                 </form>
                 <button class="submit" type="submit">Gửi phản hồi</button>
             </div>

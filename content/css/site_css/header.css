@@ -1,4 +1,4 @@
-@import url('/content/css/root.css');
+@import url('../root.css');
 
 .background_header{
     margin: 0;
@@ -21,6 +21,7 @@
 .header{
     position: relative;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     background-color: #ffff;
@@ -32,9 +33,9 @@
     margin-left: 1rem;
 }
 .header_right-logo{
-    margin-top: 0.7rem;
     display: flex;
     align-items: center;
+    font-size: 20px;
 }
 .header_right-logo>h2{
     font-weight: 800;
@@ -80,31 +81,32 @@
     align-items: center;
 }
 .header__left-control>li{
-    padding: 1.3rem 0.5rem;
+    padding: 1.2rem 0.5rem;
     cursor: pointer;
     width: 30%;
 }
 .control-user{
-    position: relative;
     transition-delay: 0.5s;
 }
-.sub__menu{
+li.control__user{
+    position: relative;
+}
+.sub__menu {
     display: none;
     position: absolute;
     top: 100%;
-    width: 11rem;
-    left: 0; 
     background-color: #fff;
     z-index: 10;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-
+    text-align: center;
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    /* right: 0.5rem; */
 }
 .sub__menu-user{
     transition: 0.3s;
     display: block;
-    padding: 1rem;
+    padding: 1rem 0;
     border-bottom: 1px dotted #cccc;
-    font-size: 16px;
+    font-size: 15px;
 }
 .sub__menu-user:hover{
     background-image: linear-gradient(90deg, var(--blue), var(--green));
@@ -120,7 +122,7 @@
     width: 100%;
     background-image: linear-gradient(90deg, var(--blue), var(--green));
     position: absolute;
-    bottom: 0.5rem;
+    bottom: 0rem;
     left: 0;
     transition: all 0.3s;
     z-index: -1;
@@ -157,7 +159,7 @@
     top: 100%;
     display: flex;
     flex-wrap: wrap;
-    width: 30%;
+    width: 20rem;
     transition: all 0.3s;
     transition-delay: 0.2s;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -170,7 +172,7 @@
     padding: 1rem;
     width: 50%;
     transition: all 0.2s;
-    font-size: 16px;
+    font-size: 15px;
     text-transform: uppercase;
     font-weight: 400;
     /* border-right: 1px dotted #cccc; */
@@ -196,19 +198,18 @@
     padding-top: 100px;
 }
 .control__user img{
-    width: 1.4rem;
-    height: 1.4rem;
+    width: 1.3rem;
+    height: 1.3rem;
     border-radius: 50%;
     object-fit: cover;
 }
-.amount-cart{
+.amount-cart {
     position: absolute;
-    padding: 0.2rem 0.5rem;
+    padding: 0.2rem 0.4rem;
     border-radius: 50%;
     background-color: var(--blue);
     top: 10px;
-    right: 10px;
-    font-size: 15px;
-    color: white;
-
+    right: 5px;
+    font-size: 10px;
+    color: #fff;
 }
