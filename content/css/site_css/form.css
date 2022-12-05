@@ -389,14 +389,14 @@ ul.order__rows--container{
 }
 .order__row--right a{
     color: #fff;
-    padding: 0.4rem 0.8rem;
+    padding: 0.6rem 0.8rem;
     background: var(--blue);
     border-radius: 5px;
     font-size: 15px;
 }
 .rating_pd{
     color: #fff;
-    padding: 0.4rem 0.8rem;
+    padding: 0.7rem 0.8rem;
     background: var(--blue);
     border-radius: 5px;
     font-size: 15px;

@@ -209,7 +209,7 @@ section{
     padding-right: 2rem;
 }
 .product-tool span#like_span{
-    padding: 0.7rem;
+    padding: 0.65rem;
     border-radius: 50%;
     border: 3px solid var(--blue);
     color: var(--blue);
@@ -230,7 +230,7 @@ section{
     overflow: hidden;
     cursor: pointer;
     border: none;
-    padding: 1.3rem;
+    padding: 1.2rem;
     border: 3px solid var(--blue);
     background-color: #fff;
 }
@@ -257,7 +257,7 @@ section{
     top: -20%;
     left: 53%;
     font-size: 0.8em;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
 }
 
 .cart-cir span {
@@ -303,7 +303,7 @@ section{
     }
 
     100% {
-        left: 100%
+        left: 120%
     }
 }
 

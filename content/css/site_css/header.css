@@ -159,7 +159,7 @@ li.control__user{
     top: 100%;
     display: flex;
     flex-wrap: wrap;
-    width: 22rem;
+    width: 20rem;
     transition: all 0.3s;
     transition-delay: 0.2s;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -172,7 +172,7 @@ li.control__user{
     padding: 1rem;
     width: 50%;
     transition: all 0.2s;
-    font-size: 16px;
+    font-size: 15px;
     text-transform: uppercase;
     font-weight: 400;
     /* border-right: 1px dotted #cccc; */

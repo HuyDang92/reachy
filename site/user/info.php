@@ -357,7 +357,7 @@ $user = user_selectById($_SESSION['login']);
                                     </div>
                                     <div class="order__row--right">
                                         <label class="rating_pd" for="rating_checkbox">Đánh giá sản phẩm</label>
-                                        <input type="checkbox" name="" id="rating_checkbox" hidden checked>
+                                        <input type="checkbox" name="" id="rating_checkbox" hidden>
                                         <label class="overplay" for="rating_checkbox"></label>
                                         <div class="rating_container">
                                             <label style="float: right;" for="rating_checkbox"><i
