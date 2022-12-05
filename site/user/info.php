@@ -415,11 +415,11 @@ $user = user_selectById($_SESSION['login']);
                                                         <label for="star5"> <span class="material-icons-outlined">
                                                                 star_border
                                                             </span> </label>
-                                                        <input type="radio" name="rating_star" id="star1" hidden>
-                                                        <input type="radio" name="rating_star" id="star2" hidden>
-                                                        <input type="radio" name="rating_star" id="star3" hidden>
-                                                        <input type="radio" name="rating_star" id="star4" hidden>
-                                                        <input type="radio" name="rating_star" id="star5" hidden>
+                                                        <input type="radio" name="rating_star" id="star1" value="1" hidden>
+                                                        <input type="radio" name="rating_star" id="star2" value="2" hidden>
+                                                        <input type="radio" name="rating_star" id="star3" value="3" hidden>
+                                                        <input type="radio" name="rating_star" id="star4" value="4" hidden>
+                                                        <input type="radio" name="rating_star" id="star5" value="5" hidden>
                                                     </div>
                                                     <textarea name="rating_content" placeholder="Nội dung đánh giá"></textarea>
                                                     <button name="rating">Đánh giá</button>

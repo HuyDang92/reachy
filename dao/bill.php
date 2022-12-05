@@ -120,6 +120,7 @@ function bill_cancel($id_bill)
 function bill_taken($id_bill)
 {
     $sql = "UPDATE bill SET status = 2 WHERE id_bill = ?";
+    pdo_execute($sql,$id_bill);
 }
 /* Xóa đơn hàng theo mã đơn hàng
     * @param int $id_bill Mã đơn hàng

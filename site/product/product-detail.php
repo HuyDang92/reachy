@@ -431,7 +431,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
         </div>
     </section>
     </div>
-    <iframe name="frame" style="display: none;"></iframe>
+    <iframe name="frame" hidden></iframe>
     <script src="<?= $CONTENT_URL ?>/js/slide_product.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/tabs.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/product_detail.js"></script>
