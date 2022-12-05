@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/form.css">
 <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/user.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <?php
 $user = user_selectById($_SESSION['login']);
 ?>
@@ -369,41 +370,36 @@ $user = user_selectById($_SESSION['login']);
                                                 ?>
                                             <form action="<?= $SITE_URL ?>/product/handle_order.php" method="POST"
                                                 target="frame">
-                                                <div>
-                                                    <img width="50px" height="50px"
-                                                        src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>"
-                                                        alt="<?= $product_row['name'] ?>">
-                                                </div>
-                                                <div class="product-info">
-                                                    <b><?= $product_row['name'] ?></b>
-                                                    <i>Size: <?= $bill_detail['size'] ?></i>
-                                                    <i>SL: <?= $bill_detail['amount'] ?></i>
-                                                </div>
-                                                <div>
+                                                <div class="box_flex-order">
                                                     <div>
-                                                        <label for="star1">
-                                                            <i class="fa-regular fa-star"></i>
-                                                        </label>
-                                                        <label for="star2">
-                                                            <i class="fa-regular fa-star"></i>
-                                                        </label>
-                                                        <label for="star3">
-                                                            <i class="fa-regular fa-star"></i>
-                                                        </label>
-                                                        <label for="star4">
-                                                            <i class="fa-regular fa-star"></i>
-                                                        </label>
-                                                        <label for="star5">
-                                                            <i class="fa-regular fa-star"></i>
-                                                        </label>
-
-                                                        <input type="radio" name="rating_star" id="star1" hidden>
-                                                        <input type="radio" name="rating_star" id="star2" hidden>
-                                                        <input type="radio" name="rating_star" id="star3" hidden>
-                                                        <input type="radio" name="rating_star" id="star4" hidden>
-                                                        <input type="radio" name="rating_star" id="star5" hidden>
+                                                        <img width="50px" height="50px"
+                                                            src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>"
+                                                            alt="<?= $product_row['name'] ?>">
                                                     </div>
-                                                    <textarea name="rating_content" id="" cols="30" rows="5"
+                                                    <div class="product-info">
+                                                        <b
+                                                            style="font-size: 15px; white-space: nowrap;"><?= $product_row['name'] ?></b>
+                                                        <br>
+                                                        <i>Size: <?= $bill_detail['size'] ?></i>
+                                                        <i>SL: <?= $bill_detail['amount'] ?></i>
+                                                    </div>
+                                                </div>
+                                                <div class="box_rating">
+                                                    <ul class="rate-area">
+                                                        <input type="radio" id="5-star" name="rating" value="5">
+                                                        <label for="5-star" title="Tuyệt vời">5 stars</label>
+                                                        <input type="radio" id="4-star" name="rating" value="4">
+                                                        <label for="4-star" title="Tốt">4 stars</label>
+                                                        <input type="radio" id="3-star" name="rating" value="3">
+                                                        <label for="3-star" title="Tạm được">3 stars</label>
+                                                        <input type="radio" id="2-star" name="rating" value="2">
+                                                        <label for="2-star" title="Kém">2 stars</label>
+                                                        <input type="radio" id="không tốt" required="" name="rating"
+                                                            value="1" aria-required="true">
+                                                        <label for="1-star" title="Kém">1 star</label>
+
+                                                    </ul>
+                                                    <textarea name="rating_content" id="" cols="30" rows="4"
                                                         placeholder="Nội dung"></textarea> <br>
 
                                                     <button name="rating">Đánh giá</button>
@@ -558,4 +554,22 @@ $user = user_selectById($_SESSION['login']);
         // các button mà chúng ta click vào sẽ được add class active
     }
     </script>
+    <!-- <script>
+    $('.fa').on('mouseover', function() {
+        var $this = $(this);
+        $this.nextAll().removeClass('fa-star').addClass("fa-star-o");
+        $this.prevAll().removeClass("fa-star-o").addClass('fa-star');
+        $this.removeClass("fa-star-o").addClass('fa-star');
+    });
+    $('.fa').one('click', function() {
+        var $this = $(this);
+        $this.addClass('active').siblings().removeClass('active');
+    });
+    $('.fa').on('mouseleave', function() {
+        var select = $('.active');
+        select.nextAll().removeClass('fa-star').addClass('fa-star-o');
+        select.prevAll().removeClass('fa-star-o').addClass('fa-star');
+        select.removeClass('fa-star-o').addClass('fa-star');
+    });
+    </script> -->
 </body>
