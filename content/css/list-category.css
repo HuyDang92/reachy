@@ -9,6 +9,7 @@
 .list__heading{
     font-weight: bold;
     font-size: 20px;
+    display: inline;
     /* margin-top: 30px; */
     /* text-align: center; */
 }

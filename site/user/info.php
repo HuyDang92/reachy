@@ -1,27 +1,5 @@
 <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/form.css">
 <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/user.css">
-<style>
-.order__row--fullProduct {
-    display: none;
-}
-
-#productDropdown-checkbox:checked~.order__row--fullProduct {
-    display: block;
-}
-
-#rating_checkbox:checked~.rating_container {
-    display: block;
-}
-
-.rating_container {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    background-color: white;
-    border: 1px solid black;
-}
-</style>
 <?php
 $user = user_selectById($_SESSION['login']);
 ?>
@@ -377,10 +355,13 @@ $user = user_selectById($_SESSION['login']);
                                         <b><?= number_format($total_price) ?>đ</b>
                                     </div>
                                     <div class="order__row--right">
-                                        <label for="rating_checkbox">Đánh giá sản phẩm</label>
-                                        <input type="checkbox" name="" id="rating_checkbox" hidden>
+                                        <label class="rating_pd" for="rating_checkbox">Đánh giá sản phẩm</label>
+                                        <input type="checkbox" name="" id="rating_checkbox" hidden checked>
+                                        <label class="overplay" for="rating_checkbox"></label>
                                         <div class="rating_container">
-                                            <label for="rating_checkbox">X</label>
+                                            <label style="float: right;" for="rating_checkbox"><i
+                                                    class="fa-solid fa-xmark"></i>
+                                            </label>
                                             <?php
                                                 foreach ($bill_details as $bill_detail) {
                                                     $product_row = product_selectOne($bill_detail['id_product']);
@@ -400,29 +381,31 @@ $user = user_selectById($_SESSION['login']);
                                                 </div>
                                                 <div>
                                                     <div>
-                                                        <label for="star1"> <span class="material-icons-outlined">
-                                                                star_border
-                                                            </span> </label>
-                                                        <label for="star2"> <span class="material-icons-outlined">
-                                                                star_border
-                                                            </span> </label>
-                                                        <label for="star3"> <span class="material-icons-outlined">
-                                                                star_border
-                                                            </span> </label>
-                                                        <label for="star4"> <span class="material-icons-outlined">
-                                                                star_border
-                                                            </span> </label>
-                                                        <label for="star5"> <span class="material-icons-outlined">
-                                                                star_border
-                                                            </span> </label>
+                                                        <label for="star1">
+                                                            <i class="fa-regular fa-star"></i>
+                                                        </label>
+                                                        <label for="star2">
+                                                            <i class="fa-regular fa-star"></i>
+                                                        </label>
+                                                        <label for="star3">
+                                                            <i class="fa-regular fa-star"></i>
+                                                        </label>
+                                                        <label for="star4">
+                                                            <i class="fa-regular fa-star"></i>
+                                                        </label>
+                                                        <label for="star5">
+                                                            <i class="fa-regular fa-star"></i>
+                                                        </label>
+
                                                         <input type="radio" name="rating_star" id="star1" hidden>
                                                         <input type="radio" name="rating_star" id="star2" hidden>
                                                         <input type="radio" name="rating_star" id="star3" hidden>
                                                         <input type="radio" name="rating_star" id="star4" hidden>
                                                         <input type="radio" name="rating_star" id="star5" hidden>
                                                     </div>
-                                                    <input type="text" name="rating_content"
-                                                        placeholder="Nội dung đánh giá">
+                                                    <textarea name="rating_content" id="" cols="30" rows="5"
+                                                        placeholder="Nội dung"></textarea> <br>
+
                                                     <button name="rating">Đánh giá</button>
                                                 </div>
                                             </form>
