@@ -421,8 +421,7 @@ $user = user_selectById($_SESSION['login']);
                                                         <input type="radio" name="rating_star" id="star4" hidden>
                                                         <input type="radio" name="rating_star" id="star5" hidden>
                                                     </div>
-                                                    <input type="text" name="rating_content"
-                                                        placeholder="Nội dung đánh giá">
+                                                    <textarea name="rating_content" placeholder="Nội dung đánh giá"></textarea>
                                                     <button name="rating">Đánh giá</button>
                                                 </div>
                                             </form>
