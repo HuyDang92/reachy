@@ -1,6 +1,15 @@
 <?php
 
 /**
+ * đếm số lượng Sản phẩm
+ */
+function product_countAll()
+{
+    $sql = "SELECT COUNT(id_product) as pd_num FROM product;";
+    return pdo_query($sql);
+}
+
+/**
  * Xuất toàn bộ sản phẩm
  */
 function product_selectAll()
@@ -49,10 +58,10 @@ function product_selectAllByIdBrand($id_brand)
  * @param string $feature Đặc trưng sản phẩm
  * @param string $description Mô tả sản phẩm
  */
-function product_insert($id_category, $id_brand, $name, $price, $sale_off, $quantity, $feature, $description)
+function product_insert($id_category, $id_brand, $name, $price, $sale_off, $feature, $description, $special)
 {
-    $sql = "INSERT INTO product(id_product,id_category,id_brand,name,price,sale_off,quantity,feature,description) VALUES(NULL,?,?,?,?,?,?,?,?)";
-    pdo_execute($sql, $id_category, $id_brand, $name, $price, $sale_off, $quantity, $feature, $description);
+    $sql = "INSERT INTO product(id_product,id_category,id_brand,name,price,sale_off,feature,description, special) VALUES(NULL,?,?,?,?,?,?,?,?)";
+    pdo_execute($sql, $id_category, $id_brand, $name, $price, $sale_off, $feature, $description, $special);
 }
 /**
  * Cập nhật thông tin sản phẩm
@@ -66,10 +75,10 @@ function product_insert($id_category, $id_brand, $name, $price, $sale_off, $quan
  * @param string $description Mô tả sản phẩm
  * @param int $id_product Mã sản phẩm
  */
-function product_update($id_category, $id_brand, $name, $price, $sale_off, $quantity, $feature, $description, $id_product)
+function product_update($id_category, $id_brand, $name, $price, $sale_off, $feature, $description, $special, $id_product)
 {
-    $sql = "UPDATE product SET id_category=?,id_brand=?,name=?,price=?,sale_off=?,quantity=?,featurn=?,description=? WHERE id_product=?";
-    pdo_execute($sql, $id_category, $id_brand, $name, $price, $sale_off, $quantity, $feature, $description, $id_product);
+    $sql = "UPDATE product SET id_category=?,id_brand=?,name=?,price=?,sale_off=?,feature=?,description=?, special=? WHERE id_product=?";
+    pdo_execute($sql, $id_category, $id_brand, $name, $price, $sale_off, $feature, $description, $special, $id_product);
 }
 /**
  * Xóa sản phẩm
@@ -141,6 +150,16 @@ function product_select_specification($id_product)
  * @param int $id_product Mã sản phẩm
  * @return array Mảng ảnh
  */
+function product_selectArrayImgs($id_product)
+{
+    $sql = "SELECT * FROM product_img WHERE id_product=?";
+    return pdo_query($sql, $id_product);
+}
+/**
+ * Xuất ra 1 ảnh của sản phẩm tương ứng
+ * @param int $id_product Mã sản phẩm
+ * @return array 1 ảnh
+ */
 function product_selectImgs($id_product)
 {
     $sql = "SELECT * FROM product_img WHERE id_product=?";
@@ -162,8 +181,11 @@ function product_select_9SaleOff()
  */
 function product_select_ByKeyWord($keyword)
 {
-    $sql = "SELECT * FROM product WHERE name LIKE '%?%'";
-    return pdo_query($sql, $keyword);
+    $sql = "SELECT product.* FROM product
+            JOIN category ON product.id_category = category.id_category
+            JOIN brand ON product.id_brand = brand.id_brand
+            WHERE product.name LIKE '%$keyword%' OR brand.name LIKE '%$keyword%' OR category.name LIKE '%$keyword%'";
+    return pdo_query($sql);
 }
 /**
  * Xuất 8 sản phẩm được yêu thích nhất
@@ -180,7 +202,7 @@ function product_select_8WishList()
  */
 function product_select_8DateLasted()
 {
-    $sql = "SELECT * FROM product where special=0 ORDER BY date desc LIMIT 8";
+    $sql = "SELECT * FROM product where special=0 and not id_category=9 ORDER BY date desc LIMIT 8";
     return pdo_query($sql);
 }
 /**
@@ -189,6 +211,80 @@ function product_select_8DateLasted()
  */
 function product_select_AllSaleOff()
 {
-    $sql = "SELECT * FROM product WHERE sale_off = 20 ";
+    $sql = "SELECT * FROM product WHERE sale_off = 20 limit 6";
     return pdo_query($sql);
+}
+/**
+ * Xuất danh sách slide trang chủ
+ * @return array Danh sách slide
+ */
+function product_selectAllSlide()
+{
+    $sql = "SELECT * FROM slider";
+    return pdo_query($sql);
+}
+
+// Table WISH_LIST
+
+/**
+ * Xuất danh sách yêu thích
+ * @return array Danh sách yêu thích
+ */
+function product_likeList()
+{
+    $sql = "SELECT * FROM wish_list";
+    return pdo_query($sql);
+}
+/**
+ * Thích sản phẩm
+ * @param int $id_product Mã sản phẩm
+ * @param int $id_user Mã khách hàng
+ */
+function product_like($id_product, $id_user)
+{
+    $sql = "INSERT INTO wish_list (id_product,id_user) VALUES (?,?)";
+    pdo_execute($sql, $id_product, $id_user);
+}
+/**
+ * Kiểm tra sản phẩm tương ứng đã được người dùng thêm vào danh sách thích chưa
+ * @param int $id_product Mã sản phẩm
+ * @param int $id_user Mã khách hàng
+ * @return bool True = Đã thích, False = Chưa thích
+ */
+function product_checkLiked($id_product, $id_user)
+{
+    $sql = "SELECT * FROM wish_list WHERE id_product = ? AND id_user = ?";
+    return pdo_query_one($sql, $id_product, $id_user);
+}
+/**
+ * Bỏ thích sản phẩm
+ * @param int $id_product Mã sản phẩm
+ * @param int $id_user Mã khách hàng
+ */
+function product_unLike($id_wishlist)
+{
+    $sql = "DELETE FROM wish_list WHERE id_wishlist = ?";
+    pdo_execute($sql, $id_wishlist);
+}
+/**
+ * Kiểm tra sản phẩm có thuộc tính size không
+ * @param int $id_product Mã sản phẩm
+ * @return array Danh sách size của sản phẩm tương ứng
+ */
+function product_checkSizeExist($id_product)
+{
+    $sql = "SELECT * FROM size WHERE id_product = ?";
+    return pdo_query_one($sql, $id_product);
+}
+/**
+ * Đánh giá sản phẩm
+ * @param int $id_product Mã sản phẩm
+ * @param int $id_user Mã khách hàng
+ * @param int $rating Đánh giá sản phẩm
+ * @param string $content Nội dung đánh giá
+ */
+function product_rating($id_product, $id_user, $rating, $content)
+{
+    $sql = "INSERT INTO rating(id_rating,id_product,id_user,rating,content) VALUES (null,?,?,?,?)";
+    pdo_execute($sql, $id_product, $id_user, $rating, $content);
 }

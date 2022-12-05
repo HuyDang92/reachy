@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 require_once "../../global.php";
 require_once "../../dao/pdo.php";
 require_once "../../dao/user.php";
@@ -12,7 +11,6 @@ if (user_checkExistEmail($email)) {
     global $name, $email, $phone_number;
 } else {
     try {
-        user_insert($user_name, $password, $email, $phone_number);
         $CONTENT_URL = "../../content";
         $code = sendEmail($email);
         add_session("code", $code);

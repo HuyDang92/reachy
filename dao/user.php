@@ -40,8 +40,22 @@ function user_selectByEmail($email)
  */
 function user_insert($user_name, $password, $email, $phone_number)
 {
-    $sql = "INSERT INTO user(id_user,name,email,password,img,phone_number) VALUES (null,?,?,?,'default-avater.jpg',?)";
+    $sql = "INSERT INTO user(id_user,name,email,password,img,phone_number) VALUES (null,?,?,?,'default-avatar.jpg',?)";
     pdo_execute($sql, $user_name, $email, $password, $phone_number);
+}
+/**
+ * Nhập thêm người dùng admin
+ * @param string $user_name Tên khách hàng
+ * @param string $password mật khẩu đăng nhập của khách hàng
+ * @param string $email Địa chỉ email(tên đăng nhập)
+ * @param string $img Ảnh đại diện
+ * @param string $address Địa chỉ
+ * @param int phone_number Số điện thoại
+ */
+function user_insert_admin($user_name, $password, $email,$img, $phone_number, $role)
+{
+    $sql = "INSERT INTO user(id_user,name,password,email,img,phone_number, role) VALUES (null,?,?,?,?,?,?)";
+    pdo_execute($sql, $user_name, $password, $email,$img, $phone_number, $role);
 }
 /**
  * Cập nhật thông tin khách hàng
@@ -54,6 +68,18 @@ function user_update($id_user, $user_name, $phone_number)
 {
     $sql = "UPDATE user SET name = ?, phone_number = ? WHERE id_user=?";
     pdo_execute($sql, $user_name, $phone_number, $id_user);
+}
+/**
+ * Cập nhật thông tin khách hàng (admin)
+ * @param int $id_user Mã khách hàng
+ * @param string $user_name Tên khách hàng
+ * @param string $img Ảnh đại diện
+ * @param int $phone_number Số điện thoại
+ */
+function user_update_admin($id_user, $user_name, $phone_number,$password, $img)
+{
+    $sql = "UPDATE user SET name = ?, phone_number = ?,password = ?, img = ? WHERE id_user=?";
+    pdo_execute($sql, $user_name, $phone_number,$password,$img, $id_user);
 }
 /**
  * Xóa khách hàng
@@ -118,10 +144,19 @@ function user_signIn($user_email, $password)
     }
 }
 /**
+ * Cập nhật quyền user
+ * @param int $id_user Mã khách hàng
+ */
+function user_updateRole($role, $id_user)
+{
+    $sql = "UPDATE user SET role = ? WHERE id_user=?";
+    pdo_execute($sql,$role, $id_user);
+}
+/**
  * Nâng cấp quyền admin
  * @param int $id_user Mã khách hàng
  */
-function user_UpgradeRole($id_user)
+function user_upgradeRole($id_user)
 {
     $sql = "UPDATE user SET role = 1 WHERE id_user=?";
     pdo_execute($sql, $id_user);
@@ -130,7 +165,7 @@ function user_UpgradeRole($id_user)
  * Xóa quyền admin
  * @param int $id_user Mã khách hàng
  */
-function user_DowngradeRole($id_user)
+function user_downgradeRole($id_user)
 {
     $sql = "UPDATE user SET role = 0 WHERE id_user=?";
     pdo_execute($sql, $id_user);
@@ -144,4 +179,13 @@ function user_selectImgs($id_user)
 {
     $sql = "SELECT img FROM user WHERE id_user=?";
     return pdo_query_one($sql, $id_user);
+}
+/**
+* Cập nhật ảnh đại diện
+* @param int $id_user Mã khách hàng
+* @param string $img Ảnh đại diện mới
+*/
+function user_updateAvatar($id_user,$img){
+    $sql = "UPDATE user SET img=? WHERE id_user = ?";
+    pdo_execute($sql,$img,$id_user);
 }

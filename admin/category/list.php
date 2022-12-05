@@ -1,6 +1,8 @@
-
+<?php
+    $loai = category_selectAll();
+?>
 <div class="list__container">
-    <h1 class="list__heading">Danh sách loại</h1>
+    <h1 class="list__heading">Danh sách loại hàng</h1>
     <table border="1">
         <thead>
             <tr>
@@ -9,56 +11,31 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>
-                    <input class="list__checkbox" type="checkbox">
-                </td>
-                <td>
-                    1
-                </td>
-                <td>
-                    Giày cuồng nộ
-                </td>
-                <td>
-                    <a href="<?=$ADMIN_URL?>?category&act=update"><button>Sửa</button></a>
-                    <a href="<?=$ADMIN_URL?>?category&act=del"><button>Xóa</button></a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input class="list__checkbox" type="checkbox">
-                </td>
-                <td>
-                    2
-                </td>
-                <td>
-                    Giày bạc
-                </td>
-                <td>
-                    <a href="<?=$ADMIN_URL?>"><button>Sửa</button></a>
-                    <a href="<?=$ADMIN_URL?>"><button>Xóa</button></a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input class="list__checkbox" type="checkbox">
-                </td>
-                <td>
-                    3
-                </td>
-                <td>
-                    Giày vò cuộc sống
-                </td>
-                <td>
-                    <a href="<?=$ADMIN_URL?>"><button>Sửa</button></a>
-                    <a href="<?=$ADMIN_URL?>"><button>Xóa</button></a>
-                </td>
-            </tr>
+        <?php foreach($loai as $l){
+                extract($l)?>
+                <tr>
+                    <td>
+                        <input class="list__checkbox" type="checkbox">
+                    </td>
+                    <td>
+                        <?=$id_category?>
+                    </td>
+                    <td>
+                        <?=$name?>
+                    </td>
+                    <td class="list__action--container">
+                        <div class="list__action">
+                        <a href="<?=$ADMIN_URL?>?category&act=update&id=<?=$id_category?>"><button>Sửa</button></a>
+                        <a href="<?=$ADMIN_URL?>?category&act=del&id=<?=$id_category?>"><button>Xóa</button></a>
+                        </div>
+                    </td>
+                </tr>
+            <?php }?>
         </tbody>
     </table>
-    <button id="select_all">Chọn tất cả</button>
-    <button id="unselect_all">Bỏ chọn tất cả</button>
-    <button>Xóa các mục đã chọn</button>
-    <a href="<?=$ADMIN_URL?>?category&act=add"><button>Nhập thêm</button></a>
+    <button id="select_all" class="admin_btn">Chọn tất cả</button>
+    <button id="unselect_all" class="admin_btn">Bỏ chọn tất cả</button>
+    <button class="admin_btn">Xóa các mục đã chọn</button>
+    <a href="<?=$ADMIN_URL?>?category&act=add"><button class="admin_btn">Nhập thêm</button></a>
 </div>
 

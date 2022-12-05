@@ -1,6 +1,18 @@
-
+<?php 
+    $page_size = 9;
+    if (isset($_GET['page_num'])) $page_num = $_GET['page_num'] + 0;
+    else $page_num = 1;
+    if ($page_num <= 0) $page_num = 1;
+    $sanpham = getRowInPageByTable('product', $page_num, $page_size);
+    $total_products = count(product_selectAll());
+?>
 <div class="list__container">
     <h1 class="list__heading">Danh sách sản phẩm</h1>
+    <?php
+        $base_url = $ADMIN_URL.'?product&act=list';
+        echo createMultiPage($base_url, $total_products, $page_num, $page_size);
+    ?>
+    
     <table border="1">
         <thead>
             <tr>
@@ -9,100 +21,52 @@
                 <th>Mã loại</th>
                 <th>Hình</th>
                 <th>Giá</th>
-                <th colspan="2">Số lượng</th>
+                <th colspan="2">Hành động</th>
             </tr>
         </thead>
         <tbody>
-            
-                <tr>
-                    <td>
-                        <input class="list__checkbox" type="checkbox">
-                    </td>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        Giày
-                    </td>
-                    <td>
-                        Giày đẹp
-                    </td>
-                    <td class="hinh">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/logo.svg" alt="">
-                    </td>
-                    <td>
-                        100k
-                    </td>
-                    <td>
-                        59
-                    </td>
-                    <td>
-                        <a href="<?=$ADMIN_URL?>?product&act=update"><button>Sửa</button></a>
-                        <a href="<?=$ADMIN_URL?>?product&act=del"><button>Xóa</button></a>
-                    </td>
-                </tr>
+        <?php foreach($sanpham as $sp){
+                extract($sp);
+                $img = product_selectImgs($id_product);
                 
+                ?>
                 <tr>
                     <td>
                         <input class="list__checkbox" type="checkbox">
                     </td>
                     <td>
-                        1
+                        <?=$id_product?>
                     </td>
                     <td>
-                        Giày
+                        <?=$name?>
                     </td>
                     <td>
-                        Giày đẹp
+                        <?=$id_category?>
                     </td>
                     <td class="hinh">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/logo.svg" alt="">
+                        <img src="<?=$CONTENT_URL?>/imgs/products/<?=$img['contain']?>" alt="">
                     </td>
                     <td>
-                        100k
+                        <?= number_format(round($price, -4)) ?>₫
                     </td>
-                    <td>
-                        59
-                    </td>
-                    <td>
-                        <a href="<?=$ADMIN_URL?>?product&act=update"><button>Sửa</button></a>
-                        <a href="<?=$ADMIN_URL?>?product&act=del"><button>Xóa</button></a>
+                    <td class="list__action--container">
+                        <div class="list__action">
+                            <a href="<?=$ADMIN_URL?>?product&act=update&id=<?=$id_product?>"><button>Sửa</button></a>
+                            <a href="<?=$ADMIN_URL?>?product&act=del&id=<?=$id_product?>"><button>Xóa</button></a>
+                            <a href="<?=$ADMIN_URL?>?comment&act=list&id=<?=$id_product?>"><button>Bình luận</button></a>
+                            <a href="<?=$ADMIN_URL?>?product&act=del&id=<?=$id_product?>"><button>Đánh giá</button></a>
+                        </div>
                     </td>
                 </tr>
-
-                <tr>
-                    <td>
-                        <input class="list__checkbox" type="checkbox">
-                    </td>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        Giày
-                    </td>
-                    <td>
-                        Giày đẹp
-                    </td>
-                    <td class="hinh">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/logo.svg" alt="">
-                    </td>
-                    <td>
-                        100k
-                    </td>
-                    <td>
-                        59
-                    </td>
-                    <td>
-                        <a href="<?=$ADMIN_URL?>?product&act=update"><button>Sửa</button></a>
-                        <a href="<?=$ADMIN_URL?>?product&act=del"><button>Xóa</button></a>
-                    </td>
-                </tr>
-
+            <?php }?>
         </tbody>
     </table>
-    <button id="select_all">Chọn tất cả</button>
-    <button id="unselect_all">Bỏ chọn tất cả</button>
-    <button>Xóa các mục đã chọn</button>
-    <a href="<?=$ADMIN_URL?>?product&act=add"><button>Nhập thêm</button></a>
+    <?php
+        echo createMultiPage($base_url, $total_products, $page_num, $page_size);
+    ?>
+    <button id="select_all" class="admin_btn">Chọn tất cả</button>
+    <button id="unselect_all" class="admin_btn">Bỏ chọn tất cả</button>
+    <button class="admin_btn">Xóa các mục đã chọn</button>
+    <a href="<?=$ADMIN_URL?>?product&act=add"><button class="admin_btn">Nhập thêm</button></a>
 </div>
 

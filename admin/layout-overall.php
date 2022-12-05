@@ -1,3 +1,14 @@
+<?php
+// require_once "../dao/pdo.php";
+require_once "../dao/brand.php";
+require_once "../dao/category.php";
+require_once "../dao/product.php";
+// require_once "../dao/user.php";
+require_once "../dao/comment.php";
+require_once "../dao/slider.php";
+require_once "../dao/blog.php";
+require_once "../dao/bill.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +25,7 @@
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/list-category.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/add-user.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/404.css">
+    <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/category.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +36,10 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <?php session_start(); ?>
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+
 </head>
 
 <body>
@@ -42,5 +57,7 @@
         </footer>
     </div>
 </body>
+<script src="<?= $CONTENT_URL ?>/js/brandByCate.js"></script>
+<script src="<?= $CONTENT_URL ?>/js/billDetail.js"></script>
 
 </html>

@@ -17,6 +17,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+    <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Nunito:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet"
@@ -24,7 +27,7 @@
     <!-- ion icon -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!--  -->
+    <!-- carousel -->
     <link rel="stylesheet" href="<?= $SITE_URL ?>/homepage/owlcarousel/assets/owl.carousel.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="<?= $SITE_URL ?>/homepage/owlcarousel/owl.carousel.min.js"></script>
@@ -33,7 +36,8 @@
 <body>
     <div class="container">
         <header>
-            <?php require "layout/header.php"; ?>
+            <?php require "layout/header.php";
+            ?>
         </header>
         <main>
             <?php

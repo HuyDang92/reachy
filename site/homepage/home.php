@@ -2,6 +2,8 @@
 $sql_product_new =  product_select_8DateLasted();
 $sql_product_special = product_select_special();
 $sql_deal = product_select_AllSaleOff();
+$sql_slide = product_selectAllSlide();
+add_session('productLink', getCurrentUrl());
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,106 +13,60 @@ $sql_deal = product_select_AllSaleOff();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/home.css">
+    <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/home.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/root.css">
-
 </head>
 
 <body>
     <div class="background_header">
-        <img src="<?= $CONTENT_URL ?>/imgs/interface/background.png" alt="">
+        <img style="height: 85%;" src="<?= $CONTENT_URL ?>/imgs/interface/background.png" alt="">
     </div>
     <div class="container_main">
         <section class="banner__area">
             <div class="owl-carousel owl-theme">
-                <div class="main__slide-item">
-                    <div class="slide__item-left">
-                        <h1>Bộ Sưu Tập Mới <br> Của Nike!</h1>
-                        <p>Giày chính hãng với lịch sử hình thành và phát triển hơn 100 năm để ngày nay trở thành
-                            “Thương hiệu giày thể thao được giới trẻ yêu thích”
-                        </p>
-                        <div class="btn__add-cart">
-                            <button>
-                                <a href="">
-                                    <span class="material-symbols-outlined">
-                                        add
-                                    </span>
-                                </a>
-                            </button>
-                            <h4>THÊM VÀO GIỎ HÀNG</h4>
-                        </div>
-                    </div>
-                    <div class="slide__item-right">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/banner4.webp" alt="">
-                    </div>
-                </div>
-                <div class="main__slide-item">
-                    <div class="slide__item-left">
-                        <h1>Bộ Sưu Tập Mới <br> Của Nike!</h1>
-                        <p>Giày chính hãng với lịch sử hình thành và phát triển hơn 100 năm để ngày nay trở thành
-                            “Thương hiệu giày thể thao được giới trẻ yêu thích”
-                        </p>
-                        <div class="btn__add-cart">
-                            <button>
-                                <a href="">
-                                    <span class="material-symbols-outlined">
-                                        add
-                                    </span>
-                                </a>
-                            </button>
-                            <h4>THÊM VÀO GIỎ HÀNG</h4>
-                        </div>
-                    </div>
-                    <div class="slide__item-right">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/banner2.png" alt="">
-                    </div>
-                </div>
-                <div class="main__slide-item">
-                    <div class="slide__item-left">
-                        <h1>Bộ Sưu Tập Mới <br> Của Nike!</h1>
-                        <p>Giày chính hãng với lịch sử hình thành và phát triển hơn 100 năm để ngày nay trở thành
-                            “Thương hiệu giày thể thao được giới trẻ yêu thích”
-                        </p>
-                        <div class="btn__add-cart">
-                            <button>
-                                <a href="">
-                                    <span class="material-symbols-outlined">
-                                        add
-                                    </span>
-                                </a>
-                            </button>
-                            <h4>THÊM VÀO GIỎ HÀNG</h4>
-                        </div>
-                    </div>
-                    <div class="slide__item-right">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/banner3.webp.png" alt="">
-                    </div>
-                </div>
+                <?php foreach ($sql_slide as $slide) { ?>
+                <a
+                    href="<?= $SITE_URL ?>/homepage?category&id_category=<?= $slide['id_category'] ?>&id_brand=<?= $slide['id_brand'] ?>">
+                    <div class="main__slide-item">
+                        <div class="slide__item-left">
+                            <h1><?= $slide['title'] ?></h1>
+                            <p><?= $slide['content'] ?></p>
 
+                        </div>
+                        <div class="slide__item-right">
+                            <img src="<?= $CONTENT_URL ?>/imgs/interface/<?= $slide['img'] ?>" alt="">
+                        </div>
+                    </div>
+                </a>
+                <?php } ?>
             </div>
         </section>
         <section class="category__sale-area">
             <div class="main__category-container">
                 <div class="main__category-items">
-                    <div class="category-item">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/sport1.webp" alt="">
-                        <div class="overplay__cate"></div>
-                        <a href=""><span>SNEAKER CHO THỂ THAO</span></a>
+                    <div class="box-flex">
+                        <div class="category-item">
+                            <img src="<?= $CONTENT_URL ?>/imgs/interface/sport1.webp" alt="">
+                            <div class="overplay__cate"></div>
+                            <a href=""><span>SNEAKER CHO THỂ THAO</span></a>
+                        </div>
+                        <div class="category-item">
+                            <img src="<?= $CONTENT_URL ?>/imgs/interface/sport2.webp" alt="">
+                            <div class="overplay__cate"></div>
+                            <a href=""><span>SNEAKER CHO THỂ THAO</span></a>
+                        </div>
                     </div>
-                    <div class="category-item">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/sport2.webp" alt="">
-                        <div class="overplay__cate"></div>
-                        <a href=""><span>SNEAKER CHO THỂ THAO</span></a>
-                    </div>
-                    <div class="category-item">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/sport3.webp" alt="">
-                        <div class="overplay__cate"></div>
-                        <a href=""><span>SNEAKER XU HƯỚNG</span></a>
-                    </div>
-                    <div class="category-item">
-                        <img src="<?= $CONTENT_URL ?>/imgs/interface/sport4.webp" alt="">
-                        <div class="overplay__cate"></div>
-                        <a href=""><span>SNEAKER ĐƯỢC YÊU THÍCH</span></a>
+                    <div class="box-flex">
+                        <div class="category-item">
+                            <img src="<?= $CONTENT_URL ?>/imgs/interface/sport3.webp" alt="">
+                            <div class="overplay__cate"></div>
+                            <a href=""><span>SNEAKER XU HƯỚNG</span></a>
+                        </div>
+                        <div class="category-item">
+                            <img src="<?= $CONTENT_URL ?>/imgs/interface/sport4.webp" alt="">
+                            <div class="overplay__cate"></div>
+                            <a href=""><span>SNEAKER ĐƯỢC YÊU THÍCH</span></a>
+                        </div>
                     </div>
                 </div>
                 <div class="main__category-poster">
@@ -136,7 +92,8 @@ $sql_deal = product_select_AllSaleOff();
                         ?>
                         <li>
                             <div class="product__selection-top">
-                                <a href="index.php?page=product&product_id=" target="">
+                                <a href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product_new['id_product'] ?>"
+                                    target="">
                                     <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $imgs__product_new['contain'] ?>"
                                         alt="">
                                 </a>
@@ -146,27 +103,44 @@ $sql_deal = product_select_AllSaleOff();
                                 </div>
                             </div>
                             <div class="btn_add-buy">
-                                <button class="cart">ADD VÀO GIỎ</button>
-                                <button class="buy">MUA NGAY</button>
+                                <a
+                                    href="<?= $SITE_URL ?>/product/handle_product-detail.php?addCart_idProduct=<?= $row_product_new['id_product'] ?>">
+                                    <button class="cart">
+                                        <span class="add-to-cart">THÊM VÀO GIỎ</span>
+                                        <span class="added">ĐÃ THÊM </span>
+                                        <i class="fa fa-shopping-cart"></i> <i class="fa fa-square"></i>
+                                    </button>
+                                </a>
+                                <a
+                                    href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product_new['id_product'] ?>"><button
+                                        class="buy">MUA NGAY</button></a>
                             </div>
                             <div class="product__selection-info">
                                 <h4 class="product__name"><?= $row_product_new['name'] ?></h4>
-                                <div class="product__price"><?= number_format($row_product_new['price']) ?>₫
-                                    <span><?= number_format(round($discount_product_new, -4)) ?>₫</span>
+                                <div class="product__price">
+                                    <?= number_format($row_product_new['price'] * (100 - $row_product_new['sale_off']) / 100) ?>₫
+                                    <span><?= number_format($row_product_new['price']) ?>₫</span>
                                 </div>
                             </div>
                             <div class="product__selection-tools">
                                 <div class="tools">
                                     <i class="hover_tools tooltip">
-                                        <a href="index.php?page=product&product_id=">
+                                        <a
+                                            href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product_new['id_product'] ?>">
                                             <ion-icon name="eye-outline"></ion-icon>
                                         </a>
                                         <span class="tooltiptext">Xem chi tiết</span>
                                     </i>
-                                    <i class="hover_tools tooltip">
+                                    <a <?php if (isset($_SESSION['login']) && product_checkLiked($row_product_new['id_product'], $_SESSION['login'])) echo 'style="color: red;"' ?>
+                                        href="<?= $SITE_URL ?>/product/handle_addWishList.php?id_product=<?= $row_product_new['id_product'] ?>"
+                                        class="hover_tools tooltip btn-like">
+                                        <?php if (isset($_SESSION['login']) && product_checkLiked($row_product_new['id_product'], $_SESSION['login'])) { ?>
+                                        <ion-icon name="heart"></ion-icon>
+                                        <?php } else { ?>
                                         <ion-icon name="heart-outline"></ion-icon>
+                                        <?php } ?>
                                         <span class="tooltiptext">Yêu thích</span>
-                                    </i>
+                                    </a>
                                 </div>
                             </div>
                         </li>
@@ -175,7 +149,7 @@ $sql_deal = product_select_AllSaleOff();
                 </div>
                 <div class="product__new-container">
                     <div class="sec__title">
-                        <h1>Sản Phẩm Sắp Ra Mắt</h1>
+                        <h1>Sản Phẩm Được Yêu Thích</h1>
                         <small>“Đặt sự hài lòng của khách hàng là ưu tiên số 1 trong mọi suy nghĩ hành động của mình” là
                             sứ
                             mệnh,
@@ -189,7 +163,8 @@ $sql_deal = product_select_AllSaleOff();
                         ?>
                         <li>
                             <div class="product__selection-top">
-                                <a href="index.php?page=product&product_id=" target="">
+                                <a href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product_new['id_product'] ?>"
+                                    target="">
                                     <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $imgs['contain'] ?>" alt="">
                                 </a>
                                 <div class="stick_top">
@@ -198,27 +173,42 @@ $sql_deal = product_select_AllSaleOff();
                                 </div>
                             </div>
                             <div class="btn_add-buy">
-                                <button class="cart">ADD VÀO GIỎ</button>
-                                <button class="buy">MUA NGAY</button>
+                                <a href="<?= $SITE_URL ?>/product/handle_product-detail.php?addCart_idProduct=<?= $row_product_new['id_product'] ?>"
+                                    class="cart">
+                                    <span class="add-to-cart">THÊM VÀO GIỎ</span>
+                                    <span class="added">ĐÃ THÊM</span>
+                                    <i class="fa fa-shopping-cart"></i> <i class="fa fa-square"></i>
+                                </a>
+                                <a
+                                    href="<?= $SITE_URL ?>/product/order.php?id_product=<?= $row_product_new['id_product'] ?>"><button
+                                        class="buy">MUA NGAY</button></a>
                             </div>
                             <div class="product__selection-info">
                                 <h4 class="product__name"><?= $row_product_new['name'] ?></h4>
-                                <div class="product__price"><?= number_format($row_product_new['price']) ?>₫
-                                    <span><?= number_format(round($discount, -4)) ?>₫</span>
+                                <div class="product__price">
+                                    <?= number_format($row_product_new['price'] * (100 - $row_product_new['sale_off']) / 100) ?>₫
+                                    <span><?= number_format($row_product_new['price']) ?>₫</span>
                                 </div>
                             </div>
                             <div class="product__selection-tools">
                                 <div class="tools">
                                     <i class="hover_tools tooltip">
-                                        <a href="index.php?page=product&product_id=">
+                                        <a
+                                            href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product_new['id_product'] ?>">
                                             <ion-icon name="eye-outline"></ion-icon>
                                         </a>
                                         <span class="tooltiptext">Xem chi tiết</span>
                                     </i>
-                                    <i class="hover_tools tooltip">
+                                    <a <?php if (isset($_SESSION['login']) && product_checkLiked($row_product_new['id_product'], $_SESSION['login'])) echo 'style="color: red;"' ?>
+                                        href="<?= $SITE_URL ?>/product/handle_addWishList.php?id_product=<?= $row_product_new['id_product'] ?>"
+                                        class="hover_tools tooltip btn-like">
+                                        <?php if (isset($_SESSION['login']) && product_checkLiked($row_product_new['id_product'], $_SESSION['login'])) { ?>
+                                        <ion-icon name="heart"></ion-icon>
+                                        <?php } else { ?>
                                         <ion-icon name="heart-outline"></ion-icon>
+                                        <?php } ?>
                                         <span class="tooltiptext">Yêu thích</span>
-                                    </i>
+                                    </a>
                                 </div>
                             </div>
                         </li>
@@ -251,7 +241,6 @@ $sql_deal = product_select_AllSaleOff();
                                 <span id="second"></span> <br> <i>GIÂY</i>
                             </li>
                         </ul>
-                        <a href="" class="primary-btn">MUA NGAY</a>
                     </div>
                 </div>
             </div>
@@ -272,7 +261,8 @@ $sql_deal = product_select_AllSaleOff();
                             <div class="exclusive__product-name">
                                 <?= $row_product_special['name'] ?>
                             </div>
-                            <a href="" class="primary-btn">MUA NGAY</a>
+                            <a href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product_special['id_product'] ?>"
+                                class="primary-btn">MUA NGAY</a>
                         </div>
                     </div>
                     <?php } ?>
@@ -290,7 +280,7 @@ $sql_deal = product_select_AllSaleOff();
                         $discount_deal = $row_deal['price'] + $row_deal['price'] * ($row_deal['sale_off'] / 100);
                     ?>
                     <li>
-                        <a href="">
+                        <a href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_deal['id_product'] ?>">
                             <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $imgs_deal['contain'] ?>" alt="">
                         </a>
                         <div class="deal__info">
@@ -355,8 +345,29 @@ $sql_deal = product_select_AllSaleOff();
             </ul>
         </section>
     </div>
-    <script src="<?= $CONTENT_URL ?>/js/slide.js"></script>
-    <script src="<?= $CONTENT_URL ?>/js/countdown_timer.js"></script>
 </body>
+<script src="<?= $CONTENT_URL ?>/js/cart.js"></script>
+<script src="<?= $CONTENT_URL ?>/js/slide.js"></script>
+<script src="<?= $CONTENT_URL ?>/js/countdown_timer.js"></script>
+<!-- <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        var scrollpos = sessionStorage.getItem('scrollpos');
+        if (scrollpos) {
+            window.scrollTo(0, scrollpos);
+            sessionStorage.removeItem('scrollpos');
+        }
+    });
+
+    window.addEventListener("beforeunload", function (e) {
+        sessionStorage.setItem('scrollpos', window.scrollY);
+    });
+</script> -->
+<?php if (isset($_SESSION['message'])) { ?>
+<script>
+alert("<?= $_SESSION['message']; ?>")
+</script>
+
+<?php unset($_SESSION['message']);
+} ?>
 
 </html>
