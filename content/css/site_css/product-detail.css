@@ -490,6 +490,9 @@ form.comment_form .btn_submit-border{
     color: orange;
 }
 @media only screen and (max-width: 450px){
+    .pd_img-fixed>img {
+        height: 32% !important;
+    }
     .product__detail-left {
         position: relative;
         width: 100%;

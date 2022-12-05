@@ -92,14 +92,14 @@ $sql_product = getRowInPageBySql($sql_total_product, $page_num, $page_size);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/category.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/form.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/home.css">
+    <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/category.css">
     <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/root.css">
 </head>
 
 <body>
-    <div class="background_header">
+    <div class="background_header cate_img-fixed">
         <img style="width: 100%; height: 50%; position: absolute; z-index: -10; top: 0;"
             src="<?= $CONTENT_URL ?>/imgs/interface/background.png" alt="">
     </div>

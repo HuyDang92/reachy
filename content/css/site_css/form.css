@@ -428,3 +428,35 @@ ul.order__rows--container{
     border: 1px solid black;
     z-index: 100;
 }
+
+
+
+
+@media only screen and (max-width: 430px){
+    .container__sign-in {
+        margin: 0 5%;
+    }
+    .background_header>img{
+        height: 30% !important;
+    }
+    .main__sign-in-left{
+        display: none;
+    }
+    .main__sign-in {
+        margin: 3rem 0;
+    }
+    .main__sign-in-right {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        text-align: center;
+        width: 100%;
+    }
+    .btn_submit .btn_submit-border {
+        width: 14rem !important;
+    }
+    .active__form {
+        margin: 2rem !important;
+        margin-left: 10% !important;
+        margin-bottom: 0 !important;
+    }
+}

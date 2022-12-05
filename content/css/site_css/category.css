@@ -161,6 +161,9 @@ select.product__sort{
     background-image: linear-gradient(90deg, var(--blue), var(--green));
 }
 @media only screen and (max-width: 450px){
+    .cate_img-fixed>img {
+        height: 30% !important;
+    }
     .category__container {
         margin: 0px 2%;
     }
@@ -179,7 +182,7 @@ select.product__sort{
         width: 100%;
     }
     .btn_page {
-        padding: 0.5rem 25%;
+        padding: 0.5rem 5%;
         display: block;
         margin-bottom: 1rem;
     }
