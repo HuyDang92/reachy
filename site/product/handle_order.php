@@ -9,9 +9,12 @@
     if(exist_param("cancel")){
         $id_bill = $_GET['cancel'];
         bill_cancel($id_bill);
-    }else if(exist_param("taken")){
-        // $id_bill = $_GET['taken'];
-        // bill_taken($id_bill);
+    }else if(exist_param("taken")){ 
+        $id_bill = $_GET['taken'];
+        bill_taken($id_bill);
+        echo "
+            <script>window.parent.location.href='../user/?info'</script>
+        ";
     }else if(exist_param("repurchase")){
         $bill_detail = bill_detail_selectByIdBill($_GET['repurchase']);
         $product_list = array();

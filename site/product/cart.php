@@ -96,7 +96,7 @@ add_session("lasted_url", getCurrentUrl());
             <?php } ?>
 
             <a href="">
-                <button type="submit">
+                <button type="button">
                     <div class="btn_submit">
                         <div class="btn_submit-border">
                             Tiếp tục mua hàng
@@ -113,20 +113,17 @@ add_session("lasted_url", getCurrentUrl());
             <li>Tổng tiền: <span id="cart_finalPrice" style="float: right; font-weight: 700;" data-value="0">0đ</span>
             </li>
             <li>Bạn có thể nhập mã giảm giá ở trang thanh toán</li>
-            <a href="">
-                <button type="submit">
-                    <div class="btn_submit">
-                        <div class="btn_submit-border">
-                            THANH TOÁN
-                            <span></span><span></span><span></span><span></span>
-                        </div>
+            <button id="btn_cart_submit" type="submit">
+                <div class="btn_submit">
+                    <div class="btn_submit-border">
+                        THANH TOÁN
+                        <span></span><span></span><span></span><span></span>
                     </div>
-                </button>
-            </a>
-
+                </div>
+            </button>
         </div>
     </section>
-    <iframe name="frame" style="display: none;"></iframe>
+    <iframe name="frame" ></iframe>
     <script src="<?= $CONTENT_URL ?>/js/cart.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function(event) {

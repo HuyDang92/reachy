@@ -6,6 +6,22 @@ var cart_selecters = document.querySelectorAll(".cart_selecter");
 var size_selecters = document.querySelectorAll(".size_selecter");
 var cart_quantity = document.querySelectorAll(".product_quantity");
 var cart_delete = document.querySelectorAll(".btn_delete");
+var cart_totalPrice = document.querySelectorAll(".cart_totalPrice");
+const final_price = document.querySelector("#cart_finalPrice");
+const btn_submit = document.querySelector("#btn_cart_submit");
+/**
+* Tính giá tất cả sản phẩm đã chọn
+*/
+function cart_final_price(){
+    let total_price = 0;
+    for(let i = 0;i<cart_selecters.length;i++){
+        if(cart_selecters[i].checked==true){
+            total_price += parseInt(cart_totalPrice[i].getAttribute('data-value'));
+            final_price.innerHTML = new Intl.NumberFormat().format(total_price) +"đ";
+            final_price.setAttribute("data-value",total_price);
+        }
+    }
+}
 /**
 * Tính tổng tiền theo từng hàng khi load trang
 */
@@ -33,7 +49,6 @@ addBtns.forEach(btn_add => {
         "click",
         function(event){
             let cartRow = event.target.parentElement.parentElement;
-            console.log("🚀 ~ file: cart.js ~ line 23 ~ cartRow", cartRow)
             let product_quantity = cartRow.querySelector(".product_quantity");
             let product_price = cartRow.querySelector(".cart_currentPrice");
             let product_totalPrice = cartRow.querySelector(".cart_totalPrice");
@@ -45,6 +60,7 @@ addBtns.forEach(btn_add => {
             ipt_request.setAttribute("type","hidden");
             cartRow.appendChild(ipt_request);
             solve_cartRow_totalPrice(cartRow);
+            cart_final_price();
             cartRow.submit();
         }
     )
@@ -57,11 +73,9 @@ minusBtns.forEach(btn_minus => {
         "click",
         function(event){
             let cartRow = event.target.parentElement.parentElement;
-            console.log("🚀 ~ file: cart.js:60 ~ cartRow ", cartRow )
             let product_quantity = cartRow.querySelector(".product_quantity");
             let product_price = cartRow.querySelector(".cart_currentPrice");
             let product_totalPrice = cartRow.querySelector(".cart_totalPrice");
-            console.log(product_quantity.value);
             if(product_quantity.value>1){
                 product_quantity.value--;
                 product_totalPrice.innerHTML = new Intl.NumberFormat().format(parseInt(product_price.getAttribute('data-value'))*product_quantity.value);
@@ -70,6 +84,7 @@ minusBtns.forEach(btn_minus => {
                 ipt_request.setAttribute("name","btn_quantity");
                 ipt_request.setAttribute("type","hidden");
                 cartRow.appendChild(ipt_request);
+                cart_final_price();
                 cartRow.submit();
             }else{
                 cartRow_prt = cartRow.parentElement;
@@ -80,35 +95,14 @@ minusBtns.forEach(btn_minus => {
         }
     )
 });
-
-function final_price(cartRow,opr){
-    let product_totalPrice = cartRow.querySelector(".cart_totalPrice");
-    let final_price = document.querySelector("#cart_finalPrice");
-    let old_price = final_price.getAttribute("data-value");
-    if(opr=="+"){
-        let new_price = parseInt(old_price) + parseInt(product_totalPrice.getAttribute("data-value"));
-        final_price.innerHTML = new Intl.NumberFormat().format(new_price) +"đ";
-        final_price.setAttribute("data-value",new_price);
-    }else{
-        let new_price = parseInt(old_price) - parseInt(product_totalPrice.getAttribute("data-value"));
-        final_price.innerHTML = new Intl.NumberFormat().format(new_price) +"đ";
-        final_price.setAttribute("data-value",new_price);
-    }
-}
 /**
 * Chọn sản phẩm muốn mua và hiển thị giá
 */
 cart_selecters.forEach(cart_selecter => {
     cart_selecter.addEventListener(
         "click",
-        function(event){
-            if(event.target.checked == true){
-                let cartRow = event.target.parentElement.parentElement;
-                final_price(cartRow,"+");
-            }else{
-                let cartRow = event.target.parentElement.parentElement;
-                final_price(cartRow,"-");
-            }
+        function(){
+            cart_final_price();
         }
     )
 });
@@ -144,6 +138,7 @@ function remove_cartRow_sizeExisted_sizeExisted(cartRow){
         }   
     }
 }
+//Nút xóa 
 cart_delete.forEach(btn_delete => {
     btn_delete.addEventListener(
         "click",
@@ -155,6 +150,8 @@ cart_delete.forEach(btn_delete => {
         }
     )
 });
+//Nút than toán
+
 // hiệu ứng add 
 document.addEventListener("DOMContentLoaded", function(event) {
 
