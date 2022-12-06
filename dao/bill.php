@@ -122,20 +122,31 @@ function bill_taken($id_bill)
     $sql = "UPDATE bill SET status = 2 WHERE id_bill = ?";
     pdo_execute($sql,$id_bill);
 }
-/* Xóa đơn hàng theo mã đơn hàng
-    * @param int $id_bill Mã đơn hàng
-    * @return array đơn hàng theo mã tương ứng
-    */
-
+/* Xuất hóa đơn chi tiết theo mã đơn hàng
+* @param int $id_bill Mã đơn hàng
+* @return array đơn hàng theo mã tương ứng
+*/
 function bill_detailSelectbyIdBill($id_bill)
 {
     $sql = "SELECT * FROM bill_detail WHERE id_bill = ?";
     return pdo_query_one($sql, $id_bill);
 }
+/**  
+* Xóa đơn hàng theo mã đơn hàng
+* @param int $id_bill Mã đơn hàng
+*/
 function bill_delete($id_bill)
 {
     $sql = "SET FOREIGN_KEY_CHECKS=0;
                 DELETE FROM bill WHERE id_bill = ?;
                 SET FOREIGN_KEY_CHECKS=1;";
     pdo_execute($sql, $id_bill);
+}
+/**
+* Đánh dấu đã đánh giá sản phẩm trong hóa đơn chi tiết
+* @param int $id_bill Mã hóa đơn
+*/
+function bill_detail_rated($id_bill){
+    $sql = "UPDATE bill_detail SET rating_status = 1 WHERE id_billdetail = ?";
+    pdo_execute($sql,$id_bill);
 }

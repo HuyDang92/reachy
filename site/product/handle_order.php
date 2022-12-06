@@ -10,8 +10,8 @@
         $id_bill = $_GET['cancel'];
         bill_cancel($id_bill);
     }else if(exist_param("taken")){
-        $id_bill = $_GET['taken'];
-        bill_taken($id_bill);
+        // $id_bill = $_GET['taken'];
+        // bill_taken($id_bill);
     }else if(exist_param("repurchase")){
         $bill_detail = bill_detail_selectByIdBill($_GET['repurchase']);
         $product_list = array();
@@ -27,8 +27,13 @@
         echo "
             <script>window.parent.location.href='../product/?buy'</script>
         ";
-    }else if(exist_param("rating")){
-        
+    }else if(exist_param("btn-rating")){
+        print_r($_REQUEST);
+        if(!isset($rating)){
+            $rating = 5;
+        }
+        product_rating($id_product,$_SESSION['login'],$rating,$rating_content);
+        bill_detail_rated($id_billdetail);
     }else{
         $full_address = $address .", " .$village .", " .$district .", " .$province;
         $id_user = $_SESSION['login'];
