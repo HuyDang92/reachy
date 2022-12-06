@@ -6,7 +6,8 @@ var cart_selecters = document.querySelectorAll(".cart_selecter");
 var size_selecters = document.querySelectorAll(".size_selecter");
 var cart_quantity = document.querySelectorAll(".product_quantity");
 var cart_delete = document.querySelectorAll(".btn_delete");
-/**
+
+    /**
 * Tính tổng tiền theo từng hàng khi load trang
 */
 cart_rows.forEach(cart_row => {

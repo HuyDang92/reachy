@@ -95,8 +95,8 @@ add_session("lasted_url", getCurrentUrl());
             </li>
             <?php } ?>
 
-            <a href="">
-                <button type="submit">
+            <a href="<?= $SITE_URL ?>/homepage">
+                <button type=" submit">
                     <div class="btn_submit">
                         <div class="btn_submit-border">
                             Tiếp tục mua hàng
