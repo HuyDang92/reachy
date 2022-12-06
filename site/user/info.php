@@ -372,30 +372,6 @@ $user = user_selectById($_SESSION['login']);
                                                 target="frame">
                                                 <div class="box_flex-order">
                                                     <div>
-<<<<<<< HEAD
-                                                        <label for="star1"> <span class="material-icons-outlined">
-                                                                star_border
-                                                            </span> </label>
-                                                        <label for="star2"> <span class="material-icons-outlined">
-                                                                star_border
-                                                            </span> </label>
-                                                        <label for="star3"> <span class="material-icons-outlined">
-                                                                star_border
-                                                            </span> </label>
-                                                        <label for="star4"> <span class="material-icons-outlined">
-                                                                star_border
-                                                            </span> </label>
-                                                        <label for="star5"> <span class="material-icons-outlined">
-                                                                star_border
-                                                            </span> </label>
-                                                        <input type="radio" name="rating_star" id="star1" value="1" hidden>
-                                                        <input type="radio" name="rating_star" id="star2" value="2" hidden>
-                                                        <input type="radio" name="rating_star" id="star3" value="3" hidden>
-                                                        <input type="radio" name="rating_star" id="star4" value="4" hidden>
-                                                        <input type="radio" name="rating_star" id="star5" value="5" hidden>
-                                                    </div>
-                                                    <textarea name="rating_content" placeholder="Nội dung đánh giá"></textarea>
-=======
                                                         <img width="50px" height="50px"
                                                             src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>"
                                                             alt="<?= $product_row['name'] ?>">
@@ -426,7 +402,6 @@ $user = user_selectById($_SESSION['login']);
                                                     <textarea name="rating_content" id="" cols="30" rows="4"
                                                         placeholder="Nội dung"></textarea> <br>
 
->>>>>>> 3c5888618ff94a879a6d5b1cb5df798abd622473
                                                     <button name="rating">Đánh giá</button>
                                                 </div>
                                             </form>
