@@ -1,6 +1,14 @@
 @import url('/content/css/root.css');
+:root{
+    --blue : #21D1F5;
+    --green : #3BD1C8;
+    --white : #fff;
+    --darkgray : #1E1F29;
+    --lightgray : #E4E7ED;
+    --grey : #E8F0F2;
+}
 .list__container{
-    width: 60%;
+    width: 70%;
     margin: 150px auto;
     background-color: #F8F9FF;
     padding: 30px;
@@ -9,8 +17,12 @@
 .list__heading{
     font-weight: bold;
     font-size: 20px;
+    display: inline;
     /* margin-top: 30px; */
     /* text-align: center; */
+}
+.list_product{
+    width: 75%;
 }
 table{
     border-collapse: collapse;
@@ -22,7 +34,8 @@ table{
 thead{
     /* background-image: linear-gradient(90deg, var(--blue), var(--green)); */
 
-    background-color: #e7e7e7;
+    background-image: linear-gradient(90deg, var(--blue), var(--green));
+    color: #fff;
     font-weight: bold;
     /* color: black */
 }
@@ -31,6 +44,8 @@ tr{
 }
 th, td{
     padding: 8px 15px;
+    border: none;
+    border: 1px solid rgb(226, 226, 226);
 }
 .hinh>img{
     width: 100%;

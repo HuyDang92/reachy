@@ -15,11 +15,35 @@
         text-align: left;
         margin: 1.5rem 0;
     }
+
+    @media only screen and (max-width: 430px) {
+        .search_img-fixed>img {
+            height: 30% !important;
+        }
+
+        .search__products--container>.search__title {
+            text-align: center;
+            margin: 1.5rem 5%;
+            font-size: 17px;
+        }
+
+        .container-search {
+            margin: 0 5% !important;
+        }
+
+        .btn_page-search {
+            padding: 0.5rem 5%;
+        }
+
+        .row_pd-search>li {
+            flex-basis: 49% !important;
+        }
+    }
     </style>
 </head>
 
 <body>
-    <div class="background_header">
+    <div class="background_header search_img-fixed">
         <img style="width: 100%; height: 50%; position: absolute; z-index: -10; top: 0;"
             src="<?= $CONTENT_URL ?>/imgs/interface/background.png" alt="">
     </div>
@@ -40,7 +64,7 @@
             </div>
             <div style="margin: 0 10%;" class="container-search">
                 <div class="product__container">
-                    <div class="btn_page">
+                    <div class="btn_page btn_page-search">
                         <form action="" method="POST" id="sort__form">
                             <select class="product__sort" name="sort" id="product__sort">
                                 <option value="">Sắp xếp mặc định</option>
@@ -70,7 +94,7 @@
                         echo createMultiPage($base_url, $total_products, $page_num, $page_size);
                         ?>
                     </div>
-                    <ul class="row-3">
+                    <ul class="row-3 row_pd-search">
                         <?php
                         if ($total_products == 0) {
                             echo "Không có sản phẩm tương ứng";
@@ -120,7 +144,7 @@
                         </li>
                         <?php } ?>
                     </ul>
-                    <div class="btn_page">
+                    <div class="btn_page btn_page-search">
                         <?php
                         echo createMultiPage($base_url, $total_products, $page_num, $page_size);
                         ?>

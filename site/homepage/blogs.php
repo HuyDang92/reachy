@@ -37,7 +37,7 @@ $blog_list = blog_selectAll();
                             alt="" width="100%">
                     </div>
                     <div class="content_blogs">
-                        <h2><?= $blog_row['title'] ?></h2><br>
+                        <h2><?= $blog_row['title'] ?></h2>
                         <i><span>Lượt xem: <?= $blog_row['view'] ?></span> | <?= $blog_row['date'] ?></i>
                         <div class="blog_shortContent"><?= $blog_content[0] ?></div>
                         <div class="view_more"><button type="submit">Xem thêm</button></div>

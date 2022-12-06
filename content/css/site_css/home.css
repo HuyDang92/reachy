@@ -401,7 +401,7 @@ ul.product__selection li:hover .btn_add-buy button.cart{
     left: 5%;
 }
 ul.product__selection li:hover .btn_add-buy button.buy{
-    right: 25%;
+    right: 24%;
 }
 .tools{
     margin: 15px;
@@ -830,8 +830,8 @@ ul.deal__week-content>li:hover>a::after{
     }
 }
 @media only screen and (max-width: 450px){
-    .background_header>img {
-        height: 30% !important;
+    .home_img-fixed>img {
+        height: 33% !important;
     }
     .banner__area {
         margin-top: 5rem;

@@ -86,8 +86,10 @@
     width: 30%;
 }
 .control-user{
-    position: relative;
     transition-delay: 0.5s;
+}
+li.control__user{
+    position: relative;
 }
 .sub__menu {
     display: none;
@@ -97,7 +99,7 @@
     z-index: 10;
     text-align: center;
     box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
-    /* right: 1rem; */
+    /* right: 0.5rem; */
 }
 .sub__menu-user{
     transition: 0.3s;
@@ -157,7 +159,7 @@
     top: 100%;
     display: flex;
     flex-wrap: wrap;
-    width: 22rem;
+    width: 20rem;
     transition: all 0.3s;
     transition-delay: 0.2s;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -170,7 +172,7 @@
     padding: 1rem;
     width: 50%;
     transition: all 0.2s;
-    font-size: 16px;
+    font-size: 15px;
     text-transform: uppercase;
     font-weight: 400;
     /* border-right: 1px dotted #cccc; */

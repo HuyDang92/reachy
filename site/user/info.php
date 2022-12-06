@@ -1,27 +1,6 @@
 <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/site_css/form.css">
 <link rel="stylesheet" href="<?= $CONTENT_URL ?>/css/user.css">
-<style>
-.order__row--fullProduct {
-    display: none;
-}
-
-#productDropdown-checkbox:checked~.order__row--fullProduct {
-    display: block;
-}
-
-#rating_checkbox:checked~.rating_container {
-    display: block;
-}
-
-.rating_container {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    background-color: white;
-    border: 1px solid black;
-}
-</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <?php
 $user = user_selectById($_SESSION['login']);
 ?>
@@ -377,10 +356,13 @@ $user = user_selectById($_SESSION['login']);
                                         <b><?= number_format($total_price) ?>đ</b>
                                     </div>
                                     <div class="order__row--right">
-                                        <label for="rating_checkbox">Đánh giá sản phẩm</label>
+                                        <label class="rating_pd" for="rating_checkbox">Đánh giá sản phẩm</label>
                                         <input type="checkbox" name="" id="rating_checkbox" hidden>
+                                        <label class="overplay" for="rating_checkbox"></label>
                                         <div class="rating_container">
-                                            <label for="rating_checkbox">X</label>
+                                            <label style="float: right;" for="rating_checkbox"><i
+                                                    class="fa-solid fa-xmark"></i>
+                                            </label>
                                             <?php
                                                 foreach ($bill_details as $bill_detail) {
                                                     $product_row = product_selectOne($bill_detail['id_product']);
@@ -388,18 +370,9 @@ $user = user_selectById($_SESSION['login']);
                                                 ?>
                                             <form action="<?= $SITE_URL ?>/product/handle_order.php" method="POST"
                                                 target="frame">
-                                                <div>
-                                                    <img width="50px" height="50px"
-                                                        src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>"
-                                                        alt="<?= $product_row['name'] ?>">
-                                                </div>
-                                                <div class="product-info">
-                                                    <b><?= $product_row['name'] ?></b>
-                                                    <i>Size: <?= $bill_detail['size'] ?></i>
-                                                    <i>SL: <?= $bill_detail['amount'] ?></i>
-                                                </div>
-                                                <div>
+                                                <div class="box_flex-order">
                                                     <div>
+<<<<<<< HEAD
                                                         <label for="star1"> <span class="material-icons-outlined">
                                                                 star_border
                                                             </span> </label>
@@ -422,6 +395,38 @@ $user = user_selectById($_SESSION['login']);
                                                         <input type="radio" name="rating_star" id="star5" value="5" hidden>
                                                     </div>
                                                     <textarea name="rating_content" placeholder="Nội dung đánh giá"></textarea>
+=======
+                                                        <img width="50px" height="50px"
+                                                            src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>"
+                                                            alt="<?= $product_row['name'] ?>">
+                                                    </div>
+                                                    <div class="product-info">
+                                                        <b
+                                                            style="font-size: 15px; white-space: nowrap;"><?= $product_row['name'] ?></b>
+                                                        <br>
+                                                        <i>Size: <?= $bill_detail['size'] ?></i>
+                                                        <i>SL: <?= $bill_detail['amount'] ?></i>
+                                                    </div>
+                                                </div>
+                                                <div class="box_rating">
+                                                    <ul class="rate-area">
+                                                        <input type="radio" id="5-star" name="rating" value="5">
+                                                        <label for="5-star" title="Tuyệt vời">5 stars</label>
+                                                        <input type="radio" id="4-star" name="rating" value="4">
+                                                        <label for="4-star" title="Tốt">4 stars</label>
+                                                        <input type="radio" id="3-star" name="rating" value="3">
+                                                        <label for="3-star" title="Tạm được">3 stars</label>
+                                                        <input type="radio" id="2-star" name="rating" value="2">
+                                                        <label for="2-star" title="Kém">2 stars</label>
+                                                        <input type="radio" id="không tốt" required="" name="rating"
+                                                            value="1" aria-required="true">
+                                                        <label for="1-star" title="Kém">1 star</label>
+
+                                                    </ul>
+                                                    <textarea name="rating_content" id="" cols="30" rows="4"
+                                                        placeholder="Nội dung"></textarea> <br>
+
+>>>>>>> 3c5888618ff94a879a6d5b1cb5df798abd622473
                                                     <button name="rating">Đánh giá</button>
                                                 </div>
                                             </form>
@@ -571,4 +576,22 @@ $user = user_selectById($_SESSION['login']);
         // các button mà chúng ta click vào sẽ được add class active
     }
     </script>
+    <!-- <script>
+    $('.fa').on('mouseover', function() {
+        var $this = $(this);
+        $this.nextAll().removeClass('fa-star').addClass("fa-star-o");
+        $this.prevAll().removeClass("fa-star-o").addClass('fa-star');
+        $this.removeClass("fa-star-o").addClass('fa-star');
+    });
+    $('.fa').one('click', function() {
+        var $this = $(this);
+        $this.addClass('active').siblings().removeClass('active');
+    });
+    $('.fa').on('mouseleave', function() {
+        var select = $('.active');
+        select.nextAll().removeClass('fa-star').addClass('fa-star-o');
+        select.prevAll().removeClass('fa-star-o').addClass('fa-star');
+        select.removeClass('fa-star-o').addClass('fa-star');
+    });
+    </script> -->
 </body>

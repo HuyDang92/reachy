@@ -18,7 +18,7 @@ add_session('productLink', getCurrentUrl());
 </head>
 
 <body>
-    <div class="background_header">
+    <div class="background_header home_img-fixed">
         <img style="height: 85%;" src="<?= $CONTENT_URL ?>/imgs/interface/background.png" alt="">
     </div>
     <div class="container_main">
