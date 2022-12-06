@@ -7,8 +7,10 @@ var size_selecters = document.querySelectorAll(".size_selecter");
 var cart_quantity = document.querySelectorAll(".product_quantity");
 var cart_delete = document.querySelectorAll(".btn_delete");
 var cart_totalPrice = document.querySelectorAll(".cart_totalPrice");
+var cartId = document.querySelectorAll(".id_cart");
 const final_price = document.querySelector("#cart_finalPrice");
 const btn_submit = document.querySelector("#btn_cart_submit");
+const cart_form = document.querySelector("#cart_form");
 /**
 * Tính giá tất cả sản phẩm đã chọn
 */
@@ -151,7 +153,23 @@ cart_delete.forEach(btn_delete => {
     )
 });
 //Nút than toán
-
+btn_submit.addEventListener(
+    "click",
+    function(){
+        let id_carts = [] ;
+        for(let i = 0;i<cart_selecters.length;i++){
+            if(cart_selecters[i].checked==true){
+                id_carts.push(cartId[i].value);
+                let request = document.createElement("input");
+                request.setAttribute("name","order");
+                request.setAttribute("type","hidden");
+                request.setAttribute("value",id_carts);
+                cart_form.appendChild(request);
+                cart_form.submit();
+            }
+        }
+    }
+)
 // hiệu ứng add 
 document.addEventListener("DOMContentLoaded", function(event) {
 

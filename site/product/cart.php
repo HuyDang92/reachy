@@ -36,6 +36,7 @@ add_session("lasted_url", getCurrentUrl());
                 $product = product_selectOne($cart['id_product']);
             ?>
             <li class="cart-row">
+                <input class="id_cart" type="hidden" readonly value="<?=$cart['id_cart']?>">
                 <form action="handle_cart.php" method="POST" target="frame">
                     <div class="group">
                         <input type="checkbox" class="cart_selecter" name="cart_selecter">
@@ -113,6 +114,7 @@ add_session("lasted_url", getCurrentUrl());
             <li>Tổng tiền: <span id="cart_finalPrice" style="float: right; font-weight: 700;" data-value="0">0đ</span>
             </li>
             <li>Bạn có thể nhập mã giảm giá ở trang thanh toán</li>
+            <form id="cart_form" action="handle_cart.php" method="POST" target="frame"></form>
             <button id="btn_cart_submit" type="submit">
                 <div class="btn_submit">
                     <div class="btn_submit-border">
@@ -123,7 +125,7 @@ add_session("lasted_url", getCurrentUrl());
             </button>
         </div>
     </section>
-    <iframe name="frame" ></iframe>
+    <iframe name="frame" hidden></iframe>
     <script src="<?= $CONTENT_URL ?>/js/cart.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function(event) {
