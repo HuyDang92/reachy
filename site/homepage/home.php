@@ -103,7 +103,7 @@ add_session('productLink', getCurrentUrl());
                                 </div>
                             </div>
                             <div class="btn_add-buy">
-                                <a
+                                <a target="frame_cart"
                                     href="<?= $SITE_URL ?>/product/handle_product-detail.php?addCart_idProduct=<?= $row_product_new['id_product'] ?>">
                                     <button class="cart">
                                         <span class="add-to-cart">THÊM VÀO GIỎ</span>
@@ -115,6 +115,7 @@ add_session('productLink', getCurrentUrl());
                                     href="<?= $SITE_URL ?>/product?product&id_product=<?= $row_product_new['id_product'] ?>"><button
                                         class="buy">MUA NGAY</button></a>
                             </div>
+                            <iframe name="frame_cart" hidden></iframe>
                             <div class="product__selection-info">
                                 <h4 class="product__name"><?= $row_product_new['name'] ?></h4>
                                 <div class="product__price">
@@ -349,6 +350,14 @@ add_session('productLink', getCurrentUrl());
 <script src="<?= $CONTENT_URL ?>/js/cart.js"></script>
 <script src="<?= $CONTENT_URL ?>/js/slide.js"></script>
 <script src="<?= $CONTENT_URL ?>/js/countdown_timer.js"></script>
+<script>
+let amount_cart = document.getElementById("cart_quantity");
+const btn_add_cart = document.getElementById("btn_add-cart").addEventListener(
+    "click",
+    function() {
+        amount_cart.innerHTML++;
+    })
+</script>
 <!-- <script>
     document.addEventListener("DOMContentLoaded", function (event) {
         var scrollpos = sessionStorage.getItem('scrollpos');
