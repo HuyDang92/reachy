@@ -3,6 +3,7 @@ const bill_contain = document.querySelectorAll('.bill__detail--contain');
 const user_name = document.querySelectorAll('.name');
 const user_email = document.querySelectorAll('.email');
 const product = document.querySelectorAll('.pro');
+const price = document.querySelectorAll('.price');
 const date_bill = document.querySelectorAll('.date');
 const address = document.querySelectorAll('.address');
 const amount = document.querySelectorAll('.amount');
@@ -20,6 +21,7 @@ function detail_info(e){
             <p><span>Tên khách hàng:</span> ${user_name[bill_num].value}</p>
             <p><span>Email:</span> ${user_email[bill_num].value}</p>
             <p><span>Tên sản phẩm:</span> ${product[bill_num].value}</p>
+            <p><span>Giá:</span> ${new Intl.NumberFormat().format(price[bill_num].value*amount[bill_num].value) +"đ"}</p>
             <p><span>Ngày đặt:</span> ${date_bill[bill_num].value}</p>
             <p><span>Địa chỉ:</span> ${address[bill_num].value}</p>
             <p><span>Số lượng:</span> ${amount[bill_num].value}</p>

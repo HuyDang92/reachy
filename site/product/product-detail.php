@@ -1,5 +1,6 @@
 <?php
 add_session('productLink', getCurrentUrl());
+
 ?>
 <?php
 $sql_deal = product_select_AllSaleOff();
@@ -12,6 +13,7 @@ if (isset($_GET['id_product'])) {
 $sql_category = category_selectOne($sql_product['id_category']);
 $sql_brand = brand_selectOne($sql_product['id_brand']);
 $sql_imgs = product_selectArrayImgs($id_product);
+$ratingList = product_selectAllRating($id_product);
 // foreach ($sql_imgs as $row_imgs) {
 //     print_r($contain);
 //     print_r($sql_imgs['contain']);
@@ -332,62 +334,37 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                 </ul>
                             </div>
                         </div>
-                        <div class="rating-row">
-                            <div class="user-info">
-                                <div class="user-info-left">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHUvOd8Q-VihyupbJCdgjIR2FxnjGtAgMu3g&usqp=CAU"
-                                        alt="">
-                                    <div class="user-name">
-                                        <h3>NAME USER</h3>
-                                        <i>Date time</i>
-                                        <div class="user-rate">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-regular fa-star"></i>
+                        <?php foreach($ratingList as $rating){ 
+                            $user = user_selectById($rating['id_user']);
+                        ?>
+                                <div class="rating-row">
+                                    <div class="user-info">
+                                        <div class="user-info-left">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHUvOd8Q-VihyupbJCdgjIR2FxnjGtAgMu3g&usqp=CAU"
+                                                alt="">
+                                            <div class="user-name">
+                                                <h3><?=$user['name']?></h3>
+                                                <div class="user-rate">
+                                                    <?php for($i = 0;$i<$rating['rating'];$i++){ ?>
+                                                        <i class="fa-solid fa-star"></i>
+                                                    <?php } ?>
+                                                    <?php for($i=0;$i<5-$rating['rating'];$i++){ ?>
+                                                        <i class="fa-regular fa-star"></i>
+                                                    <?php } ?>
+                                                </div>
+                                            </div>
                                         </div>
+
                                     </div>
+                                    <p><?=$rating['content']?></p>
                                 </div>
+                        <?php } ?>
 
-                            </div>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut
-                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco
-                                laboris nisi ut aliquip ex ea commodo
-                            </p>
-                        </div>
-                        <div class="rating-row">
-                            <div class="user-info">
-                                <div class="user-info-left">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHUvOd8Q-VihyupbJCdgjIR2FxnjGtAgMu3g&usqp=CAU"
-                                        alt="">
-                                    <div class="user-name">
-                                        <h3>NAME USER</h3>
-                                        <i>Date time</i>
-                                        <div class="user-rate">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-regular fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut
-                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco
-                                laboris nisi ut aliquip ex ea commodo
-                            </p>
-                        </div>
+                        
+                        
 
                     </div>
-                    <form class="comment_form">
+                    <!-- <form class="comment_form">
                         <h1>Đánh Giá</h1>
                         <textarea name="" id="" cols="30" rows="5" placeholder="Nội dung"></textarea>
                         <button type="submit">
@@ -398,7 +375,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                 </div>
                             </div>
                         </button>
-                    </form>
+                    </form> -->
                 </div>
             </div>
         </div>

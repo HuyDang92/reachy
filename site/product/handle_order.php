@@ -31,12 +31,12 @@
             <script>window.parent.location.href='../product/?buy'</script>
         ";
     }else if(exist_param("btn-rating")){
-        print_r($_REQUEST);
         if(!isset($rating)){
             $rating = 5;
         }
         product_rating($id_product,$_SESSION['login'],$rating,$rating_content);
         bill_detail_rated($id_billdetail);
+
     }else{
         $full_address = $address .", " .$village .", " .$district .", " .$province;
         $id_user = $_SESSION['login'];

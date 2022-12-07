@@ -28,3 +28,17 @@ btns_cancel.forEach(btn_cancel => {
         }
     )
 });
+//Nút đánh giá
+var btns_rating = document.querySelectorAll(".btn_rating");
+btns_rating.forEach(btn_rating => {
+    btn_rating.addEventListener(
+        "click",
+        function(event){
+            let rating_content = event.target.parentElement.parentElement;
+            let rating_checkbox = document.querySelector("#rating_checkbox");
+            rating_checkbox.checked = false;
+            rating_content.submit();
+            rating_content.remove();
+        }
+    )
+});
