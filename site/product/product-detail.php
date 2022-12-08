@@ -194,28 +194,28 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                 <table class="pd_detail-content">
                     <tr class="pd_detail-row">
                         <td>Chiều dài</td>
-                        <td><?=$specification['width']?>mm</td>
+                        <td><?= $specification['width'] ?>mm</td>
                     </tr>
                     <tr class="pd_detail-row">
                         <td>Chiều rộng</td>
-                        <td><?=$specification['height']?>mm</td>
+                        <td><?= $specification['height'] ?>mm</td>
                     </tr>
                     <tr class="pd_detail-row">
                         <td>Chiều cao</td>
-                        <td><?=$specification['dept']?>mm</td>
+                        <td><?= $specification['dept'] ?>mm</td>
                     </tr>
                     <tr class="pd_detail-row">
                         <td>Cân nặng</td>
-                        <td><?=$specification['weight']?>gm</td>
+                        <td><?= $specification['weight'] ?>gm</td>
                     </tr>
                     <tr class="pd_detail-row">
                         <td>Kiểm tra hàng</td>
-                        <td><?php if($specification['quality_checking']==1) echo "Cho phép kiểm hàng";
-                        else echo "Không"; ?></td>
+                        <td><?php if ($specification['quality_checking'] == 1) echo "Cho phép kiểm hàng";
+                            else echo "Không"; ?></td>
                     </tr>
                     <tr class="pd_detail-row">
                         <td>Bảo hành</td>
-                        <td><?=$specification['insurance']?></td>
+                        <td><?= $specification['insurance'] ?></td>
                     </tr>
                 </table>
             </div>
@@ -277,9 +277,10 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
             <!-- Đánh giá -->
             <div id="rate" class="tabcontent">
 
-                <div class="box_container">
-                    <div class="content_box">
-                        <div class="overall-container">
+                <div style="display: block; width: 100%;" class="box_container">
+
+                    <div style="display: flex;" class="content_box">
+                        <div style="width: 50%;" class="overall-container">
                             <div class="overall-left">
                                 <h2>Tổng Đánh Giá</h2>
                                 <strong>5.0</strong> <br>
@@ -334,48 +335,35 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                 </ul>
                             </div>
                         </div>
-                        <?php foreach($ratingList as $rating){ 
+                        <?php foreach ($ratingList as $rating) {
                             $user = user_selectById($rating['id_user']);
                         ?>
-                                <div class="rating-row">
-                                    <div class="user-info">
-                                        <div class="user-info-left">
-                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHUvOd8Q-VihyupbJCdgjIR2FxnjGtAgMu3g&usqp=CAU"
-                                                alt="">
-                                            <div class="user-name">
-                                                <h3><?=$user['name']?></h3>
-                                                <div class="user-rate">
-                                                    <?php for($i = 0;$i<$rating['rating'];$i++){ ?>
-                                                        <i class="fa-solid fa-star"></i>
-                                                    <?php } ?>
-                                                    <?php for($i=0;$i<5-$rating['rating'];$i++){ ?>
-                                                        <i class="fa-regular fa-star"></i>
-                                                    <?php } ?>
-                                                </div>
-                                            </div>
+                        <div style="width: 50%; padding-left: 4rem;" class="rating-row">
+                            <div class="user-info">
+                                <div class="user-info-left">
+                                    <img src="<?= $CONTENT_URL ?>/imgs/user/<?= $user['img'] ?>" alt="">
+                                    <div class="user-name">
+                                        <h3><?= $user['name'] ?></h3>
+                                        <div class="user-rate">
+                                            <?php for ($i = 0; $i < $rating['rating']; $i++) { ?>
+                                            <i class="fa-solid fa-star"></i>
+                                            <?php } ?>
+                                            <?php for ($i = 0; $i < 5 - $rating['rating']; $i++) { ?>
+                                            <i class="fa-regular fa-star"></i>
+                                            <?php } ?>
                                         </div>
-
                                     </div>
-                                    <p><?=$rating['content']?></p>
                                 </div>
+
+                            </div>
+                            <p><?= $rating['content'] ?></p>
+                        </div>
                         <?php } ?>
 
-                        
-                        
+
+
 
                     </div>
-                    <!-- <form class="comment_form">
-                        <h1>Đánh Giá</h1>
-                        <textarea name="" id="" cols="30" rows="5" placeholder="Nội dung"></textarea>
-                        <button type="submit">
-                            <div class="btn_submit">
-                                <div class="btn_submit-border">
-                                    ĐĂNG
-                                    <span></span><span></span><span></span><span></span>
-                                </div>
-                            </div>
-                        </button>
-                    </form> -->
                 </div>
             </div>
         </div>

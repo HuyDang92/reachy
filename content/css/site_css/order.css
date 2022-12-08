@@ -141,15 +141,17 @@ input[type="radio"]:checked {
     border: 2px solid var(--blue);
   }
 
-.ordered_container{
-    margin: 10% 35%;
-    margin-bottom: 5%;
+.ordered_container {
+    margin: 10% 0 5% 0;
     width: 20rem;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 8px 30px 0px;
+    box-shadow: rgb(100 100 111 / 20%) 0px 8px 30px 0px;
     text-align: center;
     padding: 4rem 2rem;
     padding-top: 2rem;
-
+    position: relative;
+    left: 50%;
+    /* -webkit-transform: translateX(-50%); */
+    transform: translateX(-50%);
 }
 .checkmark__circle {
     stroke-dasharray: 166;
