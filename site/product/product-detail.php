@@ -1,5 +1,6 @@
 <?php
 add_session('productLink', getCurrentUrl());
+
 ?>
 <?php
 $sql_deal = product_select_AllSaleOff();
@@ -12,6 +13,7 @@ if (isset($_GET['id_product'])) {
 $sql_category = category_selectOne($sql_product['id_category']);
 $sql_brand = brand_selectOne($sql_product['id_brand']);
 $sql_imgs = product_selectArrayImgs($id_product);
+$ratingList = product_selectAllRating($id_product);
 // foreach ($sql_imgs as $row_imgs) {
 //     print_r($contain);
 //     print_r($sql_imgs['contain']);
@@ -189,30 +191,31 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
             </div>
             <div id="pd_detail" class="tabcontent">
                 <h3>Chi tiết</h3>
-                <table border="1" class="pd_detail-content">
-                    <tr>
+                <table class="pd_detail-content">
+                    <tr class="pd_detail-row">
                         <td>Chiều dài</td>
-                        <td></td>
+                        <td><?=$specification['width']?>mm</td>
                     </tr>
-                    <tr>
+                    <tr class="pd_detail-row">
                         <td>Chiều rộng</td>
-                        <td></td>
+                        <td><?=$specification['height']?>mm</td>
                     </tr>
-                    <tr>
+                    <tr class="pd_detail-row">
                         <td>Chiều cao</td>
-                        <td></td>
+                        <td><?=$specification['dept']?>mm</td>
                     </tr>
-                    <tr>
+                    <tr class="pd_detail-row">
                         <td>Cân nặng</td>
-                        <td></td>
+                        <td><?=$specification['weight']?>gm</td>
                     </tr>
-                    <tr>
+                    <tr class="pd_detail-row">
                         <td>Kiểm tra hàng</td>
-                        <td></td>
+                        <td><?php if($specification['quality_checking']==1) echo "Cho phép kiểm hàng";
+                        else echo "Không"; ?></td>
                     </tr>
-                    <tr>
+                    <tr class="pd_detail-row">
                         <td>Bảo hành</td>
-                        <td></td>
+                        <td><?=$specification['insurance']?></td>
                     </tr>
                 </table>
             </div>
@@ -331,62 +334,37 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                 </ul>
                             </div>
                         </div>
-                        <div class="rating-row">
-                            <div class="user-info">
-                                <div class="user-info-left">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHUvOd8Q-VihyupbJCdgjIR2FxnjGtAgMu3g&usqp=CAU"
-                                        alt="">
-                                    <div class="user-name">
-                                        <h3>NAME USER</h3>
-                                        <i>Date time</i>
-                                        <div class="user-rate">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-regular fa-star"></i>
+                        <?php foreach($ratingList as $rating){ 
+                            $user = user_selectById($rating['id_user']);
+                        ?>
+                                <div class="rating-row">
+                                    <div class="user-info">
+                                        <div class="user-info-left">
+                                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHUvOd8Q-VihyupbJCdgjIR2FxnjGtAgMu3g&usqp=CAU"
+                                                alt="">
+                                            <div class="user-name">
+                                                <h3><?=$user['name']?></h3>
+                                                <div class="user-rate">
+                                                    <?php for($i = 0;$i<$rating['rating'];$i++){ ?>
+                                                        <i class="fa-solid fa-star"></i>
+                                                    <?php } ?>
+                                                    <?php for($i=0;$i<5-$rating['rating'];$i++){ ?>
+                                                        <i class="fa-regular fa-star"></i>
+                                                    <?php } ?>
+                                                </div>
+                                            </div>
                                         </div>
+
                                     </div>
+                                    <p><?=$rating['content']?></p>
                                 </div>
+                        <?php } ?>
 
-                            </div>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut
-                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco
-                                laboris nisi ut aliquip ex ea commodo
-                            </p>
-                        </div>
-                        <div class="rating-row">
-                            <div class="user-info">
-                                <div class="user-info-left">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHUvOd8Q-VihyupbJCdgjIR2FxnjGtAgMu3g&usqp=CAU"
-                                        alt="">
-                                    <div class="user-name">
-                                        <h3>NAME USER</h3>
-                                        <i>Date time</i>
-                                        <div class="user-rate">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-regular fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut
-                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco
-                                laboris nisi ut aliquip ex ea commodo
-                            </p>
-                        </div>
+                        
+                        
 
                     </div>
-                    <form class="comment_form">
+                    <!-- <form class="comment_form">
                         <h1>Đánh Giá</h1>
                         <textarea name="" id="" cols="30" rows="5" placeholder="Nội dung"></textarea>
                         <button type="submit">
@@ -397,7 +375,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
                                 </div>
                             </div>
                         </button>
-                    </form>
+                    </form> -->
                 </div>
             </div>
         </div>
@@ -430,7 +408,7 @@ $comments = comment_selectByIdProduct($_GET['id_product']);
         </div>
     </section>
     </div>
-    <iframe name="frame" style="display: none;"></iframe>
+    <iframe name="frame" hidden></iframe>
     <script src="<?= $CONTENT_URL ?>/js/slide_product.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/tabs.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/product_detail.js"></script>

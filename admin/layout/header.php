@@ -84,7 +84,7 @@
                         $user = user_selectById($id_user);
                     ?>
                     <img src="<?= $CONTENT_URL ?>/imgs/user/<?= $img_user['img'] ?>" alt="Ảnh đại diện">
-                    <div style="width: 10rem;" class="sub__menu sub_menu-mobile">
+                    <div style="width: 12rem;" class="sub__menu sub_menu-mobile">
                         <a href="<?= $SITE_URL ?>/user?info">
                             <div class="sub__menu-user">THÔNG TIN CÁ NHÂN</div>
                         </a>

@@ -489,6 +489,16 @@ form.comment_form .btn_submit-border{
 .user-rate i{
     color: orange;
 }
+.pd_detail-content{
+    width: 100%;
+    border-collapse: collapse ;
+    border: none;
+}
+.pd_detail-row{
+    box-shadow: 0 0.5px 0.5px lightgray;
+    height: 3rem;
+    text-align: center;
+}   
 @media only screen and (max-width: 450px){
     .pd_img-fixed>img {
         height: 32% !important;

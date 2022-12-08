@@ -1,11 +1,21 @@
 <?php
     /**
-    * Xuất danh sách sản phẩm trong giỏ hàng
+    * Xuất danh sách sản phẩm trong giỏ hàng của khách hàng
+    * @param int $id_user Mã khách hàng
     * @return array Danh sách sản phẩm
     */
     function cart_selectByUserId($id_user){
         $sql = "SELECT * FROM cart WHERE id_user = ?";
         return pdo_query($sql,$id_user);
+    }
+    /**
+    * Xuất giỏ hàng theo mã giỏ hàng
+    * @param int id_cart Mã giỏ hàng
+    * @return array danh sách giỏ hàng
+    */
+    function cart_selectById($id_cart){
+        $sql = "SELECT * FROM cart WHERE id_cart = ?";
+        return pdo_query_one($sql,$id_cart);
     }
     /**
     * Thêm sản phẩm vào giỏ hàng 

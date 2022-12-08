@@ -91,9 +91,11 @@ if (isset($_SESSION['product'])) {
             <div class="bill">
                 <ul class="product-rows">
                     <?php if (isset($products)) {
+                        $total_price = 0;
                         foreach ($products as $product) {
                             $product_row = product_selectOne($product['id_product']);
                             $product_img = product_selectImgs($product['id_product']);
+                            $total_price += $product_row['price'] * $product['quantity'];
                     ?>
                     <li class="product-row">
                         <div class="product-row-left">
@@ -119,13 +121,13 @@ if (isset($_SESSION['product'])) {
                 </div>
                 <div class="bill-total">
                     <div style="margin-bottom: 0.5rem;" class="price-pd">Tạm tính
-                        <span><?php echo number_format($product_row['price'] * $product['quantity']); ?>đ</span>
+                        <span><?php echo number_format($total_price); ?>đ</span>
                     </div>
                     <div class="price-pd">Phí vận chuyển <span>30,000đ</span></div>
                 </div>
                 <div class="price-total">
                     <span>Tổng cộng</span>
-                    <h2><?php echo number_format($product_row['price'] * $product['quantity'] + 30000); ?>đ</h2>
+                    <h2><?php echo number_format($total_price + 30000); ?>đ</h2>
                 </div>
                 <div class="payment">
                     <div class="pay-row">
@@ -178,6 +180,51 @@ if (isset($_SESSION['product'])) {
     <iframe name="frame" hidden></iframe>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="<?= $CONTENT_URL ?>/js/order.js"></script>
+    <script>
+        /**
+        * Selecter chọn tỉnh(tp), huyện(quận), xã(phường)
+        */
+        var citis = document.getElementById("city");
+        var districts = document.getElementById("district");
+        var wards = document.getElementById("ward");
+        var Parameter = {
+            url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+            method: "GET",
+            responseType: "application/json",
+        };
+        var promise = axios(Parameter);
+        promise.then(function(result) {
+            renderCity(result.data);
+        });
+
+        function renderCity(data) {
+            for (const x of data) {
+                citis.options[citis.options.length] = new Option(x.Name, x.Name);
+            }
+            citis.onchange = function() {
+                district.length = 1;
+                ward.length = 1;
+                if (this.value != "") {
+                    const result = data.filter(n => n.Name === this.value);
+
+                    for (const k of result[0].Districts) {
+                        district.options[district.options.length] = new Option(k.Name, k.Name);
+                    }
+                }
+            };
+            district.onchange = function() {
+                ward.length = 1;
+                const dataCity = data.filter((n) => n.Name === citis.value);
+                if (this.value != "") {
+                    const dataWards = dataCity[0].Districts.filter(n => n.Name === this.value)[0].Wards;
+
+                    for (const w of dataWards) {
+                        wards.options[wards.options.length] = new Option(w.Name, w.Name);
+                    }
+                }
+            };
+        }
+    </script>
 </body>
 
 </html>

@@ -36,6 +36,7 @@ add_session("lasted_url", getCurrentUrl());
                 $product = product_selectOne($cart['id_product']);
             ?>
             <li class="cart-row">
+                <input class="id_cart" type="hidden" readonly value="<?=$cart['id_cart']?>">
                 <form action="handle_cart.php" method="POST" target="frame">
                     <div class="group">
                         <input type="checkbox" class="cart_selecter" name="cart_selecter">
@@ -95,8 +96,8 @@ add_session("lasted_url", getCurrentUrl());
             </li>
             <?php } ?>
 
-            <a href="">
-                <button type="submit">
+            <a href="<?= $SITE_URL ?>/homepage">
+                <button type=" submit">
                     <div class="btn_submit">
                         <div class="btn_submit-border">
                             Tiếp tục mua hàng
@@ -113,20 +114,18 @@ add_session("lasted_url", getCurrentUrl());
             <li>Tổng tiền: <span id="cart_finalPrice" style="float: right; font-weight: 700;" data-value="0">0đ</span>
             </li>
             <li>Bạn có thể nhập mã giảm giá ở trang thanh toán</li>
-            <a href="">
-                <button type="submit">
-                    <div class="btn_submit">
-                        <div class="btn_submit-border">
-                            THANH TOÁN
-                            <span></span><span></span><span></span><span></span>
-                        </div>
+            <form id="cart_form" action="handle_cart.php" method="POST" target="frame"></form>
+            <button id="btn_cart_submit" type="submit">
+                <div class="btn_submit">
+                    <div class="btn_submit-border">
+                        THANH TOÁN
+                        <span></span><span></span><span></span><span></span>
                     </div>
-                </button>
-            </a>
-
+                </div>
+            </button>
         </div>
     </section>
-    <iframe name="frame" style="display: none;"></iframe>
+    <iframe name="frame" hidden></iframe>
     <script src="<?= $CONTENT_URL ?>/js/cart.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function(event) {

@@ -6,7 +6,6 @@
     require_once "../../dao/cart.php";
     session_start();
     extract($_REQUEST);
-    print_r($_REQUEST);
     $id_user = $_SESSION['login'];
     if(exist_param("btn_quantity")){
         cart_update($id_cart,$size,$quantity);
@@ -15,6 +14,22 @@
         }
     }else if(isset($_GET['id_cart'])){
         cart_delete($_GET['id_cart']);
+    }else if(isset($order)){
+        $cart_list = explode(",",$order);
+        $product_list = array();
+        for($i = 0;$i<count($cart_list);$i++){
+            $cart = cart_selectById($cart_list[$i]);
+            $temp = array(
+                "id_product" => $cart['id_product'],
+                "size" => $cart['size'],
+                "quantity" => $cart['quantity']
+            );
+            array_push($product_list,$temp);
+        }
+        add_session("product",$product_list);
+        echo "
+            <script>window.parent.location.href='../product/?buy'</script>
+        ";
     }else{
         if(cart_checkExistSize($id_user,$id_product,$size)){
             $allCarts = cart_checkExistSize($id_user,$id_product,$size);
@@ -32,7 +47,4 @@
             cart_update($id_cart,$size,$quantity);
         }
     }
-    $lasted_url = $_SESSION['lasted_url'];
-    unset($_SESSION['lasted_url']);
-    header("location:$lasted_url");
 ?>

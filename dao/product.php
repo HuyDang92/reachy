@@ -288,3 +288,10 @@ function product_rating($id_product, $id_user, $rating, $content)
     $sql = "INSERT INTO rating(id_rating,id_product,id_user,rating,content) VALUES (null,?,?,?,?)";
     pdo_execute($sql, $id_product, $id_user, $rating, $content);
 }
+/**
+* 
+*/
+function product_selectAllRating($id_product){
+    $sql = "SELECT * FROM rating WHERE id_product = ?";
+    return pdo_query($sql,$id_product);
+}
