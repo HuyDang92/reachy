@@ -60,14 +60,18 @@
                 if(isset($_GET['id'])&&($_GET['id']>0)){
                     $id_product = $_GET['id'];
                     $allRating = count(product_selectAllRating($id_product));
-                    $level1 = (count(product_selectRatingByLevel($id_product,"1"))/$allRating)*100;
-                    $level2 = (count(product_selectRatingByLevel($id_product,"2"))/$allRating)*100;
-                    $level3 = (count(product_selectRatingByLevel($id_product,"3"))/$allRating)*100;
-                    $level4 = (count(product_selectRatingByLevel($id_product,"4"))/$allRating)*100;
-                    $level5 = (count(product_selectRatingByLevel($id_product,"5"))/$allRating)*100;
-                    $level = array(
-                        $level1,$level2,$level3,$level4,$level5
-                    );
+                    if($allRating!=0){
+                        $level1 = (count(product_selectRatingByLevel($id_product,"1"))/$allRating)*100;
+                        $level2 = (count(product_selectRatingByLevel($id_product,"2"))/$allRating)*100;
+                        $level3 = (count(product_selectRatingByLevel($id_product,"3"))/$allRating)*100;
+                        $level4 = (count(product_selectRatingByLevel($id_product,"4"))/$allRating)*100;
+                        $level5 = (count(product_selectRatingByLevel($id_product,"5"))/$allRating)*100;
+                        $level = array(
+                            $level1,$level2,$level3,$level4,$level5
+                        );
+                    }else{
+                        $massage = "Chưa có đánh giá";
+                    }
                 }
                 include 'product/statistic.php';
                 break;
