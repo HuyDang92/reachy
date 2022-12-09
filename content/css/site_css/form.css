@@ -408,7 +408,7 @@ ul.order__rows--container{
     display: none;
 }
 
-#productDropdown-checkbox:checked~.order__row--fullProduct {
+#productDropdown-checkbox:checked~.o    rder__row--fullProduct {
     display: block;
 }
 

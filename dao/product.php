@@ -289,9 +289,19 @@ function product_rating($id_product, $id_user, $rating, $content)
     pdo_execute($sql, $id_product, $id_user, $rating, $content);
 }
 /**
-* 
+* Xuất tất cả đánh giá của 1 sản phẩm
+* @param int $id_product Mã sản phẩm
 */
 function product_selectAllRating($id_product){
     $sql = "SELECT * FROM rating WHERE id_product = ?";
     return pdo_query($sql,$id_product);
+}
+/**
+* Xuất đánh giá sản phẩm theo mức đánh giá
+* @param int $id_product Mã sản phẩm
+* @param int $level Mức đánh giá
+*/
+function product_selectRatingByLevel($id_product,$level){
+    $sql = "SELECT * FROM rating WHERE id_product = ? AND rating = ?";
+    return pdo_query($sql,$id_product,$level);
 }

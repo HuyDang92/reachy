@@ -64,7 +64,7 @@ $total_products = count(product_selectAll());
                         <a href="<?= $ADMIN_URL ?>?product&act=del&id=<?= $id_product ?>"><button>Xóa</button></a>
                         <a href="<?= $ADMIN_URL ?>?comment&act=list&id=<?= $id_product ?>"><button>Bình
                                 luận</button></a>
-                        <a href="<?= $ADMIN_URL ?>?product&act=del&id=<?= $id_product ?>"><button>Đánh
+                        <a href="<?= $ADMIN_URL ?>?product&act=rating&id=<?= $id_product ?>"><button>Đánh
                                 giá</button></a>
                     </div>
                 </td>
