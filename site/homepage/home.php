@@ -360,19 +360,18 @@ const btn_add_cart = document.getElementById("btn_add-cart").addEventListener(
         amount_cart.innerHTML++;
     })
 </script>
-<!-- <script>
+<script>
     document.addEventListener("DOMContentLoaded", function (event) {
-        var scrollpos = sessionStorage.getItem('scrollpos');
-        if (scrollpos) {
-            window.scrollTo(0, scrollpos);
-            sessionStorage.removeItem('scrollpos');
-        }
-    });
-
-    window.addEventListener("beforeunload", function (e) {
-        sessionStorage.setItem('scrollpos', window.scrollY);
-    });
-</script> -->
+  const cartButtons = document.querySelectorAll(".cart");
+  cartButtons.forEach((button) => {
+    button.addEventListener("click", cartClick);
+  });
+  function cartClick() {
+    let button = this;
+    button.classList.add("clicked");
+  }
+});
+</script>
 <?php if (isset($_SESSION['message'])) { ?>
 <script>
 alert("<?= $_SESSION['message']; ?>")

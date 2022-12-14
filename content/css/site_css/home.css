@@ -46,10 +46,11 @@ section.exclusive__deal-area {
 .cart {
   position: relative;
   outline: 0;
+  /* background-color: blue; */
   color: #fff;
   height: 40px;
   width: 140px;
-  border-radius: 0px;
+  border-radius: 30px;
   line-height: 0px;
   overflow: hidden;
   cursor: pointer;
@@ -164,11 +165,6 @@ section.exclusive__deal-area {
   100% {
     opacity: 1;
   }
-}
-/*  */
-.slide__item-left {
-  width: 40%;
-  margin-left: 2rem;
 }
 .slide__item-right img {
   width: 100%;
