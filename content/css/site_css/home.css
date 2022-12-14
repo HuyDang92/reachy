@@ -746,7 +746,7 @@ ul.deal__week-content>li:hover>a::after{
 }
 @media only screen and (max-width: 850px){
     section {
-        margin: 0 5% ;
+        margin: 0 5% !important;
     }
     .banner__area {
         margin-top: 9rem ;

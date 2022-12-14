@@ -60,7 +60,7 @@ $i = 0;
                     <input type="hidden" data-bill="<?= $i ?>" class="name" value="<?= $user['name'] ?>">
                     <input type="hidden" data-bill="<?= $i ?>" class="email" value="<?= $user['email'] ?>">
                     <input type="hidden" data-bill="<?= $i ?>" class="pro" value="<?= $pro['name'] ?>">
-                    <input type="hidden" data-bill="<?= $i ?>" class="price" value="<?= $pro['price'] ?>">
+                    <input type="hidden" data-bill="<?= $i ?>" class="price                                             " value="<?= $pro['price'] ?>">
                     <input type="hidden" data-bill="<?= $i ?>" class="date" value="<?= $date ?>">
                     <input type="hidden" data-bill="<?= $i ?>" class="address" value="<?= $address ?>">
                     <input type="hidden" data-bill="<?= $i ?>" class="amount" value="<?= $bill_detail['amount'] ?>">
