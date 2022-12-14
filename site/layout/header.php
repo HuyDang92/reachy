@@ -52,7 +52,7 @@ if (isset($_SESSION['login'])) {
             <div class="header__right">
                 <a href="<?= $SITE_URL ?>/homepage">
                     <div class="header_right-logo">
-                        <img  src="<?= $CONTENT_URL ?>/imgs/interface/logo.svg" alt="logo">
+                        <img src="<?= $CONTENT_URL ?>/imgs/interface/logo.svg" alt="logo">
                         <h2>REACHY</h2>
                     </div>
                 </a>
@@ -204,5 +204,4 @@ if (isset($_SESSION['login'])) {
         }
     }
     </script>
-
 </body>

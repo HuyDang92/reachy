@@ -174,18 +174,20 @@ $user = user_selectById($_SESSION['login']);
                                                             $product_img = product_selectImgs($product_row['id_product']);
                                                         ?>
                                                 <li>
-                                                    <div>
-                                                        <div>
+                                                    <div class="flex_other-row">
+                                                        <div class="pd_other-row">
                                                             <img width="50px" height="50px"
                                                                 src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>"
                                                                 alt="<?= $product_row['name'] ?>">
                                                         </div>
                                                         <div class="product-info">
                                                             <b><?= $product_row['name'] ?></b>
-                                                            <i>Size: <?= $bill_details[$i]['size'] ?></i>
-                                                            <i>SL: <?= $bill_details[$i]['amount'] ?></i>
+                                                            <div class="no-flex">
+                                                                <i>Size: <?= $bill_details[$i]['size'] ?></i>
+                                                                <i>SL: <?= $bill_details[$i]['amount'] ?></i>
+                                                                <span>Giá:<?= number_format($product_row['price']) ?>đ</span>
+                                                            </div>
                                                         </div>
-                                                        <span>Giá:<?= number_format($product_row['price']) ?>đ</span>
                                                     </div>
                                                 </li>
                                                 <?php } ?>
@@ -256,7 +258,7 @@ $user = user_selectById($_SESSION['login']);
                                                             $product_img = product_selectImgs($product_row['id_product']);
                                                         ?>
                                                 <li>
-                                                    <div>
+                                                    <div class="flex_other-row">
                                                         <div>
                                                             <img width="50px" height="50px"
                                                                 src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>"
@@ -264,10 +266,12 @@ $user = user_selectById($_SESSION['login']);
                                                         </div>
                                                         <div class="product-info">
                                                             <b><?= $product_row['name'] ?></b>
-                                                            <i>Size: <?= $bill_details[$i]['size'] ?></i>
-                                                            <i>SL: <?= $bill_details[$i]['amount'] ?></i>
+                                                            <div class="no-flex">
+                                                                <i>Size: <?= $bill_details[$i]['size'] ?></i>
+                                                                <i>SL: <?= $bill_details[$i]['amount'] ?></i>
+                                                                <span>Giá:<?= number_format($product_row['price']) ?>đ</span>
+                                                            </div>
                                                         </div>
-                                                        <span>Giá:<?= number_format($product_row['price']) ?>đ</span>
                                                     </div>
                                                 </li>
                                                 <?php } ?>
@@ -341,7 +345,7 @@ $user = user_selectById($_SESSION['login']);
                                                             $product_img = product_selectImgs($product_row['id_product']);
                                                         ?>
                                                 <li>
-                                                    <div>
+                                                    <div class="flex_other-row">
                                                         <div>
                                                             <img width="50px" height="50px"
                                                                 src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>"
@@ -349,10 +353,12 @@ $user = user_selectById($_SESSION['login']);
                                                         </div>
                                                         <div class="product-info">
                                                             <b><?= $product_row['name'] ?></b>
-                                                            <i>Size: <?= $bill_details[$i]['size'] ?></i>
-                                                            <i>SL: <?= $bill_details[$i]['amount'] ?></i>
+                                                            <div class="no-flex">
+                                                                <i>Size: <?= $bill_details[$i]['size'] ?></i>
+                                                                <i>SL: <?= $bill_details[$i]['amount'] ?></i>
+                                                                <span>Giá:<?= number_format($product_row['price']) ?>đ</span>
+                                                            </div>
                                                         </div>
-                                                        <span>Giá:<?= number_format($product_row['price']) ?>đ</span>
                                                     </div>
                                                 </li>
                                                 <?php } ?>
@@ -482,7 +488,7 @@ $user = user_selectById($_SESSION['login']);
                                                         $product_img = product_selectImgs($product_row['id_product']);
                                                     ?>
                                             <li>
-                                                <div>
+                                                <div class="flex_other-row">
                                                     <div>
                                                         <img width="50px" height="50px"
                                                             src="<?= $CONTENT_URL ?>/imgs/products/<?= $product_img['contain'] ?>"
@@ -490,10 +496,12 @@ $user = user_selectById($_SESSION['login']);
                                                     </div>
                                                     <div class="product-info">
                                                         <b><?= $product_row['name'] ?></b>
-                                                        <i>Size: <?= $bill_details[$i]['size'] ?></i>
-                                                        <i>SL: <?= $bill_details[$i]['amount'] ?></i>
+                                                        <div class="no-flex">
+                                                            <i>Size: <?= $bill_details[$i]['size'] ?></i>
+                                                            <i>SL: <?= $bill_details[$i]['amount'] ?></i>
+                                                            <span>Giá:<?= number_format($product_row['price']) ?>đ</span>
+                                                        </div>
                                                     </div>
-                                                    <span>Giá:<?= number_format($product_row['price']) ?>đ</span>
                                                 </div>
                                             </li>
                                             <?php } ?>

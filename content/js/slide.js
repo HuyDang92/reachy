@@ -25,7 +25,7 @@
 //     $('.stop').on('click', function() {
 //         owl.trigger('stop.owl.autoplay')
 //     })
-
+// k có auto
 $(document).ready(function() {
     $('.owl-carousel').owlCarousel({
         loop: true,
