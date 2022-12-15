@@ -318,11 +318,14 @@ $user = user_selectById($_SESSION['login']);
                             <li class="order__row">
                                 <div class="order_row-container">
                                     <div class="order__row--left">
-                                        <div>
-                                            <img width="50px" height="50px"
-                                                src="<?= $CONTENT_URL ?>/imgs/products/<?= $firstProduct_img['contain'] ?>"
-                                                alt="<?= $firstProduct_info['name'] ?>">
-                                        </div>
+                                        <a
+                                            href="<?= $SITE_URL ?>/product?product&id_product=<?= $bill_details[0]['id_product'] ?>">
+                                            <div>
+                                                <img width="50px" height="50px"
+                                                    src="<?= $CONTENT_URL ?>/imgs/products/<?= $firstProduct_img['contain'] ?>"
+                                                    alt="<?= $firstProduct_info['name'] ?>">
+                                            </div>
+                                        </a>
                                         <span class="product-info">
                                             <b><?= $firstProduct_info['name'] ?></b>
                                             <div class="order_info">

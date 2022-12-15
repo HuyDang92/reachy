@@ -417,12 +417,14 @@ ul.order__rows--container {
   display: none;
   position: fixed;
   width: 23rem;
+  height: 90vh;
   top: 2rem;
   left: 50%;
   transform: translateX(-50%);
   background-color: white;
   border: 1px solid black;
   z-index: 100;
+  overflow: auto;
 }
 .box_flex-order {
   display: flex;
@@ -526,4 +528,7 @@ ul.order__rows--container {
 }
 .flex_other-row {
   display: flex;
+}
+.rating_container form {
+  margin-bottom: 1rem;
 }

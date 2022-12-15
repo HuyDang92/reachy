@@ -13,7 +13,7 @@
         foreach($arr_str as $word){
             if(str_contains($message,$word)){
                 echo "
-                    <script>window.parent.alert('Bình luận chứa từ khóa khiếm nhã');</script>
+                    <script>alert('Bình luận chứa từ khóa khiếm nhã');</script>
                 ";
                 break;
             }else{

@@ -1,95 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      :root {
-        --blue: #21d1f5;
-        --green: #3bd1c8;
-        --white: #fff;
-        --darkgray: #1e1f29;
-        --lightgray: #e4e7ed;
-      }
-      .addtocart {
-        /* display: block; */
-        border-radius: 40px;
-        border: none;
-        position: relative;
-        cursor: pointer;
-        height: 40px;
-        width: 140px;
-        overflow: hidden;
-        transition: transform 0.1s;
-        z-index: 1;
-        font-size: 15px;
-      }
-      .addtocart:hover {
-        background-color: #fff;
-        border: 2px solid var(--blue);
-      }
-      .pretext {
-        color: #fff;
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Quicksand", sans-serif;
-      }
-      i {
-        margin-right: 10px;
-      }
-      .done {
-        background: var(--blue);
-        position: absolute;
-        width: 100%;
-        top: 0;
-        left: 0;
-        transition: transform 0.3s ease;
-
-        transform: translate(-110%) skew(-40deg);
-      }
-      .posttext {
-        background: var(--blue);
-      }
-      .fa-check {
-        background: var(--blue);
-      }
-      .addtocart:hover .pretext {
-        color: var(--blue);
-      }
-      .addtocart:hover .posttext {
-        color: #fff;
-      }
-    </style>
-  </head>
-  <body>
-    <button class="addtocart">
-      <div class="pretext"><i class="fas fa-cart-plus"></i> THÊM VÀO GIỎ</div>
-      <div class="pretext done">
-        <div class="posttext"><i class="fas fa-check"></i> ĐÃ THÊM</div>
-      </div>
-    </button>
-    <script>
-      const button = document.querySelector(".addtocart");
-      const done = document.querySelector(".done");
-      console.log(button);
-      let added = false;
-      button.addEventListener("click", () => {
-        if (added) {
-          done.style.transform = "translate(-110%) skew(-40deg)";
-          added = false;
-        } else {
-          done.style.transform = "translate(0px)";
-          added = true;
-        }
-      });
-    </script>
-  </body>
-</html>
+<body style="">
+  <div
+    style="
+      position: fixed;
+      height: 50vh;
+      width: 260px;
+      overflow: auto;
+      background-color: pink;
+      color: white;
+      scrollbar-base-color: gold;
+      font-family: arial;
+      padding: 15px;
+    "
+  >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan metus
+    vitae purus tempor, vel sollicitudin nulla aliquam. Morbi tincidunt tellus
+    nec nibh faucibus porttitor. Lorem ipsum dolor sit, amet consectetur
+    adipisicing elit. Natus saepe hic quibusdam aut! Repellendus possimus animi
+    doloremque tenetur, autem, aut vel magnam asperiores iure quos dolorem
+    impedit sed sint excepturi? Lorem ipsum, dolor sit amet consectetur
+    adipisicing elit. Ipsum impedit modi consequatur illo dolorem excepturi,
+    magnam vitae veritatis tempora, eum molestiae eaque eligendi dignissimos
+    reiciendis libero consequuntur nulla accusamus eveniet.
+  </div>
+  <div class="box" style="height: 120vh; background-color: #000">
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe provident,
+    corrupti fugit ab, neque quas tempora architecto dolorum similique vero
+    modi, eligendi quisquam. Eius, facilis animi. Quis quos suscipit in.
+  </div>
+</body>
