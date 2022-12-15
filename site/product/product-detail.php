@@ -1,6 +1,5 @@
 <?php
 add_session('productLink', getCurrentUrl());
-
 ?>
 <?php
 $sql_deal = product_select_AllSaleOff();
