@@ -44,13 +44,15 @@ $total_products = count(product_selectAll());
                     <?= $name ?>
                 </td>
                 <td>
-                    <?= $name_cate['name'] ?>
+                    <a href="<?= $SITE_URL ?>/product?product&id_product=<?= $id_product ?>"><?= $name_cate['name'] ?>
+                    </a>
                 </td>
                 <td>
                     <?= $name_brand['name'] ?>
                 </td>
                 <td class="hinh">
-                    <img src="<?= $CONTENT_URL ?>/imgs/products/<?= $img['contain'] ?>" alt="">
+                    <a href="<?= $SITE_URL ?>/product?product&id_product=<?= $id_product ?>"><img
+                            src="<?= $CONTENT_URL ?>/imgs/products/<?= $img['contain'] ?>" alt=""></a>
                 </td>
                 <td>
                     <?= number_format(round($price, -4)) ?>₫

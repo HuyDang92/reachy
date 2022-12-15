@@ -86,7 +86,9 @@ function product_update($id_category, $id_brand, $name, $price, $sale_off, $feat
  */
 function product_delete($id_product)
 {
-    $sql = "DELETE FROM product WHERE id_product=?";
+    $sql = "SET FOREIGN_KEY_CHECKS=0;
+    DELETE FROM product WHERE id_product = ?;
+    SET FOREIGN_KEY_CHECKS=1;";
     pdo_execute($sql, $id_product);
 }
 /**

@@ -89,7 +89,7 @@ if (isset($_SESSION['login'])) {
                             $user = user_selectById($id_user);
                         ?>
                         <img src="<?= $CONTENT_URL ?>/imgs/user/<?= $img_user['img'] ?>" alt="Ảnh đại diện">
-                        <div style="width: 12rem;" class="sub__menu sub_menu-mobile">
+                        <div style="width: 320%;" class="sub__menu sub_menu-mobile">
                             <a href="<?= $SITE_URL ?>/user?info">
                                 <div class="sub__menu-user">THÔNG TIN CÁ NHÂN</div>
                             </a>
@@ -104,7 +104,7 @@ if (isset($_SESSION['login'])) {
                         </div>
                         <?php } else { ?>
                         <span class="material-symbols-outlined">account_circle</span>
-                        <div style="width: 8rem;" class="sub__menu">
+                        <div style="width: 320%;" class="sub__menu">
                             <a href="<?= $SITE_URL ?>/user?sign_in">
                                 <div class="sub__menu-user">ĐĂNG NHẬP</div>
                             </a>
